@@ -1,7 +1,17 @@
+import ThemeSelector from "./components/ThemeSelector";
+import { Body, GlobalStyle } from "./styles/GlobalStyles";
+import Theme from "./Theme/ThemeProvider";
+
 function App() {
   return (
     <>
-      <h1>Motors Shop</h1>
+      <Theme>
+        <Body>
+          <GlobalStyle />
+          <h1>teste</h1>
+          <ThemeSelector />
+        </Body>
+      </Theme>
     </>
   );
 }
