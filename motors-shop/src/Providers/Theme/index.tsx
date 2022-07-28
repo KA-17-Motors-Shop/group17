@@ -8,11 +8,15 @@ interface IValues {
 export const ThemeContext = createContext({} as IValues);
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState(
+    localStorage.getItem("@MotorShop:Theme.mode") || "light"
+  );
 
   const handleTheme = () => {
     const newMode = mode === "light" ? "dark" : "light";
     setMode(newMode);
+
+    localStorage.setItem("@MotorShop:Theme.mode", newMode);
   };
 
   return (
