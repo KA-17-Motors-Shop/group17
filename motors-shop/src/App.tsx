@@ -1,5 +1,6 @@
-import ThemeSelector from "./components/ThemeSelector";
 import { Body, GlobalStyle } from "./styles/GlobalStyles";
+
+import ThemeSelector from "./components/ThemeSelector";
 import Theme from "./Theme/ThemeProvider";
 
 function App() {
@@ -8,7 +9,6 @@ function App() {
       <Theme>
         <Body>
           <GlobalStyle />
-          <h1>teste</h1>
           <ThemeSelector />
         </Body>
       </Theme>
