@@ -20,7 +20,6 @@ Type Script
 ## Frameworks
 
 - [TypeScripy](https://www.typescriptlang.org/)
-- [Next](https://nextjs.org/)
 - [Node](https://nodejs.org/en/)
 - [React](https://pt-br.reactjs.org/)
 - [Prisma](https://www.prisma.io/)
