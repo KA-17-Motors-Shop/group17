@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Container } from "./styles";
 
 export interface IButtonProps
@@ -8,7 +9,7 @@ export interface IButtonProps
     >,
     React.AriaAttributes {}
 
-const Button: React.FC<IButtonProps> = ({ children, ...rest }) => {
+const ButtonPrimary: React.FC<IButtonProps> = ({ children, ...rest }) => {
   return (
     <Container>
       <button {...rest}>{children}</button>
@@ -16,4 +17,4 @@ const Button: React.FC<IButtonProps> = ({ children, ...rest }) => {
   );
 };
 
-export default Button;
+export default ButtonPrimary;

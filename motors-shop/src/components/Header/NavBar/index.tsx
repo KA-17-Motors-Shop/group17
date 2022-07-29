@@ -1,6 +1,5 @@
 import ThemeSelector from "../../ThemeSelector";
 import {
-  Button,
   Container,
   Link,
   LoggedContainer,
@@ -9,6 +8,8 @@ import {
   Nav,
   NotLoggedContainer,
 } from "./styles";
+
+// import { ButtonPrimary } from "../../Button";
 
 const NavBar: React.FC<{ isLogged: boolean }> = ({ isLogged }) => {
   const userName = "Samuel Leão"; // Apenas para testes (Deve vir do DB)
@@ -29,7 +30,7 @@ const NavBar: React.FC<{ isLogged: boolean }> = ({ isLogged }) => {
       ) : (
         <NotLoggedContainer>
           <Link>Fazer Login</Link>
-          <Button>Cadastrar</Button>
+          {/* <ButtonPrimary>Cadastrar</ButtonPrimary> */}
         </NotLoggedContainer>
       )}
       <ThemeSelector />

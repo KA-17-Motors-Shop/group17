@@ -2,6 +2,7 @@ import { Body, GlobalStyle } from "./styles/GlobalStyles";
 
 import Header from "./components/Header";
 import Theme from "./Theme/ThemeProvider";
+import ButtonPrimary from "./components/Button";
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
         <Body>
           <GlobalStyle />
 
-          <Header isLogged={true} />
+          <Header isLogged={false} />
+          <ButtonPrimary>Teste</ButtonPrimary>
         </Body>
       </Theme>
     </>
