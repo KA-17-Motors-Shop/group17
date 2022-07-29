@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../Providers/Theme";
+import { ThemeContext } from "../../Theme/ThemeProvider";
 
 import { HiLightBulb, HiOutlineLightBulb } from "react-icons/hi";
 import { Box, Button } from "./styles";

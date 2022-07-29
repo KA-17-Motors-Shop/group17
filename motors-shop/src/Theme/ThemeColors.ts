@@ -9,6 +9,16 @@ export const lightTheme: IThemeColors = {
     generalBackground: "#F1F3F5",
     headerBackground: "#FDFDFD",
   },
+  borders: {
+    headerBorder: "#DEE2E6",
+  },
+  textColors: {
+    title: "#FDFDFD",
+    subTitle: "#000000",
+    primaryText: "#495057",
+    secondaryText: "#FFFFFF",
+    spantext: "#212529",
+  },
   brand: {
     brand1: "#4529E6",
     brand2: "#5126EA",
@@ -59,8 +69,18 @@ export const darkTheme: IThemeColors = {
     smallTitle: "#4529e6",
   },
   backgroundColors: {
-    generalBackground: "#212529",
-    headerBackground: "#FDFDFD",
+    generalBackground: "#495057",
+    headerBackground: "#212529",
+  },
+  borders: {
+    headerBorder: "#000000",
+  },
+  textColors: {
+    title: "#FDFDFD",
+    subTitle: "#5126EA;",
+    primaryText: "#EDEAFD",
+    secondaryText: "#4529E6",
+    spantext: "#9747FF",
   },
   brand: {
     brand1: "#4529E6",

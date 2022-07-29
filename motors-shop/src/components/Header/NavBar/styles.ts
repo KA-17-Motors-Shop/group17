@@ -20,7 +20,7 @@ export const Nav = styled.nav`
   max-width: 12.5rem;
   gap: 1rem;
   padding-right: 1rem;
-  border-right: ${({ theme }) => theme.greyScale.grey6} 0.1rem solid;
+  border-right: ${({ theme }) => theme.textColors.primaryText} 0.1rem solid;
 `;
 
 export const NotLoggedContainer = styled.div`
@@ -47,7 +47,7 @@ export const LoggedContainer = styled.div`
 export const Link = styled.span`
   font-weight: 400;
   font-size: 1rem;
-  color: ${({ theme }) => theme.greyScale.grey2};
+  color: ${({ theme }) => theme.textColors.primaryText};
 `;
 export const Button = styled.button``;
 
@@ -67,4 +67,5 @@ export const NameSpan = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: ${({ theme }) => theme.textColors.primaryText};
 `;

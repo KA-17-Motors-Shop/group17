@@ -9,6 +9,16 @@ declare module "styled-components" {
       generalBackground: String;
       headerBackground: String;
     };
+    borders: {
+      headerBorder: String;
+    };
+    textColors: {
+      title: String;
+      subTitle: String;
+      primaryText: String;
+      secondaryText: String;
+      spantext: String;
+    };
     brand: {
       brand1: String;
       brand2: String;

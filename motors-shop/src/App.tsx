@@ -1,8 +1,8 @@
-import { Body, GlobalStyle } from "./styles/GlobalStyles";
-
 import Header from "./components/Header";
 import Theme from "./Theme/ThemeProvider";
 import ButtonPrimary from "./components/Button";
+import { Body, GlobalStyle } from "./styles/GlobalStyles";
+import FormSingIn from "./components/Forms/SingInForm";
 
 function App() {
   return (
@@ -11,8 +11,9 @@ function App() {
         <Body>
           <GlobalStyle />
 
-          <Header isLogged={false} />
+          <Header isLogged={true} />
           <ButtonPrimary>Teste</ButtonPrimary>
+          <FormSingIn />
         </Body>
       </Theme>
     </>
