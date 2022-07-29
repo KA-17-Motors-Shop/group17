@@ -1,4 +1,6 @@
-export const lightTheme = {
+import { IThemeColors } from "styled-components";
+
+export const lightTheme: IThemeColors = {
   backgroundColors: {
     generalBackground: "#F1F3F5",
   },
@@ -46,9 +48,9 @@ export const lightTheme = {
   },
 };
 
-export const darkTheme = {
+export const darkTheme: IThemeColors = {
   backgroundColors: {
-    generalBackground: "#F1F3F5",
+    generalBackground: "#868E96",
   },
   brand: {
     brand1: "#4529E6",

@@ -1,11 +1,18 @@
-// import Button from "./components/Button";
+import ThemeSelector from "./components/ThemeSelector";
+import { Body, GlobalStyle } from "./styles/GlobalStyles";
+import Theme from "./Theme/ThemeProvider";
 
 function App() {
   return (
-    <div>
-      <h1>Motors Shop</h1>
-      {/* <Button>Teste</Button> */}
-    </div>
+    <>
+      <Theme>
+        <Body>
+          <GlobalStyle />
+          <h1>teste</h1>
+          <ThemeSelector />
+        </Body>
+      </Theme>
+    </>
   );
 }
 

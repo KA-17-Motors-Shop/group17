@@ -16,10 +16,15 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         outline: 0;
-        font-family: "Poppins", sans-serif;
+        font-family: "Inter", sans-serif;
+        font-size: 20px;
+        font-weight: 500;
         transition: all 0.5s ease;
     }
-    #_next{
+    h1, h2, h3, h4, h5, h6 {
+        font-family: "Lexend", sans-serif;
+    }
+    #root{
         width: 100vw;
         height: 100vh;
         
@@ -40,4 +45,5 @@ export const GlobalStyle = createGlobalStyle`
     ul,li {
         list-style: none;
     }
+    
 `;
