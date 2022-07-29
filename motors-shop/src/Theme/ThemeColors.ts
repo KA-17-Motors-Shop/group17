@@ -1,8 +1,13 @@
 import { IThemeColors } from "styled-components";
 
 export const lightTheme: IThemeColors = {
+  logoColors: {
+    bigTitle: "#0b0d0d",
+    smallTitle: "#4529e6",
+  },
   backgroundColors: {
     generalBackground: "#F1F3F5",
+    headerBackground: "#FDFDFD",
   },
   brand: {
     brand1: "#4529E6",
@@ -49,8 +54,13 @@ export const lightTheme: IThemeColors = {
 };
 
 export const darkTheme: IThemeColors = {
+  logoColors: {
+    bigTitle: "#DEE2E6",
+    smallTitle: "#4529e6",
+  },
   backgroundColors: {
-    generalBackground: "#868E96",
+    generalBackground: "#212529",
+    headerBackground: "#FDFDFD",
   },
   brand: {
     brand1: "#4529E6",

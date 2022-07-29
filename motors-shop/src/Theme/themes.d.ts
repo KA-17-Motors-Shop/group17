@@ -1,8 +1,13 @@
 import "styled-components";
 declare module "styled-components" {
   export interface IThemeColors {
+    logoColors: {
+      bigTitle: String;
+      smallTitle: String;
+    };
     backgroundColors: {
       generalBackground: String;
+      headerBackground: String;
     };
     brand: {
       brand1: String;

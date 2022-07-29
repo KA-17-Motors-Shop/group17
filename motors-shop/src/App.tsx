@@ -1,5 +1,6 @@
-import ThemeSelector from "./components/ThemeSelector";
 import { Body, GlobalStyle } from "./styles/GlobalStyles";
+
+import Header from "./components/Header";
 import Theme from "./Theme/ThemeProvider";
 
 function App() {
@@ -8,8 +9,8 @@ function App() {
       <Theme>
         <Body>
           <GlobalStyle />
-          <h1>teste</h1>
-          <ThemeSelector />
+
+          <Header isLogged={true} />
         </Body>
       </Theme>
     </>
