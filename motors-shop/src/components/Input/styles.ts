@@ -38,6 +38,10 @@ export const Container = styled.div`
     &:hover {
       background-color: ${({ theme }) => theme.greyScale.grey8};
     }
+    &:focus {
+      background-color: ${({ theme }) => theme.greyScale.grey8};
+      border-color: ${({ theme }) => theme.greyScale.grey4};
+    }
   }
   > div {
     height: 10px;

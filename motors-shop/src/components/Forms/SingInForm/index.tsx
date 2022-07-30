@@ -2,7 +2,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-import ButtonPrimary from "../../Button";
+import { ButtonGreyWhite, ButtonPrimary } from "../../Button";
 import GeneralInput from "../../Input";
 import {
   Container,
@@ -43,19 +43,19 @@ const FormSingIn: React.FC = () => {
       <h1>Login</h1>
       <InputsContainer>
         <GeneralInput
-          label="Email"
+          label="Usuário"
           register={register}
           name={"email"}
           error={errors.email?.message}
           type="email"
-          placeholder="Enter email..."
+          placeholder="Digitar usuário"
         />
         <GeneralInput
-          label="Password"
+          label="Senha"
           register={register}
           name={"password"}
           error={errors.password?.message}
-          placeholder="Enter password..."
+          placeholder="Digitar senha"
         />
       </InputsContainer>
       <SpanPassword>
@@ -64,7 +64,7 @@ const FormSingIn: React.FC = () => {
       <FooterForm>
         <ButtonPrimary>Entrar</ButtonPrimary>
         <SpanText>Ainda não tem uma conta?</SpanText>
-        <ButtonPrimary>Cadastrar</ButtonPrimary>
+        <ButtonGreyWhite>Cadastrar</ButtonGreyWhite>
       </FooterForm>
     </Container>
   );

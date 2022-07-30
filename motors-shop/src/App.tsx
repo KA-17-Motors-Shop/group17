@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import Theme from "./Theme/ThemeProvider";
-import ButtonPrimary from "./components/Button";
+import { ButtonPrimary } from "./components/Button";
 import { Body, GlobalStyle } from "./styles/GlobalStyles";
 import FormSingIn from "./components/Forms/SingInForm";
 
