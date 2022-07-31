@@ -1,14 +1,6 @@
 import ThemeSelector from "../../ThemeSelector";
-import {
-  Button,
-  Container,
-  Link,
-  LoggedContainer,
-  NameBol,
-  NameSpan,
-  Nav,
-  NotLoggedContainer,
-} from "./styles";
+import { Button, Container, Link, Nav, NotLoggedContainer } from "./styles";
+import SubMenuUserDesk from "./SubMenuDesk";
 
 const NavBar: React.FC<{ isLogged: boolean }> = ({ isLogged }) => {
   const userName = "Samuel Leão"; // Apenas para testes (Deve vir do DB)
@@ -22,10 +14,7 @@ const NavBar: React.FC<{ isLogged: boolean }> = ({ isLogged }) => {
       </Nav>
 
       {isLogged ? (
-        <LoggedContainer>
-          <NameBol>{userName.substring(0, 1)}</NameBol>
-          <NameSpan>{userName}</NameSpan>
-        </LoggedContainer>
+        <SubMenuUserDesk userName={userName} />
       ) : (
         <NotLoggedContainer>
           <Link>Fazer Login</Link>

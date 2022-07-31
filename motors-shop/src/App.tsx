@@ -6,7 +6,7 @@ function App() {
     <>
       <Body>
         <GlobalStyle />
-        <Header isLogged={false} />
+        <Header isLogged={true} />
       </Body>
     </>
   );
