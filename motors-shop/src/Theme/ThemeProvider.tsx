@@ -1,14 +1,42 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import { IThemeColors, ThemeProvider } from "styled-components";
-import { ThemeContext } from "../Providers/Theme/index";
 import { darkTheme, lightTheme } from "./ThemeColors";
 
-const Theme = ({ children }: { children: React.ReactNode }) => {
-  const { mode } = useContext(ThemeContext);
-  console.log(mode);
+interface Ivalues {
+  handleTheme: () => void;
+  mode: string;
+}
 
-  const theme: IThemeColors = mode === "light" ? lightTheme : darkTheme;
+export const ThemeContext = React.createContext({} as Ivalues);
 
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+const StyledThemeProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [mode, setMode] = useState(
+    localStorage.getItem("@MotorShop:Theme.mode") || "light"
+  );
+
+  const handleTheme = () => {
+    const newMode = mode === "light" ? "dark" : "light";
+    setMode(newMode);
+
+    localStorage.setItem("@MotorShop:Theme.mode", newMode);
+  };
+
+  const colors: IThemeColors = mode === "light" ? darkTheme : lightTheme;
+
+  console.log();
+  return (
+    <ThemeProvider theme={colors}>
+      <ThemeContext.Provider
+        value={{
+          handleTheme,
+          mode,
+        }}
+      >
+        {children}
+      </ThemeContext.Provider>
+    </ThemeProvider>
+  );
 };
-export default Theme;
+export default StyledThemeProvider;

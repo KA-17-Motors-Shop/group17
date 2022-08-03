@@ -9,5 +9,5 @@ export const ContainerHeader = styled.header`
   padding: 1.02rem;
   padding-right: 0.5rem;
   background-color: ${({ theme }) => theme.backgroundColors.headerBackground};
-  border-bottom: 2px solid ${({ theme }) => theme.greyScale.grey6};
+  border-bottom: 2px solid ${({ theme }) => theme.borders.headerBorder};
 `;

@@ -1,9 +1,9 @@
-import { Body, GlobalStyle } from "./styles/GlobalStyles";
-
 import Header from "./components/Header";
 import Theme from "./Theme/ThemeProvider";
-import ButtonPrimary from "./components/Button";
 import Card from "./components/Card";
+import { ButtonPrimary } from "./components/Button";
+import { Body, GlobalStyle } from "./styles/GlobalStyles";
+import FormSingIn from "./components/Forms/SingInForm";
 
 function App() {
   return (
@@ -12,9 +12,10 @@ function App() {
         <Body>
           <GlobalStyle />
 
-          <Header isLogged={false} />
-          {/* <ButtonPrimary>Teste</ButtonPrimary> */}
-          {/* <Card /> */}
+          <Header isLogged={true} />
+          <ButtonPrimary>Teste</ButtonPrimary>
+          <FormSingIn />
+          <Card />
         </Body>
       </Theme>
     </>
