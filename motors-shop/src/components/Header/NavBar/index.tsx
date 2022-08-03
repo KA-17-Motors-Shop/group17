@@ -1,13 +1,6 @@
 import ThemeSelector from "../../ThemeSelector";
-import {
-  Container,
-  Link,
-  LoggedContainer,
-  NameBol,
-  NameSpan,
-  Nav,
-  NotLoggedContainer,
-} from "./styles";
+import { Button, Container, Link, Nav, NotLoggedContainer } from "./styles";
+import SubMenuUserDesk from "./SubMenuDesk";
 
 // import { ButtonPrimary } from "../../Button";
 
@@ -23,10 +16,7 @@ const NavBar: React.FC<{ isLogged: boolean }> = ({ isLogged }) => {
       </Nav>
 
       {isLogged ? (
-        <LoggedContainer>
-          <NameBol>{userName.substring(0, 1)}</NameBol>
-          <NameSpan>{userName}</NameSpan>
-        </LoggedContainer>
+        <SubMenuUserDesk userName={userName} />
       ) : (
         <NotLoggedContainer>
           <Link>Fazer Login</Link>
