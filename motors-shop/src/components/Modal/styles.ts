@@ -24,6 +24,5 @@ export const ModalContainer = styled(Modal)`
   width: ${({ width }) => width};
   min-height: 15rem;
   height: ${({ height }) => height};
-  background-color: ${(props) =>
-    props.theme.colors.backgroundColors.generalBackground};
+  background-color: ${({ theme }) => theme.backgroundColors.generalBackground};
 `;
