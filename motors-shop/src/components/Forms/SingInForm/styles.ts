@@ -5,7 +5,7 @@ export const Container = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  background-color: ${({ theme }) => theme.greyScale.grey10};
+  background-color: ${({ theme }) => theme.backgroundColors.headerBackground};
   width: 412px;
   height: 542px;
 
@@ -19,7 +19,7 @@ export const Container = styled.form`
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
-    color: #000;
+    color: ${({ theme }) => theme.textColors.subTitle};
   }
 
   @media screen and (max-width: 920px) {
@@ -41,7 +41,7 @@ export const SpanText = styled.span`
   text-align: center;
   font-size: 14px;
   font-weight: 400;
-  color: ${({ theme }) => theme.greyScale.grey2};
+  color: ${({ theme }) => theme.textColors.primaryText};
   display: flex;
   flex-direction: column;
   align-items: center;

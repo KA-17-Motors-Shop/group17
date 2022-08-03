@@ -7,7 +7,7 @@ export const Container = styled.div`
 
   > label {
     width: 100%;
-    color: ${({ theme }) => theme.greyScale.grey1};
+    color: ${({ theme }) => theme.textColors.spantext};
     font-size: 14px;
     font-family: "Roboto", sans-serif;
     margin-bottom: 6px;
@@ -23,10 +23,12 @@ export const Container = styled.div`
     border-radius: 4px;
     border: 1px solid;
     border-color: ${({ error }: { error: boolean }) =>
-      error ? "#ff0c0c" : ({ theme }) => theme.greyScale.grey8};
+      error
+        ? "#ff0c0c"
+        : ({ theme }) => theme.backgroundColors.generalBackground};
     padding: 0px 16px;
-    color: ${({ theme }) => theme.greyScale.grey1};
-    background-color: ${({ theme }) => theme.greyScale.grey10};
+    color: ${({ theme }) => theme.textColors.spantext};
+    background-color: ${({ theme }) => theme.backgroundColors.headerBackground};
 
     &::placeholder {
       color: ${({ theme }) => theme.greyScale.grey3};
@@ -36,10 +38,12 @@ export const Container = styled.div`
     }
 
     &:hover {
-      background-color: ${({ theme }) => theme.greyScale.grey8};
+      background-color: ${({ theme }) =>
+        theme.backgroundColors.generalBackground};
     }
     &:focus {
-      background-color: ${({ theme }) => theme.greyScale.grey8};
+      background-color: ${({ theme }) =>
+        theme.backgroundColors.generalBackground};
       border-color: ${({ theme }) => theme.greyScale.grey4};
     }
   }
