@@ -13,8 +13,12 @@ const SubMenuUser: React.FC<Iprops> = ({ userName }) => {
         <NameBol>{userName.substring(0, 1)}</NameBol>
         <NameSpan>{userName}</NameSpan>
       </LoggedTrigger>
+<<<<<<< HEAD
 
       <SubMenuContainer sideOffset={-100} alignOffset={50}>
+=======
+      <SubMenuContainer sideOffset={3}>
+>>>>>>> a3f91cdba653ed66b96ea60b9da6d174b6ac7933
         <DropItem>Editar Perfil</DropItem>
         <DropItem>Editar endereço</DropItem>
         <DropItem>Minhas Compras</DropItem>

@@ -35,7 +35,11 @@ const DropDownMenu: React.FC<{ isLogged: boolean }> = ({ isLogged }) => {
           <DropItem>Motos</DropItem>
           <DropItem>Leilão</DropItem>
           <DropSeparator />
+<<<<<<< HEAD
           {!isLogged ? (
+=======
+          {isLogged ? (
+>>>>>>> a3f91cdba653ed66b96ea60b9da6d174b6ac7933
             <>
               <DropItem>Fazer Login</DropItem>
               <DropItemButton>Cadastrar</DropItemButton>
