@@ -3,10 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
-=======
     "@hookform/resolvers": "^2.9.7",
->>>>>>> a3f91cdba653ed66b96ea60b9da6d174b6ac7933
     "@radix-ui/react-dropdown-menu": "^1.0.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -16,14 +13,12 @@
     "react-hook-form": "^7.34.0",
     "react-icons": "^4.4.0",
     "react-overlays": "^5.2.0",
+    "react-router-dom": "5",
     "react-scripts": "5.0.1",
+    "@types/react-router-dom": "5",
     "styled-components": "^5.3.5",
-<<<<<<< HEAD
-    "web-vitals": "^2.1.4"
-=======
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
->>>>>>> a3f91cdba653ed66b96ea60b9da6d174b6ac7933
   },
   "scripts": {
     "start": "react-scripts start",
@@ -50,19 +45,12 @@
     ]
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "@types/styled-components": "^5.1.25",
-=======
->>>>>>> a3f91cdba653ed66b96ea60b9da6d174b6ac7933
     "@types/jest": "^27.5.2",
     "@types/node": "^16.11.45",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
-<<<<<<< HEAD
-=======
     "@types/styled-components": "^5.1.25",
     "@types/yup": "^0.29.14",
->>>>>>> a3f91cdba653ed66b96ea60b9da6d174b6ac7933
     "typescript": "^4.7.4"
   }
 }

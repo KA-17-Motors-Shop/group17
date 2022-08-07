@@ -37,9 +37,6 @@ export const Link = styled.span`
   font-size: 1rem;
   color: ${({ theme }) => theme.textColors.primaryText};
 `;
-export const Button = styled.button``;
-<<<<<<< HEAD
-=======
 
 export const NameBol = styled.div`
   border-radius: 50%;
@@ -59,4 +56,3 @@ export const NameSpan = styled.span`
   white-space: nowrap;
   color: ${({ theme }) => theme.textColors.primaryText};
 `;
->>>>>>> a3f91cdba653ed66b96ea60b9da6d174b6ac7933
