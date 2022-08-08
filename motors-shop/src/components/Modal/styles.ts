@@ -9,7 +9,7 @@ export const BackgroundModal = styled.section`
   left: 0;
   right: 0;
   background-color: #000;
-  opacity: 0.5;
+  opacity: 0.8;
 `;
 
 export const ModalContainer = styled(Modal)`
@@ -24,6 +24,5 @@ export const ModalContainer = styled(Modal)`
   width: ${({ width }) => width};
   min-height: 15rem;
   height: ${({ height }) => height};
-  background-color: ${(props) =>
-    props.theme.colors.backgroundColors.generalBackground};
+  background-color: transparent;
 `;

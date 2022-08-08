@@ -4,10 +4,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
+  height: 90px;
+  margin-bottom: 5px;
   > label {
     width: 100%;
-    color: ${({ theme }) => theme.greyScale.grey1};
+    color: ${({ theme }) => theme.textColors.subTitle};
+    font-weight: 600;
     font-size: 14px;
     font-family: "Roboto", sans-serif;
     margin-bottom: 6px;
@@ -27,14 +29,9 @@ export const Container = styled.div`
     padding: 0px 16px;
     color: ${({ theme }) => theme.greyScale.grey1};
     background-color: ${({ theme }) => theme.greyScale.grey10};
-
     &::placeholder {
       color: ${({ theme }) => theme.greyScale.grey3};
-
-      font-weight: 400;
-      font-size: 16px;
     }
-
     &:hover {
       background-color: ${({ theme }) => theme.greyScale.grey8};
     }
@@ -43,8 +40,19 @@ export const Container = styled.div`
       border-color: ${({ theme }) => theme.greyScale.grey4};
     }
   }
+  > svg {
+    align-self: flex-end;
+    margin-right: 8px;
+    position: relative;
+    top: -28px;
+    cursor: pointer;
+    color: ${({ theme }) => theme.greyScale.grey3};
+  }
+
   > div {
     height: 10px;
+    position: relative;
+    top: -13px;
 
     > span {
       font-size: 12px;

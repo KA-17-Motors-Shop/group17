@@ -8,6 +8,7 @@ declare module "styled-components" {
     backgroundColors: {
       generalBackground: String;
       headerBackground: String;
+      secondaryBackground: String;
     };
     borders: {
       headerBorder: String;

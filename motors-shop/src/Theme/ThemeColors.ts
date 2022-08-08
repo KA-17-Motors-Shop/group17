@@ -8,6 +8,7 @@ export const lightTheme: IThemeColors = {
   backgroundColors: {
     generalBackground: "#F1F3F5",
     headerBackground: "#FDFDFD",
+    secondaryBackground: "#FDFDFD",
   },
   borders: {
     headerBorder: "#DEE2E6",
@@ -157,6 +158,7 @@ export const darkTheme: IThemeColors = {
   backgroundColors: {
     generalBackground: "#495057",
     headerBackground: "#212529",
+    secondaryBackground: "#212529",
   },
   borders: {
     headerBorder: "#000000",
@@ -218,10 +220,10 @@ export const darkTheme: IThemeColors = {
       hover: "#F7F7F7",
     },
     outline2: {
-      color: "#0B0D0D",
-      border: "#ADB5BD",
-      background: "#F7F7F7",
-      hover: "#F7F7F7",
+      color: "#F7F7F7",
+      border: "#F7F7F7",
+      background: "#212529",
+      hover: "#495057",
     },
     primaryOutline: {
       color: "#4529E6",
@@ -230,10 +232,10 @@ export const darkTheme: IThemeColors = {
       hover: "#EDEAFD",
     },
     link: {
-      color: "#0B0D0D",
+      color: "#FDFDFD",
       border: "transparent",
       background: "transparent",
-      hover: "#F1F3F5",
+      hover: "#495057",
     },
     alert: {
       color: "#CD2B31",
