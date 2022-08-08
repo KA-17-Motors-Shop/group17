@@ -1,6 +1,23 @@
-export const lightTheme = {
+import { IThemeColors } from "styled-components";
+
+export const lightTheme: IThemeColors = {
+  logoColors: {
+    bigTitle: "#0b0d0d",
+    smallTitle: "#4529e6",
+  },
   backgroundColors: {
     generalBackground: "#F1F3F5",
+    headerBackground: "#FDFDFD",
+  },
+  borders: {
+    headerBorder: "#DEE2E6",
+  },
+  textColors: {
+    title: "#FDFDFD",
+    subTitle: "#000000",
+    primaryText: "#495057",
+    secondaryText: "#FFFFFF",
+    spantext: "#212529",
   },
   brand: {
     brand1: "#4529E6",
@@ -46,9 +63,24 @@ export const lightTheme = {
   },
 };
 
-export const darkTheme = {
+export const darkTheme: IThemeColors = {
+  logoColors: {
+    bigTitle: "#DEE2E6",
+    smallTitle: "#4529e6",
+  },
   backgroundColors: {
-    generalBackground: "#F1F3F5",
+    generalBackground: "#495057",
+    headerBackground: "#212529",
+  },
+  borders: {
+    headerBorder: "#000000",
+  },
+  textColors: {
+    title: "#FDFDFD",
+    subTitle: "#5126EA;",
+    primaryText: "#EDEAFD",
+    secondaryText: "#4529E6",
+    spantext: "#9747FF",
   },
   brand: {
     brand1: "#4529E6",
