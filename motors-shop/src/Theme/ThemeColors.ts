@@ -168,7 +168,7 @@ export const darkTheme: IThemeColors = {
     subTitle: "#5126EA;",
     primaryText: "#EDEAFD",
     secondaryText: "#4529E6",
-    spantext: "#9747FF",
+    spantext: "#212529",
   },
   buttons: {
     primary: {

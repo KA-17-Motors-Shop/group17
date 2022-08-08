@@ -36,7 +36,6 @@ export const NotLoggedContainer = styled.div`
   gap: 0.5rem;
   padding-left: 1rem;
 `;
-<<<<<<< HEAD
 
 export const NameBol = styled.div`
   border-radius: 50%;
@@ -56,6 +55,3 @@ export const NameSpan = styled.span`
   white-space: nowrap;
   color: ${({ theme }) => theme.textColors.primaryText};
 `;
-=======
-export const Button = styled.button``;
->>>>>>> 31b199374ee5d11508cd7512cc6e0bde5dc939fb

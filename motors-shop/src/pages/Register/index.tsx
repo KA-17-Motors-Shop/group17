@@ -1,8 +1,17 @@
+import Footer from "../../components/Footer";
+import FormSingUp from "../../components/Forms/SignUpForm";
+import Header from "../../components/Header";
+import { Main, Page } from "./styles";
+
 const Register: React.FC = () => {
   return (
-    <div>
-      <h1>Register</h1>
-    </div>
+    <Page>
+      <Header isLogged={false} />
+      <Main>
+        <FormSingUp />
+      </Main>
+      <Footer />
+    </Page>
   );
 };
 

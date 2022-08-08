@@ -7,7 +7,9 @@ const Footer: React.FC = () => {
     <ContainerFooter>
       <img src={MotorShop} alt="Logo" />
       <span>© 2022 - Todos os direitos reservados. angle-up</span>
-      <RiArrowUpSLine size={30} />
+      <a href="#topo">
+        <RiArrowUpSLine size={30} />
+      </a>
     </ContainerFooter>
   );
 };

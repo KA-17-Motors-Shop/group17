@@ -10,7 +10,7 @@ export const Container = styled.form`
     theme.backgroundColors.secondaryBackground};
 
   width: 412px;
-  height: 542px;
+  height: 568px;
 
   gap: 55px;
   padding: 44px 48px;
@@ -90,5 +90,5 @@ export const FooterForm = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 10px;
+  gap: 20px;
 `;
