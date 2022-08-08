@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 import { ButtonOutline2, ButtonPrimary } from "../../Button";
-import GeneralInput from "../../Input";
+import GeneralInput from "../../Input/GeneralInput";
 import {
   Container,
   FooterForm,

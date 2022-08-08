@@ -5,11 +5,16 @@ export const Container = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+<<<<<<< HEAD
   background-color: ${({ theme }) => theme.backgroundColors.headerBackground};
+=======
+  background-color: ${({ theme }) =>
+    theme.backgroundColors.secondaryBackground};
+>>>>>>> 39a701fb1d84baf651c856c52ff13cee5dfebefb
   width: 412px;
   height: 542px;
 
-  gap: 32px;
+  gap: 55px;
   padding: 44px 48px;
   border-radius: 4px;
   box-shadow: 0px 0px 20px 0px rgb(0 0 0 / 20%);
@@ -25,6 +30,7 @@ export const Container = styled.form`
   @media screen and (max-width: 920px) {
     width: 343px;
     height: 542px;
+    gap: 32px;
   }
 `;
 
@@ -32,25 +38,40 @@ export const InputsContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+
   justify-content: flex-start;
-  gap: 5px;
+  gap: 20px;
 `;
 
 export const SpanText = styled.span`
   text-align: center;
   font-size: 14px;
   font-weight: 400;
+<<<<<<< HEAD
   color: ${({ theme }) => theme.textColors.primaryText};
+=======
+  color: ${({ theme }) => theme.textColors.spantext};
+>>>>>>> 39a701fb1d84baf651c856c52ff13cee5dfebefb
   display: flex;
   flex-direction: column;
   align-items: center;
 
   gap: 5px;
+`;
 
-  > a {
-    color: ${({ theme }) => theme.greyScale.grey2};
-    font-weight: 600;
+export const RequestPassword = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+
+  button {
+    background-color: transparent;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+
+    color: ${({ theme }) => theme.textColors.spantext};
     cursor: pointer;
 
     &::after {
@@ -58,7 +79,7 @@ export const SpanText = styled.span`
       display: block;
       width: 0;
       height: 2px;
-      background: ${({ theme }) => theme.greyScale.grey2};
+      background: ${({ theme }) => theme.textColors.spantext};
       transition: width 0.8s;
     }
 
@@ -68,30 +89,10 @@ export const SpanText = styled.span`
   }
 `;
 
-export const SpanPassword = styled.div`
-  /* position: absolute; */
-  margin: -10% 0% -2% 55%;
-  padding: -5% 0% 0% 0%;
-
-  span {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    color: #495057;
-    margin: 0% 0% 0% 0%;
-    padding: 0% 0% 0% 0%;
-  }
-
-  @media screen and (max-width: 920px) {
-    margin: -10% 0% -2% 38%;
-  }
-`;
-
 export const FooterForm = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 10px;
 `;

@@ -7,10 +7,11 @@ export const Container = styled.div`
 
   > label {
     width: 100%;
-    color: ${({ theme }) => theme.textColors.spantext};
+    color: ${({ theme }) => theme.textColors.subTitle};
     font-size: 14px;
     font-family: "Roboto", sans-serif;
     margin-bottom: 6px;
+    font-weight: 600;
   }
 
   > input {
