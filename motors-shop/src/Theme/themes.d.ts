@@ -19,6 +19,92 @@ declare module "styled-components" {
       secondaryText: String;
       spantext: String;
     };
+    buttons: {
+      primary: {
+        color: string;
+        border: string;
+        background: string;
+        hover: string;
+      };
+      default: {
+        color: string;
+        border: string;
+        background: string;
+        hover: string;
+      };
+      negative: {
+        color: string;
+        border: string;
+        background: string;
+        hover: string;
+      };
+      disable: {
+        color: string;
+        border: string;
+        background: string;
+        hover: string;
+      };
+      primaryOpacity: {
+        color: string;
+        border: string;
+        background: string;
+        hover: string;
+      };
+      light: {
+        color: string;
+        border: string;
+        background: string;
+        hover: string;
+      };
+      outlineLight: {
+        color: string;
+        border: string;
+        background: string;
+        hover: string;
+      };
+      outline1: {
+        color: string;
+        border: string;
+        background: string;
+        hover: string;
+      };
+      outline2: {
+        color: string;
+        border: string;
+        background: string;
+        hover: string;
+      };
+      primaryOutline: {
+        color: string;
+        border: string;
+        background: string;
+        hover: string;
+      };
+      link: {
+        color: string;
+        border: string;
+        background: string;
+        hover: string;
+      };
+      alert: {
+        color: string;
+        border: string;
+        background: string;
+        hover: string;
+      };
+      success: {
+        color: string;
+        border: string;
+        background: string;
+        hover: string;
+      };
+      primaryDisable: {
+        color: string;
+        border: string;
+        background: string;
+        hover: string;
+      };
+    };
     brand: {
       brand1: String;
       brand2: String;

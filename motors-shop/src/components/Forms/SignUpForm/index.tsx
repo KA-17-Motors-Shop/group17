@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-import { ButtonGreyWhite, ButtonPrimary } from "../../Button";
+import { ButtonOutline2, ButtonPrimary } from "../../Button";
 import GeneralInput from "../../Input";
 import {
   Container,
@@ -78,7 +78,7 @@ const FormSingIn: React.FC = () => {
       <FooterForm>
         <ButtonPrimary>Entrar</ButtonPrimary>
         <SpanText>Ainda não tem uma conta?</SpanText>
-        <ButtonGreyWhite>Cadastrar</ButtonGreyWhite>
+        <ButtonOutline2>Cadastrar</ButtonOutline2>
       </FooterForm>
     </Container>
   );
