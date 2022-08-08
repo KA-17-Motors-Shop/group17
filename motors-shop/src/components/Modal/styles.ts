@@ -24,5 +24,7 @@ export const ModalContainer = styled(Modal)`
   width: ${({ width }) => width};
   min-height: 15rem;
   height: ${({ height }) => height};
+
   background-color: transparent;
+
 `;

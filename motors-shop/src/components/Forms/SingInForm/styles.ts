@@ -5,8 +5,10 @@ export const Container = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
   background-color: ${({ theme }) =>
     theme.backgroundColors.secondaryBackground};
+
   width: 412px;
   height: 542px;
 
@@ -43,7 +45,9 @@ export const SpanText = styled.span`
   text-align: center;
   font-size: 14px;
   font-weight: 400;
+
   color: ${({ theme }) => theme.textColors.spantext};
+
   display: flex;
   flex-direction: column;
   align-items: center;

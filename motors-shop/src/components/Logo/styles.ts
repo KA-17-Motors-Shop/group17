@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   align-items: flex-end;
   gap: 0.3rem;
+  cursor: pointer;
 `;
 
 export const BigTitle = styled.h1`
