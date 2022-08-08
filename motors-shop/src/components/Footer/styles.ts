@@ -17,8 +17,10 @@ export const ContainerFooter = styled.footer`
     text-align: center;
   }
 
-  > svg {
+  > a {
+    text-decoration: none;
     background-color: ${({ theme }) => theme.greyScale.grey2};
+    color: ${({ theme }) => theme.greyScale.whiteFixed};
     padding: 0.2rem;
     border-radius: 0.2rem;
 
@@ -26,6 +28,10 @@ export const ContainerFooter = styled.footer`
 
     &:hover {
       transform: scale(1.1);
+    }
+
+    > svg {
+      color: ${({ theme }) => theme.greyScale.whiteFixed};
     }
   }
 

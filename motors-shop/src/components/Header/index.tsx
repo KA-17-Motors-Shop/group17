@@ -5,7 +5,7 @@ import { ContainerHeader } from "./styles";
 
 const Header: React.FC<{ isLogged: boolean }> = ({ isLogged }) => {
   return (
-    <ContainerHeader>
+    <ContainerHeader id="topo">
       <Logo />
       <DropDownMenu isLogged={isLogged} />
       <NavBar isLogged={isLogged} />

@@ -5,9 +5,12 @@ export const Container = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  background-color: ${({ theme }) => theme.greyScale.grey10};
-  width: 412px;
-  height: 542px;
+  background-color: ${({ theme }) =>
+    theme.backgroundColors.secondaryBackground};
+  width: 40%;
+  min-width: 300px;
+  height: auto;
+  margin: 25px;
 
   gap: 32px;
   padding: 44px 48px;
@@ -19,12 +22,7 @@ export const Container = styled.form`
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
-    color: #000;
-  }
-
-  @media screen and (max-width: 920px) {
-    width: 343px;
-    height: 542px;
+    color: ${({ theme }) => theme.textColors.subTitle};
   }
 `;
 
@@ -32,66 +30,24 @@ export const InputsContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: flex-start;
-  gap: 5px;
+  gap: 20px;
 `;
 
 export const SpanText = styled.span`
   text-align: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
   font-size: 14px;
-  font-weight: 400;
-  color: ${({ theme }) => theme.greyScale.grey2};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
-  gap: 5px;
-
-  > a {
-    color: ${({ theme }) => theme.greyScale.grey2};
-    font-weight: 600;
-    cursor: pointer;
-
-    &::after {
-      content: "";
-      display: block;
-      width: 0;
-      height: 2px;
-      background: ${({ theme }) => theme.greyScale.grey2};
-      transition: width 0.8s;
-    }
-
-    &:hover::after {
-      width: 100%;
-    }
-  }
-`;
-
-export const SpanPassword = styled.div`
-  /* position: absolute; */
-  margin: -10% 0% -2% 55%;
-  padding: -5% 0% 0% 0%;
-
-  span {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    color: #495057;
-    margin: 0% 0% 0% 0%;
-    padding: 0% 0% 0% 0%;
-  }
-
-  @media screen and (max-width: 920px) {
-    margin: -10% 0% -2% 38%;
-  }
+  color: ${({ theme }) => theme.textColors.subTitle};
 `;
 
 export const FooterForm = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  align-items: stretch;
+  gap: 15px;
 `;

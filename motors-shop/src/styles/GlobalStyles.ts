@@ -4,9 +4,16 @@ export const Body = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${({ theme }) => theme.backgroundColors.generalBackground};
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: ${({ theme }) => theme.brand.brand1};
+
+  *::-webkit-scrollbar-track {
+    background-color: ${({ theme }) =>
+      theme.backgroundColors.generalBackground};
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colorRandomProfile.random12};
+    border-radius: 20px;
+    border: 2px solid ${({ theme }) => theme.backgroundColors.generalBackground};
   }
 `;
 
