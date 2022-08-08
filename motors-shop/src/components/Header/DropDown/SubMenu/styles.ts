@@ -48,11 +48,8 @@ export const DropItem = styled(DropdownMenu.Item)`
   font-size: 1rem;
   color: ${({ theme }) => theme.textColors.primaryText};
   cursor: pointer;
-<<<<<<< HEAD
 
   &:hover {
     opacity: 0.5;
   }
-=======
->>>>>>> a3f91cdba653ed66b96ea60b9da6d174b6ac7933
 `;
