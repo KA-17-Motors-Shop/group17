@@ -214,9 +214,9 @@ export const darkTheme: IThemeColors = {
       hover: "#EDEAFD",
     },
     outline1: {
-      color: "#0B0D0D",
-      border: "#0B0D0D",
-      background: "#F7F7F7",
+      color: "#F7F7F7",
+      border: "#F7F7F7",
+      background: "#212529",
       hover: "#F7F7F7",
     },
     outline2: {
