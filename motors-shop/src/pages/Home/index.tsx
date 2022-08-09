@@ -1,13 +1,14 @@
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import { Main, Page } from "./styles";
 
 const Home: React.FC = () => {
   return (
-    <div>
+    <Page>
       <Header isLogged={false} />
-      <main></main>
+      <Main></Main>
       <Footer />
-    </div>
+    </Page>
   );
 };
 

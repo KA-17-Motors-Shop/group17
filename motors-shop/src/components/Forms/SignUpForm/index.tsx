@@ -8,6 +8,7 @@ import { Container, FooterForm, InputsContainer, SpanText } from "./styles";
 import InputPassword from "../../Input/InputPassword";
 import SelectType from "./SelectType";
 import { useState } from "react";
+import MaskInput from "../../Input/MaskInput";
 
 interface IRegister {
   email?: string;
@@ -46,7 +47,6 @@ const FormSingUp: React.FC = () => {
       .required("Campo obrigatório")
       .test((dateString) => new Date(dateString!) < new Date()),
     description: yup.string(),
-    password: yup.string().required("Campo obrigatório"),
     zipCode: yup
       .string()
       .required("Campo obrigatório")
@@ -65,6 +65,7 @@ const FormSingUp: React.FC = () => {
       .typeError("Somente números")
       .required("Campo obrigatório"),
     complement: yup.string(),
+    password: yup.string().required("Campo obrigatório"),
     confirmPassword: yup
       .string()
       .required("Confirmação obrigatória")
@@ -105,19 +106,21 @@ const FormSingUp: React.FC = () => {
           type="email"
           placeholder="Digitar usuário"
         />
-        <GeneralInput
+        <MaskInput
           label="CPF"
           register={register}
           name={"cpf"}
           error={errors.cpf?.message}
           placeholder="Seu CPF..."
+          mask="999.999.999-99"
         />
-        <GeneralInput
+        <MaskInput
           label="Celular"
           register={register}
           name={"phone"}
           error={errors.phone?.message}
           placeholder="Seu telefone..."
+          mask="+99 (99) 99999-9999"
         />
         <GeneralInput
           label="Data de nascimento"
@@ -135,12 +138,13 @@ const FormSingUp: React.FC = () => {
           placeholder="Descrição..."
         />
         <SpanText>Informações de endereço</SpanText>
-        <GeneralInput
+        <MaskInput
           label="CEP"
           register={register}
           name={"zipCode"}
           error={errors.zipCode?.message}
           placeholder="CEP..."
+          mask="99999-999"
         />
         <GeneralInput
           label="Estado"
@@ -190,8 +194,8 @@ const FormSingUp: React.FC = () => {
         <InputPassword
           label="Confimar Senha"
           register={register}
-          name={"Confirmpassword"}
-          error={errors.Confirmpassword?.message}
+          name={"confirmPassword"}
+          error={errors.confirmPassword?.message}
           placeholder="Confirmar senha"
         />
       </InputsContainer>

@@ -9,8 +9,9 @@ export const Container = styled.form`
   background-color: ${({ theme }) =>
     theme.backgroundColors.secondaryBackground};
 
-  width: 412px;
-  height: 568px;
+  width: 40%;
+  min-width: 300px;
+  height: auto;
 
   gap: 55px;
   padding: 44px 48px;
