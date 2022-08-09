@@ -9,6 +9,7 @@ import InputPassword from "../../Input/InputPassword";
 import SelectType from "./SelectType";
 import { useState } from "react";
 import MaskInput from "../../Input/MaskInput";
+import { useRegister } from "../../../Providers/User/register";
 
 interface IRegister {
   email?: string;
@@ -41,7 +42,7 @@ const FormSingUp: React.FC = () => {
     phone: yup
       .string()
       .required("Campo obrigatório")
-      .matches(/^\d{2} \d{2} \d{4,5}-\d{4}$/, "Telefone inválido"),
+      .matches(/(\(\d{2}\)\s)(\d{4,5}-\d{4})/g, "Telefone inválido"),
     birhtDate: yup
       .string()
       .required("Campo obrigatório")
@@ -80,11 +81,13 @@ const FormSingUp: React.FC = () => {
     resolver: yupResolver(schema),
   });
 
-  const handleRegister = (data: IRegister) => {
-    console.log({ ...data, typeAccount });
-  };
-
   const [typeAccount, setTypeAccount] = useState("client");
+  const { registerUser } = useRegister();
+
+  const handleRegister = (data: IRegister) => {
+    delete data.confirmPassword;
+    registerUser({ ...data, typeAccount });
+  };
 
   return (
     <Container onSubmit={handleSubmit(handleRegister)}>
