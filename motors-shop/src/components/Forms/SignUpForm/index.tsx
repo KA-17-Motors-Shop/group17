@@ -120,7 +120,7 @@ const FormSingUp: React.FC = () => {
           name={"phone"}
           error={errors.phone?.message}
           placeholder="Seu telefone..."
-          mask="+99 (99) 99999-9999"
+          mask="(99) 99999-9999"
         />
         <GeneralInput
           label="Data de nascimento"
