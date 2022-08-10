@@ -1,10 +1,9 @@
 import styled, { createGlobalStyle } from "styled-components";
 
 export const Body = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background-color: ${({ theme }) => theme.backgroundColors.generalBackground};
-
+  /*Essas configurações de altura e largura estavam causando efeito contrário */
+  /* width: 100vw;
+  height: 100vh; */
   *::-webkit-scrollbar-track {
     background-color: ${({ theme }) =>
       theme.backgroundColors.generalBackground};
