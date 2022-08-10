@@ -4,9 +4,6 @@ import IMG_MOTO from "../../assets/img/moto_teste.png";
 import {
   ProfileMain,
   TopBottomContainer,
-  TopFrontContainer,
-  TopFrontNameContainer,
-  TopFrontImgContainer,
   TitleContainer,
   CardContainer,
   TitleContainerBelow,
@@ -15,6 +12,7 @@ import {
 import Card from "../../components/Card";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import UserInfoBox from "../../components/UserInfoBox/intex";
 
 const ProfileViewUser: React.FC = (): JSX.Element => {
   return (
@@ -22,20 +20,7 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
       <Header isLogged={false} />
       <ProfileMain>
         <TopBottomContainer />
-        <TopFrontContainer>
-          <TopFrontImgContainer>
-            <img src={IMG_PROFILE} alt="Imagem de perfil" />
-          </TopFrontImgContainer>
-          <TopFrontNameContainer>
-            <h2>Samuel Leão</h2>
-            <span>Anunciante</span>
-          </TopFrontNameContainer>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
-          </p>
-        </TopFrontContainer>
+        <UserInfoBox IMG_PROFILE={IMG_PROFILE} />
         <TitleContainer>Carros</TitleContainer>
         <CardContainer>
           {Array.from({ length: 10 }).map((_, index) => (
