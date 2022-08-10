@@ -3,7 +3,6 @@ import IMG_PROFILE from "../../assets/img/default_profile.png";
 import IMG_MOTO from "../../assets/img/moto_teste.png";
 import {
   ProfileMain,
-  TopBottomContainer,
   TitleContainer,
   CardContainer,
   TitleContainerBelow,
@@ -19,7 +18,6 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
     <ProfileViewUserContainer>
       <Header isLogged={false} />
       <ProfileMain>
-        <TopBottomContainer />
         <UserInfoBox IMG_PROFILE={IMG_PROFILE} />
         <TitleContainer>Carros</TitleContainer>
         <CardContainer>

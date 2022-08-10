@@ -8,19 +8,14 @@ export const ProfileViewUserContainer = styled.div`
   footer {
     margin-top: 90px;
   }
-  background-color: ${({ theme }) => theme.backgroundColors.generalBackground};
+  background-color: ${({ theme }) => theme.greyScale.grey8};
 `;
 
 export const ProfileMain = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-export const TopBottomContainer = styled.div`
-  height: 251px;
-  width: 100%;
-  background-color: ${({ theme }) => theme.brand.brand1};
+  background-image: linear-gradient(#4529e6 21.5%, #f1f3f5 21.5%, #f1f3f5 100%);
 `;
 
 export const TitleContainer = styled.h1`
@@ -28,7 +23,7 @@ export const TitleContainer = styled.h1`
   font-size: 24px;
   font-weight: 600;
   color: ${({ theme }) => theme.textColors.subTitle};
-  margin: 325px 0 55px 0;
+  margin: 35px 0 55px 0;
   width: 100%;
   padding-left: 16px;
 
@@ -37,7 +32,7 @@ export const TitleContainer = styled.h1`
   }
   @media only screen and (min-width: 768px) {
     padding-left: 40px;
-    margin: 300px 0 55px 0;
+    margin: 68px 0 55px 0;
   }
 `;
 

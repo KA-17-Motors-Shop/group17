@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const UserInfoBoxContainer = styled.div`
   width: 90%;
   height: 397px;
-  position: absolute;
   top: 0;
   margin-top: 142px;
   border-radius: 4px;
@@ -28,10 +27,10 @@ export const UserInfoBoxContainer = styled.div`
     }
   }
   @media only screen and (min-width: 768px) {
-    height: 337px;
+    height: 327px;
     width: 80%;
     p {
-      -webkit-line-clamp: 4;
+      -webkit-line-clamp: 3;
     }
   }
   @media only screen and (min-width: 1600px) {
