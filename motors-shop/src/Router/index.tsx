@@ -5,6 +5,7 @@ import Dashboard from "../pages/DashBoard";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import AdDetails from "../pages/AdDetails";
 
 const Router: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const Router: React.FC = () => {
       <Route exact path={"/login"} component={Login} />
       <Route exact path={"/register"} component={Register} />
       <Route exact path={"/dashboard"} component={Dashboard} />
+      <Route exact path={"/ad_details"} component={AdDetails} />
     </Switch>
   );
 };
