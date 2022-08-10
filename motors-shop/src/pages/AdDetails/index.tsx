@@ -2,7 +2,6 @@ import Header from "../../components/Header";
 import {
   AdDetailsContainer,
   AdDetailsMain,
-  TopImageContainer,
   BottomContainer,
   TitleContainer,
   ImageGalleryContainer,
@@ -12,6 +11,7 @@ import {
 import MERCEDES from "../../assets/img/mercedes_teste.png";
 import { Button } from "../../components/ThemeSelector/styles";
 import { TagContainer, PriceContainer } from "../../components/Card/styles";
+import BigTopImage from "../../components/BigtopImage";
 
 const AdDetails: React.FC = (): JSX.Element => {
   return (
@@ -19,9 +19,7 @@ const AdDetails: React.FC = (): JSX.Element => {
       <Header isLogged={false} />
       <AdDetailsMain>
         <BottomContainer />
-        <TopImageContainer>
-          <img src={MERCEDES} alt="Imagem ilustrativa de carros e motos" />
-        </TopImageContainer>
+        <BigTopImage MERCEDES={MERCEDES} />
         <TitleContainer>
           <h1>Mercedes Benz A 200 CGI ADVANCE HATCH Mercedes Benz A 200</h1>
           <TagContainer>
