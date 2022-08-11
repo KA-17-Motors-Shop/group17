@@ -1,4 +1,8 @@
-import { MiddleContainer, VehicleInformationContainer } from "./styles";
+import {
+  MiddleContainer,
+  VehicleInformationContainer,
+  TitleContainer,
+} from "./styles";
 import {
   ParentTagContainer,
   TagContainer,
@@ -9,7 +13,9 @@ import { ButtonPrimary } from "../Button";
 const VehicleInformation: React.FC = (): JSX.Element => {
   return (
     <VehicleInformationContainer>
-      <h1>Mercedes Benz A 200 CGI ADVANCE HATCH Mercedes Benz A 200</h1>
+      <TitleContainer>
+        Mercedes Benz A 200 CGI ADVANCE HATCH Mercedes Benz A 200
+      </TitleContainer>
       <MiddleContainer>
         <ParentTagContainer>
           <TagContainer>

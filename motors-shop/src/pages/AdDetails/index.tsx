@@ -2,15 +2,17 @@ import MERCEDES from "../../assets/img/mercedes_teste.png";
 import {
   AdDetailsContainer,
   AdDetailsMain,
-  ImageGalleryContainer,
   AdvertiserBoxContainer,
   DescriptionContainer,
+  ImageGalleryContainer,
 } from "./styles";
 
 import Header from "../../components/Header";
 import VehicleInformation from "../../components/VehicleInformation";
 import BigTopImage from "../../components/BigtopImage";
 import DescriptionBox from "../../components/DescriptionBox";
+import IndividualImageContainer from "../../components/IndividualImageContainer";
+import { TitleContainer } from "../../components/VehicleInformation/styles";
 
 const AdDetails: React.FC = (): JSX.Element => {
   return (
@@ -19,7 +21,15 @@ const AdDetails: React.FC = (): JSX.Element => {
       <AdDetailsMain>
         {/* <BigTopImage MERCEDES={MERCEDES} /> */}
         {/* <DescriptionBox /> */}
-        <VehicleInformation />
+        {/* <VehicleInformation /> */}
+        <ImageGalleryContainer>
+          <TitleContainer>Fotos</TitleContainer>
+          <div>
+            {Array.from({ length: 6 }).map((_, index) => (
+              <IndividualImageContainer key={index} MERCEDES={MERCEDES} />
+            ))}
+          </div>
+        </ImageGalleryContainer>
       </AdDetailsMain>
     </AdDetailsContainer>
   );
