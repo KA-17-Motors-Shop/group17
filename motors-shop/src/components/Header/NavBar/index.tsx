@@ -7,10 +7,9 @@ import SubMenuUserDesk from "./SubMenuDesk";
 import { ButtonOutline2, ButtonLink } from "../../Button";
 
 import { useHistory } from "react-router-dom";
+import { IUser } from "../../../interfaces/user";
 
-const NavBar: React.FC<{ isLogged: boolean }> = ({ isLogged }) => {
-  const userName = "Samuel Leão"; // Apenas para testes (Deve vir do DB)
-
+const NavBar: React.FC<{ user: IUser }> = ({ user }) => {
   const history = useHistory();
 
   const handlePage = (path: string) => {
@@ -20,13 +19,34 @@ const NavBar: React.FC<{ isLogged: boolean }> = ({ isLogged }) => {
   return (
     <Container>
       <Nav>
-        <ButtonLink>Carros</ButtonLink>
-        <ButtonLink>Motos</ButtonLink>
-        <ButtonLink>Leilão</ButtonLink>
+        <ButtonLink
+          onClick={() => {
+            handlePage("/");
+            console.log("CARROS");
+          }}
+        >
+          Carros
+        </ButtonLink>
+        <ButtonLink
+          onClick={() => {
+            handlePage("/");
+            console.log("MOTOS");
+          }}
+        >
+          Motos
+        </ButtonLink>
+        <ButtonLink
+          onClick={() => {
+            handlePage("/");
+            console.log("LEILÃO");
+          }}
+        >
+          Leilão
+        </ButtonLink>
       </Nav>
 
-      {isLogged ? (
-        <SubMenuUserDesk userName={userName} />
+      {user.id ? (
+        <SubMenuUserDesk userName={user.name!} />
       ) : (
         <NotLoggedContainer>
           <ButtonLink onClick={() => handlePage("/login")}>Login</ButtonLink>

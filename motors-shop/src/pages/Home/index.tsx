@@ -5,7 +5,7 @@ import { Main, Page } from "./styles";
 const Home: React.FC = () => {
   return (
     <Page>
-      <Header isLogged={false} />
+      <Header />
       <Main></Main>
       <Footer />
     </Page>

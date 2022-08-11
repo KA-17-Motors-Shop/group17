@@ -6,7 +6,7 @@ export const Page = styled.div`
   justify-content: space-between;
   height: 100%;
   width: 100vw;
-  overflow: auto;
+  overflow-y: auto;
 `;
 
 export const Main = styled.main`

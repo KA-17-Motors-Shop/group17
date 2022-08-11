@@ -3,13 +3,21 @@ import { RiArrowUpSLine } from "react-icons/ri";
 import MotorShop from "../../assets/img/Motors.png";
 
 const Footer: React.FC = () => {
+  const scrollToTop = () => {
+    console.log("top");
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <ContainerFooter>
       <img src={MotorShop} alt="Logo" />
       <span>© 2022 - Todos os direitos reservados. angle-up</span>
-      <a href="#topo">
+      <button onClick={scrollToTop}>
         <RiArrowUpSLine size={30} />
-      </a>
+      </button>
     </ContainerFooter>
   );
 };
