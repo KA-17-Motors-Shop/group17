@@ -5,10 +5,10 @@ export const TopImageContainer = styled.div`
   max-width: 752px;
   height: 355px;
   position: absolute;
-  top: 125px;
+  top: 120px;
   border-radius: 4px;
   background-color: ${({ theme }) => theme.greyScale.grey10};
-  /* margin-bottom: 5px; */
+  margin-bottom: 5px;
   img {
     width: 100%;
     height: 100%;

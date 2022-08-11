@@ -1,8 +1,8 @@
 import styled, { createGlobalStyle } from "styled-components";
 
 export const Body = styled.div`
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw;
+  height: 100vh; */
   background-color: ${({ theme }) => theme.backgroundColors.generalBackground};
 
   *::-webkit-scrollbar-track {
@@ -26,7 +26,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: "Inter", sans-serif;
         font-size: 20px;
         font-weight: 500;
-        transition: all 0.5s ease;
+        /* transition: all 0.5s ease; */
     }
     h1, h2, h3, h4, h5, h6 {
         font-family: "Lexend", sans-serif;

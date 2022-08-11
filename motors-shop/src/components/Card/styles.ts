@@ -79,7 +79,7 @@ export const BaseboardContainer = styled.div`
 export const ParentTagContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 125px;
+  width: 115px;
 `;
 
 export const TagContainer = styled.div`

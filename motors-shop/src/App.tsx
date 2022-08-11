@@ -9,7 +9,6 @@ function App() {
       <Theme>
         <Body>
           <GlobalStyle />
-
           <BrowserRouter>
             <Router />
           </BrowserRouter>
