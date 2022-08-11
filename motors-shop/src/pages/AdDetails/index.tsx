@@ -1,4 +1,5 @@
 import MERCEDES from "../../assets/img/mercedes_teste.png";
+import PROFILE2 from "../../assets/img/default_profile2.png";
 import {
   AdDetailsContainer,
   AdDetailsMain,
@@ -31,7 +32,7 @@ const AdDetails: React.FC = (): JSX.Element => {
             ))}
           </div>
         </ImageGalleryContainer> */}
-        <SingleComment />
+        <SingleComment PROFILE2={PROFILE2} />
       </AdDetailsMain>
     </AdDetailsContainer>
   );
