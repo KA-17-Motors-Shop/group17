@@ -1,14 +1,17 @@
+import BannerMain from "../../components/BannerMain";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import BannerMain from "../../components/BannerMain";
+import { Main, Page } from "./styles";
 
 const Home: React.FC = () => {
   return (
-    <div>
+    <Page>
       <Header isLogged={false} />
-      <BannerMain />
+      <Main>
+        <BannerMain />
+      </Main>
       <Footer />
-    </div>
+    </Page>
   );
 };
 
