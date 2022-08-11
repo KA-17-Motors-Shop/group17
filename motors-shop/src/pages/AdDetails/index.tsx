@@ -13,6 +13,7 @@ import BigTopImage from "../../components/BigtopImage";
 import DescriptionBox from "../../components/DescriptionBox";
 import IndividualImageContainer from "../../components/IndividualImageContainer";
 import { TitleContainer } from "../../components/VehicleInformation/styles";
+import SingleComment from "../../components/SingleComment";
 
 const AdDetails: React.FC = (): JSX.Element => {
   return (
@@ -22,14 +23,15 @@ const AdDetails: React.FC = (): JSX.Element => {
         {/* <BigTopImage MERCEDES={MERCEDES} /> */}
         {/* <DescriptionBox /> */}
         {/* <VehicleInformation /> */}
-        <ImageGalleryContainer>
+        {/* <ImageGalleryContainer>
           <TitleContainer>Fotos</TitleContainer>
           <div>
             {Array.from({ length: 6 }).map((_, index) => (
               <IndividualImageContainer key={index} MERCEDES={MERCEDES} />
             ))}
           </div>
-        </ImageGalleryContainer>
+        </ImageGalleryContainer> */}
+        <SingleComment />
       </AdDetailsMain>
     </AdDetailsContainer>
   );
