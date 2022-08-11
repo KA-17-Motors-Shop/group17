@@ -9,7 +9,6 @@ export const DescriptionBoxContainer = styled.div`
   text-align: left;
   padding: 36px 28px 36px 28px;
   background-color: ${({ theme }) => theme.greyScale.grey10};
-
   @media only screen and (min-width: 768px) {
     padding: 36px 44px 36px 44px;
   }

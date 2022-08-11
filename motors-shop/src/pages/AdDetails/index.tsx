@@ -6,6 +6,7 @@ import {
   AdvertiserBoxContainer,
   DescriptionContainer,
   ImageGalleryContainer,
+  CommentBoxContainer,
 } from "./styles";
 
 import Header from "../../components/Header";
@@ -32,7 +33,12 @@ const AdDetails: React.FC = (): JSX.Element => {
             ))}
           </div>
         </ImageGalleryContainer> */}
-        <SingleComment PROFILE2={PROFILE2} />
+        <CommentBoxContainer>
+          <TitleContainer>Comentários</TitleContainer>
+          {Array.from({ length: 6 }).map((_, index) => (
+            <SingleComment key={index} PROFILE2={PROFILE2} />
+          ))}
+        </CommentBoxContainer>
       </AdDetailsMain>
     </AdDetailsContainer>
   );

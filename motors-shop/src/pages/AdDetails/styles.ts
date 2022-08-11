@@ -41,6 +41,22 @@ export const ImageGalleryContainer = styled.div`
     gap: 8px;
   }
 `;
+
+export const CommentBoxContainer = styled.div`
+  border: solid 1px red;
+  padding-top: 36px;
+  margin-top: 120px;
+  background-color: ${({ theme }) => theme.greyScale.grey10};
+  border-radius: 4px;
+
+  h1 {
+    margin-left: 43px;
+  }
+
+  @media only screen and (min-width: 557px) {
+    height: 557px;
+  }
+`;
 export const AdvertiserBoxContainer = styled.div``;
 export const DescriptionContainer = styled.div``;
 export const CommentsContainer = styled.div``;
