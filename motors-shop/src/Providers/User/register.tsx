@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from "react";
-import motorShopAPI from "../../services/motorShop.api";
+import { motorShopAPI } from "../../services/urls.api";
 
 interface IRegister {
   name?: string;

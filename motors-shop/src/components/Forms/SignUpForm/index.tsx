@@ -10,6 +10,8 @@ import SelectType from "./SelectType";
 import { useState } from "react";
 import MaskInput from "../../Input/MaskInput";
 import { useRegister } from "../../../Providers/User/register";
+import { useZipCode } from "../../../Providers/User/cepValidation";
+import { useHistory } from "react-router-dom";
 
 interface IRegister {
   email?: string;
@@ -83,6 +85,8 @@ const FormSingUp: React.FC = () => {
 
   const [typeAccount, setTypeAccount] = useState("client");
   const { registerUser } = useRegister();
+  const { address, verifyZipCode } = useZipCode();
+  const history = useHistory();
 
   const handleRegister = (data: IRegister) => {
     delete data.confirmPassword;
@@ -148,6 +152,9 @@ const FormSingUp: React.FC = () => {
           error={errors.zipCode?.message}
           placeholder="CEP..."
           mask="99999-999"
+          onChange={(e) => {
+            verifyZipCode(e.target.value);
+          }}
         />
         <GeneralInput
           label="Estado"
@@ -155,6 +162,7 @@ const FormSingUp: React.FC = () => {
           name={"state"}
           error={errors.state?.message}
           placeholder="Estado..."
+          defaultValue={address.uf}
         />
         <GeneralInput
           label="Cidade"
@@ -162,6 +170,7 @@ const FormSingUp: React.FC = () => {
           name={"city"}
           error={errors.city?.message}
           placeholder="Cidade..."
+          defaultValue={address.localidade}
         />
         <GeneralInput
           label="Rua"
@@ -169,6 +178,7 @@ const FormSingUp: React.FC = () => {
           name={"street"}
           error={errors.street?.message}
           placeholder="Rua..."
+          defaultValue={address.logradouro}
         />
         <GeneralInput
           label="Número"
@@ -184,6 +194,7 @@ const FormSingUp: React.FC = () => {
           name={"complement"}
           error={errors.complement?.message}
           placeholder="Complemento..."
+          defaultValue={address.complemento}
         />
         <SpanText>Tipo de conta</SpanText>
         <SelectType value={typeAccount} setValue={setTypeAccount} />
@@ -205,7 +216,9 @@ const FormSingUp: React.FC = () => {
       <FooterForm>
         <ButtonPrimary type="submit">Cadastrar</ButtonPrimary>
         <SpanText>Já possuí uma conta?</SpanText>
-        <ButtonOutline2 type="button">Login</ButtonOutline2>
+        <ButtonOutline2 type="button" onClick={() => history.push("/login")}>
+          Login
+        </ButtonOutline2>
       </FooterForm>
     </Container>
   );

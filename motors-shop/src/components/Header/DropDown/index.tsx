@@ -14,11 +14,10 @@ import ThemeSelector from "../../ThemeSelector";
 import BurguerIcon from "../BurguerIcon";
 import SubMenuUser from "./SubMenu";
 import { useHistory } from "react-router-dom";
+import { IUser } from "../../../interfaces/user";
 
-const DropDownMenu: React.FC<{ isLogged: boolean }> = ({ isLogged }) => {
+const DropDownMenu: React.FC<{ user: IUser }> = ({ user }) => {
   const [drop, setDrop] = useState<boolean>(false);
-
-  const userName = "Samuel Leão";
 
   const history = useHistory();
 
@@ -41,7 +40,7 @@ const DropDownMenu: React.FC<{ isLogged: boolean }> = ({ isLogged }) => {
           <DropItem>Motos</DropItem>
           <DropItem>Leilão</DropItem>
           <DropSeparator />
-          {!isLogged ? (
+          {!user.id ? (
             <>
               <DropItem onClick={() => handlePage("/login")}>Login</DropItem>
               <DropItemButton onClick={() => handlePage("/register")}>
@@ -49,7 +48,7 @@ const DropDownMenu: React.FC<{ isLogged: boolean }> = ({ isLogged }) => {
               </DropItemButton>
             </>
           ) : (
-            <SubMenuUser userName={userName} />
+            <SubMenuUser userName={user.name!} />
           )}
           <DropSeparator />
           <DropItemSwitch>

@@ -6,7 +6,6 @@ export const ContainerMain = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.backgroundColors.bannerBackground};
   /* background-color: red; */
-  margin-top: -48px;
 `;
 
 export const ContainerBanner = styled.div`
@@ -16,6 +15,9 @@ export const ContainerBanner = styled.div`
   align-items: center;
 
   padding: 5rem 15rem 5rem 15rem;
+  @media screen and (max-width: 990px) {
+    padding: 5rem 20rem 5rem 20rem;
+  }
 `;
 
 export const ContainerTitle = styled.div`
@@ -42,6 +44,14 @@ export const ContainerTitle = styled.div`
     color: #f8f9fa;
     margin-bottom: 2rem;
   }
+
+  @media screen and (max-width: 990px) {
+    h1 {
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 45px;
+    }
+  }
 `;
 
 export const ContainerButtons = styled.div`
@@ -56,5 +66,16 @@ export const ContainerButtons = styled.div`
 
     background: transparent;
     /* color: #f8f9fa; */
+  }
+
+  @media screen and (max-width: 990px) {
+    flex-direction: column;
+    gap: 20px;
+
+    width: 94vw;
+    button {
+      padding: 0;
+      width: 100%;
+    }
   }
 `;

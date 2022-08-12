@@ -17,7 +17,7 @@ export const ContainerFooter = styled.footer`
     text-align: center;
   }
 
-  > a {
+  > button {
     text-decoration: none;
     background-color: ${({ theme }) => theme.greyScale.grey2};
     color: ${({ theme }) => theme.greyScale.whiteFixed};

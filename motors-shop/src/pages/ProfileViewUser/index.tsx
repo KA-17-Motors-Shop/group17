@@ -16,7 +16,7 @@ import UserInfoBox from "../../components/UserInfoBox";
 const ProfileViewUser: React.FC = (): JSX.Element => {
   return (
     <ProfileViewUserContainer>
-      <Header isLogged={false} />
+      <Header />
       <ProfileMain>
         <UserInfoBox IMG_PROFILE={IMG_PROFILE} />
         <TitleContainer>Carros</TitleContainer>

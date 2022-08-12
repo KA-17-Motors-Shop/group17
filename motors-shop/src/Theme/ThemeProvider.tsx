@@ -25,7 +25,6 @@ const StyledThemeProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const colors: IThemeColors = mode === "light" ? darkTheme : lightTheme;
 
-  console.log();
   return (
     <ThemeProvider theme={colors}>
       <ThemeContext.Provider

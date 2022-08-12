@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
-import motorShopAPI from "../../services/motorShop.api";
+import { useHistory } from "react-router-dom";
+import { motorShopAPI } from "../../services/urls.api";
 
 interface ILogin {
   email?: string;
@@ -10,7 +11,7 @@ interface IContext {
   token?: string;
   loginUser: (data: ILogin) => Promise<void>;
   isSeller?: boolean;
-  getUser: (id: string) => Promise<void>;
+  getUser: (token: string) => Promise<void>;
   logOut: () => void;
 }
 
@@ -19,6 +20,7 @@ export const LoginContext = createContext({} as IContext);
 export const LoginProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const history = useHistory();
   const [token, setToken] = useState(
     localStorage.getItem("@token:Motor") || ""
   );
@@ -37,21 +39,25 @@ export const LoginProvider: React.FC<{ children: React.ReactNode }> = ({
         setToken(res.data.token);
         localStorage.setItem("@token:Motor", res.data.token);
         await getUser(res.data.token);
+        history.push("/");
       })
       .catch((err) => console.log(err.response.data));
   };
 
   const getUser = async (token: string) => {
-    const response = await motorShopAPI
-      .get("/users/me", { headers: { Authorization: `Bearer ${token}` } })
-      .then((res) => {
-        setIsSeller(res.data.isSeller);
-        localStorage.setItem("@seller:Motor", res.data.isSeller);
-        return res.data;
-      })
-      .catch((err) => console.log(err));
+    if (token !== "") {
+      const response = await motorShopAPI
+        .get("/users/me", { headers: { Authorization: `Bearer ${token}` } })
+        .then((res) => {
+          setIsSeller(res.data.isSeller);
+          localStorage.setItem("@seller:Motor", res.data.isSeller);
+          return res.data;
+        })
+        .catch((err) => console.log(err));
 
-    return response;
+      return response;
+    }
+    return {};
   };
 
   const logOut = () => {
@@ -60,6 +66,7 @@ export const LoginProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.setItem("@MotorShop:Theme.mode", theme || "light");
     setIsSeller(false);
     setToken("");
+    history.push("/");
   };
 
   return (
