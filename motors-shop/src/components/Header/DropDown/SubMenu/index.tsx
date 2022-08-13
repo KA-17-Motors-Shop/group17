@@ -1,29 +1,30 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { useUser } from "../../../../Providers/User/login";
+import Avatar from "../../../Avatar";
 import { DropItem } from "../styles";
-import { LoggedTrigger, NameBol, NameSpan, SubMenuContainer } from "./styles";
+import { LoggedTrigger, SubMenuContainer } from "./styles";
 
 interface Iprops {
   userName: string;
 }
 
 const SubMenuUser: React.FC<Iprops> = ({ userName }) => {
+  const { logOut } = useUser();
+
   return (
-    <DropdownMenu.Sub>
+    <DropdownMenu.Root>
       <LoggedTrigger>
-        <NameBol>{userName.substring(0, 1)}</NameBol>
-        <NameSpan>{userName}</NameSpan>
+        <Avatar userName={userName} />
       </LoggedTrigger>
 
-
-      <SubMenuContainer sideOffset={-100} alignOffset={50}>
-
+      <SubMenuContainer>
         <DropItem>Editar Perfil</DropItem>
         <DropItem>Editar endereço</DropItem>
         <DropItem>Minhas Compras</DropItem>
-        <DropItem>Sair</DropItem>
+        <DropItem onSelect={logOut}>Sair</DropItem>
         <DropdownMenu.Arrow />
       </SubMenuContainer>
-    </DropdownMenu.Sub>
+    </DropdownMenu.Root>
   );
 };
 

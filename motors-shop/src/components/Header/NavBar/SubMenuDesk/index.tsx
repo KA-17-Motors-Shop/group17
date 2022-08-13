@@ -1,28 +1,25 @@
-import {
-  Content,
-  Item,
-  LoggedMenu,
-  NameBol,
-  NameSpan,
-  Trigger,
-} from "./styles";
+import { useUser } from "../../../../Providers/User/login";
+import Avatar from "../../../Avatar";
+import { Content, Item, LoggedMenu, Trigger } from "./styles";
 
 interface Iprops {
   userName: string;
 }
 
 const SubMenuUserDesk: React.FC<Iprops> = ({ userName }) => {
+  const { logOut } = useUser();
+
   return (
     <LoggedMenu>
       <Trigger>
-        <NameBol>{userName.substring(0, 1)}</NameBol>
-        <NameSpan>{userName}</NameSpan>
+        <Avatar userName={userName} />
       </Trigger>
+
       <Content sideOffset={21}>
         <Item>Editar Perfil</Item>
         <Item>Editar Endereço</Item>
         <Item>Minhas Compras</Item>
-        <Item>Sair</Item>
+        <Item onSelect={logOut}>Sair</Item>
       </Content>
     </LoggedMenu>
   );

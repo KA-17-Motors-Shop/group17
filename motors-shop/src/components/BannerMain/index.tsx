@@ -22,7 +22,6 @@ const BannerMain: React.FC = () => {
           <ButtonOutlineLight>Motos</ButtonOutlineLight>
         </ContainerButtons>
       </ContainerBanner>
-      {/* <ShowButtons /> */}
     </ContainerMain>
   );
 };

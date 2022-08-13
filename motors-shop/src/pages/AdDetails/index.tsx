@@ -41,7 +41,7 @@ const AdDetails: React.FC = (): JSX.Element => {
 
   return (
     <AdDetailsContainer>
-      <Header isLogged={false} />
+      <Header />
       <AdDetailsMain>
         <LeftContainerAdDetailsFirst>
           <BigTopImage MERCEDES={MERCEDES} />

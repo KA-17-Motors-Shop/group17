@@ -11,7 +11,9 @@ export const Container = styled.div`
   }
 `;
 
-export const DropRoot = styled(DropdownMenu.Root)``;
+export const DropRoot = styled(DropdownMenu.Root)`
+  z-index: 1 !important;
+`;
 
 export const DropTrigger = styled(DropdownMenu.Trigger)`
   background-color: transparent;
@@ -24,7 +26,7 @@ export const DropContent = styled(DropdownMenu.Content)`
   align-items: flex-start;
   justify-content: space-evenly;
   gap: 1rem;
-
+  z-index: 1;
   margin-top: 1.4rem;
   border-radius: 0 0.25rem 0.25rem 0;
   padding: 1rem;

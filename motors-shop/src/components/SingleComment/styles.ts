@@ -6,6 +6,7 @@ export const SingleCommetContainer = styled(DescriptionBoxContainer)`
   padding-top: 0;
   border-radius: 0;
   width: 100%;
+  box-shadow: none;
   p {
     line-height: 24px;
     font-size: 16px;

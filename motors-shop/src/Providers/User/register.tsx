@@ -1,5 +1,6 @@
 import React, { createContext, useContext } from "react";
-import motorShopAPI from "../../services/motorShop.api";
+import { toast } from "react-toastify";
+import { motorShopAPI } from "../../services/urls.api";
 
 interface IRegister {
   name?: string;
@@ -32,8 +33,13 @@ export const RegisterProvider: React.FC<{ children: React.ReactNode }> = ({
     delete data.typeAccount;
     await motorShopAPI
       .post("/users/signup", { ...data, isSeller })
-      .then((_) => console.log("OK"))
-      .catch((err) => console.log(err.response.data));
+      .then((res) => {
+        console.log(res);
+        toast.success("Cadastro feito com sucesso!");
+      })
+      .catch((err) => {
+        toast.warning(err.response.data.message);
+      });
   };
 
   return (
