@@ -4,8 +4,8 @@ export const ContainerMain = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   background-color: ${({ theme }) => theme.backgroundColors.bannerBackground};
-  /* background-color: red; */
 `;
 
 export const ContainerBanner = styled.div`
@@ -13,11 +13,8 @@ export const ContainerBanner = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  padding: 5rem 15rem 5rem 15rem;
-  @media screen and (max-width: 990px) {
-    padding: 5rem 20rem 5rem 20rem;
-  }
+  width: 100%;
+  padding: 5rem;
 `;
 
 export const ContainerTitle = styled.div`

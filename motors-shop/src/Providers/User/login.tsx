@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import { motorShopAPI } from "../../services/urls.api";
 
 interface ILogin {
@@ -39,9 +40,12 @@ export const LoginProvider: React.FC<{ children: React.ReactNode }> = ({
         setToken(res.data.token);
         localStorage.setItem("@token:Motor", res.data.token);
         await getUser(res.data.token);
+        toast.success("Login feito com sucesso");
         history.push("/");
       })
-      .catch((err) => console.log(err.response.data));
+      .catch((err) => {
+        toast.warning("E-amil ou senha incorreto");
+      });
   };
 
   const getUser = async (token: string) => {
