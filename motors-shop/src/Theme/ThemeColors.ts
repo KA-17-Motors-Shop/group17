@@ -218,14 +218,14 @@ export const darkTheme: IThemeColors = {
     outline1: {
       color: "#F7F7F7",
       border: "#F7F7F7",
-      background: "#212529",
-      hover: "#F7F7F7",
+      background: "#495057",
+      hover: "#495057",
     },
     outline2: {
       color: "#F7F7F7",
       border: "#F7F7F7",
       background: "#212529",
-      hover: "#495057",
+      hover: "#212529",
     },
     primaryOutline: {
       color: "#4529E6",

@@ -34,10 +34,22 @@ export const ButtonActivate = styled.button`
   }
 `;
 
-export const ContainerModal = styled.div`
+export const ContainerForm = styled.form`
   background-color: ${({ theme }) =>
     theme.backgroundColors.secondaryBackground};
   width: 100%;
   height: 100%;
   padding: 2rem;
+  color: ${({ theme }) => theme.textColors.primaryText};
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 1rem;
+`;
+
+export const DivButton = styled.div`
+  align-self: center;
 `;
