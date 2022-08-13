@@ -1,14 +1,16 @@
+import { ButtonPrimary } from "../Button";
+
 import {
-  MiddleContainer,
   VehicleInformationContainer,
+  MiddleContainer,
   TitleContainer,
 } from "./styles";
+
 import {
   ParentTagContainer,
-  TagContainer,
   PriceContainer,
+  TagContainer,
 } from "../Card/styles";
-import { ButtonPrimary } from "../Button";
 
 const VehicleInformation: React.FC = (): JSX.Element => {
   return (
@@ -33,4 +35,5 @@ const VehicleInformation: React.FC = (): JSX.Element => {
     </VehicleInformationContainer>
   );
 };
+
 export default VehicleInformation;

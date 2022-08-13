@@ -1,19 +1,20 @@
+import IMG_PROFILE from "../../assets/img/default_profile.png";
+
 import {
-  CardContainer,
-  ImgContainer,
-  NameContainer,
   BaseboardContainer,
   ParentTagContainer,
-  TagContainer,
   PriceContainer,
+  NameContainer,
+  CardContainer,
+  ImgContainer,
+  TagContainer,
 } from "./styles";
-import IMG from "../../assets/img/img-teste.png";
 
-const Card = () => {
+const Card: React.FC<{ IMG: string }> = ({ IMG }): JSX.Element => {
   return (
     <CardContainer>
       <ImgContainer>
-        <img src={IMG} alt="" />
+        <img src={IMG} alt="Imagem de carros e motos" />
       </ImgContainer>
       <h2>Product title stay here - max 1 line</h2>
       <p>
@@ -22,9 +23,9 @@ const Card = () => {
       </p>
       <NameContainer>
         <div>
-          <span>R</span>
+          <img src={IMG_PROFILE} alt="Imagem de perfil" />
         </div>
-        <span>Evelin Camila</span>
+        <span>Samuel Leão</span>
       </NameContainer>
       <BaseboardContainer>
         <ParentTagContainer>
@@ -42,4 +43,5 @@ const Card = () => {
     </CardContainer>
   );
 };
+
 export default Card;

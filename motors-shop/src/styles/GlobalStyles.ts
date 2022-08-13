@@ -1,8 +1,8 @@
 import styled, { createGlobalStyle } from "styled-components";
 
 export const Body = styled.div`
-  /* width: 100vw;
-  height: 100vh; */
+  width: 100vw;
+  height: 100vh;
   background-color: ${({ theme }) => theme.backgroundColors.generalBackground};
 
   *::-webkit-scrollbar-track {

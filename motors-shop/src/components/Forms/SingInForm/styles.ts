@@ -5,21 +5,12 @@ export const Container = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
   background-color: ${({ theme }) => theme.backgroundColors.headerBackground};
-=======
-  background-color: ${({ theme }) =>
-    theme.backgroundColors.secondaryBackground};
->>>>>>> 39a701fb1d84baf651c856c52ff13cee5dfebefb
-=======
 
-  background-color: ${({ theme }) =>
-    theme.backgroundColors.secondaryBackground};
-
->>>>>>> 1a88c29749d506331d4cb73a3ead43f5c5c4f0cc
-  width: 412px;
-  height: 568px;
+  width: 40%;
+  min-width: 300px;
+  height: auto;
 
   gap: 55px;
   padding: 44px 48px;
@@ -54,17 +45,10 @@ export const SpanText = styled.span`
   text-align: center;
   font-size: 14px;
   font-weight: 400;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
   color: ${({ theme }) => theme.textColors.primaryText};
-=======
-  color: ${({ theme }) => theme.textColors.spantext};
->>>>>>> 39a701fb1d84baf651c856c52ff13cee5dfebefb
-=======
 
-  color: ${({ theme }) => theme.textColors.spantext};
 
->>>>>>> 1a88c29749d506331d4cb73a3ead43f5c5c4f0cc
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -29,7 +29,7 @@ export const Container = styled.div`
         ? "#ff0c0c"
         : ({ theme }) => theme.backgroundColors.generalBackground};
     padding: 0px 16px;
-    color: ${({ theme }) => theme.textColors.spantext};
+    color: ${({ theme }) => theme.textColors.primaryText};
     background-color: ${({ theme }) => theme.backgroundColors.headerBackground};
     &::placeholder {
       color: ${({ theme }) => theme.greyScale.grey3};

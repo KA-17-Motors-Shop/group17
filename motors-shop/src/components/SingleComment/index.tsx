@@ -1,16 +1,17 @@
-import { SingleCommetContainer, NameContainerProvisorio } from "./styles";
+import { SingleCommetContainer } from "./styles";
+import { NameContainer } from "../Card/styles";
 
-const SingleComment: React.FC<{ PROFILE2: string }> = ({
-  PROFILE2,
+const SingleComment: React.FC<{ PROFILE: string }> = ({
+  PROFILE,
 }): JSX.Element => {
   return (
     <SingleCommetContainer>
-      <NameContainerProvisorio>
+      <NameContainer>
         <div>
-          <img src={PROFILE2} alt="Imagem de perfil" />
+          <img src={PROFILE} alt="Imagem de perfil" />
         </div>
         <span>Julia Lima</span>
-      </NameContainerProvisorio>
+      </NameContainer>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae alias
         molestias ab rerum aperiam nesciunt fugit, rem illo, debitis numquam a
@@ -19,4 +20,5 @@ const SingleComment: React.FC<{ PROFILE2: string }> = ({
     </SingleCommetContainer>
   );
 };
+
 export default SingleComment;

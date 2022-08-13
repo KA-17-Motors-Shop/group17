@@ -5,7 +5,7 @@ const BigTopImage: React.FC<{ MERCEDES: string }> = ({
 }): JSX.Element => {
   return (
     <TopImageContainer>
-      <img src={MERCEDES} alt="Imagem ilustrativa de carros e motos" />
+      <img src={MERCEDES} alt="Imagem ilustrativa de veículos" />
     </TopImageContainer>
   );
 };

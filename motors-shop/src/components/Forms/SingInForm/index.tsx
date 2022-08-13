@@ -17,6 +17,8 @@ import { useState } from "react";
 import Modal from "../../Modal";
 import RecoveryPassword from "../../Modal/RecoveryPassword";
 
+import { useUser } from "../../../Providers/User/login";
+
 interface ILogin {
   email?: string;
   password?: string;
@@ -31,6 +33,8 @@ const FormSingIn: React.FC = () => {
     password: yup.string().required("Senha é obrigatória"),
   });
 
+  const { loginUser } = useUser();
+
   const {
     register,
     handleSubmit,
@@ -40,7 +44,7 @@ const FormSingIn: React.FC = () => {
   });
 
   const handleLogin = (data: ILogin) => {
-    console.log(data);
+    loginUser(data);
   };
 
   const history = useHistory();
@@ -52,7 +56,6 @@ const FormSingIn: React.FC = () => {
   const handleModal = () => {
     setModal(!modal);
   };
-
   return (
     <>
       <Modal show={modal} close={handleModal} height="5rem" width="30%">

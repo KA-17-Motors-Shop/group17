@@ -1,11 +1,23 @@
 import styled from "styled-components";
+import { UserInfoBoxContainer } from "../../components/UserInfoBox/styles";
 
 export const AdDetailsContainer = styled.div`
-  background-color: ${({ theme }) => theme.greyScale.grey8};
-  height: 100vh;
+  background-image: linear-gradient(#4529e6 550px, 0, #f1f3f5 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  footer {
+    width: 100%;
+  }
   header {
     position: fixed;
-    z-index: 2;
+  }
+  footer {
+    margin-top: 90px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    background-image: linear-gradient(#4529e6 680px, 0, #f1f3f5 100%);
   }
 `;
 
@@ -13,51 +25,143 @@ export const AdDetailsMain = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
-  background-image: linear-gradient(#4529e6 86.5%, #f1f3f5 86.5%, #f1f3f5 100%);
+
+  @media only screen and (min-width: 1279px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 20px;
+  }
+  @media only screen and (min-width: 1440px) {
+    column-gap: 55px;
+  }
+  @media only screen and (min-width: 1900px) {
+    column-gap: 130px;
+    width: 70%;
+  }
 `;
 
-export const ImageGalleryContainer = styled.div`
-  margin-top: 120px;
+export const LeftContainerAdDetailsFirst = styled.div`
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 120px 0 25px 0;
+
+  @media only screen and (min-width: 990px) {
+    margin-top: 135px;
+  }
+  @media only screen and (min-width: 1279px) {
+    width: auto;
+  }
+`;
+
+export const RightContainerAdDetails = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
-  max-width: 440px;
-  height: 359px;
+  margin-bottom: 25px;
+
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+  @media only screen and (min-width: 1024px) {
+    column-gap: 25px;
+  }
+  @media only screen and (min-width: 1279px) {
+    flex-direction: column;
+    width: 440px;
+    margin: 92px 0 0 0;
+    row-gap: 45px;
+  }
+`;
+
+export const ImageGalleryContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   border-radius: 4px;
   padding: 36px 24px 28px 24px;
   background-color: ${({ theme }) => theme.greyScale.grey10};
+  margin-bottom: 25px;
+  box-shadow: 0 4px 32px -22px #00000062;
   h1 {
-    align-self: flex-start;
-    margin: 0 0 22px 6px;
+    margin-bottom: 22px;
   }
   > div {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 100%;
     gap: 8px;
   }
+
+  @media only screen and (min-width: 768px) {
+    margin: 0 15px 0 0;
+    flex: 1 1 auto;
+  }
+  @media only screen and (min-width: 1279px) {
+    max-width: 440px;
+    height: 359px;
+  }
+`;
+
+export const UserInfoBoxWithButtonContainer = styled(UserInfoBoxContainer)`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  box-shadow: 0 4px 32px -22px #00000062;
+  div {
+    margin: 0;
+  }
+  button {
+    font-size: 16px;
+    font-weight: 600;
+    width: 206px;
+    height: 48px;
+  }
+`;
+
+export const LeftContainerAdDetailsTSecond = styled.div`
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (min-width: 1279px) {
+    width: auto;
+  }
 `;
 
 export const CommentBoxContainer = styled.div`
-  border: solid 1px red;
+  width: 100%;
   padding-top: 36px;
-  margin-top: 120px;
+  margin-bottom: 40px;
   background-color: ${({ theme }) => theme.greyScale.grey10};
   border-radius: 4px;
-
+  box-shadow: 0 4px 32px -22px #00000062;
   h1 {
-    margin-left: 43px;
+    padding-left: 28px;
   }
 
-  @media only screen and (min-width: 557px) {
-    height: 557px;
+  @media only screen and (min-width: 768px) {
+    h1 {
+      padding-left: 44px;
+    }
+  }
+  @media only screen and (min-width: 1279px) {
+    max-width: 752px;
   }
 `;
-export const AdvertiserBoxContainer = styled.div``;
-export const DescriptionContainer = styled.div``;
-export const CommentsContainer = styled.div``;
-export const TextFieldContainer = styled.div``;
+
+export const FakeContainer = styled.div`
+  width: 440px;
+  height: 440px;
+  display: none;
+
+  @media only screen and (min-width: 1279px) {
+    display: flex;
+  }
+`;

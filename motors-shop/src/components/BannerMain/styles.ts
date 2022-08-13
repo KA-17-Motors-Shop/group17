@@ -6,6 +6,7 @@ export const ContainerMain = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.backgroundColors.bannerBackground};
   /* background-color: red; */
+  margin-top: -48px;
 `;
 
 export const ContainerBanner = styled.div`
