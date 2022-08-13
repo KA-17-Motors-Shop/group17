@@ -213,7 +213,7 @@ export const darkTheme: IThemeColors = {
       color: "#FDFDFD",
       border: "#FDFDFD",
       background: "#F7F7F7",
-      hover: "#EDEAFD",
+      hover: "transparent",
     },
     outline1: {
       color: "#F7F7F7",
