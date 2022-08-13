@@ -62,7 +62,7 @@ export const lightTheme: IThemeColors = {
       color: "#FDFDFD",
       border: "#FDFDFD",
       background: "#F7F7F7",
-      hover: "#EDEAFD",
+      hover: "transparent",
     },
     outline1: {
       color: "#0B0D0D",
