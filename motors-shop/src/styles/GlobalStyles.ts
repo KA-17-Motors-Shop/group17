@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: "Inter", sans-serif;
         font-size: 20px;
         font-weight: 500;
-        transition: all 0.5s ease;
+        /* transition: all 0.5s ease; */
 
   &::-webkit-scrollbar {
     display: none;

@@ -35,6 +35,11 @@ export const TextFieldContainer = styled(DescriptionBoxContainer)`
   }
   @media only screen and (min-width: 1279px) {
     max-width: 752px;
+    button {
+      position: relative;
+      left: 548px;
+      bottom: 67px;
+    }
   }
 `;
 
@@ -44,4 +49,8 @@ export const ContainerMultipleReactions = styled.div`
   width: 100%;
   margin-top: 24px;
   gap: 10px;
+
+  @media only screen and (min-width: 1279px) {
+    margin-top: -40px;
+  }
 `;

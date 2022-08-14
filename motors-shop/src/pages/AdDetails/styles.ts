@@ -8,16 +8,19 @@ export const AdDetailsContainer = styled.div`
   align-items: center;
   footer {
     width: 100%;
+    margin-top: 45px;
   }
   header {
     position: fixed;
   }
-  footer {
-    margin-top: 90px;
-  }
 
   @media only screen and (min-width: 768px) {
     background-image: linear-gradient(#4529e6 680px, 0, #f1f3f5 100%);
+  }
+  @media only screen and (min-width: 1279px) {
+    footer {
+      margin-top: 73px;
+    }
   }
 `;
 
@@ -45,7 +48,7 @@ export const LeftContainerAdDetailsFirst = styled.div`
   width: 90%;
   display: flex;
   flex-direction: column;
-  margin: 120px 0 25px 0;
+  margin: 120px 0 17px 0;
 
   @media only screen and (min-width: 990px) {
     margin-top: 135px;
@@ -60,6 +63,7 @@ export const RightContainerAdDetails = styled.div`
   flex-direction: column;
   width: 90%;
   margin-bottom: 25px;
+  row-gap: 52px;
 
   @media only screen and (min-width: 768px) {
     flex-direction: row;
@@ -70,8 +74,8 @@ export const RightContainerAdDetails = styled.div`
   @media only screen and (min-width: 1279px) {
     flex-direction: column;
     width: 440px;
-    margin: 92px 0 0 0;
-    row-gap: 45px;
+    margin: 106px 0 0 0;
+    row-gap: 34px;
   }
 `;
 
@@ -82,7 +86,6 @@ export const ImageGalleryContainer = styled.div`
   border-radius: 4px;
   padding: 36px 24px 28px 24px;
   background-color: ${({ theme }) => theme.greyScale.grey10};
-  margin-bottom: 25px;
   box-shadow: 0 4px 32px -22px #00000062;
   h1 {
     margin-bottom: 22px;
@@ -138,7 +141,7 @@ export const LeftContainerAdDetailsTSecond = styled.div`
 export const CommentBoxContainer = styled.div`
   width: 100%;
   padding-top: 36px;
-  margin-bottom: 40px;
+  margin-bottom: 42px;
   background-color: ${({ theme }) => theme.greyScale.grey10};
   border-radius: 4px;
   box-shadow: 0 4px 32px -22px #00000062;
@@ -153,6 +156,7 @@ export const CommentBoxContainer = styled.div`
   }
   @media only screen and (min-width: 1279px) {
     max-width: 752px;
+    margin-bottom: 33px;
   }
 `;
 

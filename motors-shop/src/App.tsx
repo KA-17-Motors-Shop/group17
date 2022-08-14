@@ -24,7 +24,6 @@ function App() {
           <BrowserRouter>
             <Router />
           </BrowserRouter>
-          <Router />
         </Body>
       </Theme>
     </>

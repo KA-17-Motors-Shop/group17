@@ -8,7 +8,7 @@ export const VehicleInformationContainer = styled.div`
   padding: 44px 28px 28px 28px;
   background-color: ${({ theme }) => theme.greyScale.grey10};
   border-radius: 4px;
-  margin-bottom: 50px;
+  margin-bottom: 24px;
   box-shadow: 0 4px 32px -22px #00000062;
   button {
     width: 100px;
@@ -24,6 +24,7 @@ export const VehicleInformationContainer = styled.div`
   }
   @media only screen and (min-width: 1279px) {
     max-width: 752px;
+    margin-bottom: 40px;
   }
 `;
 
