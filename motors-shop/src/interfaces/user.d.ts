@@ -7,4 +7,5 @@ export interface IUser {
   phone?: string;
   description?: string;
   isSeller?: boolean;
+  isActivate?: boolean;
 }

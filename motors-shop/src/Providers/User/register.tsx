@@ -1,4 +1,5 @@
 import React, { createContext, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { motorShopAPI } from "../../services/urls.api";
 
@@ -28,6 +29,8 @@ export const RegisterContext = createContext({} as IContext);
 export const RegisterProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const history = useHistory();
+
   const registerUser = async (data: IRegister) => {
     const isSeller = data.typeAccount === "client" ? false : true;
     delete data.typeAccount;
@@ -36,6 +39,7 @@ export const RegisterProvider: React.FC<{ children: React.ReactNode }> = ({
       .then((res) => {
         console.log(res);
         toast.success("Cadastro feito com sucesso!");
+        history.push("/login");
       })
       .catch((err) => {
         toast.warning(err.response.data.message);

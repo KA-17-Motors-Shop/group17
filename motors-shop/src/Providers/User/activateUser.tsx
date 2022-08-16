@@ -4,40 +4,40 @@ import { toast } from "react-toastify";
 import { useUser } from "./login";
 
 interface IContext {
-  activateUser: (code: string) => Promise<void>;
-  recoveryNewCode: (id: string) => Promise<void>;
+  activateUser: (code: string) => Promise<boolean>;
+  recoveryNewCode: () => Promise<void>;
 }
 
 export const ActivateUserContext = createContext({} as IContext);
 
-export const RegisterProvider: React.FC<{ children: React.ReactNode }> = ({
+export const ActivateProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const { getUser, token } = useUser();
 
   const activateUser = async (code: string) => {
-    await motorShopAPI
+    return await motorShopAPI
       .patch(`/users/activate/${code}`)
       .then(async (res) => {
-        if (res.status === 200) {
-          toast.success("Usuário ativado com sucesso!");
-          await getUser(token!);
-        } else {
-          toast.warning("O código não é válido!");
-        }
+        toast.success("Usuário ativado com sucesso!");
+        await getUser(token!);
+        return true;
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        toast.warning(err.response.data.message);
+        return false;
+      });
   };
 
-  const recoveryNewCode = async (token: string) => {
+  const recoveryNewCode = async () => {
     await motorShopAPI
-      .patch(`users/recovery/code/`, {
+      .get(`users/recovery/code`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(async (_) =>
         toast.success("O código foi enviado para o seu e-mail")
       )
-      .catch((err) => console.log(err));
+      .catch((err) => toast.warning(err.response.data.message));
   };
 
   return (
@@ -47,4 +47,4 @@ export const RegisterProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-export const useRegister = () => useContext(ActivateUserContext);
+export const useActivate = () => useContext(ActivateUserContext);
