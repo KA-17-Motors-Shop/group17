@@ -11,8 +11,8 @@ import {
 const AuctionList: React.FC = () => {
   return (
     <Container>
+      <h2>Leilão</h2>
       <ContainerAuction>
-        <h2>Leilão</h2>
         <ContainerInfo>
           <ContainerTitle>
             <h3>Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200 </h3>
