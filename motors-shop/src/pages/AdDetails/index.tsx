@@ -9,7 +9,7 @@ import TextField from "../../components/TextField";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
-import MERCEDES from "../../assets/img/mercedes_teste.png";
+import MERCEDES from "../../assets/img/vehicles/mercedes_teste.png";
 import PROFILE from "../../assets/img/default_profile.png";
 
 import {

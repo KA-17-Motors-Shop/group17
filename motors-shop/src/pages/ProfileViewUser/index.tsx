@@ -1,6 +1,6 @@
 import IMG_PROFILE from "../../assets/img/default_profile.png";
-import IMG_MOTO from "../../assets/img/moto_teste.png";
-import IMG from "../../assets/img/car_teste.png";
+import IMG_MOTO from "../../assets/img/vehicles/moto_teste.png";
+import IMG from "../../assets/img/vehicles/car_teste.png";
 
 import UserInfoBox from "../../components/UserInfoBox";
 import Footer from "../../components/Footer";
