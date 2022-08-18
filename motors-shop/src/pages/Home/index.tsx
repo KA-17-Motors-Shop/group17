@@ -4,10 +4,11 @@ import BannerMain from "../../components/BannerMain";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import AuctionList from "../../components/Lists/AuctionList";
+import CarsList from "../../components/Lists/CarsList";
+import MotorcyclesList from "../../components/Lists/MotorcyclesList";
 import { IUser } from "../../interfaces/user";
 import { useUser } from "../../Providers/User/login";
-//vai virar CarsList e MotocyclesList
-// import ProfileViewUser from "../ProfileViewUser";
+
 import { Main, Page } from "./styles";
 
 const Home: React.FC = () => {
@@ -30,8 +31,10 @@ const Home: React.FC = () => {
       <Main>
         {user.isActivate === false && <ActivateUserSpan />}
         <BannerMain />
+
         <AuctionList />
-        {/* <ProfileViewUser /> */}
+        <CarsList />
+        <MotorcyclesList />
       </Main>
       <Footer />
     </Page>

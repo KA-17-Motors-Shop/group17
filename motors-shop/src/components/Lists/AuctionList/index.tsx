@@ -1,3 +1,4 @@
+import Stopwatch from "../../Stopwatch";
 import {
   Container,
   ContainerAuction,
@@ -15,6 +16,7 @@ const AuctionList: React.FC = () => {
       <ContainerAuction>
         <ContainerInfo>
           <ContainerTitle>
+            <Stopwatch />
             <h3>Mercedes Benz A 200 CGI ADVANCE SEDAN Mercedes Benz A 200 </h3>
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
