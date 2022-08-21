@@ -48,21 +48,23 @@ const FormSingUp: React.FC = () => {
     birhtDate: yup
       .string()
       .required("Campo obrigatório")
-      .test((dateString) => new Date(dateString!) < new Date()),
+      .test(
+        (dateString) =>
+          new Date(dateString!) <
+          new Date(
+            new Date().getFullYear() - 18,
+            new Date().getMonth(),
+            new Date().getDay()
+          )
+      ),
     description: yup.string(),
     zipCode: yup
       .string()
       .required("Campo obrigatório")
       .matches(/^[0-9]{5}-[0-9]{3}$/, "CEP inválido"),
-    state: yup
-      .string()
-      .required("Campo obrigatório")
-      .matches(/[a-zA-Z\u00C0-\u00FF ]+/i, "Deve conter apenas letras"),
-    city: yup
-      .string()
-      .required("Campo obrigatório")
-      .matches(/[a-zA-Z\u00C0-\u00FF ]+/i, "Deve conter apenas letras"),
-    street: yup.string().required("Campo obrigatório"),
+    state: yup.string(),
+    city: yup.string(),
+    street: yup.string(),
     number: yup
       .number()
       .typeError("Somente números")

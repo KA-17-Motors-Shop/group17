@@ -42,6 +42,7 @@ export const RegisterProvider: React.FC<{ children: React.ReactNode }> = ({
         history.push("/login");
       })
       .catch((err) => {
+        console.log(err);
         toast.warning(err.response.data.message);
       });
   };

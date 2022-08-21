@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IThemeColors, ThemeProvider } from "styled-components";
+import { DefaultTheme, ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "./ThemeColors";
 
 interface Ivalues {
@@ -23,7 +23,7 @@ const StyledThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.setItem("@MotorShop:Theme.mode", newMode);
   };
 
-  const colors: IThemeColors = mode === "light" ? darkTheme : lightTheme;
+  const colors: DefaultTheme = mode === "light" ? darkTheme : lightTheme;
 
   return (
     <ThemeProvider theme={colors}>

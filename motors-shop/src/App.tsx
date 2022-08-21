@@ -2,7 +2,6 @@ import Router from "./Router";
 import { Body, GlobalStyle } from "./styles/GlobalStyles";
 import Theme from "./Theme/ThemeProvider";
 import { ToastContainer } from "react-toastify";
-import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
@@ -21,9 +20,7 @@ function App() {
             pauseOnHover
           />
           <GlobalStyle />
-          <BrowserRouter>
-            <Router />
-          </BrowserRouter>
+          <Router />
         </Body>
       </Theme>
     </>

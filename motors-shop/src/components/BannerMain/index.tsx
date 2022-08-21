@@ -6,7 +6,6 @@ import {
 } from "./styles";
 
 import { ButtonOutlineLight } from "../Button";
-// import ShowButtons from "../Button/ShowButtons";
 
 const BannerMain: React.FC = () => {
   return (

@@ -14,6 +14,7 @@ interface IContext {
   isSeller?: boolean;
   getUser: (token: string) => Promise<void>;
   logOut: () => void;
+  isLogged: () => void;
 }
 
 export const LoginContext = createContext({} as IContext);
@@ -64,6 +65,13 @@ export const LoginProvider: React.FC<{ children: React.ReactNode }> = ({
     return {};
   };
 
+  const isLogged = () => {
+    if (token.length <= 0) {
+      toast.warning("Você deve estar logado para continuar");
+      history.push("/login");
+    }
+  };
+
   const logOut = () => {
     const theme = localStorage.getItem("@MotorShop:Theme.mode");
     localStorage.clear();
@@ -75,7 +83,7 @@ export const LoginProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <LoginContext.Provider
-      value={{ token, loginUser, isSeller, getUser, logOut }}
+      value={{ token, loginUser, isSeller, getUser, logOut, isLogged }}
     >
       {children}
     </LoginContext.Provider>

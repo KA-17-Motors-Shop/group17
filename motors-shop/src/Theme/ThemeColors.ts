@@ -1,6 +1,6 @@
-import { IThemeColors } from "styled-components";
+import { DefaultTheme } from "styled-components";
 
-export const lightTheme: IThemeColors = {
+export const lightTheme: DefaultTheme = {
   logoColors: {
     bigTitle: "#0b0d0d",
     smallTitle: "#4529e6",
@@ -151,7 +151,7 @@ export const lightTheme: IThemeColors = {
   },
 };
 
-export const darkTheme: IThemeColors = {
+export const darkTheme: DefaultTheme = {
   logoColors: {
     bigTitle: "#DEE2E6",
     smallTitle: "#4529e6",

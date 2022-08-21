@@ -1,25 +1,25 @@
 import "styled-components";
 declare module "styled-components" {
-  export interface IThemeColors {
+  export interface DefaultTheme {
     logoColors: {
-      bigTitle: String;
-      smallTitle: String;
+      bigTitle: string;
+      smallTitle: string;
     };
     backgroundColors: {
-      generalBackground: String;
-      headerBackground: String;
-      secondaryBackground: String;
-      bannerBackground: String;
+      generalBackground: string;
+      headerBackground: string;
+      secondaryBackground: string;
+      bannerBackground: string;
     };
     borders: {
-      headerBorder: String;
+      headerBorder: string;
     };
     textColors: {
-      title: String;
-      subTitle: String;
-      primaryText: String;
-      secondaryText: String;
-      spantext: String;
+      title: string;
+      subTitle: string;
+      primaryText: string;
+      secondaryText: string;
+      spantext: string;
     };
     buttons: {
       primary: {
@@ -108,46 +108,46 @@ declare module "styled-components" {
       };
     };
     brand: {
-      brand1: String;
-      brand2: String;
-      brand3: String;
-      brand4: String;
+      brand1: string;
+      brand2: string;
+      brand3: string;
+      brand4: string;
     };
     greyScale: {
-      grey0: String;
-      grey1: String;
-      grey2: String;
-      grey3: String;
-      grey4: String;
-      grey5: String;
-      grey6: String;
-      grey7: String;
-      grey8: String;
-      grey9: String;
-      grey10: String;
-      whiteFixed: String;
+      grey0: string;
+      grey1: string;
+      grey2: string;
+      grey3: string;
+      grey4: string;
+      grey5: string;
+      grey6: string;
+      grey7: string;
+      grey8: string;
+      grey9: string;
+      grey10: string;
+      whiteFixed: string;
     };
     feedBack: {
-      alert1: String;
-      alert2: String;
-      alert3: String;
-      sucess1: String;
-      sucess2: String;
-      sucess3: String;
+      alert1: string;
+      alert2: string;
+      alert3: string;
+      sucess1: string;
+      sucess2: string;
+      sucess3: string;
     };
     colorRandomProfile: {
-      random1: String;
-      random2: String;
-      random3: String;
-      random4: String;
-      random5: String;
-      random6: String;
-      random7: String;
-      random8: String;
-      random9: String;
-      random10: String;
-      random11: String;
-      random12: String;
+      random1: string;
+      random2: string;
+      random3: string;
+      random4: string;
+      random5: string;
+      random6: string;
+      random7: string;
+      random8: string;
+      random9: string;
+      random10: string;
+      random11: string;
+      random12: string;
     };
   }
 }
