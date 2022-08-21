@@ -6,7 +6,7 @@ import { TitleContainer, CardContainer } from "./styles";
 const MotorcyclesList: React.FC = () => {
   return (
     <>
-      <TitleContainer>Carros</TitleContainer>
+      <TitleContainer>Motos</TitleContainer>
       <CardContainer>
         {Array.from({ length: 10 }).map((_, index) => (
           <Card key={index} IMG={IMG_MOTO} />
