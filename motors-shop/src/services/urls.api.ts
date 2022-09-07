@@ -7,3 +7,7 @@ export const motorShopAPI = axios.create({
 export const viaCepAPI = axios.create({
   baseURL: "https://viacep.com.br/",
 });
+
+export const APILocal = axios.create({
+  baseURL: "http://localhost:6000/",
+});
