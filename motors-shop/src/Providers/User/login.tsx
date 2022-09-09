@@ -23,14 +23,18 @@ export const LoginProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const history = useHistory();
+
   const [token, setToken] = useState(
     localStorage.getItem("@token:Motor") || ""
   );
+
   const [isSeller, setIsSeller] = useState(() => {
     const seller = localStorage.getItem("@seller:Motor");
+
     if (seller) {
       return JSON.parse(seller);
     }
+
     return false;
   });
 

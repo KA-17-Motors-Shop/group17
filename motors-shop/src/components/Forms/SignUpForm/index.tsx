@@ -90,9 +90,9 @@ const FormSingUp: React.FC = () => {
   const { address, verifyZipCode } = useZipCode();
   const history = useHistory();
 
-  const handleRegister = (data: IRegister) => {
+  const handleRegister = async (data: IRegister) => {
     delete data.confirmPassword;
-    registerUser({ ...data, typeAccount });
+    await registerUser({ ...data, typeAccount });
   };
 
   return (
