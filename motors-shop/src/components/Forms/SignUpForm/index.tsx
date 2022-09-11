@@ -10,7 +10,7 @@ import SelectType from "./SelectType";
 import { useState } from "react";
 import MaskInput from "../../Input/MaskInput";
 import { useRegister } from "../../../Providers/User/register";
-import { useZipCode } from "../../../Providers/User/cepValidation";
+// import { useZipCode } from "../../../Providers/User/cepValidation";
 import { useHistory } from "react-router-dom";
 
 interface IRegister {
@@ -87,12 +87,12 @@ const FormSingUp: React.FC = () => {
 
   const [typeAccount, setTypeAccount] = useState("client");
   const { registerUser } = useRegister();
-  const { address, verifyZipCode } = useZipCode();
+  // const { address, verifyZipCode } = useZipCode();
   const history = useHistory();
 
   const handleRegister = async (data: IRegister) => {
     delete data.confirmPassword;
-    await registerUser({ ...data, typeAccount });
+    await registerUser({ ...data, typeAccount: typeAccount });
   };
 
   return (
@@ -154,9 +154,9 @@ const FormSingUp: React.FC = () => {
           error={errors.zipCode?.message}
           placeholder="CEP..."
           mask="99999-999"
-          onChange={(e) => {
-            verifyZipCode(e.target.value);
-          }}
+          // onChange={(e) => {
+          //   verifyZipCode(e.target.value);
+          // }}
         />
         <GeneralInput
           label="Estado"
@@ -164,7 +164,7 @@ const FormSingUp: React.FC = () => {
           name={"state"}
           error={errors.state?.message}
           placeholder="Estado..."
-          defaultValue={address.uf}
+          // defaultValue={address.uf}
         />
         <GeneralInput
           label="Cidade"
@@ -172,7 +172,7 @@ const FormSingUp: React.FC = () => {
           name={"city"}
           error={errors.city?.message}
           placeholder="Cidade..."
-          defaultValue={address.localidade}
+          // defaultValue={address.localidade}
         />
         <GeneralInput
           label="Rua"
@@ -180,7 +180,7 @@ const FormSingUp: React.FC = () => {
           name={"street"}
           error={errors.street?.message}
           placeholder="Rua..."
-          defaultValue={address.logradouro}
+          // defaultValue={address.logradouro}
         />
         <GeneralInput
           label="Número"
@@ -196,7 +196,7 @@ const FormSingUp: React.FC = () => {
           name={"complement"}
           error={errors.complement?.message}
           placeholder="Complemento..."
-          defaultValue={address.complemento}
+          // defaultValue={address.complemento}
         />
         <SpanText>Tipo de conta</SpanText>
         <SelectType value={typeAccount} setValue={setTypeAccount} />

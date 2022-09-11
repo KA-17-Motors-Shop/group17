@@ -1,8 +1,8 @@
 import React, { createContext, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-import { APILocal, motorShopAPI } from "../../services/urls.api";
-
+import { APILocal } from "../../services/urls.api";
+// import { motorShopAPI }from "../../services/urls.api";
 interface IRegister {
   name?: string;
   email?: string;
@@ -35,6 +35,7 @@ export const RegisterProvider: React.FC<{ children: React.ReactNode }> = ({
     const isSeller = data.typeAccount === "client" ? false : true;
 
     delete data.typeAccount;
+    console.log(data);
     await APILocal.post("/users/signup", { ...data, isSeller })
       .then((res) => {
         console.log(res);
@@ -42,7 +43,9 @@ export const RegisterProvider: React.FC<{ children: React.ReactNode }> = ({
         history.push("/login");
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response.data);
+        console.log(err.response.status);
+        console.log(err.response.headers);
         toast.warning(err.response.data.message);
       });
   };

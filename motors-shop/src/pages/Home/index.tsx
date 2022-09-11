@@ -16,6 +16,8 @@ const Home: React.FC = () => {
 
   const [user, setUser] = useState<IUser>({});
 
+  console.log(user);
+
   const handleAuth = useCallback(async () => {
     const user = await getUser(token as string);
     setUser(user!);

@@ -1,60 +1,20 @@
 import React, { createContext, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-import { APILocal, motorShopAPI } from "../../services/urls.api";
+import { APILocal } from "../../services/urls.api";
+// import { motorShopAPI }from "../../services/urls.api";
+
+import { IRegisterAuction } from "../../interfaces/auction";
 
 type IAuctionTypeContext = {
   auction: IRegisterAuction;
   registerAuction: (data: IRegisterAuction) => Promise<void>;
 };
 
-enum type {
-  auction = "auction",
-  sale = "sale",
-}
-
-enum typeVehicle {
-  car = "car",
-  motocycle = "motocycle",
-}
-
-interface IRegisterAuction {
-  title?: string;
-  description?: string;
-  year?: string;
-  km?: string;
-  price?: number;
-  isActive?: boolean;
-  type?: type;
-  typeVehicle?: typeVehicle;
-  limitDate?: string;
-  images?: string;
-}
-
-// interface IAuctionRes {
-//   id?: string;
-//   title?: string;
-//   description?: string;
-//   price?: number;
-//   km?: string;
-//   year?: string;
-//   type?: type;
-//   typeVehicle?: typeVehicle;
-//   isActive?: boolean;
-//   limitDate?: string;
-//   publishedData?: string;
-//   sellerId?: string;
-//   status?: string;
-// }
-
 const initialValue = {
   auction: {},
   registerAuction: async () => {},
 };
-
-// interface IContextAuction {
-//   registerAuction: (data: IRegisterAuction) => Promise<void>;
-// }
 
 export const RegisterAuctionContext =
   createContext<IAuctionTypeContext>(initialValue);
@@ -90,4 +50,4 @@ export const RegisterAuctionProvider: React.FC<{
   );
 };
 
-export const AuctionRegister = () => useContext(RegisterAuctionContext);
+export const useAuctionRegister = () => useContext(RegisterAuctionContext);
