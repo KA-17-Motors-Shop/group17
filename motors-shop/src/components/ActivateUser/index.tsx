@@ -1,5 +1,5 @@
 import { useState } from "react";
-import GeneralInput from "../Input/GeneralInput";
+import GeneralInput from "../Forms/Components/Inputs/GeneralInput";
 import Modal from "../Modal";
 import {
   ButtonActivate,

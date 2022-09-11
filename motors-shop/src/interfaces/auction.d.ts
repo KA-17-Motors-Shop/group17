@@ -11,6 +11,14 @@ export interface IRegisterAuction {
   images?: string;
 }
 
+export interface IDataAuction {
+  title?: string;
+  description?: string;
+  year?: string;
+  km?: string;
+  price?: number;
+}
+
 export interface IAuctionRes {
   id?: string;
   title?: string;

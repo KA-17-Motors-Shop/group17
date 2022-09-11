@@ -3,32 +3,16 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 import { ButtonOutline2, ButtonPrimary } from "../../Button";
-import GeneralInput from "../../Input/GeneralInput";
+import GeneralInput from "../Components/Inputs/GeneralInput";
 import { Container, FooterForm, InputsContainer, SpanText } from "./styles";
-import InputPassword from "../../Input/InputPassword";
-import SelectType from "./SelectType";
+import InputPassword from "../Components/Inputs/InputPassword";
+import { SelectTypeAccount } from "../Components/SelectType";
 import { useState } from "react";
-import MaskInput from "../../Input/MaskInput";
+import MaskInput from "../Components/Inputs/MaskInput";
 import { useRegister } from "../../../Providers/User/register";
 // import { useZipCode } from "../../../Providers/User/cepValidation";
 import { useHistory } from "react-router-dom";
-
-interface IRegister {
-  email?: string;
-  password?: string;
-  name?: string;
-  cpf?: string;
-  phone?: string;
-  birhtDate?: string;
-  description?: string;
-  zipCode?: string;
-  state?: string;
-  city?: string;
-  street?: string;
-  number?: string;
-  complement?: string;
-  confirmPassword?: string;
-}
+import { IUserRegister } from "../../../interfaces/user";
 
 const FormSingUp: React.FC = () => {
   const schema = yup.object().shape({
@@ -90,7 +74,7 @@ const FormSingUp: React.FC = () => {
   // const { address, verifyZipCode } = useZipCode();
   const history = useHistory();
 
-  const handleRegister = async (data: IRegister) => {
+  const handleRegister = async (data: IUserRegister) => {
     delete data.confirmPassword;
     await registerUser({ ...data, typeAccount: typeAccount });
   };
@@ -199,7 +183,7 @@ const FormSingUp: React.FC = () => {
           // defaultValue={address.complemento}
         />
         <SpanText>Tipo de conta</SpanText>
-        <SelectType value={typeAccount} setValue={setTypeAccount} />
+        <SelectTypeAccount value={typeAccount} setValue={setTypeAccount} />
         <InputPassword
           label="Senha"
           register={register}

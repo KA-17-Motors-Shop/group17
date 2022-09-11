@@ -1,7 +1,7 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import GeneralInput from "../../Input/GeneralInput";
+import GeneralInput from "../../Forms/Components/Inputs/GeneralInput";
 import { ButtonPrimary } from "../../Button";
 import { Form } from "./styles";
 

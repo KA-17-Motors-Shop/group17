@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 import { ButtonOutline2, ButtonPrimary } from "../../Button";
-import GeneralInput from "../../Input/GeneralInput";
+import GeneralInput from "../Components/Inputs/GeneralInput";
 import {
   Container,
   FooterForm,
@@ -11,7 +11,7 @@ import {
   RequestPassword,
   SpanText,
 } from "./styles";
-import InputPassword from "../../Input/InputPassword";
+import InputPassword from "../Components/Inputs/InputPassword";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import Modal from "../../Modal";
