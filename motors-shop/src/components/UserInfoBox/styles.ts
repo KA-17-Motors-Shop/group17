@@ -3,8 +3,9 @@ import styled from "styled-components";
 export const UserInfoBoxContainer = styled.div`
   width: 90%;
   border-radius: 4px;
-  padding: 30px 20px 30px 20px;
+  padding: 6px 20px 30px 20px;
   background-color: ${({ theme }) => theme.greyScale.grey10};
+  margin-top: 150px;
   p {
     font-weight: 400;
     font-size: 16px;

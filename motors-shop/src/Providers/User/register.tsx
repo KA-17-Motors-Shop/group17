@@ -1,8 +1,8 @@
 import React, { createContext, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-import { APILocal } from "../../services/urls.api";
-// import { motorShopAPI }from "../../services/urls.api";
+import { motorShopAPI } from "../../services/urls.api";
+
 interface IRegister {
   name?: string;
   email?: string;
@@ -35,8 +35,9 @@ export const RegisterProvider: React.FC<{ children: React.ReactNode }> = ({
     const isSeller = data.typeAccount === "client" ? false : true;
 
     delete data.typeAccount;
-    console.log(data);
-    await APILocal.post("/users/signup", { ...data, isSeller })
+
+    await motorShopAPI
+      .post("/users/signup", { ...data, isSeller })
       .then((res) => {
         console.log(res);
         toast.success("Cadastro feito com sucesso!");
