@@ -28,9 +28,16 @@ export const RegisterAuctionProvider: React.FC<{
 
   const registerAuction = async (data: IRegisterAuction) => {
     const token = localStorage.getItem("@token:Motor");
-    await APILocal.post("/announcement/", data, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    const isActive = true;
+    const limitDate = new Date();
+
+    await APILocal.post(
+      "/announcement/",
+      { ...data, isActive: isActive, limitDate: limitDate },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
       .then((res) => {
         console.log("Auction-->", res);
         setAuction(res);

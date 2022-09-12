@@ -2,8 +2,8 @@ import React, { createContext, useContext } from "react";
 import { toast } from "react-toastify";
 import { useUser } from "./login";
 
-import { APILocal } from "../../services/urls.api";
-// import { motorShopAPI }from "../../services/urls.api";
+// import { APILocal } from "../../services/urls.api";
+import { motorShopAPI } from "../../services/urls.api";
 interface IContext {
   activateUser: (code: string) => Promise<boolean>;
   recoveryNewCode: () => Promise<void>;
@@ -17,7 +17,8 @@ export const ActivateProvider: React.FC<{ children: React.ReactNode }> = ({
   const { getUser, token } = useUser();
 
   const activateUser = async (code: string) => {
-    return await APILocal.patch(`/users/activate/${code}`)
+    return await motorShopAPI
+      .patch(`/users/activate/${code}`)
       .then(async (res) => {
         toast.success("Usuário ativado com sucesso!");
         await getUser(token!);
@@ -30,9 +31,10 @@ export const ActivateProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const recoveryNewCode = async () => {
-    await APILocal.get(`users/recovery/code`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    await motorShopAPI
+      .get(`users/recovery/code`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then(async (_) =>
         toast.success("O código foi enviado para o seu e-mail")
       )

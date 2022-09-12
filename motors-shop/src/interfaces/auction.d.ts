@@ -5,8 +5,8 @@ export interface IRegisterAuction {
   km?: string;
   price?: number;
   isActive?: boolean;
-  type?: type;
-  typeVehicle?: typeVehicle;
+  type?: string;
+  typeVehicle?: string;
   limitDate?: string;
   images?: string;
 }

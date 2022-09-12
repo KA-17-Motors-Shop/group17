@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-import { APILocal } from "../../services/urls.api";
-// import { motorShopAPI }from "../../services/urls.api";
+// import { APILocal } from "../../services/urls.api";
+import { motorShopAPI } from "../../services/urls.api";
 
 interface ILogin {
   email?: string;
@@ -40,7 +40,8 @@ export const LoginProvider: React.FC<{ children: React.ReactNode }> = ({
   });
 
   const loginUser = async (data: ILogin) => {
-    await APILocal.post("/users/signin", data)
+    await motorShopAPI
+      .post("/users/signin", data)
       .then(async (res) => {
         setToken(res.data.token);
         localStorage.setItem("@token:Motor", res.data.token);
@@ -55,9 +56,10 @@ export const LoginProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const getUser = async (token: string) => {
     if (token !== "") {
-      const response = await APILocal.get("/users/me", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      const response = await motorShopAPI
+        .get("/users/me", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
         .then((res) => {
           setIsSeller(res.data.isSeller);
           localStorage.setItem("@seller:Motor", res.data.isSeller);

@@ -2,23 +2,7 @@ import React, { createContext, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { motorShopAPI } from "../../services/urls.api";
-
-interface IRegister {
-  name?: string;
-  email?: string;
-  cpf?: string;
-  phone?: string;
-  birhtDate?: string | Date;
-  description?: string;
-  password?: string;
-  typeAccount?: string;
-  zipCode?: string;
-  state?: string;
-  city?: string;
-  street?: string;
-  number?: number | string;
-  complement?: string;
-}
+import { IRegister } from "../../interfaces/user";
 
 interface IContext {
   registerUser: (data: IRegister) => Promise<void>;

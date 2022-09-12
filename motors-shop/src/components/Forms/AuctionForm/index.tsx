@@ -6,7 +6,6 @@ import { useState } from "react";
 import { useAuctionRegister } from "../../../Providers/Auction/register";
 
 import GeneralInput from "../Components/Inputs/GeneralInput";
-// import MaskInput from "../Components/Inputs/MaskInput";
 import { ButtonOutline2, ButtonPrimary } from "../../Button";
 import { SelectTypeSale, SelectTypeVehicle } from "../Components/SelectType";
 
@@ -51,7 +50,7 @@ const AuctionForm: React.FC = () => {
   };
 
   return (
-    <S.ContainerForm>
+    <S.ContainerForm onSubmit={handleSubmit(handleRegister)}>
       <h1>Criar Anuncio</h1>
 
       <S.InputsContainer>
@@ -59,7 +58,53 @@ const AuctionForm: React.FC = () => {
         <SelectTypeSale value={typeSale} setValue={setTypeSale} />
 
         <S.SpanText>Informações do veiculo</S.SpanText>
+        <GeneralInput
+          label="Título"
+          register={register}
+          name={"title"}
+          error={errors.title?.message}
+          placeholder="Digitar título"
+        />
+        <div>
+          <GeneralInput
+            label="Ano"
+            register={register}
+            name={"year"}
+            error={errors.year?.message}
+            placeholder="Digitar ano"
+          />
+          <GeneralInput
+            label="Quilometragem"
+            register={register}
+            name={"km"}
+            error={errors.km?.message}
+            placeholder="0"
+          />
+          <GeneralInput
+            label="Preço"
+            register={register}
+            name={"price"}
+            error={errors.price?.message}
+            placeholder="Digitar preço"
+          />
+        </div>
+        <GeneralInput
+          label="Descrição"
+          register={register}
+          name={"description"}
+          error={errors.description?.message}
+          placeholder="Digitar descrição"
+        />
+
+        <S.SpanText>Tipo do veiculo</S.SpanText>
+        <SelectTypeVehicle value={typeVehicle} setValue={setTypeVehicle} />
       </S.InputsContainer>
+      <div>
+        <ButtonOutline2 type="button" onClick={() => "Close"}>
+          Cancelar
+        </ButtonOutline2>
+        <ButtonPrimary type="submit">Criar anúncio</ButtonPrimary>
+      </div>
     </S.ContainerForm>
   );
 };

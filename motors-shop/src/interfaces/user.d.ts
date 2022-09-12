@@ -26,3 +26,20 @@ export interface IUserRegister {
   complement?: string;
   confirmPassword?: string;
 }
+
+export interface IRegister {
+  name?: string;
+  email?: string;
+  cpf?: string;
+  phone?: string;
+  birhtDate?: string | Date;
+  description?: string;
+  password?: string;
+  typeAccount?: string;
+  zipCode?: string;
+  state?: string;
+  city?: string;
+  street?: string;
+  number?: number | string;
+  complement?: string;
+}
