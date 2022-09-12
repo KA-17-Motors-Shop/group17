@@ -1,4 +1,4 @@
-import IMG_PROFILE from "../../assets/img/default_profile.png";
+import IMG_PROFILE from "../../../assets/img/default_profile.png";
 
 import {
   BaseboardContainer,
@@ -10,7 +10,7 @@ import {
   TagContainer,
 } from "./styles";
 
-const Card: React.FC<{ IMG: string }> = ({ IMG }): JSX.Element => {
+const VehicleCard: React.FC<{ IMG: string }> = ({ IMG }): JSX.Element => {
   return (
     <CardContainer>
       <ImgContainer>
@@ -44,4 +44,4 @@ const Card: React.FC<{ IMG: string }> = ({ IMG }): JSX.Element => {
   );
 };
 
-export default Card;
+export default VehicleCard;

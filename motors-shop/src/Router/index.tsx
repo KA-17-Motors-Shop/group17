@@ -14,7 +14,7 @@ const Router: React.FC = () => {
       <Route exact path={"/"} component={Home} />
       <Route exact path={"/login"} component={Login} />
       <Route exact path={"/register"} component={Register} />
-      <Route exact path={"/dashboard"} component={Dashboard} />
+      <Route exact path={"/preview"} component={Dashboard} />
       <Route exact path={"/ad_details"} component={AdDetails} />
       <Route exact path={"/profile"} component={ProfileViewUser} />
       <Route exact path={"/:not_found"} component={PageNotFound} />

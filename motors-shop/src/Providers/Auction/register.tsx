@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-import { APILocal } from "../../services/urls.api";
-// import { motorShopAPI }from "../../services/urls.api";
+
+import { motorShopAPI } from "../../services/urls.api";
 
 import { IRegisterAuction } from "../../interfaces/auction";
 
@@ -29,15 +29,15 @@ export const RegisterAuctionProvider: React.FC<{
   const registerAuction = async (data: IRegisterAuction) => {
     const token = localStorage.getItem("@token:Motor");
     const isActive = true;
-    const limitDate = new Date();
 
-    await APILocal.post(
-      "/announcement/",
-      { ...data, isActive: isActive, limitDate: limitDate },
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    )
+    await motorShopAPI
+      .post(
+        "/announcement/",
+        { ...data, isActive: isActive },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
       .then((res) => {
         console.log("Auction-->", res);
         setAuction(res);

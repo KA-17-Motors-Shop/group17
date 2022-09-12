@@ -1,6 +1,6 @@
 import IMG_MOTO from "../../../assets/img/vehicles/moto_teste.png";
 
-import Card from "../../Card";
+import VehicleCard from "../../Card/VehicleCard";
 import { TitleContainer, CardContainer } from "./styles";
 
 const MotorcyclesList: React.FC = () => {
@@ -9,7 +9,7 @@ const MotorcyclesList: React.FC = () => {
       <TitleContainer>Motos</TitleContainer>
       <CardContainer>
         {Array.from({ length: 10 }).map((_, index) => (
-          <Card key={index} IMG={IMG_MOTO} />
+          <VehicleCard key={index} IMG={IMG_MOTO} />
         ))}
       </CardContainer>
     </>

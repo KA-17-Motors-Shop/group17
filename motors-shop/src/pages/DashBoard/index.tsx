@@ -1,17 +1,19 @@
-import Header from "../../components/Header"
+import BannerDash from "../../components/Banners/BannerDash";
+// import ShowButtons from "../../components/Button/ShowButtons";
+import Header from "../../components/Header";
 
 import * as S from "./styles";
 
 const Dashboard: React.FC = () => {
-
   return (
     <S.Page>
-      <Header/>
+      <Header />
       <S.Main>
-        <h1>Criar leiloes</h1>
-        <h1>Lista de leiloẽs</h1>
+        <BannerDash />
+        {/* <div>
+          <ShowButtons />
+        </div> */}
       </S.Main>
-
     </S.Page>
   );
 };

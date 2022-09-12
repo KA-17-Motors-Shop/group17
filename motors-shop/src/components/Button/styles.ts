@@ -138,17 +138,13 @@ export const Light = styled.div`
 `;
 
 export const OutlineLight = styled.div`
-  width: auto;
-  height: auto;
   button {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
     padding: 12px 28px;
-    background-color: ${({ theme }) => theme.buttons.outlineLight.background};
+    background-color: ${({ theme }) => theme.buttons.outlineLight.hover};
     border: 1.5px solid ${({ theme }) => theme.buttons.outlineLight.border};
     color: ${({ theme }) => theme.buttons.outlineLight.color};
 

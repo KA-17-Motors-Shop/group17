@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import ActivateUserSpan from "../../components/ActivateUser";
-import BannerMain from "../../components/BannerMain";
+import BannerHome from "../../components/Banners/BannerHome";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import AuctionList from "../../components/Lists/AuctionList";
@@ -32,7 +32,7 @@ const Home: React.FC = () => {
       <Header />
       <Main>
         {user.isActivate === false && <ActivateUserSpan />}
-        <BannerMain />
+        <BannerHome />
 
         <AuctionList />
         <CarsList />
