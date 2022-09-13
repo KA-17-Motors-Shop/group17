@@ -1,9 +1,11 @@
 import BannerDash from "../../components/Banners/BannerDash";
-// import ShowButtons from "../../components/Button/ShowButtons";
+
 import Header from "../../components/Header";
 import Modal from "../../components/Modals";
+// import ShowButtons from "../../components/Button/ShowButtons";
 // import CreateAd from "../../components/Modals/CreateAd";
-import UpdateAd from "../../components/Modals/UpdateAd";
+// import UpdateAd from "../../components/Modals/UpdateAd";
+import ImgVehicle from "../../components/Modals/ImgVehicle";
 import { useState } from "react";
 import * as S from "./styles";
 
@@ -15,7 +17,7 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <Modal show={modal} close={handleModal} height="36rem" width="100%">
-        <UpdateAd handleModal={handleModal} />
+        <ImgVehicle handleModal={handleModal} />
       </Modal>
       <S.Page>
         <Header />
@@ -26,7 +28,7 @@ const Dashboard: React.FC = () => {
           </div> */}
 
           <button onClick={handleModal} type="button">
-            Editar Anuncio
+            Imagem do Veiculo
           </button>
         </S.Main>
       </S.Page>
