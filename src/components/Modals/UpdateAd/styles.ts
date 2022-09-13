@@ -8,7 +8,7 @@ export const Centralize = styled.div`
 export const ContainerForm = styled.form`
   display: flex;
   width: 520px;
-  height: 1036px;
+  height: 1310px;
 
   padding: 1rem;
 
@@ -90,5 +90,6 @@ export const BtnAddImg = styled.div`
 export const BottoModal = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin-left: 7rem;
+  margin-left: 2rem;
+  margin-top: 3rem;
 `;

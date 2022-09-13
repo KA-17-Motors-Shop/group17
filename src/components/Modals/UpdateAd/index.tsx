@@ -12,6 +12,7 @@ import {
   ButtonPrimaryOpacity,
 } from "../../Button";
 import {
+  SelectTypePublished,
   SelectTypeSale,
   SelectTypeVehicle,
 } from "../../Forms/Components/SelectType";
@@ -27,7 +28,7 @@ interface IHandleModal {
   handleModal: () => void;
 }
 
-const CreateAd = ({ handleModal }: IHandleModal) => {
+const UpdateAd = ({ handleModal }: IHandleModal) => {
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
     description: yup.string().required("Campo obrigatório"),
@@ -52,6 +53,7 @@ const CreateAd = ({ handleModal }: IHandleModal) => {
 
   const [typeSale, setTypeSale] = useState("sale");
   const [typeVehicle, setTypeVehicle] = useState("car");
+  const [typePubli, setTypePubli] = useState("no");
 
   const { registerAuction } = useAuctionRegister();
 
@@ -67,7 +69,7 @@ const CreateAd = ({ handleModal }: IHandleModal) => {
     <S.Centralize>
       <S.ContainerForm onSubmit={handleSubmit(handleRegister)}>
         <S.TopModal>
-          <h1>Criar Anuncio</h1>
+          <h1>Editar Anúncio</h1>
           <CloseModalBtn onClick={handleModal} />
         </S.TopModal>
 
@@ -118,6 +120,9 @@ const CreateAd = ({ handleModal }: IHandleModal) => {
           <S.SpanText>Tipo do veiculo</S.SpanText>
           <SelectTypeVehicle value={typeVehicle} setValue={setTypeVehicle} />
 
+          <S.SpanText>Publicado</S.SpanText>
+          <SelectTypePublished value={typePubli} setValue={setTypePubli} />
+
           <GeneralInput
             label="Imagem da capa"
             register={register}
@@ -133,6 +138,13 @@ const CreateAd = ({ handleModal }: IHandleModal) => {
             error={errors.image_1?.message}
             type={"file"}
           />
+          <GeneralInput
+            label="2º imagem da galeria"
+            register={register}
+            name={"image_2"}
+            error={errors.image_2?.message}
+            type={"file"}
+          />
           <S.BtnAddImg>
             <ButtonPrimaryOpacity type="button">
               Adicionar campo para imagem da galeria
@@ -141,10 +153,10 @@ const CreateAd = ({ handleModal }: IHandleModal) => {
         </S.InputsContainer>
         <S.BottoModal>
           <ButtonNegative type="button" onClick={handleModal}>
-            Cancelar
+            Excluir anúncio
           </ButtonNegative>
           <ButtonPrimaryDisable type="submit">
-            Criar anúncio
+            Salvar alterações
           </ButtonPrimaryDisable>
         </S.BottoModal>
       </S.ContainerForm>
@@ -152,4 +164,4 @@ const CreateAd = ({ handleModal }: IHandleModal) => {
   );
 };
 
-export default CreateAd;
+export default UpdateAd;
