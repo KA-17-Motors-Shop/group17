@@ -5,15 +5,29 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useAuctionRegister } from "../../../Providers/Auction/register";
 
-import GeneralInput from "../Components/Inputs/GeneralInput";
-import { ButtonOutline2, ButtonPrimary } from "../../Button";
-import { SelectTypeSale, SelectTypeVehicle } from "../Components/SelectType";
+import GeneralInput from "../../Forms/Components/Inputs/GeneralInput";
+import {
+  ButtonNegative,
+  ButtonPrimaryDisable,
+  ButtonPrimaryOpacity,
+} from "../../Button";
+import {
+  SelectTypeSale,
+  SelectTypeVehicle,
+} from "../../Forms/Components/SelectType";
 
 import * as S from "./styles";
 
 import { IDataAuction } from "../../../interfaces/auction";
 
-const AuctionForm: React.FC = () => {
+import { CloseModalBtn } from "../../Button/CloseModalBtn";
+import TextArea from "../../Forms/Components/TextArea";
+
+interface IHandleModal {
+  handleModal: () => void;
+}
+
+const CreateAd = ({ handleModal }: IHandleModal) => {
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
     description: yup.string().required("Campo obrigatório"),
@@ -51,7 +65,10 @@ const AuctionForm: React.FC = () => {
 
   return (
     <S.ContainerForm onSubmit={handleSubmit(handleRegister)}>
-      <h1>Criar Anuncio</h1>
+      <S.TopModal>
+        <h1>Criar Anuncio</h1>
+        <CloseModalBtn onClick={handleModal} />
+      </S.TopModal>
 
       <S.InputsContainer>
         <S.SpanText>Tipo de anuncio</S.SpanText>
@@ -65,7 +82,7 @@ const AuctionForm: React.FC = () => {
           error={errors.title?.message}
           placeholder="Digitar título"
         />
-        <div>
+        <S.RowInputsContainer>
           <GeneralInput
             label="Ano"
             register={register}
@@ -87,8 +104,9 @@ const AuctionForm: React.FC = () => {
             error={errors.price?.message}
             placeholder="Digitar preço"
           />
-        </div>
-        <GeneralInput
+        </S.RowInputsContainer>
+
+        <TextArea
           label="Descrição"
           register={register}
           name={"description"}
@@ -98,15 +116,36 @@ const AuctionForm: React.FC = () => {
 
         <S.SpanText>Tipo do veiculo</S.SpanText>
         <SelectTypeVehicle value={typeVehicle} setValue={setTypeVehicle} />
+
+        <GeneralInput
+          label="Imagem da capa"
+          register={register}
+          name={"image_primary"}
+          error={errors.image_primary?.message}
+          type={"file"}
+        />
+
+        <GeneralInput
+          label="1º imagem da galeria"
+          register={register}
+          name={"image_2"}
+          error={errors.image_2?.message}
+          type={"file"}
+        />
+        <S.BtnAddImg>
+          <ButtonPrimaryOpacity type="button">
+            Adicionar campo para imagem da galeria
+          </ButtonPrimaryOpacity>
+        </S.BtnAddImg>
       </S.InputsContainer>
-      <div>
-        <ButtonOutline2 type="button" onClick={() => "Close"}>
+      <S.BottoModal>
+        <ButtonNegative type="button" onClick={handleModal}>
           Cancelar
-        </ButtonOutline2>
-        <ButtonPrimary type="submit">Criar anúncio</ButtonPrimary>
-      </div>
+        </ButtonNegative>
+        <ButtonPrimaryDisable type="submit">Criar anúncio</ButtonPrimaryDisable>
+      </S.BottoModal>
     </S.ContainerForm>
   );
 };
 
-export default AuctionForm;
+export default CreateAd;
