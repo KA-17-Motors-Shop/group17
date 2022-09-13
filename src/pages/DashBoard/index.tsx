@@ -6,7 +6,9 @@ import Modal from "../../components/Modals";
 // import CreateAd from "../../components/Modals/CreateAd";
 // import UpdateAd from "../../components/Modals/UpdateAd";
 // import ImgVehicle from "../../components/Modals/ImgVehicle";
-import AccountSucess from "../../components/Modals/AccountSucess";
+// import AccountSucess from "../../components/Modals/AccountSucess";
+// import DeleteAd from "../../components/Modals/Ad/DeleteAd";
+import SucessAd from "../../components/Modals/Ad/SucessAd";
 import { useState } from "react";
 import * as S from "./styles";
 
@@ -18,7 +20,7 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <Modal show={modal} close={handleModal} height="36rem" width="100%">
-        <AccountSucess handleModal={handleModal} />
+        <SucessAd handleModal={handleModal} />
       </Modal>
       <S.Page>
         <Header />
@@ -29,7 +31,7 @@ const Dashboard: React.FC = () => {
           </div> */}
 
           <button onClick={handleModal} type="button">
-            Criar conta sucesso
+            Anuncio Criado sucesso
           </button>
         </S.Main>
       </S.Page>

@@ -3,25 +3,25 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 import { useState } from "react";
-import { useAuctionRegister } from "../../../Providers/Auction/register";
+import { useAuctionRegister } from "../../../../Providers/Auction/register";
 
-import GeneralInput from "../../Forms/Components/Inputs/GeneralInput";
+import GeneralInput from "../../../Forms/Components/Inputs/GeneralInput";
 import {
   ButtonNegative,
   ButtonPrimaryDisable,
   ButtonPrimaryOpacity,
-} from "../../Button";
+} from "../../../Button";
 import {
   SelectTypeSale,
   SelectTypeVehicle,
-} from "../../Forms/Components/SelectType";
+} from "../../../Forms/Components/SelectType";
 
 import * as S from "./styles";
 
-import { IDataAuction } from "../../../interfaces/auction";
+import { IDataAuction } from "../../../../interfaces/auction";
 
-import { CloseModalBtn } from "../../Button/CloseModalBtn";
-import TextArea from "../../Forms/Components/TextArea";
+import { CloseModalBtn } from "../../../Button/CloseModalBtn";
+import TextArea from "../../../Forms/Components/TextArea";
 
 interface IHandleModal {
   handleModal: () => void;
