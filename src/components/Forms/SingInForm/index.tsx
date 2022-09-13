@@ -18,6 +18,7 @@ import Modal from "../../Modal";
 import RecoveryPassword from "../../Modal/RecoveryPassword";
 
 import { useUser } from "../../../Providers/User/login";
+import { useLoad } from "../../../Providers/Loading";
 
 interface ILogin {
   email?: string;
@@ -43,7 +44,10 @@ const FormSingIn: React.FC = () => {
     resolver: yupResolver(schema),
   });
 
+  const { showLoad } = useLoad();
+
   const handleLogin = (data: ILogin) => {
+    showLoad();
     loginUser(data);
   };
 
