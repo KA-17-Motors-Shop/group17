@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const UserInfoBoxContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
   width: 90%;
   border-radius: 4px;
   padding: 6px 20px 30px 20px;
@@ -24,6 +28,17 @@ export const UserInfoBoxContainer = styled.div`
     width: 80%;
   }
 `;
+export const Avatar = styled.div`
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.brand.brand2};
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.greyScale.whiteFixed};
+  font-size: 2rem;
+`;
 
 export const TopImageContainer = styled.div`
   width: 104px;
@@ -37,6 +52,13 @@ export const TopImageContainer = styled.div`
     object-fit: cover;
     border-radius: 50%;
   }
+`;
+
+export const TopDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
 `;
 
 export const NameContainerWithTag = styled.div`
@@ -71,6 +93,22 @@ export const NameContainerWithTag = styled.div`
       font-size: 13px;
       width: 90px;
       height: 30px;
+    }
+  }
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 1rem;
+
+  > div {
+    padding: 0.5rem;
+    height: 100%;
+
+    button {
+      font-size: 0.8rem;
     }
   }
 `;
