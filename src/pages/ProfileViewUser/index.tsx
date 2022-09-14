@@ -9,11 +9,16 @@ import { ProfileViewUserContainer, ProfileMain } from "./styles";
 import { useUser } from "../../Providers/User/login";
 import { useCallback, useEffect, useState } from "react";
 import { IUser } from "../../interfaces/user";
+import EditProfile from "../../components/Modal/EditProfile";
+import CreateAnounce from "../../components/Modal/CreateAnounce";
 
 const ProfileViewUser: React.FC = (): JSX.Element => {
   const { token, getUser } = useUser();
 
   const [user, setUser] = useState<IUser>({});
+
+  const [editProfileModal, setEditProfileModal] = useState(false);
+  const [createAnunceModal, setCreateAnunceModal] = useState(false);
 
   const handleAuth = useCallback(async () => {
     const user = await getUser(token as string);
@@ -25,20 +30,32 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
   }, [handleAuth]);
 
   return (
-    <ProfileViewUserContainer>
-      <Header />
-      <ProfileMain>
-        <UserInfoBox
-          description={user.description as string}
-          userName={user.name as string}
-          typeUser={user.isSeller as boolean}
-        />
-        <AuctionList />
-        <CarsList />
-        <MotorcyclesList />
-      </ProfileMain>
-      <Footer />
-    </ProfileViewUserContainer>
+    <>
+      <EditProfile
+        show={editProfileModal}
+        handle={() => setEditProfileModal(false)}
+      />
+      <CreateAnounce
+        show={createAnunceModal}
+        handle={() => setCreateAnunceModal(false)}
+      />
+      <ProfileViewUserContainer>
+        <Header />
+        <ProfileMain>
+          <UserInfoBox
+            description={user.description as string}
+            userName={user.name as string}
+            typeUser={user.isSeller as boolean}
+            openProfileModal={() => setEditProfileModal(true)}
+            openAnounceModal={() => setCreateAnunceModal(true)}
+          />
+          <AuctionList />
+          <CarsList />
+          <MotorcyclesList />
+        </ProfileMain>
+        <Footer />
+      </ProfileViewUserContainer>
+    </>
   );
 };
 

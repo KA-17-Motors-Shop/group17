@@ -12,12 +12,16 @@ interface IProps {
   userName: string;
   description: string;
   typeUser: boolean;
+  openProfileModal: () => void;
+  openAnounceModal: () => void;
 }
 
 const UserInfoBox: React.FC<IProps> = ({
   userName,
   description,
   typeUser,
+  openAnounceModal,
+  openProfileModal,
 }): JSX.Element => {
   const avatarLetters = (name: string = "Usuário") => {
     if (name.split(" ").length > 1) {
@@ -37,8 +41,14 @@ const UserInfoBox: React.FC<IProps> = ({
       </TopDiv>
       <p>{description}</p>
       <ButtonsContainer>
-        <ButtonPrimaryOutline>Editar perfil</ButtonPrimaryOutline>
-        {typeUser && <ButtonPrimaryOutline>Criar anúncio</ButtonPrimaryOutline>}
+        <ButtonPrimaryOutline onClick={openProfileModal}>
+          Editar perfil
+        </ButtonPrimaryOutline>
+        {typeUser && (
+          <ButtonPrimaryOutline onClick={openAnounceModal}>
+            Criar anúncio
+          </ButtonPrimaryOutline>
+        )}
       </ButtonsContainer>
     </UserInfoBoxContainer>
   );
