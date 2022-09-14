@@ -9,7 +9,8 @@ import Modal from "../../components/Modals";
 // import AccountSucess from "../../components/Modals/AccountSucess";
 // import DeleteAd from "../../components/Modals/Ad/DeleteAd";
 // import SucessAd from "../../components/Modals/Ad/SucessAd";
-import UpdateProfile from "../../components/Modals/UpdateProfile";
+// import UpdateProfile from "../../components/Modals/UpdateProfile";
+import UpdateAddress from "../../components/Modals/UpdateAddress";
 
 import { useState } from "react";
 import * as S from "./styles";
@@ -22,7 +23,7 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <Modal show={modal} close={handleModal} height="36rem" width="100%">
-        <UpdateProfile handleModal={handleModal} />
+        <UpdateAddress handleModal={handleModal} />
       </Modal>
       <S.Page>
         <Header />
@@ -33,7 +34,7 @@ const Dashboard: React.FC = () => {
           </div> */}
 
           <button onClick={handleModal} type="button">
-            Editar Perfil
+            Editar Endereço
           </button>
         </S.Main>
       </S.Page>
