@@ -7,9 +7,9 @@ export const UserInfoBoxContainer = styled.div`
 
   width: 90%;
   border-radius: 4px;
-  padding: 6px 20px 30px 20px;
+  padding: 40px 29px 40px 29px;
   background-color: ${({ theme }) => theme.greyScale.grey10};
-  margin-top: 150px;
+  /* margin-top: 150px; */
   p {
     font-weight: 400;
     font-size: 16px;
@@ -20,10 +20,10 @@ export const UserInfoBoxContainer = styled.div`
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
   }
-
-  @media only screen and (min-width: 375px) {
-    padding: 40px 29px 40px 29px;
+  @media screen and (max-width: 425px) {
+    align-items: center;
   }
+
   @media only screen and (min-width: 768px) {
     width: 80%;
   }
@@ -59,6 +59,10 @@ export const TopDiv = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+
+  @media screen and (max-width: 425px) {
+    align-items: center;
+  }
 `;
 
 export const NameContainerWithTag = styled.div`
@@ -109,6 +113,12 @@ export const ButtonsContainer = styled.div`
 
     button {
       font-size: 0.8rem;
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    > div {
+      padding: 0;
     }
   }
 `;
