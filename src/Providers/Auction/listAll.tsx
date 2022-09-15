@@ -20,6 +20,8 @@ interface IListContext {
   }: IFiltersParams) => Promise<IAuctionRes[]>;
   getMySales: () => Promise<IAuctionRes[]>;
   getMyAuctions: () => Promise<IAuctionRes[]>;
+  getAnnounce: (id: string) => Promise<IAuctionRes>;
+  getAnnounceBySeller: (id: string) => Promise<IAuctionRes[]>;
 }
 
 export const ListAnounceContext = createContext({} as IListContext);
@@ -78,6 +80,32 @@ export const ListAnounceProvider: React.FC<{
     return response;
   };
 
+  const getAnnounce = async (id: string) => {
+    const response = await motorShopAPI
+      .get(`/announcement/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => console.log(err));
+
+    return response;
+  };
+
+  const getAnnounceBySeller = async (id: string) => {
+    const response = await motorShopAPI
+      .get(`/announcement/seller/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => console.log(err));
+
+    return response;
+  };
+
   const getListFilter = async ({
     gtDataLimit,
     gtPrice,
@@ -100,8 +128,6 @@ export const ListAnounceProvider: React.FC<{
     }
     `;
 
-    console.log(`/announcement/?${filter}`);
-
     const response = await motorShopAPI
       .get(`/announcement/?${filter}`)
       .then((res) => {
@@ -115,11 +141,13 @@ export const ListAnounceProvider: React.FC<{
   return (
     <ListAnounceContext.Provider
       value={{
+        getAnnounceBySeller,
         getListAuction,
         getListFilter,
         getListSales,
         getMyAuctions,
         getMySales,
+        getAnnounce,
       }}
     >
       {children}

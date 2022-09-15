@@ -14,14 +14,19 @@ export const Title = styled.h2`
   font-weight: 600;
   font-size: 24px;
   color: ${({ theme }) => theme.textColors.primaryText};
-  width: 90%;
+`;
+
+export const Span = styled.h3`
+  font-family: "Lexend";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  color: ${({ theme }) => theme.textColors.primaryText};
 `;
 
 export const ContainerGroup = styled.ul`
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  overflow-x: scroll;
+  flex-direction: column;
   width: 90%;
   min-width: 300px;
 `;

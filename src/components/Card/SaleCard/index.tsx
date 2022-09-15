@@ -7,6 +7,7 @@ import {
   CardContainer,
   ImgContainer,
   TagContainer,
+  AvatarContainer,
 } from "./styles";
 import Avatar from "../../Avatar";
 
@@ -20,9 +21,9 @@ const SaleCard: React.FC<{ announce: IAuctionRes }> = ({
       </ImgContainer>
       <h2>{announce.title}</h2>
       <p>{announce.description}</p>
-
-      <Avatar userName={announce.seller?.name as string} />
-
+      <AvatarContainer>
+        <Avatar userName={announce.seller?.name as string} />
+      </AvatarContainer>
       <BaseboardContainer>
         <ParentTagContainer>
           <TagContainer>

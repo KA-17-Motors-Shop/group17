@@ -1,11 +1,9 @@
 import { TopImageContainer } from "./styles";
 
-const BigTopImage: React.FC<{ MERCEDES: string }> = ({
-  MERCEDES,
-}): JSX.Element => {
+const BigTopImage: React.FC<{ image: string }> = ({ image }): JSX.Element => {
   return (
     <TopImageContainer>
-      <img src={MERCEDES} alt="Imagem ilustrativa de veículos" />
+      <img src={image} alt="Imagem anúncio" />
     </TopImageContainer>
   );
 };

@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { IAuctionRes } from "../../../interfaces/auction";
 import Avatar from "../../Avatar";
 import Stopwatch from "../../Stopwatch";
@@ -16,6 +17,12 @@ import {
 } from "./styles";
 
 const AuctionCard: React.FC<{ announce: IAuctionRes }> = ({ announce }) => {
+  const history = useHistory();
+
+  const announcePage = () => {
+    history.push(`/ad_details?id=${announce.id}`);
+  };
+
   return (
     <CardAuction>
       <ContainerAuction image={announce.imagesUrl!}>
@@ -58,7 +65,7 @@ const AuctionCard: React.FC<{ announce: IAuctionRes }> = ({ announce }) => {
           </ContainerBottom>
         </ContainerInfo>
       </ContainerAuction>
-      <ButtonAuction>
+      <ButtonAuction onClick={announcePage}>
         Acessar a pagina do leilão
         <svg width="2em" height="1.5em" viewBox="0 0 15 15">
           <path

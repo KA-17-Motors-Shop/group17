@@ -12,26 +12,44 @@ import {
   TagContainer,
 } from "../Card/SaleCard/styles";
 
-const VehicleInformation: React.FC = (): JSX.Element => {
+interface IProps {
+  title: string;
+  year: string;
+  km: string;
+  price: string;
+  id: string;
+}
+
+const VehicleInformation: React.FC<IProps> = ({
+  km,
+  price,
+  title,
+  year,
+  id,
+}): JSX.Element => {
+  const buy = () => {
+    console.log(`COMPRAR ${id}`);
+  };
+
   return (
     <VehicleInformationContainer>
-      <TitleContainer>
-        Mercedes Benz A 200 CGI ADVANCE HATCH Mercedes Benz A 200
-      </TitleContainer>
+      <TitleContainer>{title}</TitleContainer>
       <MiddleContainer>
         <ParentTagContainer>
           <TagContainer>
-            <span>2022</span>
+            <span>{year}</span>
           </TagContainer>
           <TagContainer>
-            <span>0 KM</span>
+            <span>{km}km</span>
           </TagContainer>
         </ParentTagContainer>
         <PriceContainer>
-          <span>R$ 00.000,00</span>
+          <span>
+            R$ {parseInt(price).toFixed(2).toString().replace(".", ",")}
+          </span>
         </PriceContainer>
       </MiddleContainer>
-      <ButtonPrimary>Comprar</ButtonPrimary>
+      <ButtonPrimary onClick={buy}>Comprar</ButtonPrimary>
     </VehicleInformationContainer>
   );
 };

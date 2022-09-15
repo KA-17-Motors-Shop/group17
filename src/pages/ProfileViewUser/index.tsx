@@ -9,6 +9,7 @@ import { IUser } from "../../interfaces/user";
 import EditProfile from "../../components/Modal/EditProfile";
 import CreateAnounce from "../../components/Modal/CreateAnounce";
 import MyAnnouncesList from "../../components/MyAnnouncesList";
+import MyBidsList from "../../components/MyBidsList";
 
 const ProfileViewUser: React.FC = (): JSX.Element => {
   const { token, getUser } = useUser();
@@ -47,7 +48,7 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
             openProfileModal={() => setEditProfileModal(true)}
             openAnounceModal={() => setCreateAnunceModal(true)}
           />
-          <MyAnnouncesList />
+          {user.isSeller ? <MyAnnouncesList /> : <MyBidsList />}
         </ProfileMain>
         <Footer />
       </ProfileViewUserContainer>

@@ -34,6 +34,22 @@ export const CardContainer = styled.li`
   }
 `;
 
+export const AvatarContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+
+  > div {
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.6rem;
+  }
+  > span {
+    font-size: 18px;
+  }
+`;
+
 export const ImgContainer = styled.div`
   max-width: 100%;
   height: 152px;

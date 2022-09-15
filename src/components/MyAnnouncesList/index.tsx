@@ -3,7 +3,17 @@ import { IAuctionRes } from "../../interfaces/auction";
 import { useListAnnounces } from "../../Providers/Auction/listAll";
 import AuctionGroup from "./AuctionGroup";
 import SalesGroup from "./SalesGroup";
-import { Container, Title } from "./styles";
+import {
+  AnnounceContainer,
+  Container,
+  TabsList,
+  TabsRoot,
+  Title,
+  Trigger,
+} from "./styles";
+
+import * as Tabs from "@radix-ui/react-tabs";
+import MyBidsList from "../MyBidsList";
 
 const MyAnnouncesList: React.FC = () => {
   const [auctions, setAuctions] = useState<IAuctionRes[]>([]);
@@ -25,9 +35,21 @@ const MyAnnouncesList: React.FC = () => {
 
   return (
     <Container>
-      <Title>Meus Anúncios</Title>
-      <AuctionGroup auctions={auctions} />
-      <SalesGroup sales={sales} />
+      <TabsRoot defaultValue="announce" orientation="vertical">
+        <TabsList>
+          <Trigger value="announce">Anúncios</Trigger>
+          <Trigger value="bids">Lances</Trigger>
+        </TabsList>
+        <Tabs.Content value="announce">
+          <AnnounceContainer>
+            <AuctionGroup auctions={auctions} />
+            <SalesGroup sales={sales} />
+          </AnnounceContainer>
+        </Tabs.Content>
+        <Tabs.Content value="bids">
+          <MyBidsList />
+        </Tabs.Content>
+      </TabsRoot>
     </Container>
   );
 };
