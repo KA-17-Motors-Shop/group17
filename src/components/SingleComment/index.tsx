@@ -1,5 +1,5 @@
 import { SingleCommetContainer } from "./styles";
-import { NameContainer } from "../Card/VehicleCard/styles";
+import { NameContainer } from "../Card/SaleCard/styles";
 
 const SingleComment: React.FC<{ PROFILE: string }> = ({
   PROFILE,

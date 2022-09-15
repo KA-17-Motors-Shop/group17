@@ -2,6 +2,7 @@ import React, { createContext, useContext } from "react";
 import { IAuctionRes, IFiltersParams } from "../../interfaces/auction";
 
 import { motorShopAPI } from "../../services/urls.api";
+import { useUser } from "../User/login";
 
 interface IListContext {
   getListAuction: () => Promise<IAuctionRes[]>;
@@ -17,6 +18,8 @@ interface IListContext {
     type,
     typeVehicle,
   }: IFiltersParams) => Promise<IAuctionRes[]>;
+  getMySales: () => Promise<IAuctionRes[]>;
+  getMyAuctions: () => Promise<IAuctionRes[]>;
 }
 
 export const ListAnounceContext = createContext({} as IListContext);
@@ -24,6 +27,8 @@ export const ListAnounceContext = createContext({} as IListContext);
 export const ListAnounceProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
+  const { token } = useUser();
+
   const getListAuction = async () => {
     const response = await motorShopAPI
       .get("/announcement/?type=auction")
@@ -47,6 +52,32 @@ export const ListAnounceProvider: React.FC<{
     return response;
   };
 
+  const getMySales = async () => {
+    const response = await motorShopAPI
+      .get("/announcement/me/seller?type=sale", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => console.log(err));
+
+    return response;
+  };
+
+  const getMyAuctions = async () => {
+    const response = await motorShopAPI
+      .get("/announcement/me/seller?type=auction", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => console.log(err));
+
+    return response;
+  };
+
   const getListFilter = async ({
     gtDataLimit,
     gtPrice,
@@ -58,17 +89,18 @@ export const ListAnounceProvider: React.FC<{
     type,
     typeVehicle,
   }: IFiltersParams) => {
-    const filter = `
-    ${ltDataLimit && `ltDataLimit=${ltDataLimit}&`}
-    ${gtDataLimit && `gtDataLimit=${gtDataLimit}&`}
-    ${gtPrice && `gtPrice=${gtPrice}&`}
-    ${gtrYear && `gtrYear=${gtrYear}&`}
-    ${ltPrice && `ltPrice=${ltPrice}&`}
-    ${ltYear && `ltYear=${ltYear}&`}
-    ${title && `title=${title}&`}
-    ${type && `type=${type}&`}
-    ${typeVehicle && `typeVehicle=${typeVehicle}&`}
+    const filter = `${ltDataLimit ? `ltDataLimit=${ltDataLimit}&` : ``}${
+      gtDataLimit ? `gtDataLimit=${gtDataLimit}&` : ``
+    }${gtPrice ? `gtPrice=${gtPrice}&` : ``}${
+      gtrYear ? `gtrYear=${gtrYear}&` : ``
+    }${ltPrice ? `ltPrice=${ltPrice}&` : ``}${
+      ltYear ? `ltYear=${ltYear}&` : ``
+    }${title ? `title=${title}&` : ``}${type ? `type=${type}&` : ``}${
+      typeVehicle ? `typeVehicle=${typeVehicle}&` : ``
+    }
     `;
+
+    console.log(`/announcement/?${filter}`);
 
     const response = await motorShopAPI
       .get(`/announcement/?${filter}`)
@@ -82,7 +114,13 @@ export const ListAnounceProvider: React.FC<{
 
   return (
     <ListAnounceContext.Provider
-      value={{ getListAuction, getListFilter, getListSales }}
+      value={{
+        getListAuction,
+        getListFilter,
+        getListSales,
+        getMyAuctions,
+        getMySales,
+      }}
     >
       {children}
     </ListAnounceContext.Provider>

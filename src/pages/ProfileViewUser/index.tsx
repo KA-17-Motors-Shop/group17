@@ -1,17 +1,17 @@
 import UserInfoBox from "../../components/UserInfoBox";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import AuctionList from "../../components/Lists/AuctionList";
-import CarsList from "../../components/Lists/CarsList";
-import MotorcyclesList from "../../components/Lists/MotorcyclesList";
 
 import { ProfileViewUserContainer, ProfileMain } from "./styles";
 import { useUser } from "../../Providers/User/login";
 import { useCallback, useEffect, useState } from "react";
 import { IUser } from "../../interfaces/user";
+
 import UpdateProfile from "../../components/Modals/UpdateProfile";
 import CreateAd from "../../components/Modals/Ad/CreateAd";
 import Modal from "../../components/Modals";
+
+import MyAnnouncesList from "../../components/MyAnnouncesList";
 
 const ProfileViewUser: React.FC = (): JSX.Element => {
   const { token, getUser } = useUser();
@@ -54,12 +54,10 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
             description={user.description as string}
             userName={user.name as string}
             typeUser={user.isSeller as boolean}
-            openProfileModal={() => setEditProfileModal(true)}
-            openAnounceModal={() => setCreateAdModal(true)}
+            openProfileModal={handleModalProfile}
+            openAnounceModal={handleModalCreateAd}
           />
-          <AuctionList />
-          <CarsList />
-          <MotorcyclesList />
+          <MyAnnouncesList />
         </ProfileMain>
         <Footer />
       </ProfileViewUserContainer>

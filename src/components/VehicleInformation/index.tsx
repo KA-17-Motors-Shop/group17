@@ -10,7 +10,7 @@ import {
   ParentTagContainer,
   PriceContainer,
   TagContainer,
-} from "../Card/VehicleCard/styles";
+} from "../Card/SaleCard/styles";
 
 const VehicleInformation: React.FC = (): JSX.Element => {
   return (
