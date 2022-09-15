@@ -1,6 +1,34 @@
+import { useState } from "react";
 import { Container, Icon, Time } from "./styles";
 
-const Stopwatch: React.FC = () => {
+interface IProps {
+  publishedDate: string;
+  limitData: string;
+}
+
+const Stopwatch: React.FC<IProps> = ({ limitData, publishedDate }) => {
+  const [time, setTime] = useState("00:00:00");
+
+  const restTime = () => {
+    const endDate: any = new Date(limitData);
+    const startDate: any = new Date();
+    const difference = new Date(endDate - startDate);
+    return [
+      difference.getUTCHours(),
+      difference.getUTCMinutes(),
+      difference.getUTCSeconds(),
+    ];
+  };
+
+  setTimeout(() => {
+    const [hours, minutes, seconds] = restTime();
+    setTime(
+      `${hours <= 9 ? "0" + hours : hours}:${
+        minutes <= 9 ? "0" + minutes : minutes
+      }:${seconds <= 9 ? "0" + seconds : seconds}`
+    );
+  }, 1000);
+
   return (
     <Container>
       <Icon>
@@ -14,7 +42,7 @@ const Stopwatch: React.FC = () => {
         </svg>
       </Icon>
 
-      <Time>01:58:00</Time>
+      <Time>{time}</Time>
     </Container>
   );
 };

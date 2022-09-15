@@ -2,8 +2,6 @@ import React from "react";
 import Modal from "../index";
 import { Container } from "./styles";
 
-// import { Container } from './styles';
-
 interface IProps {
   show: boolean;
   handle: () => void;

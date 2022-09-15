@@ -33,7 +33,6 @@ const Home: React.FC = () => {
       <Main>
         {user.isActivate === false && <ActivateUserSpan />}
         <BannerHome />
-
         <AuctionList />
         <CarsList />
         <MotorcyclesList />

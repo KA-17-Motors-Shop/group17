@@ -1,9 +1,6 @@
 import UserInfoBox from "../../components/UserInfoBox";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import AuctionList from "../../components/Lists/AuctionList";
-import CarsList from "../../components/Lists/CarsList";
-import MotorcyclesList from "../../components/Lists/MotorcyclesList";
 
 import { ProfileViewUserContainer, ProfileMain } from "./styles";
 import { useUser } from "../../Providers/User/login";
@@ -11,6 +8,7 @@ import { useCallback, useEffect, useState } from "react";
 import { IUser } from "../../interfaces/user";
 import EditProfile from "../../components/Modal/EditProfile";
 import CreateAnounce from "../../components/Modal/CreateAnounce";
+import MyAnnouncesList from "../../components/MyAnnouncesList";
 
 const ProfileViewUser: React.FC = (): JSX.Element => {
   const { token, getUser } = useUser();
@@ -49,9 +47,7 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
             openProfileModal={() => setEditProfileModal(true)}
             openAnounceModal={() => setCreateAnunceModal(true)}
           />
-          <AuctionList />
-          <CarsList />
-          <MotorcyclesList />
+          <MyAnnouncesList />
         </ProfileMain>
         <Footer />
       </ProfileViewUserContainer>

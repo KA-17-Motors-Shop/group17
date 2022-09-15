@@ -1,5 +1,5 @@
 import { ContainerMultipleReactions } from "./styles";
-import { NameContainer } from "../Card/VehicleCard/styles";
+import { NameContainer } from "../Card/SaleCard/styles";
 import { TextFieldContainer } from "./styles";
 import { ButtonPrimary } from "../Button";
 import ReactionTag from "../ReactionTag";

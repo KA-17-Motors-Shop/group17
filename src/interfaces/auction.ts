@@ -48,12 +48,12 @@ export interface IFiltersParams {
   title?: string;
 }
 
-enum type {
+export enum type {
   auction = "auction",
   sale = "sale",
 }
 
-enum typeVehicle {
+export enum typeVehicle {
   car = "car",
   motocycle = "motocycle",
 }
