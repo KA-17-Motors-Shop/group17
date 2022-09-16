@@ -24,3 +24,18 @@ export const Title = styled.h2`
   font-size: 24px;
   color: ${({ theme }) => theme.textColors.primaryText};
 `;
+
+export const CommentsGroup = styled.ul`
+  display: flex;
+  flex-direction: column-reverse;
+`;
+
+export const Empty = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  h2 {
+    font-size: 16px;
+    color: ${({ theme }) => theme.textColors.primaryText};
+  }
+`;

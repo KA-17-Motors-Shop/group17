@@ -1,7 +1,7 @@
 import React from "react";
 import IndividualImageContainer from "../IndividualImageContainer";
 import LoadingOrEmpty from "../Loader/LoadingOrEmpty";
-import { ImageGalleryContainer, Title } from "./styles";
+import { Empty, ImageGalleryContainer, Title } from "./styles";
 
 const GaleryImages: React.FC<{ images: string[] }> = ({ images }) => {
   return (
@@ -13,7 +13,9 @@ const GaleryImages: React.FC<{ images: string[] }> = ({ images }) => {
             <IndividualImageContainer key={index} MERCEDES={item} />
           ))
         ) : (
-          <LoadingOrEmpty message="Nenhuma foto encontrada" />
+          <Empty>
+            <LoadingOrEmpty message="Nenhuma foto encontrada" />
+          </Empty>
         )}
       </div>
     </ImageGalleryContainer>

@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { DescriptionBoxContainer } from "../DescriptionBox/styles";
 
 export const SingleCommetContainer = styled(DescriptionBoxContainer)`
-  width: 100%;
-  box-shadow: none;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 1rem;
   background-color: ${({ theme }) => theme.backgroundColors.headerBackground};
 
   div {
@@ -15,10 +15,7 @@ export const SingleCommetContainer = styled(DescriptionBoxContainer)`
     align-items: center;
     gap: 0.5rem;
 
-    span {
-      font-family: "Lexend";
-      font-style: normal;
-      font-weight: 600;
+    h2 {
       font-size: 16px;
       color: ${({ theme }) => theme.textColors.primaryText};
     }
@@ -28,7 +25,7 @@ export const SingleCommetContainer = styled(DescriptionBoxContainer)`
 export const Comment = styled.p`
   font-family: "Lexend";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 14px;
   color: ${({ theme }) => theme.textColors.primaryText};
 `;

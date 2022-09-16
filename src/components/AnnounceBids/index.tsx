@@ -1,9 +1,42 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { IResBids } from "../../interfaces/bids";
+import { useBids } from "../../Providers/Bids";
+import LoadingOrEmpty from "../Loader/LoadingOrEmpty";
+import BidCard from "./BidCard";
+import { BidsGroup, Container, Empty, Title } from "./styles";
 
-// import { Container } from './styles';
+const AnnounceBids: React.FC<{ id: string }> = ({ id }) => {
+  const [bids, setBids] = useState<IResBids[]>([]);
 
-const AnnounceBids: React.FC = () => {
-  return <div>Container</div>;
+  const { getBidsAnnounce } = useBids();
+
+  const handleBids = useCallback(async () => {
+    const get = await getBidsAnnounce(id);
+    setBids(get);
+  }, [getBidsAnnounce, id]);
+
+  useEffect(() => {
+    handleBids();
+  }, [handleBids]);
+  console.log(bids);
+
+  return (
+    <Container>
+      <Title>Lances</Title>
+
+      {bids.length ? (
+        <BidsGroup>
+          {bids.map((item) => (
+            <BidCard bid={item} key={item.id} />
+          ))}
+        </BidsGroup>
+      ) : (
+        <Empty>
+          <LoadingOrEmpty message="Nenhum lance encontrado" />
+        </Empty>
+      )}
+    </Container>
+  );
 };
 
 export default AnnounceBids;

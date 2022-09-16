@@ -94,7 +94,9 @@ const AdDetails: React.FC = (): JSX.Element => {
                 <CommentInput />
               </RightContainer>
               <LeftContainer>
-                <AnnounceBids />
+                {announce.type === "auction" && (
+                  <AnnounceBids id={announce.id} />
+                )}
               </LeftContainer>
             </BottomContainer>
           </>
