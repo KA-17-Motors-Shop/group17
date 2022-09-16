@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const ProfileViewUserContainer = styled.div`
-  background-image: linear-gradient(#4529e6 25.7%, #f1f3f5 18.7%, #f1f3f5 100%);
+  background-image: linear-gradient(
+    #4529e6 25.7%,
+    ${({ theme }) => theme.backgroundColors.generalBackground} 18.7%,
+    ${({ theme }) => theme.backgroundColors.generalBackground} 100%
+  );
   width: 100%;
   height: 100%;
 

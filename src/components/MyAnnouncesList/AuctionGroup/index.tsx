@@ -5,8 +5,6 @@ import LoadingOrEmpty from "../../Loader/LoadingOrEmpty";
 import { Container, ContainerGroup, Title } from "./styles";
 
 const AuctionGroup: React.FC<{ auctions: IAuctionRes[] }> = ({ auctions }) => {
-  console.log(auctions);
-
   return (
     <Container>
       <Title>Leilões</Title>

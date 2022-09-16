@@ -1,22 +1,21 @@
-import { SingleCommetContainer } from "./styles";
-import { NameContainer } from "../Card/SaleCard/styles";
+import Avatar from "../Avatar";
+import { Comment, SingleCommetContainer } from "./styles";
 
-const SingleComment: React.FC<{ PROFILE: string }> = ({
-  PROFILE,
+interface IProps {
+  userName: string;
+  comment: string;
+}
+
+const SingleComment: React.FC<IProps> = ({
+  userName,
+  comment,
 }): JSX.Element => {
   return (
     <SingleCommetContainer>
-      <NameContainer>
-        <div>
-          <img src={PROFILE} alt="Imagem de perfil" />
-        </div>
-        <span>Julia Lima</span>
-      </NameContainer>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae alias
-        molestias ab rerum aperiam nesciunt fugit, rem illo, debitis numquam a
-        sapiente quidem animi saepe. Aliquam aspernatur recusandae saepe ex.
-      </p>
+      <div>
+        <Avatar userName={userName} />
+      </div>
+      <Comment>{comment}</Comment>
     </SingleCommetContainer>
   );
 };

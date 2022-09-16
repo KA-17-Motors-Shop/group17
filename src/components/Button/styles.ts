@@ -87,6 +87,7 @@ export const Disable = styled.div`
       filter: brightness(1);
       background-color: ${({ theme }) => theme.buttons.disable.hover};
       border: 1.5px solid ${({ theme }) => theme.buttons.disable.hover};
+      cursor: auto;
     }
   }
 `;

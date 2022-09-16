@@ -18,8 +18,6 @@ const AuctionList: React.FC = () => {
     handleAnnounces();
   }, [handleAnnounces]);
 
-  console.log(announces);
-
   return (
     <Container>
       <h2>Leilão</h2>

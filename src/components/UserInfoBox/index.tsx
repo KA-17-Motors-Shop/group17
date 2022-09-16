@@ -1,3 +1,4 @@
+import { avatarLetters } from "../../utils/avatarLetters";
 import { ButtonPrimaryOutline } from "../Button";
 
 import {
@@ -23,13 +24,6 @@ const UserInfoBox: React.FC<IProps> = ({
   openAnounceModal,
   openProfileModal,
 }): JSX.Element => {
-  const avatarLetters = (name: string = "Usuário") => {
-    if (name.split(" ").length > 1) {
-      return name[0] + name[name.split("").indexOf(" ") + 1];
-    }
-    return name[0];
-  };
-
   return (
     <UserInfoBoxContainer>
       <TopDiv>

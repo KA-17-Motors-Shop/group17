@@ -21,8 +21,6 @@ const MotorcyclesList: React.FC = () => {
     handleAnnounces();
   }, [handleAnnounces]);
 
-  console.log(announce);
-
   return (
     <>
       <TitleContainer>Motos</TitleContainer>

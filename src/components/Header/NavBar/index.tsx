@@ -21,7 +21,6 @@ const NavBar: React.FC<{ user: IUser }> = ({ user }) => {
         <ButtonLink
           onClick={() => {
             handlePage("/");
-            console.log("CARROS");
           }}
         >
           Carros
@@ -29,7 +28,6 @@ const NavBar: React.FC<{ user: IUser }> = ({ user }) => {
         <ButtonLink
           onClick={() => {
             handlePage("/");
-            console.log("MOTOS");
           }}
         >
           Motos
@@ -37,7 +35,6 @@ const NavBar: React.FC<{ user: IUser }> = ({ user }) => {
         <ButtonLink
           onClick={() => {
             handlePage("/");
-            console.log("LEILÃO");
           }}
         >
           Leilão

@@ -38,7 +38,6 @@ const ActivateUserSpan: React.FC = () => {
   const { showLoad } = useLoad();
 
   const handleCode = async (data: { code?: string }) => {
-    console.log(data);
     showLoad();
     const result = await activateUser(data.code!);
     if (result) {

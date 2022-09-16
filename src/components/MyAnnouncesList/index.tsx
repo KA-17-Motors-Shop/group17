@@ -8,7 +8,6 @@ import {
   Container,
   TabsList,
   TabsRoot,
-  Title,
   Trigger,
 } from "./styles";
 

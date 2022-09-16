@@ -1,23 +1,26 @@
 import styled from "styled-components";
 
-export const DescriptionBoxContainer = styled.div`
+export const CommentBoxContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
   width: 100%;
-  border-radius: 4px;
-  padding: 36px 28px 36px 28px;
+  padding: 1rem;
   background-color: ${({ theme }) => theme.backgroundColors.headerBackground};
+  border-radius: 4px;
   box-shadow: 0 4px 32px -22px #00000062;
 
-  @media only screen and (min-width: 768px) {
-    padding: 36px 44px 36px 44px;
-  }
   @media only screen and (min-width: 1279px) {
     max-width: 752px;
+    margin-bottom: 33px;
   }
 `;
 
-export const ParagraphContainer = styled.p`
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 28px;
+export const Title = styled.h2`
+  font-family: "Lexend";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
   color: ${({ theme }) => theme.textColors.primaryText};
 `;

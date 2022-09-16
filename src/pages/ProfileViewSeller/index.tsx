@@ -6,8 +6,6 @@ import { useListAnnounces } from "../../Providers/Auction/listAll";
 const ProfileViewSeller: React.FC = () => {
   const query = useQuery();
 
-  console.log(query.get("seller_id"));
-
   const [announce, setAnnounce] = useState<IAuctionRes[]>([]);
 
   const { getAnnounceBySeller } = useListAnnounces();
@@ -22,8 +20,6 @@ const ProfileViewSeller: React.FC = () => {
   useEffect(() => {
     handleAnnounces();
   }, [handleAnnounces]);
-
-  console.log(announce);
 
   return <div>Seller Page</div>;
 };

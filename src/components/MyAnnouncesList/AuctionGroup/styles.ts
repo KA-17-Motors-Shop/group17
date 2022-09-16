@@ -24,4 +24,20 @@ export const ContainerGroup = styled.ul`
   overflow-x: scroll;
   width: 90%;
   min-width: 300px;
+
+  &::-webkit-scrollbar {
+    display: flex;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 5px solid;
+    border-color: ${({ theme }) => theme.backgroundColors.generalBackground};
+    background-color: ${({ theme }) => theme.backgroundColors.bannerBackground};
+    border-radius: 2rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: ${({ theme }) =>
+      theme.backgroundColors.generalBackground};
+  }
 `;
