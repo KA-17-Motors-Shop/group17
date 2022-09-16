@@ -3,6 +3,7 @@ import { useListAnnounces } from "../../../Providers/Auction/listAll";
 import { useCallback, useEffect, useState } from "react";
 import { IAuctionRes } from "../../../interfaces/auction";
 import AuctionCard from "../../Card/AuctionCard";
+import LoadingOrEmpty from "../../Loader/LoadingOrEmpty";
 
 const AuctionList: React.FC = () => {
   const [announces, setAnnounces] = useState<IAuctionRes[]>([]);
@@ -23,9 +24,11 @@ const AuctionList: React.FC = () => {
     <Container>
       <h2>Leilão</h2>
       <ContainerCardAuction>
-        {announces.map((item) => (
-          <AuctionCard key={item.id} announce={item} />
-        ))}
+        {announces.length ? (
+          announces.map((item) => <AuctionCard key={item.id} announce={item} />)
+        ) : (
+          <LoadingOrEmpty message="Nenhum leilão ativo no momento" />
+        )}
       </ContainerCardAuction>
     </Container>
   );

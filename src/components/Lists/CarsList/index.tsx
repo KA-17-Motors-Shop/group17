@@ -4,6 +4,7 @@ import { useListAnnounces } from "../../../Providers/Auction/listAll";
 import { TitleContainer, CardContainer } from "./styles";
 import { typeVehicle } from "../../../interfaces/auction";
 import SaleCard from "../../Card/SaleCard";
+import LoadingOrEmpty from "../../Loader/LoadingOrEmpty";
 
 const CarsList: React.FC = () => {
   const [announce, setAnnounce] = useState<IAuctionRes[]>([]);
@@ -25,9 +26,11 @@ const CarsList: React.FC = () => {
     <>
       <TitleContainer>Carros</TitleContainer>
       <CardContainer>
-        {announce.map((item) => (
-          <SaleCard announce={item} key={item.id} />
-        ))}
+        {announce.length ? (
+          announce.map((item) => <SaleCard announce={item} key={item.id} />)
+        ) : (
+          <LoadingOrEmpty message="Nenhum carro anúnciado" />
+        )}
       </CardContainer>
     </>
   );

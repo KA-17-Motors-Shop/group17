@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { IAuctionRes, typeVehicle, type } from "../../../interfaces/auction";
 import { useListAnnounces } from "../../../Providers/Auction/listAll";
 import SaleCard from "../../Card/SaleCard";
+import LoadingOrEmpty from "../../Loader/LoadingOrEmpty";
 import { TitleContainer, CardContainer } from "./styles";
 
 const MotorcyclesList: React.FC = () => {
@@ -26,9 +27,11 @@ const MotorcyclesList: React.FC = () => {
     <>
       <TitleContainer>Motos</TitleContainer>
       <CardContainer>
-        {announce.map((item) => (
-          <SaleCard announce={item} key={item.id} />
-        ))}
+        {announce.length ? (
+          announce.map((item) => <SaleCard announce={item} key={item.id} />)
+        ) : (
+          <LoadingOrEmpty message="Nenhuma moto anúnciada" />
+        )}
       </CardContainer>
     </>
   );

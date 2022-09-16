@@ -18,7 +18,7 @@ const SalesGroup: React.FC<{ sales: IAuctionRes[] }> = ({ sales }) => {
           ))}
         </ContainerGroup>
       ) : (
-        <LoadingOrEmpty />
+        <LoadingOrEmpty message="Nenhuma venda encontrada" />
       )}
     </Container>
   );

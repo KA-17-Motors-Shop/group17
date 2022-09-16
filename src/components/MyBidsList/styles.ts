@@ -6,6 +6,7 @@ export const Container = styled.div`
   align-items: center;
   gap: 2rem;
   width: 100%;
+  padding: 1rem;
 `;
 
 export const Title = styled.h2`
@@ -13,14 +14,6 @@ export const Title = styled.h2`
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
-  color: ${({ theme }) => theme.textColors.primaryText};
-`;
-
-export const Span = styled.h3`
-  font-family: "Lexend";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
   color: ${({ theme }) => theme.textColors.primaryText};
 `;
 

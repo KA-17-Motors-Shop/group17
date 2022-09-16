@@ -17,7 +17,7 @@ const AuctionGroup: React.FC<{ auctions: IAuctionRes[] }> = ({ auctions }) => {
           ))}
         </ContainerGroup>
       ) : (
-        <LoadingOrEmpty />
+        <LoadingOrEmpty message="Nenhum leilão encontrado" />
       )}
     </Container>
   );

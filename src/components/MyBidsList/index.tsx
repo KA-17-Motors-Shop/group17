@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Container, ContainerGroup, Span, Title } from "./styles";
+import LoadingOrEmpty from "../Loader/LoadingOrEmpty";
+import { Container, ContainerGroup, Title } from "./styles";
 
 const MyBidsList: React.FC = () => {
   const [bids, setBids] = useState([]);
@@ -14,7 +15,7 @@ const MyBidsList: React.FC = () => {
           ))}
         </ContainerGroup>
       ) : (
-        <Span>Nenhum lance</Span>
+        <LoadingOrEmpty message="Nenhum lance encontrado" />
       )}
     </Container>
   );
