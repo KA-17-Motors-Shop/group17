@@ -12,8 +12,4 @@ export const TopImageContainer = styled.div`
     height: 100%;
     object-fit: scale-down;
   }
-
-  @media only screen and (min-width: 1279px) {
-    max-width: 752px;
-  }
 `;

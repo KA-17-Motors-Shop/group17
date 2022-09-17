@@ -22,10 +22,6 @@ export const VehicleInformationContainer = styled.div`
       margin-bottom: 41px;
     }
   }
-  @media only screen and (min-width: 1279px) {
-    max-width: 752px;
-    margin-bottom: 40px;
-  }
 `;
 
 export const TitleContainer = styled.h1`
@@ -70,8 +66,8 @@ export const Tag = styled.span`
   font-weight: 500;
   padding: 0.5rem;
   border-radius: 0.2rem;
-  color: ${({ theme }) => theme.buttons.primaryOutline.color};
-  background-color: ${({ theme }) => theme.buttons.primaryOutline.hover};
+  color: ${({ theme }) => theme.buttons.primaryOpacity.color};
+  background-color: ${({ theme }) => theme.buttons.primaryOpacity.background};
 `;
 
 export const Price = styled.span`

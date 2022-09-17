@@ -10,9 +10,6 @@ export const DescriptionBoxContainer = styled.div`
   @media only screen and (min-width: 768px) {
     padding: 36px 44px 36px 44px;
   }
-  @media only screen and (min-width: 1279px) {
-    max-width: 752px;
-  }
 `;
 
 export const ParagraphContainer = styled.p`

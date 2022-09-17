@@ -35,7 +35,6 @@ export const ListAnounceProvider: React.FC<{
     const response = await motorShopAPI
       .get("/announcement/?type=auction")
       .then((res) => {
-        console.log(res.data);
         return res.data;
       })
       .catch((err) => console.log(err));

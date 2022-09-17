@@ -7,6 +7,7 @@ export const SingleCommetContainer = styled(DescriptionBoxContainer)`
   align-items: flex-start;
   gap: 0.5rem;
   padding: 1rem;
+  box-shadow: none;
   background-color: ${({ theme }) => theme.backgroundColors.headerBackground};
 
   div {

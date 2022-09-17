@@ -18,13 +18,12 @@ const AnnounceBids: React.FC<{ id: string }> = ({ id }) => {
   useEffect(() => {
     handleBids();
   }, [handleBids]);
-  console.log(bids);
 
   return (
     <Container>
       <Title>Lances</Title>
 
-      {bids.length ? (
+      {bids && bids.length ? (
         <BidsGroup>
           {bids.map((item) => (
             <BidCard bid={item} key={item.id} />

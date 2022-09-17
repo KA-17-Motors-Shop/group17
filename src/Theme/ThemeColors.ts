@@ -200,7 +200,7 @@ export const darkTheme: DefaultTheme = {
     primaryOpacity: {
       color: "#4529E6",
       border: "#EDEAFD",
-      background: "#EDEAFD",
+      background: "#0a0a0a",
       hover: "#EDEAFD",
     },
     light: {
@@ -230,7 +230,7 @@ export const darkTheme: DefaultTheme = {
     primaryOutline: {
       color: "#4529E6",
       border: "#4529E6",
-      background: "#F7F7F7",
+      background: "#0a0a0a",
       hover: "#EDEAFD",
     },
     link: {

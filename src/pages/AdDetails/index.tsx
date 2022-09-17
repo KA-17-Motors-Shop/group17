@@ -44,7 +44,7 @@ const AdDetails: React.FC = (): JSX.Element => {
 
   const handleAnnounces = useCallback(async () => {
     const announceGet = await getAnnounce(query.get("id") as string);
-    setAnnounce(announceGet || {});
+    setAnnounce(announceGet);
   }, [getAnnounce, query]);
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const AdDetails: React.FC = (): JSX.Element => {
   const handleSellerPage = () => {
     history.push(`/seller?seller_id=${announce.seller!.id}`);
   };
-  console.log(announce);
+
   return (
     <Page>
       <Header />

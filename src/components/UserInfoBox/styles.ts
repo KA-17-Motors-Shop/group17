@@ -8,13 +8,13 @@ export const UserInfoBoxContainer = styled.div`
   width: 90%;
   border-radius: 4px;
   padding: 40px 29px 40px 29px;
-  background-color: ${({ theme }) => theme.greyScale.grey10};
-  /* margin-top: 150px; */
+  background-color: ${({ theme }) => theme.backgroundColors.headerBackground};
+
   p {
     font-weight: 400;
     font-size: 16px;
     line-height: 28px;
-    color: ${({ theme }) => theme.greyScale.grey2};
+    color: ${({ theme }) => theme.textColors.primaryText};
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 6;
@@ -38,20 +38,6 @@ export const Avatar = styled.div`
   justify-content: center;
   color: ${({ theme }) => theme.greyScale.whiteFixed};
   font-size: 2rem;
-`;
-
-export const TopImageContainer = styled.div`
-  width: 104px;
-  height: 104px;
-  border-radius: 50%;
-  background-color: ${({ theme }) => theme.colorRandomProfile.random2};
-  margin-bottom: 18px;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-  }
 `;
 
 export const TopDiv = styled.div`
@@ -78,6 +64,7 @@ export const NameContainerWithTag = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: ${({ theme }) => theme.textColors.primaryText};
   }
   span {
     display: flex;
@@ -88,8 +75,8 @@ export const NameContainerWithTag = styled.div`
     border-radius: 4px;
     font-size: 12px;
     padding: 5px;
-    color: ${({ theme }) => theme.brand.brand1};
-    background-color: ${({ theme }) => theme.brand.brand4};
+    color: ${({ theme }) => theme.buttons.primaryOpacity.color};
+    background-color: ${({ theme }) => theme.buttons.primaryOpacity.background};
   }
 
   @media only screen and (min-width: 425px) {

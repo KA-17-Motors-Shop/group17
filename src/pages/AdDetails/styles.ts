@@ -25,11 +25,6 @@ export const Page = styled.div`
       ${({ theme }) => theme.backgroundColors.generalBackground} 100%
     );
   }
-  @media only screen and (min-width: 1279px) {
-    footer {
-      margin-top: 73px;
-    }
-  }
 `;
 
 export const AdDetailsMain = styled.main`

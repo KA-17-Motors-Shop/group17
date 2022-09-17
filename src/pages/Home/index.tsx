@@ -29,7 +29,7 @@ const Home: React.FC = () => {
     <Page>
       <Header />
       <Main>
-        {!user.isActivate && <ActivateUserSpan />}
+        {user.id && !user.isActivate && <ActivateUserSpan />}
         <BannerHome />
         <AuctionList />
         <CarsList />
