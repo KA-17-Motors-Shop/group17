@@ -1,92 +1,123 @@
-import IndividualImageContainer from "../../components/IndividualImageContainer";
-import { TitleContainer } from "../../components/VehicleInformation/styles";
 import VehicleInformation from "../../components/VehicleInformation";
 import DescriptionBox from "../../components/DescriptionBox";
-import SingleComment from "../../components/SingleComment";
 import { ButtonDefault } from "../../components/Button";
 import BigTopImage from "../../components/BigtopImage";
-import TextField from "../../components/TextField";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
-import MERCEDES from "../../assets/img/vehicles/mercedes_teste.png";
-import PROFILE from "../../assets/img/default_profile.png";
+import DefaultImg from "../../assets/img/default.png";
 
 import {
-  UserInfoBoxWithButtonContainer,
-  LeftContainerAdDetailsTSecond,
-  LeftContainerAdDetailsFirst,
-  RightContainerAdDetails,
-  ImageGalleryContainer,
-  CommentBoxContainer,
-  AdDetailsContainer,
+  SellerBoxInfo,
+  LeftContainer,
+  RightContainer,
+  Page,
   AdDetailsMain,
-  FakeContainer,
+  Title,
+  TopContainer,
+  BottomContainer,
+  EmptyContainer,
 } from "./styles";
 
-import {
-  NameContainerWithTag,
-  TopImageContainer,
-} from "../../components/UserInfoBox/styles";
+import { Avatar } from "../../components/UserInfoBox/styles";
+
+import { useQuery } from "../../hooks/useQuery";
+import { useCallback, useEffect, useState } from "react";
+import { IAuctionRes } from "../../interfaces/auction";
+import { useListAnnounces } from "../../Providers/Auction/listAll";
+import { useHistory } from "react-router-dom";
+
+import { avatarLetters } from "../../utils/avatarLetters";
+import CommentBox from "../../components/CommentBox";
+import GaleryImages from "../../components/GaleryImages";
+import CommentInput from "../../components/Forms/Components/CommentInput";
+import EmptyMessage from "../../components/EmptyMessage";
+import AnnounceBids from "../../components/AnnounceBids";
+import LoaderLocalComponent from "../../components/Loader/LoaderLocalComponent";
 
 const AdDetails: React.FC = (): JSX.Element => {
-  const REACTION: Array<string> = [
-    "Gostei muito!",
-    "Incrível",
-    "Recomendarei para meus amigos",
-    "Ótimo",
-    "Show de bola",
-    "Top demais",
-  ];
+  const query = useQuery();
+  const history = useHistory();
+
+  const [announce, setAnnounce] = useState<IAuctionRes>({});
+  const [loadding, setLoadding] = useState(false);
+
+  const { getAnnounce } = useListAnnounces();
+
+  const handleAnnounces = useCallback(async () => {
+    const announceGet = await getAnnounce(query.get("id") as string);
+    setAnnounce(announceGet);
+    setLoadding(false);
+  }, [getAnnounce, query]);
+
+  useEffect(() => {
+    setLoadding(true);
+    handleAnnounces();
+  }, [handleAnnounces]);
+  console.log(announce);
+  const handleSellerPage = () => {
+    history.push(`/seller?seller_id=${announce.seller!.id}`);
+  };
 
   return (
-    <AdDetailsContainer>
+    <Page>
       <Header />
       <AdDetailsMain>
-        <LeftContainerAdDetailsFirst>
-          <BigTopImage MERCEDES={MERCEDES} />
-          <VehicleInformation />
-          <DescriptionBox />
-        </LeftContainerAdDetailsFirst>
+        {loadding ? (
+          <EmptyContainer>
+            <LoaderLocalComponent />
+          </EmptyContainer>
+        ) : announce.id ? (
+          <>
+            <TopContainer>
+              <LeftContainer>
+                <BigTopImage image={announce.imagesUrl![0] || DefaultImg} />
+                <VehicleInformation
+                  km={announce.km as string}
+                  price={announce.price as string}
+                  title={announce.title as string}
+                  year={announce.year as string}
+                  id={announce.id as string}
+                  type={announce.type as string}
+                  sellerId={announce.seller?.id as string}
+                  status={announce.status as string}
+                />
+                <DescriptionBox description={announce.description as string} />
+              </LeftContainer>
 
-        <RightContainerAdDetails>
-          <ImageGalleryContainer>
-            <TitleContainer>Fotos</TitleContainer>
-            <div>
-              {Array.from({ length: 6 }).map((_, index) => (
-                <IndividualImageContainer key={index} MERCEDES={MERCEDES} />
-              ))}
-            </div>
-          </ImageGalleryContainer>
-          <UserInfoBoxWithButtonContainer>
-            <TopImageContainer>
-              <img src={PROFILE} alt="Imagem de perfil" />
-            </TopImageContainer>
-            <NameContainerWithTag>
-              <h2>Samuel Leão</h2>
-            </NameContainerWithTag>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s
-            </p>
-            <ButtonDefault>Ver todos anuncios</ButtonDefault>
-          </UserInfoBoxWithButtonContainer>
-        </RightContainerAdDetails>
-
-        <LeftContainerAdDetailsTSecond>
-          <CommentBoxContainer>
-            <TitleContainer>Comentários</TitleContainer>
-            {Array.from({ length: 3 }).map((_, index) => (
-              <SingleComment key={index} PROFILE={PROFILE} />
-            ))}
-          </CommentBoxContainer>
-          <TextField PROFILE={PROFILE} REACTION={REACTION} />
-        </LeftContainerAdDetailsTSecond>
-        <FakeContainer />
+              <RightContainer>
+                <GaleryImages images={announce.imagesUrl as string[]} />
+                <SellerBoxInfo>
+                  <Avatar>
+                    {avatarLetters(announce.seller!.name).toUpperCase()}
+                  </Avatar>
+                  <Title>{announce.seller!.name}</Title>
+                  <ButtonDefault onClick={handleSellerPage}>
+                    Ver todos anuncios
+                  </ButtonDefault>
+                </SellerBoxInfo>
+              </RightContainer>
+            </TopContainer>
+            <BottomContainer>
+              <RightContainer>
+                <CommentBox announceId={announce.id} />
+                <CommentInput />
+              </RightContainer>
+              <LeftContainer>
+                {announce.type === "auction" && (
+                  <AnnounceBids id={announce.id} />
+                )}
+              </LeftContainer>
+            </BottomContainer>
+          </>
+        ) : (
+          <EmptyContainer>
+            <EmptyMessage message="Anúncio não encontrado" />
+          </EmptyContainer>
+        )}
       </AdDetailsMain>
       <Footer />
-    </AdDetailsContainer>
+    </Page>
   );
 };
 

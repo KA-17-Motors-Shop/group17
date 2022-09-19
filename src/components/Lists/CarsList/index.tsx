@@ -4,9 +4,13 @@ import { useListAnnounces } from "../../../Providers/Auction/listAll";
 import { TitleContainer, CardContainer } from "./styles";
 import { typeVehicle } from "../../../interfaces/auction";
 import SaleCard from "../../Card/SaleCard";
+import EmptyMessage from "../../EmptyMessage";
+import LoaderLocalComponent from "../../Loader/LoaderLocalComponent";
 
 const CarsList: React.FC = () => {
   const [announce, setAnnounce] = useState<IAuctionRes[]>([]);
+  const [loadding, setLoadding] = useState(false);
+
   const { getListFilter } = useListAnnounces();
 
   const handleAnnounces = useCallback(async () => {
@@ -15,9 +19,12 @@ const CarsList: React.FC = () => {
       type: type.sale,
     });
     setAnnounce(list);
+    setLoadding(false);
   }, [getListFilter]);
 
   useEffect(() => {
+    setLoadding(true);
+
     handleAnnounces();
   }, [handleAnnounces]);
 
@@ -25,9 +32,13 @@ const CarsList: React.FC = () => {
     <>
       <TitleContainer>Carros</TitleContainer>
       <CardContainer>
-        {announce.map((item) => (
-          <SaleCard announce={item} key={item.id} />
-        ))}
+        {loadding ? (
+          <LoaderLocalComponent />
+        ) : announce.length ? (
+          announce.map((item) => <SaleCard announce={item} key={item.id} />)
+        ) : (
+          <EmptyMessage message="Nenhum carro anúnciado" />
+        )}
       </CardContainer>
     </>
   );

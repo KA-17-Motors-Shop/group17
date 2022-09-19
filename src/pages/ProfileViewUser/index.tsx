@@ -12,6 +12,7 @@ import CreateAd from "../../components/Modals/Ad/CreateAd";
 import Modal from "../../components/Modals";
 
 import MyAnnouncesList from "../../components/MyAnnouncesList";
+import MyBidsList from "../../components/MyBidsList";
 
 const ProfileViewUser: React.FC = (): JSX.Element => {
   const { token, getUser } = useUser();
@@ -57,7 +58,7 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
             openProfileModal={handleModalProfile}
             openAnounceModal={handleModalCreateAd}
           />
-          <MyAnnouncesList />
+          {user.isSeller ? <MyAnnouncesList /> : <MyBidsList />}
         </ProfileMain>
         <Footer />
       </ProfileViewUserContainer>

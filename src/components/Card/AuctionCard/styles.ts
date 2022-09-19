@@ -1,143 +1,112 @@
 import styled from "styled-components";
-
 import DefaultImg from "../../../assets/img/default.png";
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  h2 {
-    margin: 2rem;
-  }
-`;
-
-export const ContainerCardAuction = styled.ul`
-  display: flex;
-  overflow-x: scroll;
-  flex-wrap: nowrap;
-  width: 100%;
-`;
-
 export const CardAuction = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-left: 2rem;
-  min-width: 735px;
-  width: 735px;
+  min-width: 300px;
+  width: 100%;
+  max-width: 735px;
+  height: 425px;
 
-  @media screen and (max-width: 1024px) {
-    margin-left: 0.2rem;
-    min-width: 328px;
-    width: 328px;
+  @media screen and (min-width: 425px) {
+    min-width: 380px;
+  }
+
+  @media screen and (min-width: 650px) {
+    min-width: 580px;
   }
 `;
 
 export const ContainerAuction = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   width: 100%;
-  height: 326px;
-
+  height: 80%;
   background-image: ${({ image }: { image: string[] }) =>
     image[0] ? `url(${image[0]})` : `url(${DefaultImg})`};
   background-size: cover;
-
-  color: white;
-
-  @media screen and (max-width: 1024px) {
-    width: 328px;
-    height: 496px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
 `;
 
 export const ContainerInfo = styled.div`
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%);
   width: 100%;
   height: 100%;
-  padding: 1rem 2rem;
-  @media screen and (max-width: 1024px) {
-    padding: 1rem 1rem;
-  }
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.29) 0%, #000000 100%);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1rem;
 `;
 
 export const ContainerTitle = styled.div`
-  h3 {
-    margin: 4rem 0 1rem 0;
-  }
-  p {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 28px;
-    margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  gap: 0.5rem;
+`;
 
-    color: #ced4da;
-  }
+export const Title = styled.h2`
+  font-family: "Lexend";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  color: ${({ theme }) => theme.greyScale.whiteFixed};
+`;
+export const Description = styled.h2`
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: ${({ theme }) => theme.greyScale.grey5};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 50ch;
 `;
 
 export const ContainerAvatar = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: row;
-  margin-bottom: 15px;
   gap: 0.5rem;
 
-  span {
-    font-size: 16px;
-    color: ${({ theme }) => theme.greyScale.grey10};
-    overflow: none !important;
+  > span {
+    color: ${({ theme }) => theme.greyScale.whiteFixed};
   }
 `;
 
 export const ContainerBottom = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
-  width: 100%;
-  margin: 1rem;
-  @media screen and (max-width: 1024px) {
-    flex-direction: column;
+  gap: 0.5rem;
+
+  @media screen and (min-width: 425px) {
+    align-items: center;
+    flex-direction: row;
   }
 `;
 
-export const ContainerBottomInfo = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: auto;
-  height: 32px;
-  background: #edeafd;
-  border-radius: 4px;
+export const Tag = styled.span`
+  font-family: "Lexend";
+  font-style: normal;
+  font-weight: 500;
   padding: 0.5rem;
-  margin-right: 1rem;
-  p {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-    text-align: center;
-    color: #4529e6;
-  }
+  border-radius: 0.2rem;
+  color: ${({ theme }) => theme.buttons.primaryOpacity.color};
+  background-color: ${({ theme }) => theme.buttons.primaryOpacity.background};
 `;
 
-export const YearKM = styled.div`
+export const TagsInfos = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-
-  width: 150px;
+  gap: 0.5rem;
 `;
 
-export const ContainerPrice = styled.div`
-  @media screen and (max-width: 1024px) {
-    margin-top: 1rem;
-  }
+export const Price = styled.span`
+  font-family: "Lexend";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  color: ${({ theme }) => theme.greyScale.whiteFixed};
 `;
 
 export const ButtonAuction = styled.button`
@@ -145,24 +114,18 @@ export const ButtonAuction = styled.button`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 62px;
-  padding: 0 1.5rem 0 1.5rem;
-  border-radius: 0;
-
+  height: 20%;
+  padding: 0 1.5rem;
+  z-index: 20;
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
-  line-height: 0px;
-  color: ${({ theme }) => theme.textColors.secondaryText};
-
+  color: ${({ theme }) => theme.greyScale.whiteFixed};
+  border-radius: 0;
+  border: 1.5px solid ${({ theme }) => theme.backgroundColors.bannerBackground};
   background-color: ${({ theme }) => theme.backgroundColors.bannerBackground};
   &:hover {
-    filter: brightness(1);
-    background-color: ${({ theme }) => theme.buttons.primary.hover};
-    border: 1.5px solid ${({ theme }) => theme.buttons.primary.hover};
-  }
-
-  @media screen and (max-width: 1024px) {
+    filter: brightness(1.1);
   }
 `;

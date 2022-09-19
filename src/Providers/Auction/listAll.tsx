@@ -18,8 +18,10 @@ interface IListContext {
     type,
     typeVehicle,
   }: IFiltersParams) => Promise<IAuctionRes[]>;
-  getMySales: () => Promise<IAuctionRes[]>;
-  getMyAuctions: () => Promise<IAuctionRes[]>;
+  getMySales: (status?: string) => Promise<IAuctionRes[]>;
+  getMyAuctions: (status?: string) => Promise<IAuctionRes[]>;
+  getAnnounce: (id: string) => Promise<IAuctionRes>;
+  getAnnounceBySeller: (id: string) => Promise<IAuctionRes[]>;
 }
 
 export const ListAnounceContext = createContext({} as IListContext);
@@ -33,7 +35,6 @@ export const ListAnounceProvider: React.FC<{
     const response = await motorShopAPI
       .get("/announcement/?type=auction")
       .then((res) => {
-        console.log(res.data);
         return res.data;
       })
       .catch((err) => console.log(err));
@@ -52,9 +53,9 @@ export const ListAnounceProvider: React.FC<{
     return response;
   };
 
-  const getMySales = async () => {
+  const getMySales = async (status = "in_progress") => {
     const response = await motorShopAPI
-      .get("/announcement/me/seller?type=sale", {
+      .get(`/announcement/me/seller?type=sale&status=${status}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -65,9 +66,35 @@ export const ListAnounceProvider: React.FC<{
     return response;
   };
 
-  const getMyAuctions = async () => {
+  const getMyAuctions = async (status = "in_progress") => {
     const response = await motorShopAPI
-      .get("/announcement/me/seller?type=auction", {
+      .get(`/announcement/me/seller?type=auction&status=${status}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => console.log(err));
+
+    return response;
+  };
+
+  const getAnnounce = async (id: string) => {
+    const response = await motorShopAPI
+      .get(`/announcement/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => console.log(err));
+
+    return response;
+  };
+
+  const getAnnounceBySeller = async (id: string) => {
+    const response = await motorShopAPI
+      .get(`/announcement/seller/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -100,8 +127,6 @@ export const ListAnounceProvider: React.FC<{
     }
     `;
 
-    console.log(`/announcement/?${filter}`);
-
     const response = await motorShopAPI
       .get(`/announcement/?${filter}`)
       .then((res) => {
@@ -115,11 +140,13 @@ export const ListAnounceProvider: React.FC<{
   return (
     <ListAnounceContext.Provider
       value={{
+        getAnnounceBySeller,
         getListAuction,
         getListFilter,
         getListSales,
         getMyAuctions,
         getMySales,
+        getAnnounce,
       }}
     >
       {children}

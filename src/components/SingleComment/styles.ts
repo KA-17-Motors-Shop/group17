@@ -2,13 +2,31 @@ import styled from "styled-components";
 import { DescriptionBoxContainer } from "../DescriptionBox/styles";
 
 export const SingleCommetContainer = styled(DescriptionBoxContainer)`
-  margin-top: 0;
-  padding-top: 0;
-  border-radius: 0;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 1rem;
   box-shadow: none;
-  p {
-    line-height: 24px;
-    font-size: 16px;
+  background-color: ${({ theme }) => theme.backgroundColors.headerBackground};
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+
+    h2 {
+      font-size: 16px;
+      color: ${({ theme }) => theme.textColors.primaryText};
+    }
   }
+`;
+
+export const Comment = styled.p`
+  font-family: "Lexend";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  color: ${({ theme }) => theme.textColors.primaryText};
 `;

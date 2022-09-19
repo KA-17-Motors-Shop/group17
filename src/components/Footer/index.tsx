@@ -4,7 +4,6 @@ import MotorShop from "../../assets/img/Motors.png";
 
 const Footer: React.FC = () => {
   const scrollToTop = () => {
-    console.log("top");
     window.scrollTo({
       top: 0,
       behavior: "smooth",

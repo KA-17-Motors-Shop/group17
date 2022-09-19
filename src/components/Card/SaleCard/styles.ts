@@ -3,73 +3,69 @@ import styled from "styled-components";
 export const CardContainer = styled.li`
   display: flex;
   flex-direction: column;
-  width: 312px;
-  margin-right: 12px;
-  h2 {
-    font-size: 16px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.greyScale.grey1};
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin-bottom: 15px;
-  }
-  p {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 24px;
-    margin-bottom: 15px;
-    color: ${({ theme }) => theme.greyScale.grey2};
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+  justify-content: space-around;
+  gap: 0.5rem;
+  min-width: 250px;
+  width: 100%;
+  max-width: 435px;
+  height: 365px;
+
+  @media screen and (min-width: 425px) {
+    min-width: 300px;
   }
 
-  @media only screen and (min-width: 375px) {
-    margin-right: 25px;
+  @media screen and (min-width: 650px) {
+    min-width: 380px;
   }
-  @media only screen and (min-width: 768px) {
-    margin-right: 40px;
+`;
+
+export const Title = styled.h2`
+  font-size: 16px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.textColors.primaryText};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 15px;
+`;
+
+export const Description = styled.p`
+  font-weight: 400;
+  font-size: 14px;
+  color: ${({ theme }) => theme.textColors.spantext};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 50ch;
+`;
+
+export const AvatarContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+
+  > div {
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.6rem;
+  }
+  > span {
+    font-size: 18px;
   }
 `;
 
 export const ImgContainer = styled.div`
   max-width: 100%;
   height: 152px;
-  margin-bottom: 15px;
-  background-color: ${({ theme }) => theme.greyScale.grey7};
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-`;
-
-export const NameContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: ${({ theme }) => theme.colorRandomProfile.random2};
-    margin-right: 8px;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-  }
-  span {
-    font-weight: 600;
-    font-size: 14px;
-    color: ${({ theme }) => theme.greyScale.grey2};
+  &:hover {
+    filter: brightness(0.7);
+    cursor: pointer;
   }
 `;
 
@@ -81,32 +77,31 @@ export const BaseboardContainer = styled.div`
 
 export const ParentTagContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 115px;
+  gap: 0.5rem;
 `;
 
-export const TagContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 51px;
-  height: 32px;
+export const Tag = styled.span`
+  font-family: "Lexend";
+  font-style: normal;
+  font-weight: 500;
+  text-align: center;
+  padding: 0.2rem;
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.brand.brand4};
-  span {
-    font-size: 14px;
-    font-weight: 500;
-    color: ${({ theme }) => theme.brand.brand1};
-  }
+  color: ${({ theme }) => theme.buttons.primaryOpacity.color};
+  font-size: 14px;
+  font-weight: 500;
+  background-color: ${({ theme }) => theme.buttons.primaryOpacity.background};
 `;
 
-export const PriceContainer = styled.div`
-  display: flex;
-  align-items: center;
-  span {
-    font-family: "Lexend", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    color: ${({ theme }) => theme.greyScale.grey1};
-  }
+export const Price = styled.span`
+  font-family: "Lexend";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  text-align: center;
+  padding: 0.2rem;
+  font-family: "Lexend", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.textColors.primaryText};
 `;

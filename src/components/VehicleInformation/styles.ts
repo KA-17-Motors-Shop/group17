@@ -6,7 +6,7 @@ export const VehicleInformationContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   padding: 44px 28px 28px 28px;
-  background-color: ${({ theme }) => theme.greyScale.grey10};
+  background-color: ${({ theme }) => theme.backgroundColors.headerBackground};
   border-radius: 4px;
   margin-bottom: 24px;
   box-shadow: 0 4px 32px -22px #00000062;
@@ -22,21 +22,17 @@ export const VehicleInformationContainer = styled.div`
       margin-bottom: 41px;
     }
   }
-  @media only screen and (min-width: 1279px) {
-    max-width: 752px;
-    margin-bottom: 40px;
-  }
 `;
 
 export const TitleContainer = styled.h1`
   font-family: "Lexend", sans-serif;
   font-weight: 600;
-  line-height: 25px;
+  font-size: 24px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  color: ${({ theme }) => theme.greyScale.grey1};
+  color: ${({ theme }) => theme.textColors.primaryText};
   margin-bottom: 32px;
 `;
 
@@ -56,4 +52,29 @@ export const MiddleContainer = styled.div`
       margin-bottom: 0;
     }
   }
+`;
+
+export const TagsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+`;
+
+export const Tag = styled.span`
+  font-family: "Lexend";
+  font-style: normal;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  color: ${({ theme }) => theme.buttons.primaryOpacity.color};
+  background-color: ${({ theme }) => theme.buttons.primaryOpacity.background};
+`;
+
+export const Price = styled.span`
+  font-family: "Lexend";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  align-self: center;
+  color: ${({ theme }) => theme.textColors.primaryText};
 `;

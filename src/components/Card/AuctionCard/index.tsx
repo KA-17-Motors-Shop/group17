@@ -1,64 +1,67 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { IAuctionRes } from "../../../interfaces/auction";
 import Avatar from "../../Avatar";
 import Stopwatch from "../../Stopwatch";
 import {
-  ButtonAuction,
   CardAuction,
   ContainerAuction,
+  ContainerInfo,
+  ContainerTitle,
   ContainerAvatar,
   ContainerBottom,
-  ContainerBottomInfo,
-  ContainerInfo,
-  ContainerPrice,
-  ContainerTitle,
-  YearKM,
+  Tag,
+  TagsInfos,
+  ButtonAuction,
+  Price,
+  Title,
+  Description,
 } from "./styles";
 
 const AuctionCard: React.FC<{ announce: IAuctionRes }> = ({ announce }) => {
+  const history = useHistory();
+  console.log(announce);
+  const announcePage = () => {
+    history.push(`/ad_details?id=${announce.id}`);
+  };
+
   return (
     <CardAuction>
       <ContainerAuction image={announce.imagesUrl!}>
         <ContainerInfo>
           <ContainerTitle>
-            {announce.isActive ? (
+            {announce.isActive && (
               <Stopwatch
                 publishedDate={announce.publishedData as string}
                 limitData={announce.limitDate as string}
               />
-            ) : (
-              <h1>Desativado</h1>
             )}
-            <h3>{announce.title}</h3>
-            <p>{announce.description}</p>
+            <Title>
+              {announce.title![0].toUpperCase() + announce.title?.slice(1)}
+            </Title>
+            <Description>{announce.description}</Description>
           </ContainerTitle>
           <ContainerAvatar>
             <Avatar userName={announce.seller!.name} />
           </ContainerAvatar>
 
           <ContainerBottom>
-            <YearKM>
-              <ContainerBottomInfo>
-                <p>{announce.year}</p>
-              </ContainerBottomInfo>
-              <ContainerBottomInfo>
-                <p>{announce.km}KM</p>
-              </ContainerBottomInfo>
-            </YearKM>
+            <TagsInfos>
+              <Tag>{announce.year}</Tag>
+              <Tag>{announce.km}KM</Tag>
+            </TagsInfos>
 
-            <ContainerPrice>
-              <p>
-                R$
-                {parseFloat(announce.price || "0")
-                  .toFixed(2)
-                  .toString()
-                  .replace(".", ",")}
-              </p>
-            </ContainerPrice>
+            <Price>
+              R$
+              {parseFloat(announce.price || "0")
+                .toFixed(2)
+                .toString()
+                .replace(".", ",")}
+            </Price>
           </ContainerBottom>
         </ContainerInfo>
       </ContainerAuction>
-      <ButtonAuction>
+      <ButtonAuction onClick={announcePage}>
         Acessar a pagina do leilão
         <svg width="2em" height="1.5em" viewBox="0 0 15 15">
           <path

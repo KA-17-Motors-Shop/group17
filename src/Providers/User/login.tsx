@@ -11,6 +11,7 @@ interface ILogin {
 
 interface IContext {
   token?: string;
+  userId?: string;
   loginUser: (data: ILogin) => Promise<void>;
   isSeller?: boolean;
   getUser: (token: string) => Promise<void>;
@@ -30,6 +31,9 @@ export const LoginProvider: React.FC<{ children: React.ReactNode }> = ({
   const [token, setToken] = useState(
     localStorage.getItem("@token:Motor") || ""
   );
+  const [userId, setUserId] = useState(
+    localStorage.getItem("@userId:Motor") || ""
+  );
 
   const [isSeller, setIsSeller] = useState(() => {
     const seller = localStorage.getItem("@seller:Motor");
@@ -46,7 +50,9 @@ export const LoginProvider: React.FC<{ children: React.ReactNode }> = ({
       .post("/users/signin", data)
       .then(async (res) => {
         setToken(res.data.token);
+        setUserId(res.data.userId);
         localStorage.setItem("@token:Motor", res.data.token);
+        localStorage.setItem("@userId:Motor", res.data.userId);
         await getUser(res.data.token);
         toast.success("Login feito com sucesso");
         history.push("/");
@@ -88,12 +94,13 @@ export const LoginProvider: React.FC<{ children: React.ReactNode }> = ({
     localStorage.setItem("@MotorShop:Theme.mode", theme || "light");
     setIsSeller(false);
     setToken("");
+    setUserId("");
     history.push("/");
   };
 
   return (
     <LoginContext.Provider
-      value={{ token, loginUser, isSeller, getUser, logOut, isLogged }}
+      value={{ token, userId, loginUser, isSeller, getUser, logOut, isLogged }}
     >
       {children}
     </LoginContext.Provider>

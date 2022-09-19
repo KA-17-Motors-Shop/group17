@@ -192,15 +192,15 @@ export const darkTheme: DefaultTheme = {
       hover: "#CED4DA",
     },
     disable: {
-      color: "#FFFFFF",
-      border: "#CED4DA",
-      background: "#CED4DA",
-      hover: "#CED4DA",
+      color: "#495057",
+      border: "#495057",
+      background: "#0a0a0a",
+      hover: "#0a0a0a",
     },
     primaryOpacity: {
       color: "#4529E6",
       border: "#EDEAFD",
-      background: "#EDEAFD",
+      background: "#0a0a0a",
       hover: "#EDEAFD",
     },
     light: {
@@ -230,8 +230,8 @@ export const darkTheme: DefaultTheme = {
     primaryOutline: {
       color: "#4529E6",
       border: "#4529E6",
-      background: "#F7F7F7",
-      hover: "#EDEAFD",
+      background: "#0a0a0a",
+      hover: "#212529",
     },
     link: {
       color: "#FDFDFD",

@@ -8,13 +8,13 @@ export const Container = styled.div`
   width: 123px;
   height: 36px;
   border-radius: 32px;
-  background: #ffffff;
+  background-color: ${({ theme }) => theme.buttons.primaryOpacity.background};
 `;
 
 export const Icon = styled.div`
   display: flex;
   align-items: center;
-  color: ${({ theme }) => theme.backgroundColors.bannerBackground};
+  color: ${({ theme }) => theme.buttons.primaryOpacity.color};
 `;
 
 export const Time = styled.span`
@@ -24,5 +24,5 @@ export const Time = styled.span`
   font-size: 16px;
   line-height: 20px;
 
-  color: #212529;
+  color: ${({ theme }) => theme.buttons.primaryOpacity.color};
 `;

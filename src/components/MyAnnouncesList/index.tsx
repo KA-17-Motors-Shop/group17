@@ -3,7 +3,18 @@ import { IAuctionRes } from "../../interfaces/auction";
 import { useListAnnounces } from "../../Providers/Auction/listAll";
 import AuctionGroup from "./AuctionGroup";
 import SalesGroup from "./SalesGroup";
-import { Container, Title } from "./styles";
+import {
+  AnnounceContainer,
+  Container,
+  TabsList,
+  TabsRoot,
+  ToggleItem,
+  ToggleRoot,
+  Trigger,
+} from "./styles";
+
+import * as Tabs from "@radix-ui/react-tabs";
+import MyBidsList from "../MyBidsList";
 
 const MyAnnouncesList: React.FC = () => {
   const [auctions, setAuctions] = useState<IAuctionRes[]>([]);
@@ -11,23 +22,54 @@ const MyAnnouncesList: React.FC = () => {
 
   const { getMyAuctions, getMySales } = useListAnnounces();
 
-  const handleAnnounces = useCallback(async () => {
-    const announceAuctions = await getMyAuctions();
-    const announceSales = await getMySales();
+  const [value, setValue] = useState("in_progress");
+
+  const [loadding, setLoadding] = useState(false);
+
+  const handleFilterAnnounces = useCallback(async () => {
+    const announceAuctions = await getMyAuctions(value);
+    const announceSales = await getMySales(value);
 
     setAuctions(announceAuctions!);
     setSales(announceSales!);
-  }, [getMyAuctions, getMySales]);
+    setLoadding(false);
+  }, [getMyAuctions, getMySales, value]);
 
   useEffect(() => {
-    handleAnnounces();
-  }, [handleAnnounces]);
+    setLoadding(true);
+    handleFilterAnnounces();
+  }, [handleFilterAnnounces, value]);
 
   return (
     <Container>
-      <Title>Meus Anúncios</Title>
-      <AuctionGroup auctions={auctions} />
-      <SalesGroup sales={sales} />
+      <TabsRoot defaultValue="announce" orientation="vertical">
+        <TabsList>
+          <Trigger value="announce">Anúncios</Trigger>
+          <Trigger value="bids">Lances</Trigger>
+        </TabsList>
+        <Tabs.Content value="announce">
+          <AnnounceContainer>
+            <ToggleRoot
+              type="single"
+              value={value}
+              onValueChange={(value) => {
+                if (value) {
+                  setValue(value);
+                }
+              }}
+            >
+              <ToggleItem value="in_progress">Em progresso</ToggleItem>
+              <ToggleItem value="stopped">Desativado</ToggleItem>
+              <ToggleItem value="completed">Vendido</ToggleItem>
+            </ToggleRoot>
+            <AuctionGroup loadding={loadding} auctions={auctions} />
+            <SalesGroup loadding={loadding} sales={sales} />
+          </AnnounceContainer>
+        </Tabs.Content>
+        <Tabs.Content value="bids">
+          <MyBidsList />
+        </Tabs.Content>
+      </TabsRoot>
     </Container>
   );
 };
