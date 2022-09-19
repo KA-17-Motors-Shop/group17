@@ -14,8 +14,8 @@ import {
 import InputPassword from "../Components/Inputs/InputPassword";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import Modal from "../../Modal";
-import RecoveryPassword from "../../Modal/RecoveryPassword";
+import Modal from "../../Modals";
+import RecoveryPassword from "../../Modals/RecoveryPassword";
 
 import { useUser } from "../../../Providers/User/login";
 import { useLoad } from "../../../Providers/Loading";
@@ -63,7 +63,7 @@ const FormSingIn: React.FC = () => {
   return (
     <>
       <Modal show={modal} close={handleModal} height="5rem" width="30%">
-        <RecoveryPassword />
+        <RecoveryPassword handleModal={handleModal} />
       </Modal>
       <Container onSubmit={handleSubmit(handleLogin)}>
         <h1>Login</h1>

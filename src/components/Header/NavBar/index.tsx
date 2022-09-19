@@ -20,21 +20,27 @@ const NavBar: React.FC<{ user: IUser }> = ({ user }) => {
       <Nav>
         <ButtonLink
           onClick={() => {
+
             handlePage("/");
+
           }}
         >
           Carros
         </ButtonLink>
         <ButtonLink
           onClick={() => {
+
             handlePage("/");
+
           }}
         >
           Motos
         </ButtonLink>
         <ButtonLink
           onClick={() => {
+
             handlePage("/");
+
           }}
         >
           Leilão

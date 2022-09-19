@@ -6,8 +6,11 @@ import { ProfileViewUserContainer, ProfileMain } from "./styles";
 import { useUser } from "../../Providers/User/login";
 import { useCallback, useEffect, useState } from "react";
 import { IUser } from "../../interfaces/user";
-import EditProfile from "../../components/Modal/EditProfile";
-import CreateAnounce from "../../components/Modal/CreateAnounce";
+
+import UpdateProfile from "../../components/Modals/UpdateProfile";
+import CreateAd from "../../components/Modals/Ad/CreateAd";
+import Modal from "../../components/Modals";
+
 import MyAnnouncesList from "../../components/MyAnnouncesList";
 import MyBidsList from "../../components/MyBidsList";
 
@@ -15,9 +18,6 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
   const { token, getUser } = useUser();
 
   const [user, setUser] = useState<IUser>({});
-
-  const [editProfileModal, setEditProfileModal] = useState(false);
-  const [createAnunceModal, setCreateAnunceModal] = useState(false);
 
   const handleAuth = useCallback(async () => {
     const user = await getUser(token as string);
@@ -28,16 +28,26 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
     handleAuth();
   }, [handleAuth]);
 
+  const [editProfileModal, setEditProfileModal] = useState<boolean>(false);
+  const [createAdModal, setCreateAdModal] = useState<boolean>(false);
+
+  const handleModalProfile = () => {
+    setEditProfileModal(!editProfileModal);
+  };
+
+  const handleModalCreateAd = () => {
+    setCreateAdModal(!editProfileModal);
+  };
+
   return (
     <>
-      <EditProfile
-        show={editProfileModal}
-        handle={() => setEditProfileModal(false)}
-      />
-      <CreateAnounce
-        show={createAnunceModal}
-        handle={() => setCreateAnunceModal(false)}
-      />
+      <Modal show={editProfileModal} close={handleModalProfile}>
+        <UpdateProfile handleModal={handleModalProfile} />
+      </Modal>
+      <Modal show={createAdModal} close={handleModalCreateAd}>
+        <CreateAd handleModal={handleModalCreateAd} />
+      </Modal>
+
       <ProfileViewUserContainer>
         <Header />
         <ProfileMain>
@@ -45,8 +55,8 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
             description={user.description as string}
             userName={user.name as string}
             typeUser={user.isSeller as boolean}
-            openProfileModal={() => setEditProfileModal(true)}
-            openAnounceModal={() => setCreateAnunceModal(true)}
+            openProfileModal={handleModalProfile}
+            openAnounceModal={handleModalCreateAd}
           />
           {user.isSeller ? <MyAnnouncesList /> : <MyBidsList />}
         </ProfileMain>

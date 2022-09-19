@@ -15,12 +15,12 @@ export const Container = styled.div`
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
 
-  > input {
+  > textarea {
     width: 100%;
-    height: 40px;
+    height: 80px;
     font-family: "Inter";
     font-style: normal;
     font-weight: 500;
@@ -31,7 +31,7 @@ export const Container = styled.div`
       error
         ? "#ff0c0c"
         : ({ theme }) => theme.backgroundColors.generalBackground};
-    padding: 0px 16px;
+    padding: 8px 0 0 16px;
     color: ${({ theme }) => theme.textColors.primaryText};
     background-color: ${({ theme }) => theme.backgroundColors.headerBackground};
 
