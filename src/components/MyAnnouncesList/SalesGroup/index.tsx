@@ -2,21 +2,28 @@ import React from "react";
 import { IAuctionRes } from "../../../interfaces/auction";
 
 import SaleCard from "../../Card/SaleCard";
-import LoadingOrEmpty from "../../Loader/LoadingOrEmpty";
-import { Container, ContainerGroup, Title } from "./styles";
+import LoaderLocalComponent from "../../Loader/LoaderLocalComponent";
 
-const SalesGroup: React.FC<{ sales: IAuctionRes[] }> = ({ sales }) => {
+import { Container, ContainerGroup, Title } from "./styles";
+import EmptyMessage from "../../EmptyMessage";
+
+const SalesGroup: React.FC<{ loadding: boolean; sales: IAuctionRes[] }> = ({
+  sales,
+  loadding,
+}) => {
   return (
     <Container>
       <Title>Vendas</Title>
-      {sales.length ? (
+      {loadding ? (
+        <LoaderLocalComponent />
+      ) : sales.length ? (
         <ContainerGroup>
           {sales.map((item) => (
             <SaleCard key={item.id} announce={item} />
           ))}
         </ContainerGroup>
       ) : (
-        <LoadingOrEmpty message="Nenhuma venda encontrada" />
+        <EmptyMessage message="Nenhuma venda encontrada" />
       )}
     </Container>
   );

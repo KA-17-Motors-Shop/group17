@@ -8,6 +8,8 @@ import {
   Container,
   TabsList,
   TabsRoot,
+  ToggleItem,
+  ToggleRoot,
   Trigger,
 } from "./styles";
 
@@ -20,17 +22,23 @@ const MyAnnouncesList: React.FC = () => {
 
   const { getMyAuctions, getMySales } = useListAnnounces();
 
-  const handleAnnounces = useCallback(async () => {
-    const announceAuctions = await getMyAuctions();
-    const announceSales = await getMySales();
+  const [value, setValue] = useState("in_progress");
+
+  const [loadding, setLoadding] = useState(false);
+
+  const handleFilterAnnounces = useCallback(async () => {
+    const announceAuctions = await getMyAuctions(value);
+    const announceSales = await getMySales(value);
 
     setAuctions(announceAuctions!);
     setSales(announceSales!);
-  }, [getMyAuctions, getMySales]);
+    setLoadding(false);
+  }, [getMyAuctions, getMySales, value]);
 
   useEffect(() => {
-    handleAnnounces();
-  }, [handleAnnounces]);
+    setLoadding(true);
+    handleFilterAnnounces();
+  }, [handleFilterAnnounces, value]);
 
   return (
     <Container>
@@ -41,8 +49,21 @@ const MyAnnouncesList: React.FC = () => {
         </TabsList>
         <Tabs.Content value="announce">
           <AnnounceContainer>
-            <AuctionGroup auctions={auctions} />
-            <SalesGroup sales={sales} />
+            <ToggleRoot
+              type="single"
+              value={value}
+              onValueChange={(value) => {
+                if (value) {
+                  setValue(value);
+                }
+              }}
+            >
+              <ToggleItem value="in_progress">Em progresso</ToggleItem>
+              <ToggleItem value="stopped">Desativado</ToggleItem>
+              <ToggleItem value="completed">Vendido</ToggleItem>
+            </ToggleRoot>
+            <AuctionGroup loadding={loadding} auctions={auctions} />
+            <SalesGroup loadding={loadding} sales={sales} />
           </AnnounceContainer>
         </Tabs.Content>
         <Tabs.Content value="bids">

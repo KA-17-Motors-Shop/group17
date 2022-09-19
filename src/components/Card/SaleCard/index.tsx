@@ -3,39 +3,50 @@ import DefaultImg from "../../../assets/img/default.png";
 import {
   BaseboardContainer,
   ParentTagContainer,
-  PriceContainer,
   CardContainer,
   ImgContainer,
-  TagContainer,
   AvatarContainer,
+  Title,
+  Description,
+  Tag,
+  Price,
 } from "./styles";
 import Avatar from "../../Avatar";
+import { useHistory } from "react-router-dom";
 
 const SaleCard: React.FC<{ announce: IAuctionRes }> = ({
   announce,
 }): JSX.Element => {
+  const history = useHistory();
+  console.log(announce);
+  const announcePage = () => {
+    history.push(`/ad_details?id=${announce.id}`);
+  };
+
   return (
     <CardContainer>
-      <ImgContainer>
+      <ImgContainer onClick={announcePage}>
         <img src={announce.imagesUrl![0] || DefaultImg} alt="Imagem anuncio" />
       </ImgContainer>
-      <h2>{announce.title}</h2>
-      <p>{announce.description}</p>
+      <Title>
+        {announce.title![0].toUpperCase() + announce.title?.slice(1)}
+      </Title>
+      <Description>{announce.description}</Description>
       <AvatarContainer>
         <Avatar userName={announce.seller?.name as string} />
       </AvatarContainer>
       <BaseboardContainer>
         <ParentTagContainer>
-          <TagContainer>
-            <span>{announce.km}</span>
-          </TagContainer>
-          <TagContainer>
-            <span>{announce.year}</span>
-          </TagContainer>
+          <Tag>{announce.km}Km</Tag>
+          <Tag>{announce.year}</Tag>
         </ParentTagContainer>
-        <PriceContainer>
-          <span>R$ {announce.price}</span>
-        </PriceContainer>
+        <Price>
+          R$
+          {parseFloat(announce.price as string)
+            .toFixed(2)
+            .toString()
+            .replace(".", ",")}
+        </Price>
       </BaseboardContainer>
     </CardContainer>
   );

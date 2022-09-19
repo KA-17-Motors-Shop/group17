@@ -2,11 +2,14 @@ import { useCallback, useEffect, useState } from "react";
 import { IAuctionRes, typeVehicle, type } from "../../../interfaces/auction";
 import { useListAnnounces } from "../../../Providers/Auction/listAll";
 import SaleCard from "../../Card/SaleCard";
-import LoadingOrEmpty from "../../Loader/LoadingOrEmpty";
+import EmptyMessage from "../../EmptyMessage";
+import LoaderLocalComponent from "../../Loader/LoaderLocalComponent";
 import { TitleContainer, CardContainer } from "./styles";
 
 const MotorcyclesList: React.FC = () => {
   const [announce, setAnnounce] = useState<IAuctionRes[]>([]);
+  const [loadding, setLoadding] = useState(false);
+
   const { getListFilter } = useListAnnounces();
 
   const handleAnnounces = useCallback(async () => {
@@ -15,9 +18,12 @@ const MotorcyclesList: React.FC = () => {
       type: type.sale,
     });
     setAnnounce(list);
+    setLoadding(false);
   }, [getListFilter]);
 
   useEffect(() => {
+    setLoadding(true);
+
     handleAnnounces();
   }, [handleAnnounces]);
 
@@ -25,10 +31,12 @@ const MotorcyclesList: React.FC = () => {
     <>
       <TitleContainer>Motos</TitleContainer>
       <CardContainer>
-        {announce.length ? (
+        {loadding ? (
+          <LoaderLocalComponent />
+        ) : announce.length ? (
           announce.map((item) => <SaleCard announce={item} key={item.id} />)
         ) : (
-          <LoadingOrEmpty message="Nenhuma moto anúnciada" />
+          <EmptyMessage message="Nenhuma moto anúnciada" />
         )}
       </CardContainer>
     </>

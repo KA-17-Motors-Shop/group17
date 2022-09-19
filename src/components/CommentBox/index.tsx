@@ -1,21 +1,26 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { IResComment } from "../../interfaces/comments";
 import { useComments } from "../../Providers/Comments";
-import LoadingOrEmpty from "../Loader/LoadingOrEmpty";
+import EmptyMessage from "../EmptyMessage";
+import LoaderLocalComponent from "../Loader/LoaderLocalComponent";
 import SingleComment from "../SingleComment";
 import { CommentBoxContainer, CommentsGroup, Empty, Title } from "./styles";
 
 const CommentBox: React.FC<{ announceId: string }> = ({ announceId }) => {
   const [comments, setComments] = useState<IResComment[]>();
+  const [loadding, setLoadding] = useState(false);
 
   const { getCommentsAnnounce } = useComments();
 
   const handleAnnounces = useCallback(async () => {
     const commentsGet = await getCommentsAnnounce(announceId);
     setComments(commentsGet);
+    setLoadding(false);
   }, [getCommentsAnnounce, announceId]);
 
   useEffect(() => {
+    setLoadding(true);
+
     handleAnnounces();
   }, [handleAnnounces]);
 
@@ -24,7 +29,9 @@ const CommentBox: React.FC<{ announceId: string }> = ({ announceId }) => {
   return (
     <CommentBoxContainer>
       <Title>Comentários</Title>
-      {comments?.length ? (
+      {loadding ? (
+        <LoaderLocalComponent />
+      ) : comments?.length ? (
         <CommentsGroup>
           {comments.map((item) => (
             <SingleComment
@@ -36,7 +43,7 @@ const CommentBox: React.FC<{ announceId: string }> = ({ announceId }) => {
         </CommentsGroup>
       ) : (
         <Empty>
-          <LoadingOrEmpty message="Nenhum comentário encontrado" />
+          <EmptyMessage message="Nenhum comentário encontrado" />
         </Empty>
       )}
     </CommentBoxContainer>

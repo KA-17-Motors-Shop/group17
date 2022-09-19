@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LoadingOrEmpty from "../Loader/LoadingOrEmpty";
+import EmptyMessage from "../EmptyMessage";
 import { Container, ContainerGroup, Title } from "./styles";
 
 const MyBidsList: React.FC = () => {
@@ -15,7 +15,7 @@ const MyBidsList: React.FC = () => {
           ))}
         </ContainerGroup>
       ) : (
-        <LoadingOrEmpty message="Nenhum lance encontrado" />
+        <EmptyMessage message="Nenhum lance encontrado" />
       )}
     </Container>
   );

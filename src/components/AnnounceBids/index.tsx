@@ -1,21 +1,24 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { IResBids } from "../../interfaces/bids";
 import { useBids } from "../../Providers/Bids";
-import LoadingOrEmpty from "../Loader/LoadingOrEmpty";
+import EmptyMessage from "../EmptyMessage";
+import LoaderLocalComponent from "../Loader/LoaderLocalComponent";
 import BidCard from "./BidCard";
 import { BidsGroup, Container, Empty, Title } from "./styles";
 
 const AnnounceBids: React.FC<{ id: string }> = ({ id }) => {
   const [bids, setBids] = useState<IResBids[]>([]);
-
+  const [loadding, setLoadding] = useState(false);
   const { getBidsAnnounce } = useBids();
 
   const handleBids = useCallback(async () => {
     const get = await getBidsAnnounce(id);
     setBids(get);
+    setLoadding(false);
   }, [getBidsAnnounce, id]);
 
   useEffect(() => {
+    setLoadding(true);
     handleBids();
   }, [handleBids]);
 
@@ -23,7 +26,9 @@ const AnnounceBids: React.FC<{ id: string }> = ({ id }) => {
     <Container>
       <Title>Lances</Title>
 
-      {bids && bids.length ? (
+      {loadding ? (
+        <LoaderLocalComponent />
+      ) : bids && bids.length ? (
         <BidsGroup>
           {bids.map((item) => (
             <BidCard bid={item} key={item.id} />
@@ -31,7 +36,7 @@ const AnnounceBids: React.FC<{ id: string }> = ({ id }) => {
         </BidsGroup>
       ) : (
         <Empty>
-          <LoadingOrEmpty message="Nenhum lance encontrado" />
+          <EmptyMessage message="Nenhum lance encontrado" />
         </Empty>
       )}
     </Container>

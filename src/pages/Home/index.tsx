@@ -9,7 +9,7 @@ import MotorcyclesList from "../../components/Lists/MotorcyclesList";
 import { IUser } from "../../interfaces/user";
 import { useUser } from "../../Providers/User/login";
 
-import { Main, Page } from "./styles";
+import { ContainerLists, Main, Page } from "./styles";
 
 const Home: React.FC = () => {
   const { token, getUser } = useUser();
@@ -31,9 +31,11 @@ const Home: React.FC = () => {
       <Main>
         {user.id && !user.isActivate && <ActivateUserSpan />}
         <BannerHome />
-        <AuctionList />
-        <CarsList />
-        <MotorcyclesList />
+        <ContainerLists>
+          <AuctionList />
+          <CarsList />
+          <MotorcyclesList />
+        </ContainerLists>
       </Main>
       <Footer />
     </Page>

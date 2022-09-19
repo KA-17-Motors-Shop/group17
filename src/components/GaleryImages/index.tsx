@@ -1,6 +1,6 @@
 import React from "react";
 import IndividualImageContainer from "../IndividualImageContainer";
-import LoadingOrEmpty from "../Loader/LoadingOrEmpty";
+import EmptyMessage from "../EmptyMessage";
 import { Empty, ImageGalleryContainer, Title } from "./styles";
 
 const GaleryImages: React.FC<{ images: string[] }> = ({ images }) => {
@@ -14,7 +14,7 @@ const GaleryImages: React.FC<{ images: string[] }> = ({ images }) => {
           ))
         ) : (
           <Empty>
-            <LoadingOrEmpty message="Nenhuma foto encontrada" />
+            <EmptyMessage message="Nenhuma foto encontrada" />
           </Empty>
         )}
       </div>

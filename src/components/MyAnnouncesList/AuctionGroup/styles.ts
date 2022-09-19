@@ -21,6 +21,7 @@ export const ContainerGroup = styled.ul`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  gap: 1rem;
   overflow-x: scroll;
   width: 90%;
   min-width: 300px;

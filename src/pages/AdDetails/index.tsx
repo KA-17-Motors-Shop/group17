@@ -31,26 +31,30 @@ import { avatarLetters } from "../../utils/avatarLetters";
 import CommentBox from "../../components/CommentBox";
 import GaleryImages from "../../components/GaleryImages";
 import CommentInput from "../../components/Forms/Components/CommentInput";
-import LoadingOrEmpty from "../../components/Loader/LoadingOrEmpty";
+import EmptyMessage from "../../components/EmptyMessage";
 import AnnounceBids from "../../components/AnnounceBids";
+import LoaderLocalComponent from "../../components/Loader/LoaderLocalComponent";
 
 const AdDetails: React.FC = (): JSX.Element => {
   const query = useQuery();
   const history = useHistory();
 
   const [announce, setAnnounce] = useState<IAuctionRes>({});
+  const [loadding, setLoadding] = useState(false);
 
   const { getAnnounce } = useListAnnounces();
 
   const handleAnnounces = useCallback(async () => {
     const announceGet = await getAnnounce(query.get("id") as string);
     setAnnounce(announceGet);
+    setLoadding(false);
   }, [getAnnounce, query]);
 
   useEffect(() => {
+    setLoadding(true);
     handleAnnounces();
   }, [handleAnnounces]);
-
+  console.log(announce);
   const handleSellerPage = () => {
     history.push(`/seller?seller_id=${announce.seller!.id}`);
   };
@@ -59,7 +63,11 @@ const AdDetails: React.FC = (): JSX.Element => {
     <Page>
       <Header />
       <AdDetailsMain>
-        {announce.id ? (
+        {loadding ? (
+          <EmptyContainer>
+            <LoaderLocalComponent />
+          </EmptyContainer>
+        ) : announce.id ? (
           <>
             <TopContainer>
               <LeftContainer>
@@ -71,6 +79,8 @@ const AdDetails: React.FC = (): JSX.Element => {
                   year={announce.year as string}
                   id={announce.id as string}
                   type={announce.type as string}
+                  sellerId={announce.seller?.id as string}
+                  status={announce.status as string}
                 />
                 <DescriptionBox description={announce.description as string} />
               </LeftContainer>
@@ -102,7 +112,7 @@ const AdDetails: React.FC = (): JSX.Element => {
           </>
         ) : (
           <EmptyContainer>
-            <LoadingOrEmpty message="Anúncio não encontrado" />
+            <EmptyMessage message="Anúncio não encontrado" />
           </EmptyContainer>
         )}
       </AdDetailsMain>

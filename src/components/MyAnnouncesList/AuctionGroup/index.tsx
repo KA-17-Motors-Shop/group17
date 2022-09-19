@@ -1,21 +1,27 @@
 import React from "react";
 import { IAuctionRes } from "../../../interfaces/auction";
 import AuctionCard from "../../Card/AuctionCard";
-import LoadingOrEmpty from "../../Loader/LoadingOrEmpty";
+import LoaderLocalComponent from "../../Loader/LoaderLocalComponent";
+import EmptyMessage from "../../EmptyMessage";
 import { Container, ContainerGroup, Title } from "./styles";
 
-const AuctionGroup: React.FC<{ auctions: IAuctionRes[] }> = ({ auctions }) => {
+const AuctionGroup: React.FC<{
+  loadding: boolean;
+  auctions: IAuctionRes[];
+}> = ({ auctions, loadding }) => {
   return (
     <Container>
       <Title>Leilões</Title>
-      {auctions.length ? (
+      {loadding ? (
+        <LoaderLocalComponent />
+      ) : auctions.length ? (
         <ContainerGroup>
           {auctions.map((item) => (
             <AuctionCard key={item.id} announce={item} />
           ))}
         </ContainerGroup>
       ) : (
-        <LoadingOrEmpty message="Nenhum leilão encontrado" />
+        <EmptyMessage message="Nenhum leilão encontrado" />
       )}
     </Container>
   );
