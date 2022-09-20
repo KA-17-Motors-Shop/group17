@@ -61,7 +61,7 @@ export const Negative = styled.div`
     color: ${({ theme }) => theme.buttons.negative.color};
 
     &:hover {
-      filter: brightness(1);
+      filter: brightness(0.8);
       background-color: ${({ theme }) => theme.buttons.negative.hover};
       border: 1.5px solid ${({ theme }) => theme.buttons.negative.hover};
     }

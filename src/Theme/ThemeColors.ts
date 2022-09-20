@@ -186,9 +186,9 @@ export const darkTheme: DefaultTheme = {
       hover: "#212529",
     },
     negative: {
-      color: "#495057",
+      color: "#DEE2E6",
       border: "#DEE2E6",
-      background: "#DEE2E6",
+      background: "#212529",
       hover: "#CED4DA",
     },
     disable: {
@@ -241,8 +241,8 @@ export const darkTheme: DefaultTheme = {
     },
     alert: {
       color: "#CD2B31",
-      border: "#FFE5E5",
-      background: "#FFE5E5",
+      border: "#CD2B31",
+      background: "#212529",
       hover: "#FDD8D8",
     },
     success: {

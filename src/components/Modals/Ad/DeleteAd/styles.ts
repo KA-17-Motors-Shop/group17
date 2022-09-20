@@ -4,35 +4,36 @@ export const Centralize = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
   height: 100%;
   width: 100%;
+  background-color: ${(props) =>
+    props.theme.backgroundColors.secondaryBackground};
+  border-radius: 0.5rem;
 `;
 
 export const ModalContainer = styled.div`
-  width: 520px;
-  height: 331px;
+  height: 100%;
+  width: 100%;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
-  background-color: ${(props) =>
-    props.theme.backgroundColors.secondaryBackground};
-  border-radius: 0.5rem;
 
   > h1 {
-    color: ${({ theme }) => theme.textColors.subTitle};
+    color: ${({ theme }) => theme.textColors.primaryText};
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 20px;
   }
   > h2 {
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 28px;
-    color: #495057;
+    color: ${({ theme }) => theme.textColors.primaryText};
   }
 `;
 
@@ -41,10 +42,10 @@ export const TopModal = styled.div`
   justify-content: space-between;
 
   > h1 {
-    color: ${({ theme }) => theme.textColors.subTitle};
+    color: ${({ theme }) => theme.textColors.primaryText};
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 1.5rem;
     line-height: 20px;
   }
 `;
@@ -52,5 +53,19 @@ export const TopModal = styled.div`
 export const BottoModal = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin-left: 3rem;
+
+  > div {
+    padding: 0.2rem;
+  }
+
+  @media screen and (max-width: 875px) {
+    flex-direction: column;
+
+    > div {
+      width: 100%;
+      > button {
+        width: 100%;
+      }
+    }
+  }
 `;

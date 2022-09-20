@@ -7,6 +7,7 @@ import { useAuctionRegister } from "../../../../Providers/Auction/register";
 
 import GeneralInput from "../../../Forms/Components/Inputs/GeneralInput";
 import {
+  ButtonDisable,
   ButtonNegative,
   ButtonPrimaryDisable,
   ButtonPrimaryOpacity,
@@ -19,16 +20,18 @@ import {
 
 import * as S from "./styles";
 
-import { IDataAuction } from "../../../../interfaces/auction";
+import { IAuctionRes, IDataAuction } from "../../../../interfaces/auction";
 
 import { CloseModalBtn } from "../../../Button/CloseModalBtn";
 import TextArea from "../../../Forms/Components/TextArea";
+import InputFile from "../../../Forms/Components/Inputs/InputFile";
 
-interface IHandleModal {
+interface IProps {
   handleModal: () => void;
+  announce: IAuctionRes;
 }
 
-const UpdateAd = ({ handleModal }: IHandleModal) => {
+const UpdateAd: React.FC<IProps> = ({ handleModal, announce }) => {
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
     description: yup.string().required("Campo obrigatório"),
@@ -51,18 +54,12 @@ const UpdateAd = ({ handleModal }: IHandleModal) => {
     resolver: yupResolver(schema),
   });
 
-  const [typeSale, setTypeSale] = useState("sale");
-  const [typeVehicle, setTypeVehicle] = useState("car");
-  const [typePubli, setTypePubli] = useState("no");
-
-  const { registerAuction } = useAuctionRegister();
+  const [typeSale, setTypeSale] = useState(announce.type || "sale");
+  const [isActive, setIsActive] = useState(announce.isActive ? "yes" : "no");
+  const [typeVehicle, setTypeVehicle] = useState(announce.typeVehicle || "car");
 
   const handleRegister = async (data: IDataAuction) => {
-    await registerAuction({
-      ...data,
-      type: typeSale,
-      typeVehicle: typeVehicle,
-    });
+    console.log(data);
   };
 
   return (
@@ -76,6 +73,9 @@ const UpdateAd = ({ handleModal }: IHandleModal) => {
         <S.InputsContainer>
           <S.SpanText>Tipo de anuncio</S.SpanText>
           <SelectTypeSale value={typeSale} setValue={setTypeSale} />
+
+          <S.SpanText>Publicação</S.SpanText>
+          <SelectTypePublished value={isActive} setValue={setIsActive} />
 
           <S.SpanText>Informações do veiculo</S.SpanText>
           <GeneralInput
@@ -119,37 +119,6 @@ const UpdateAd = ({ handleModal }: IHandleModal) => {
 
           <S.SpanText>Tipo do veiculo</S.SpanText>
           <SelectTypeVehicle value={typeVehicle} setValue={setTypeVehicle} />
-
-          <S.SpanText>Publicado</S.SpanText>
-          <SelectTypePublished value={typePubli} setValue={setTypePubli} />
-
-          <GeneralInput
-            label="Imagem da capa"
-            register={register}
-            name={"image_primary"}
-            error={errors.image_primary?.message}
-            type={"file"}
-          />
-
-          <GeneralInput
-            label="1º imagem da galeria"
-            register={register}
-            name={"image_1"}
-            error={errors.image_1?.message}
-            type={"file"}
-          />
-          <GeneralInput
-            label="2º imagem da galeria"
-            register={register}
-            name={"image_2"}
-            error={errors.image_2?.message}
-            type={"file"}
-          />
-          <S.BtnAddImg>
-            <ButtonPrimaryOpacity type="button">
-              Adicionar campo para imagem da galeria
-            </ButtonPrimaryOpacity>
-          </S.BtnAddImg>
         </S.InputsContainer>
         <S.BottoModal>
           <ButtonNegative type="button" onClick={handleModal}>
