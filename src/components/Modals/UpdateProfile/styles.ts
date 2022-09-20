@@ -11,24 +11,22 @@ export const Centralize = styled.div`
     props.theme.backgroundColors.secondaryBackground};
 `;
 
+export const Space = styled.div`
+  width: 100%;
+  height: 1rem;
+`;
+
 export const ContainerForm = styled.form`
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   overflow-y: scroll;
 
   display: flex;
-  padding: 1rem;
+  padding: 1.5rem;
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
-
-  > h1 {
-    color: ${({ theme }) => theme.textColors.subTitle};
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-  }
+  gap: 0.5rem;
 `;
 
 export const TopModal = styled.div`
@@ -36,7 +34,11 @@ export const TopModal = styled.div`
   justify-content: space-between;
   margin-bottom: 2rem;
 
-  @media screen and (max-width: 920px) {
+  > h1 {
+    color: ${({ theme }) => theme.textColors.primaryText};
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.5rem;
   }
 `;
 

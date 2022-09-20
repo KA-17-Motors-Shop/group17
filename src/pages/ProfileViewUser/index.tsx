@@ -41,7 +41,7 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
   return (
     <>
       <Modal show={editProfileModal} close={handleModalProfile}>
-        <UpdateProfile handleModal={handleModalProfile} />
+        <UpdateProfile handleModal={handleModalProfile} user={user} />
       </Modal>
       <Modal show={createAdModal} close={handleModalCreateAd}>
         <CreateAd handleModal={handleModalCreateAd} />

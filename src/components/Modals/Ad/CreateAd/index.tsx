@@ -106,7 +106,7 @@ const CreateAd = ({ handleModal }: IHandleModal) => {
     <S.Centralize>
       <S.ContainerForm onSubmit={handleSubmit(handleRegister)}>
         <S.TopModal>
-          <h1>Criar Anuncio</h1>
+          <h1>Criar Anúncio</h1>
           <CloseModalBtn type="button" onClick={handleModal} />
         </S.TopModal>
 
