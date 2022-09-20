@@ -18,7 +18,6 @@ const SaleCard: React.FC<{ announce: IAuctionRes }> = ({
   announce,
 }): JSX.Element => {
   const history = useHistory();
-  console.log(announce);
   const announcePage = () => {
     history.push(`/ad_details?id=${announce.id}`);
   };

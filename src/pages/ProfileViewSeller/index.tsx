@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import ShowButtons from "../../components/Button/ShowButtons";
 import { useQuery } from "../../hooks/useQuery";
 import { IAuctionRes } from "../../interfaces/auction";
 import { useListAnnounces } from "../../Providers/Auction/listAll";
@@ -21,7 +22,12 @@ const ProfileViewSeller: React.FC = () => {
     handleAnnounces();
   }, [handleAnnounces]);
 
-  return <div>Seller Page</div>;
+  return (
+    <div>
+      Seller Page
+      <ShowButtons />
+    </div>
+  );
 };
 
 export default ProfileViewSeller;

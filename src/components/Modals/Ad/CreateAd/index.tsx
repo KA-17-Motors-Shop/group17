@@ -7,11 +7,13 @@ import { useAuctionRegister } from "../../../../Providers/Auction/register";
 
 import GeneralInput from "../../../Forms/Components/Inputs/GeneralInput";
 import {
+  ButtonDisable,
   ButtonNegative,
-  ButtonPrimaryDisable,
+  ButtonPrimary,
   ButtonPrimaryOpacity,
 } from "../../../Button";
 import {
+  SelectTypePublished,
   SelectTypeSale,
   SelectTypeVehicle,
 } from "../../../Forms/Components/SelectType";
@@ -22,6 +24,8 @@ import { IDataAuction } from "../../../../interfaces/auction";
 
 import { CloseModalBtn } from "../../../Button/CloseModalBtn";
 import TextArea from "../../../Forms/Components/TextArea";
+import { useLoad } from "../../../../Providers/Loading";
+import InputFile from "../../../Forms/Components/Inputs/InputFile";
 
 interface IHandleModal {
   handleModal: () => void;
@@ -36,7 +40,8 @@ const CreateAd = ({ handleModal }: IHandleModal) => {
       .required("Campo obrigatório")
       .test(
         (dateString) =>
-          new Date(dateString!) < new Date(new Date().getFullYear())
+          new Date(new Date(dateString!).getFullYear()) <=
+          new Date(new Date().getFullYear())
       ),
     km: yup.number().typeError("Somente números").required("Campo obrigatório"),
     price: yup.string().required("Campo obrigatório"),
@@ -51,16 +56,50 @@ const CreateAd = ({ handleModal }: IHandleModal) => {
   });
 
   const [typeSale, setTypeSale] = useState("sale");
+  const [isActive, setIsActive] = useState("yes");
   const [typeVehicle, setTypeVehicle] = useState("car");
+
+  const [numberFiles, setNumbersFiles] = useState(1);
+  const [files, setFiles] = useState<{ id: number; file: File }[]>([]);
+
+  const addInputFile = () => {
+    setNumbersFiles(numberFiles + 1);
+  };
+
+  const addFile = (index: number, file: File) => {
+    const filesArr = files.find((item) => item.id === index);
+
+    if (filesArr) {
+      const data = [
+        ...files.filter((item) => item.id !== index),
+        { id: index, file },
+      ];
+      setFiles(data);
+    } else {
+      setFiles([...files, { id: index, file }]);
+    }
+  };
 
   const { registerAuction } = useAuctionRegister();
 
+  const { showLoad } = useLoad();
+
   const handleRegister = async (data: IDataAuction) => {
-    await registerAuction({
-      ...data,
-      type: typeSale,
-      typeVehicle: typeVehicle,
+    showLoad();
+
+    const images = files.map((item) => {
+      return item.file;
     });
+
+    await registerAuction(
+      {
+        ...data,
+        type: typeSale,
+        typeVehicle: typeVehicle,
+        isActive: isActive === "yes",
+      },
+      images
+    );
   };
 
   return (
@@ -68,12 +107,15 @@ const CreateAd = ({ handleModal }: IHandleModal) => {
       <S.ContainerForm onSubmit={handleSubmit(handleRegister)}>
         <S.TopModal>
           <h1>Criar Anuncio</h1>
-          <CloseModalBtn onClick={handleModal} />
+          <CloseModalBtn type="button" onClick={handleModal} />
         </S.TopModal>
 
         <S.InputsContainer>
           <S.SpanText>Tipo de anuncio</S.SpanText>
           <SelectTypeSale value={typeSale} setValue={setTypeSale} />
+
+          <S.SpanText>Publicação</S.SpanText>
+          <SelectTypePublished value={isActive} setValue={setIsActive} />
 
           <S.SpanText>Informações do veiculo</S.SpanText>
           <GeneralInput
@@ -117,35 +159,31 @@ const CreateAd = ({ handleModal }: IHandleModal) => {
 
           <S.SpanText>Tipo do veiculo</S.SpanText>
           <SelectTypeVehicle value={typeVehicle} setValue={setTypeVehicle} />
-
-          <GeneralInput
-            label="Imagem da capa"
-            register={register}
-            name={"image_primary"}
-            error={errors.image_primary?.message}
-            type={"file"}
-          />
-
-          <GeneralInput
-            label="1º imagem da galeria"
-            register={register}
-            name={"image_1"}
-            error={errors.image_1?.message}
-            type={"file"}
-          />
+          <div>
+            {Array.from({ length: numberFiles }).map((_, index) => (
+              <InputFile
+                key={index}
+                name="images"
+                id={index.toString()}
+                saveFile={addFile}
+              />
+            ))}
+          </div>
           <S.BtnAddImg>
-            <ButtonPrimaryOpacity type="button">
-              Adicionar campo para imagem da galeria
-            </ButtonPrimaryOpacity>
+            {numberFiles < 5 ? (
+              <ButtonPrimaryOpacity type="button" onClick={addInputFile}>
+                Adicionar campo
+              </ButtonPrimaryOpacity>
+            ) : (
+              <ButtonDisable>Adicionar campo</ButtonDisable>
+            )}
           </S.BtnAddImg>
         </S.InputsContainer>
         <S.BottoModal>
           <ButtonNegative type="button" onClick={handleModal}>
             Cancelar
           </ButtonNegative>
-          <ButtonPrimaryDisable type="submit">
-            Criar anúncio
-          </ButtonPrimaryDisable>
+          <ButtonPrimary type="submit">Criar anúncio</ButtonPrimary>
         </S.BottoModal>
       </S.ContainerForm>
     </S.Centralize>

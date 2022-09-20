@@ -1,23 +1,26 @@
 import styled from "styled-components";
 
 export const Centralize = styled.div`
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
+  border-radius: 0.5rem;
+
+  background-color: ${(props) =>
+    props.theme.backgroundColors.secondaryBackground};
 `;
 
 export const ContainerForm = styled.form`
+  max-width: 100%;
+  max-height: 100%;
+  overflow-y: scroll;
+
   display: flex;
-  width: 520px;
-  height: 823px;
-
   padding: 1rem;
-
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
-  background-color: ${(props) =>
-    props.theme.backgroundColors.secondaryBackground};
-  border-radius: 0.5rem;
 
   > h1 {
     color: ${({ theme }) => theme.textColors.subTitle};
@@ -32,17 +35,8 @@ export const TopModal = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 2rem;
-  /* margin-top: -1rem; */
-  > h1 {
-    /* color: ${({ theme }) => theme.textColors.subTitle};
-    margin-top: 1rem; */
-  }
 
   @media screen and (max-width: 920px) {
-    /* margin-top: -1.5rem;
-    > h1 {
-      margin-top: 2rem;
-    } */
   }
 `;
 
@@ -74,6 +68,9 @@ export const SpanText = styled.span`
 export const BottoModal = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin-left: 2rem;
-  margin-top: 2rem;
+  gap: 0.5rem;
+
+  > div {
+    width: 40%;
+  }
 `;

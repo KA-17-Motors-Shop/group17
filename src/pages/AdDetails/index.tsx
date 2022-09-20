@@ -54,7 +54,7 @@ const AdDetails: React.FC = (): JSX.Element => {
     setLoadding(true);
     handleAnnounces();
   }, [handleAnnounces]);
-  console.log(announce);
+
   const handleSellerPage = () => {
     history.push(`/seller?seller_id=${announce.seller!.id}`);
   };

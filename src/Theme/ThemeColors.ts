@@ -201,7 +201,7 @@ export const darkTheme: DefaultTheme = {
       color: "#4529E6",
       border: "#EDEAFD",
       background: "#0a0a0a",
-      hover: "#EDEAFD",
+      hover: "#212529",
     },
     light: {
       color: "#212529",

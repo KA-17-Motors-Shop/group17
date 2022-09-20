@@ -86,6 +86,14 @@ export const NameContainerWithTag = styled.div`
       height: 30px;
     }
   }
+  @media only screen and (max-width: 425px) {
+    h2 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 12ch;
+    }
+  }
 `;
 
 export const ButtonsContainer = styled.div`

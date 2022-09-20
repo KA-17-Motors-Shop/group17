@@ -36,9 +36,8 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
   };
 
   const handleModalCreateAd = () => {
-    setCreateAdModal(!editProfileModal);
+    setCreateAdModal(!createAdModal);
   };
-
   return (
     <>
       <Modal show={editProfileModal} close={handleModalProfile}>

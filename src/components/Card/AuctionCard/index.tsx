@@ -20,7 +20,7 @@ import {
 
 const AuctionCard: React.FC<{ announce: IAuctionRes }> = ({ announce }) => {
   const history = useHistory();
-  console.log(announce);
+
   const announcePage = () => {
     history.push(`/ad_details?id=${announce.id}`);
   };

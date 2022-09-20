@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useUser } from "../../Providers/User/login";
 import { ButtonDisable, ButtonPrimary } from "../Button";
-import BidsAuction from "../Modal/BidsAuction";
-import EditAnnounce from "../Modal/EditAnnounce";
+import BidsAuction from "../Modals/BidsAuction";
+import EditAnnounce from "../Modals/EditAnnounce";
 
 import {
   VehicleInformationContainer,

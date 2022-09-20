@@ -25,8 +25,5 @@ export const ModalContainer = styled(Modal)`
   min-height: 15rem;
   height: ${({ height }) => height};
   max-height: 100vh;
-  /* max-width: 100%; */
-  overflow-y: auto;
-
   background-color: transparent;
 `;

@@ -8,7 +8,7 @@ export interface IRegisterAuction {
   type?: string;
   typeVehicle?: string;
   limitDate?: string;
-  images?: string;
+  images?: File[];
 }
 
 export interface IDataAuction {
