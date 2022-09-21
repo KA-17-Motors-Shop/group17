@@ -8,7 +8,7 @@ import { ButtonDisable, ButtonPrimary } from "../../../Button";
 
 import Avatar from "../../../Avatar";
 import { useCallback, useEffect, useState } from "react";
-import { useUser } from "../../../../Providers/User/login";
+import { useUser } from "../../../../Providers/User";
 import { IUser } from "../../../../interfaces/user";
 
 const REACTIONS: Array<string> = [

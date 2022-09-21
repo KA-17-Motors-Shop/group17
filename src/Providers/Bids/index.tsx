@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from "react";
 import { IResBids, IResBidUser } from "../../interfaces/bids";
 import { motorShopAPI } from "../../services/urls.api";
-import { useUser } from "../User/login";
+import { useUser } from "../User";
 
 interface IContext {
   getBidsAnnounce: (id: string) => Promise<IResBids[]>;

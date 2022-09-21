@@ -6,5 +6,10 @@ export const ButtonModal = styled.div`
   justify-content: center;
   button {
     background: none;
+
+    svg:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
   }
 `;

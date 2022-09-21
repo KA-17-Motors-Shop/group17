@@ -21,11 +21,6 @@ export const TopModal = styled.div`
   justify-content: space-between;
   width: 100%;
 
-  svg:hover {
-    transform: scale(1.2);
-    cursor: pointer;
-  }
-
   h1 {
     font-family: "Lexend";
     font-style: normal;

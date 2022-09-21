@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import { useUser } from "../../../../Providers/User/login";
+import { useUser } from "../../../../Providers/User";
 import Avatar from "../../../Avatar";
 import { Content, Item, LoggedMenu, Trigger } from "./styles";
 

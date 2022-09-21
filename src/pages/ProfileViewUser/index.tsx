@@ -3,7 +3,7 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 
 import { ProfileViewUserContainer, ProfileMain } from "./styles";
-import { useUser } from "../../Providers/User/login";
+import { useUser } from "../../Providers/User";
 import { useCallback, useEffect, useState } from "react";
 import { IUser } from "../../interfaces/user";
 

@@ -17,7 +17,7 @@ import { useState } from "react";
 import Modal from "../../Modals";
 import RecoveryPassword from "../../Modals/RecoveryPassword";
 
-import { useUser } from "../../../Providers/User/login";
+import { useUser } from "../../../Providers/User";
 import { useLoad } from "../../../Providers/Loading";
 
 interface ILogin {

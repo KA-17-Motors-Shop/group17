@@ -1,6 +1,6 @@
 import React from "react";
 import { ZipCodeProvider } from "./User/cepValidation";
-import { LoginProvider } from "./User/login";
+import { UserProvider } from "./User";
 import { RegisterProvider } from "./User/register";
 import { ActivateProvider } from "./User/activateUser";
 import { ListAnounceProvider } from "./Auction/listAll";
@@ -11,7 +11,7 @@ import { CommentProvider } from "./Comments";
 const Providers: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <RegisterProvider>
-      <LoginProvider>
+      <UserProvider>
         <ActivateProvider>
           <RegisterAuctionProvider>
             <ListAnounceProvider>
@@ -23,7 +23,7 @@ const Providers: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </ListAnounceProvider>
           </RegisterAuctionProvider>
         </ActivateProvider>
-      </LoginProvider>
+      </UserProvider>
     </RegisterProvider>
   );
 };

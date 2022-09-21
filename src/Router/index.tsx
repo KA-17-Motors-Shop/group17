@@ -8,7 +8,7 @@ import AdDetails from "../pages/AdDetails";
 import ProfileViewUser from "../pages/ProfileViewUser";
 import PageNotFound from "../pages/NotFound";
 import ProfileViewSeller from "../pages/ProfileViewSeller";
-import { useUser } from "../Providers/User/login";
+import { useUser } from "../Providers/User";
 
 const Router: React.FC = () => {
   const { token } = useUser();

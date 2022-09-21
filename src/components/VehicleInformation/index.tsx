@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IAuctionRes } from "../../interfaces/auction";
-import { useUser } from "../../Providers/User/login";
+import { useUser } from "../../Providers/User";
 import { ButtonDisable, ButtonPrimary } from "../Button";
 import Modal from "../Modals";
 import DeleteAd from "../Modals/Ad/DeleteAd";

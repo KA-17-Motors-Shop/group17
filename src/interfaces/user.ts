@@ -43,3 +43,10 @@ export interface IRegister {
   number?: number | string;
   complement?: string;
 }
+
+export interface ISeller {
+  id?: string;
+  name?: string;
+  description?: string;
+  isSeller?: boolean;
+}
