@@ -18,30 +18,23 @@ export interface IUserRegister {
   phone?: string;
   birhtDate?: string;
   description?: string;
+  typeAccount?: string;
   zipCode?: string;
   state?: string;
   city?: string;
   street?: string;
-  number?: string;
+  number?: string | number;
   complement?: string;
   confirmPassword?: string;
 }
 
-export interface IRegister {
+export interface IUpdateUser {
   name?: string;
   email?: string;
   cpf?: string;
   phone?: string;
   birhtDate?: string | Date;
   description?: string;
-  password?: string;
-  typeAccount?: string;
-  zipCode?: string;
-  state?: string;
-  city?: string;
-  street?: string;
-  number?: number | string;
-  complement?: string;
 }
 
 export interface ISeller {
@@ -49,4 +42,19 @@ export interface ISeller {
   name?: string;
   description?: string;
   isSeller?: boolean;
+}
+
+export interface ILogin {
+  email?: string;
+  password?: string;
+}
+
+export interface IUpdatePassword {
+  currentPassword?: string;
+  newPassword?: string;
+}
+
+export interface IRecoveryPassword {
+  accessToken?: string;
+  newPassowod?: string;
 }

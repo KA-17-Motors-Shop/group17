@@ -48,12 +48,41 @@ export const InputsContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   gap: 20px;
+  padding: 1rem 0;
 `;
 
 export const RowInputsContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 10px;
+`;
+
+export const UpdatePassword = styled.div`
+  padding-left: 1rem;
+
+  button {
+    background-color: transparent;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.7rem;
+
+    color: ${({ theme }) => theme.textColors.primaryText};
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background: ${({ theme }) => theme.textColors.primaryText};
+      transition: width 0.8s;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
 `;
 
 export const SpanText = styled.span`

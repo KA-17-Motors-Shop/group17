@@ -89,7 +89,6 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
       .then((res) => res.data)
       .catch((err) => console.log(err));
 
-    hiddenLoad();
     return response;
   };
 
