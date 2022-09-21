@@ -1,11 +1,13 @@
 import { SmallPictureContainer } from "./styles";
 
-const IndividualImageContainer: React.FC<{ MERCEDES: string }> = ({
-  MERCEDES,
-}): JSX.Element => {
+const IndividualImageContainer: React.FC<{
+  img: string;
+  id: number;
+  openModal: (id: number) => void;
+}> = ({ img, openModal, id }): JSX.Element => {
   return (
-    <SmallPictureContainer>
-      <img src={MERCEDES} alt="Imagem ilustrativa de veículos" />
+    <SmallPictureContainer onClick={() => openModal(id)}>
+      <img src={img} alt="Imagem ilustrativa de veículos" />
     </SmallPictureContainer>
   );
 };
