@@ -57,11 +57,8 @@ const VehicleInformation: React.FC<IProps> = ({ announce }): JSX.Element => {
             <Tag>{announce.km}km</Tag>
           </TagsContainer>
           <Price>
-            R${" "}
-            {parseInt(announce.price as string)
-              .toFixed(2)
-              .toString()
-              .replace(".", ",")}
+            R$
+            {parseInt(announce.price!).toLocaleString("pt-BR")}
           </Price>
         </MiddleContainer>
         {announce.status! === "completed" ? (

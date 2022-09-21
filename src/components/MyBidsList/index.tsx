@@ -1,22 +1,42 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { IResBidUser } from "../../interfaces/bids";
+import { useBids } from "../../Providers/Bids";
 import EmptyMessage from "../EmptyMessage";
+import LoaderLocalComponent from "../Loader/LoaderLocalComponent";
+import BidCardUser from "./BidCardUser";
 import { Container, ContainerGroup, Title } from "./styles";
 
 const MyBidsList: React.FC = () => {
-  const [bids, setBids] = useState([]);
+  const [bids, setBids] = useState<IResBidUser[]>([]);
+  const [loadding, setLoadding] = useState(false);
+
+  const { getBidsUser } = useBids();
+
+  const handleBids = useCallback(async () => {
+    const userBids = await getBidsUser();
+    setBids(userBids!);
+    setLoadding(false);
+  }, [getBidsUser]);
+
+  useEffect(() => {
+    setLoadding(true);
+    handleBids();
+  }, [handleBids]);
+
+  console.log(bids);
 
   return (
     <Container>
       <Title>Meus lances</Title>
-      {bids.length ? (
-        <ContainerGroup>
-          {bids.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
-        </ContainerGroup>
-      ) : (
-        <EmptyMessage message="Nenhum lance encontrado" />
-      )}
+      <ContainerGroup>
+        {loadding ? (
+          <LoaderLocalComponent />
+        ) : bids.length ? (
+          bids.map((item) => <BidCardUser key={item.id} bid={item} />)
+        ) : (
+          <EmptyMessage message="Nenhum lance encontrado" />
+        )}
+      </ContainerGroup>
     </Container>
   );
 };

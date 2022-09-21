@@ -247,8 +247,8 @@ export const darkTheme: DefaultTheme = {
     },
     success: {
       color: "#18794E",
-      border: "#DDF3E4",
-      background: "#DDF3E4",
+      border: "#18794E",
+      background: "#212529",
       hover: "#CCEBD7",
     },
     primaryDisable: {

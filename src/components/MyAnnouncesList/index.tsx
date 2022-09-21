@@ -6,6 +6,7 @@ import SalesGroup from "./SalesGroup";
 import {
   AnnounceContainer,
   Container,
+  TabsContent,
   TabsList,
   TabsRoot,
   ToggleItem,
@@ -66,9 +67,9 @@ const MyAnnouncesList: React.FC = () => {
             <SalesGroup loadding={loadding} sales={sales} />
           </AnnounceContainer>
         </Tabs.Content>
-        <Tabs.Content value="bids">
+        <TabsContent value="bids">
           <MyBidsList />
-        </Tabs.Content>
+        </TabsContent>
       </TabsRoot>
     </Container>
   );
