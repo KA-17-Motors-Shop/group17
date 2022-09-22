@@ -6,6 +6,7 @@ import { ButtonPrimary } from "../../../Button";
 import { CloseModalBtn } from "../../../Button/CloseModalBtn";
 import EmptyMessage from "../../../EmptyMessage";
 import LoaderLocalComponent from "../../../Loader/LoaderLocalComponent";
+import CreateAddress from "../CreateAddress";
 import UpdateAddress from "../UpdateAddress";
 import AddressCard from "./AddressCard";
 import {
@@ -44,7 +45,7 @@ const MyAddress: React.FC<IProps> = ({ handleModal }) => {
   return (
     <>
       <Modal show={newAddress} close={() => setNewAddress(false)}>
-        <>Novo endereço</>
+        <CreateAddress handleModal={() => setNewAddress(false)} />
       </Modal>
       <Modal show={!!updateAddress} close={() => setUpdateAddress("")}>
         <UpdateAddress

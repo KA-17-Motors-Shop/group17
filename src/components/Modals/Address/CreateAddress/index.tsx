@@ -5,58 +5,56 @@ import GeneralInput from "../../../Forms/Components/Inputs/GeneralInput";
 import { ButtonNegative, ButtonPrimary } from "../../../Button";
 import { CloseModalBtn } from "../../../Button/CloseModalBtn";
 import MaskInput from "../../../Forms/Components/Inputs/MaskInput";
-import { UpdateAddressSchema } from "../../../../validations/address.validations";
+import { CreateAddressSchema } from "../../../../validations/address.validations";
 
 import * as S from "./styles";
 
-import { useZipCode } from "../../../../Providers/Address/cepValidation";
+import {
+  IAddress,
+  useZipCode,
+} from "../../../../Providers/Address/cepValidation";
 import { useAddress } from "../../../../Providers/Address/listCreateAddress";
-import { useCallback, useEffect, useState } from "react";
-import { IAddressData, IResAddress } from "../../../../interfaces/address";
+import { useCallback, useState } from "react";
+import { IAddressData } from "../../../../interfaces/address";
+import { useLoad } from "../../../../Providers/Loading";
 
-interface IHandleModal {
+interface IProps {
   handleModal: () => void;
-  id: string;
 }
 
-const UpdateAddress = ({ handleModal, id }: IHandleModal) => {
+const CreateAddress: React.FC<IProps> = ({ handleModal }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(UpdateAddressSchema),
+    resolver: yupResolver(CreateAddressSchema),
   });
 
-  const { findAddress } = useAddress();
   const { verifyZipCode } = useZipCode();
+  const { createAddress } = useAddress();
+  const { showLoad } = useLoad();
 
-  const [defaultAddress, setDefaultAddress] = useState<IResAddress>({});
+  const [address, setAddress] = useState<IAddress>({});
 
   const cepValidation = useCallback(
     async (value: string) => {
-      await verifyZipCode(value);
+      const defaultAddress = await verifyZipCode(value);
+      if (defaultAddress.uf) {
+        setAddress(defaultAddress);
+      }
     },
     [verifyZipCode]
   );
-
-  const handleAddress = useCallback(async () => {
-    const myAddress = await findAddress(id);
-    setDefaultAddress(myAddress);
-  }, [findAddress, id]);
-
-  useEffect(() => {
-    handleAddress();
-  }, [handleAddress]);
-
   const handleRegister = async (data: IAddressData) => {
-    console.log(data);
+    showLoad();
+    createAddress(data);
   };
 
   return (
     <S.ContainerForm onSubmit={handleSubmit(handleRegister)}>
       <S.TopModal>
-        <h1>Editar endereço</h1>
+        <h1>Novo endereço</h1>
         <CloseModalBtn onClick={handleModal} />
       </S.TopModal>
 
@@ -69,7 +67,6 @@ const UpdateAddress = ({ handleModal, id }: IHandleModal) => {
           error={errors.zipCode?.message}
           placeholder="CEP..."
           mask="99999-999"
-          defaultValue={defaultAddress.zipCode}
           onChange={(e) => {
             cepValidation(e.target.value);
           }}
@@ -81,7 +78,7 @@ const UpdateAddress = ({ handleModal, id }: IHandleModal) => {
             name={"state"}
             error={errors.state?.message}
             placeholder="Estado..."
-            defaultValue={defaultAddress.state}
+            defaultValue={address.uf}
           />
           <GeneralInput
             label="Cidade"
@@ -89,7 +86,7 @@ const UpdateAddress = ({ handleModal, id }: IHandleModal) => {
             name={"city"}
             error={errors.city?.message}
             placeholder="Cidade..."
-            defaultValue={defaultAddress.city}
+            defaultValue={address.localidade}
           />
         </S.RowInputsContainer>
 
@@ -99,7 +96,7 @@ const UpdateAddress = ({ handleModal, id }: IHandleModal) => {
           name={"street"}
           error={errors.street?.message}
           placeholder="Rua..."
-          defaultValue={defaultAddress.street}
+          defaultValue={address.logradouro}
         />
         <S.RowInputsContainer>
           <GeneralInput
@@ -109,7 +106,6 @@ const UpdateAddress = ({ handleModal, id }: IHandleModal) => {
             error={errors.number?.message}
             placeholder="Número..."
             type="number"
-            defaultValue={defaultAddress.number}
           />
           <GeneralInput
             label="Complemento"
@@ -117,7 +113,7 @@ const UpdateAddress = ({ handleModal, id }: IHandleModal) => {
             name={"complement"}
             error={errors.complement?.message}
             placeholder="Complemento..."
-            defaultValue={defaultAddress.complement}
+            defaultValue={address.complemento}
           />
         </S.RowInputsContainer>
       </S.InputsContainer>
@@ -125,10 +121,10 @@ const UpdateAddress = ({ handleModal, id }: IHandleModal) => {
         <ButtonNegative type="button" onClick={handleModal}>
           Cancelar
         </ButtonNegative>
-        <ButtonPrimary type="submit">Salvar alterações</ButtonPrimary>
+        <ButtonPrimary type="submit">Cadastrar</ButtonPrimary>
       </S.BottoModal>
     </S.ContainerForm>
   );
 };
 
-export default UpdateAddress;
+export default CreateAddress;

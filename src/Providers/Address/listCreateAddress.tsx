@@ -2,6 +2,7 @@ import React, { createContext, useContext } from "react";
 import { toast } from "react-toastify";
 import { IAddressData, IResAddress } from "../../interfaces/address";
 import { motorShopAPI } from "../../services/urls.api";
+import { useLoad } from "../Loading";
 import { useUser } from "../User";
 
 interface IContext {
@@ -16,12 +17,14 @@ export const ListCreateAddressProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
   const { token } = useUser();
+  const { hiddenLoad } = useLoad();
 
   const createAddress = async (data: IAddressData) => {
     await motorShopAPI
-      .post("/address", { headers: { Authorization: `Bearer ${token}` } })
-      .then((res) => res.data)
-      .catch((err) => console.log(err));
+      .post("/address", data, { headers: { Authorization: `Bearer ${token}` } })
+      .then((_) => toast.success("Novo endereço cadastrado"))
+      .catch((err) => toast.warn(err.response.data.message));
+    hiddenLoad();
   };
 
   const getMyAddress = async () => {
