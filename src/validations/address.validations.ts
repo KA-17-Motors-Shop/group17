@@ -5,9 +5,9 @@ export const CreateAddressSchema = yup.object().shape({
     .string()
     .required("Campo obrigatório")
     .matches(/^[0-9]{5}-[0-9]{3}$/, "CEP inválido"),
-  state: yup.string(),
-  city: yup.string(),
-  street: yup.string(),
+  state: yup.string().required("Campo obrigatório"),
+  city: yup.string().required("Campo obrigatório"),
+  street: yup.string().required("Campo obrigatório"),
   number: yup
     .number()
     .typeError("Somente números")
@@ -17,9 +17,9 @@ export const CreateAddressSchema = yup.object().shape({
 
 export const UpdateAddressSchema = yup.object().shape({
   zipCode: yup.string().matches(/^[0-9]{5}-[0-9]{3}$/, "CEP inválido"),
-  state: yup.string(),
-  city: yup.string(),
-  street: yup.string(),
+  state: yup.string().required("Campo obrigatório"),
+  city: yup.string().required("Campo obrigatório"),
+  street: yup.string().required("Campo obrigatório"),
   number: yup.number().typeError("Somente números"),
   complement: yup.string(),
 });

@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Modal from "../..";
 import { IResAddress } from "../../../../interfaces/address";
+import { useUpdateAddress } from "../../../../Providers/Address/deleteUpdateAddress";
 import { useAddress } from "../../../../Providers/Address/listCreateAddress";
-import { ButtonPrimary } from "../../../Button";
+import { useLoad } from "../../../../Providers/Loading";
+import { ButtonOutline1, ButtonPrimary } from "../../../Button";
 import { CloseModalBtn } from "../../../Button/CloseModalBtn";
 import EmptyMessage from "../../../EmptyMessage";
 import LoaderLocalComponent from "../../../Loader/LoaderLocalComponent";
@@ -25,11 +27,23 @@ interface IProps {
 const MyAddress: React.FC<IProps> = ({ handleModal }) => {
   const [newAddress, setNewAddress] = useState(false);
   const [updateAddress, setUpdateAddress] = useState("");
+  const [mainAddress, setMainAddress] = useState(false);
 
   const [address, setAddress] = useState<IResAddress[]>([]);
   const [loadding, setLoadding] = useState(false);
 
   const { getMyAddress } = useAddress();
+  const { setDefaultAddress } = useUpdateAddress();
+  const { showLoad } = useLoad();
+
+  const updateMainAddress = useCallback(
+    async (id: string) => {
+      showLoad();
+      await setDefaultAddress(id);
+      setMainAddress(false);
+    },
+    [showLoad, setDefaultAddress]
+  );
 
   const handleAddress = useCallback(async () => {
     const myAddress = await getMyAddress();
@@ -63,13 +77,17 @@ const MyAddress: React.FC<IProps> = ({ handleModal }) => {
             {loadding ? (
               <LoaderLocalComponent />
             ) : address.length ? (
-              <ContainerGroup>
+              <ContainerGroup select={mainAddress}>
                 {address.map((item) => (
                   <>
                     <AddressCard
                       key={item.id}
                       address={item}
-                      handleUpdate={() => setUpdateAddress(item.id!)}
+                      handleUpdate={() =>
+                        mainAddress
+                          ? updateMainAddress(item.id!)
+                          : setUpdateAddress(item.id!)
+                      }
                     />
                   </>
                 ))}
@@ -79,6 +97,9 @@ const MyAddress: React.FC<IProps> = ({ handleModal }) => {
             )}
           </MainModal>
           <FooterModal>
+            <ButtonOutline1 onClick={() => setMainAddress(!mainAddress)}>
+              Alterar Principal
+            </ButtonOutline1>
             <ButtonPrimary onClick={() => setNewAddress(true)}>
               Novo Endereço
             </ButtonPrimary>

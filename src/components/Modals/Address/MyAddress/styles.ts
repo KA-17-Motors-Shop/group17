@@ -34,15 +34,26 @@ export const MainModal = styled.div`
   padding: 0.5rem;
 `;
 
-export const ContainerGroup = styled.ul`
+export const ContainerGroup = styled.ul<{ select: boolean }>`
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
   gap: 0.5rem;
   overflow-x: auto;
+
+  > li {
+    ${({ select, theme }) =>
+      select &&
+      `
+      background-color: ${theme.buttons.success.color};
+      > div > span {
+        color: ${theme.greyScale.whiteFixed};
+      }
+      `}
+  }
 `;
 
 export const FooterModal = styled.div`
@@ -50,10 +61,14 @@ export const FooterModal = styled.div`
   bottom: 0;
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-
+  gap: 0.5rem;
   > div {
     width: 100%;
+
+    button {
+      width: 100%;
+    }
   }
 `;

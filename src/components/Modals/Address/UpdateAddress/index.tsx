@@ -2,7 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 import GeneralInput from "../../../Forms/Components/Inputs/GeneralInput";
-import { ButtonNegative, ButtonPrimary } from "../../../Button";
+import { ButtonAlert, ButtonNegative, ButtonPrimary } from "../../../Button";
 import { CloseModalBtn } from "../../../Button/CloseModalBtn";
 import MaskInput from "../../../Forms/Components/Inputs/MaskInput";
 import { UpdateAddressSchema } from "../../../../validations/address.validations";
@@ -13,6 +13,8 @@ import { useZipCode } from "../../../../Providers/Address/cepValidation";
 import { useAddress } from "../../../../Providers/Address/listCreateAddress";
 import { useCallback, useEffect, useState } from "react";
 import { IAddressData, IResAddress } from "../../../../interfaces/address";
+import { useUpdateAddress } from "../../../../Providers/Address/deleteUpdateAddress";
+import { useLoad } from "../../../../Providers/Loading";
 
 interface IHandleModal {
   handleModal: () => void;
@@ -49,12 +51,23 @@ const UpdateAddress = ({ handleModal, id }: IHandleModal) => {
     handleAddress();
   }, [handleAddress]);
 
-  const handleRegister = async (data: IAddressData) => {
-    console.log(data);
+  const { deleteAddress, updateAddress } = useUpdateAddress();
+  const { showLoad } = useLoad();
+
+  const handleUpdate = async (data: IAddressData) => {
+    showLoad();
+    await updateAddress(id, data);
+    handleModal();
+  };
+
+  const handleDelete = async () => {
+    showLoad();
+    await deleteAddress(id);
+    handleModal();
   };
 
   return (
-    <S.ContainerForm onSubmit={handleSubmit(handleRegister)}>
+    <S.ContainerForm onSubmit={handleSubmit(handleUpdate)}>
       <S.TopModal>
         <h1>Editar endereço</h1>
         <CloseModalBtn onClick={handleModal} />
@@ -122,9 +135,9 @@ const UpdateAddress = ({ handleModal, id }: IHandleModal) => {
         </S.RowInputsContainer>
       </S.InputsContainer>
       <S.BottoModal>
-        <ButtonNegative type="button" onClick={handleModal}>
-          Cancelar
-        </ButtonNegative>
+        <ButtonAlert type="button" onClick={handleDelete}>
+          Excluir Endereço
+        </ButtonAlert>
         <ButtonPrimary type="submit">Salvar alterações</ButtonPrimary>
       </S.BottoModal>
     </S.ContainerForm>
