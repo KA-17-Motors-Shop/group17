@@ -1,58 +1,35 @@
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-// import { useState } from "react";
-// import { useAuctionRegister } from "../../../Providers/Auction/register";
-
 import GeneralInput from "../../../Forms/Components/Inputs/GeneralInput";
-
 import { ButtonNegative, ButtonPrimary } from "../../../Button";
+import { CloseModalBtn } from "../../../Button/CloseModalBtn";
+import MaskInput from "../../../Forms/Components/Inputs/MaskInput";
+import { UpdateAddressSchema } from "../../../../validations/address.validations";
 
 import * as S from "./styles";
 
 import { IDataAnnounce } from "../../../../interfaces/auction";
-
-import { CloseModalBtn } from "../../../Button/CloseModalBtn";
-
-import MaskInput from "../../../Forms/Components/Inputs/MaskInput";
+import { useZipCode } from "../../../../Providers/Address/cepValidation";
 
 interface IHandleModal {
   handleModal: () => void;
+  id: string;
 }
 
-const UpdateAddress = ({ handleModal }: IHandleModal) => {
-  const schema = yup.object().shape({
-    zipCode: yup
-      .string()
-      .required("Campo obrigatório")
-      .matches(/^[0-9]{5}-[0-9]{3}$/, "CEP inválido"),
-    state: yup.string(),
-    city: yup.string(),
-    street: yup.string(),
-    number: yup
-      .number()
-      .typeError("Somente números")
-      .required("Campo obrigatório"),
-    complement: yup.string(),
-  });
-
+const UpdateAddress = ({ handleModal, id }: IHandleModal) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(UpdateAddressSchema),
   });
 
-  // const { registerAuction } = useAuctionRegister();
+  const { verifyZipCode, address } = useZipCode();
 
   const handleRegister = async (data: IDataAnnounce) => {
-    // await registerAuction({
-    //   ...data,
-    //   type: typeSale,
-    //   typeVehicle: typeVehicle,
-    // });
+    console.log(data);
   };
 
   return (
@@ -72,9 +49,9 @@ const UpdateAddress = ({ handleModal }: IHandleModal) => {
             error={errors.zipCode?.message}
             placeholder="CEP..."
             mask="99999-999"
-            // onChange={(e) => {
-            //   verifyZipCode(e.target.value);
-            // }}
+            onChange={(e) => {
+              verifyZipCode(e.target.value);
+            }}
           />
           <S.RowInputsContainer>
             <GeneralInput
@@ -83,7 +60,7 @@ const UpdateAddress = ({ handleModal }: IHandleModal) => {
               name={"state"}
               error={errors.state?.message}
               placeholder="Estado..."
-              // defaultValue={address.uf}
+              defaultValue={address.uf}
             />
             <GeneralInput
               label="Cidade"
@@ -91,7 +68,7 @@ const UpdateAddress = ({ handleModal }: IHandleModal) => {
               name={"city"}
               error={errors.city?.message}
               placeholder="Cidade..."
-              // defaultValue={address.localidade}
+              defaultValue={address.localidade}
             />
           </S.RowInputsContainer>
 
@@ -101,7 +78,7 @@ const UpdateAddress = ({ handleModal }: IHandleModal) => {
             name={"street"}
             error={errors.street?.message}
             placeholder="Rua..."
-            // defaultValue={address.logradouro}
+            defaultValue={address.logradouro}
           />
           <S.RowInputsContainer>
             <GeneralInput
@@ -118,7 +95,7 @@ const UpdateAddress = ({ handleModal }: IHandleModal) => {
               name={"complement"}
               error={errors.complement?.message}
               placeholder="Complemento..."
-              // defaultValue={address.complemento}
+              defaultValue={address.complemento}
             />
           </S.RowInputsContainer>
         </S.InputsContainer>

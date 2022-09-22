@@ -175,7 +175,7 @@ const CreateAd = ({ handleModal }: IHandleModal) => {
                 Adicionar campo
               </ButtonPrimaryOpacity>
             ) : (
-              <ButtonDisable>Adicionar campo</ButtonDisable>
+              <ButtonDisable type="button">Adicionar campo</ButtonDisable>
             )}
           </S.BtnAddImg>
         </S.InputsContainer>

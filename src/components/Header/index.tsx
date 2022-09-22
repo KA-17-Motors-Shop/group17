@@ -3,6 +3,7 @@ import { IUser } from "../../interfaces/user";
 import { useUser } from "../../Providers/User";
 import Logo from "../Logo";
 import Modal from "../Modals";
+import MyAddress from "../Modals/Address/MyAddress";
 import DropDownMenu from "./DropDown";
 import NavBar from "./NavBar";
 import { ContainerHeader } from "./styles";
@@ -25,7 +26,7 @@ const Header: React.FC = () => {
   return (
     <>
       <Modal show={show} close={() => setShow(false)}>
-        <div>TESTETESTETESTETESTETESTETESTETESTE</div>
+        <MyAddress handleModal={() => setShow(false)} />
       </Modal>
       <ContainerHeader id="topo">
         <Logo />
