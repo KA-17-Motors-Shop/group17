@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IAuctionRes } from "../../interfaces/auction";
+import { IAnnounceRes } from "../../interfaces/auction";
 import { useUser } from "../../Providers/User";
 import { ButtonDisable, ButtonPrimary } from "../Button";
 import Modal from "../Modals";
@@ -18,7 +18,7 @@ import {
 } from "./styles";
 
 interface IProps {
-  announce: IAuctionRes;
+  announce: IAnnounceRes;
 }
 
 const VehicleInformation: React.FC<IProps> = ({ announce }): JSX.Element => {

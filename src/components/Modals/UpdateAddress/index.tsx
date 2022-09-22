@@ -11,7 +11,7 @@ import { ButtonNegative, ButtonPrimary } from "../../Button";
 
 import * as S from "./styles";
 
-import { IDataAuction } from "../../../interfaces/auction";
+import { IDataAnnounce } from "../../../interfaces/auction";
 
 import { CloseModalBtn } from "../../Button/CloseModalBtn";
 
@@ -47,7 +47,7 @@ const UpdateAddress = ({ handleModal }: IHandleModal) => {
 
   // const { registerAuction } = useAuctionRegister();
 
-  const handleRegister = async (data: IDataAuction) => {
+  const handleRegister = async (data: IDataAnnounce) => {
     // await registerAuction({
     //   ...data,
     //   type: typeSale,

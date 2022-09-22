@@ -1,5 +1,5 @@
 import React from "react";
-import { IAuctionRes } from "../../../interfaces/auction";
+import { IAnnounceRes } from "../../../interfaces/auction";
 
 import SaleCard from "../../Card/SaleCard";
 import LoaderLocalComponent from "../../Loader/LoaderLocalComponent";
@@ -7,7 +7,7 @@ import LoaderLocalComponent from "../../Loader/LoaderLocalComponent";
 import { Container, ContainerGroup, Title } from "./styles";
 import EmptyMessage from "../../EmptyMessage";
 
-const SalesGroup: React.FC<{ loadding: boolean; sales: IAuctionRes[] }> = ({
+const SalesGroup: React.FC<{ loadding: boolean; sales: IAnnounceRes[] }> = ({
   sales,
   loadding,
 }) => {

@@ -1,12 +1,12 @@
 import React, { createContext, useContext } from "react";
-import { IAuctionRes, IFiltersParams } from "../../interfaces/auction";
+import { IAnnounceRes, IFiltersParams } from "../../interfaces/auction";
 
 import { motorShopAPI } from "../../services/urls.api";
 import { useUser } from "../User";
 
 interface IListContext {
-  getListAuction: () => Promise<IAuctionRes[]>;
-  getListSales: () => Promise<IAuctionRes[]>;
+  getListAuction: () => Promise<IAnnounceRes[]>;
+  getListSales: () => Promise<IAnnounceRes[]>;
   getListFilter: ({
     gtDataLimit,
     gtPrice,
@@ -17,12 +17,12 @@ interface IListContext {
     title,
     type,
     typeVehicle,
-  }: IFiltersParams) => Promise<IAuctionRes[]>;
-  getMySales: (status?: string) => Promise<IAuctionRes[]>;
-  getMyAuctions: (status?: string) => Promise<IAuctionRes[]>;
-  getAnnounce: (id: string) => Promise<IAuctionRes>;
-  getAuctionBySeller: (id: string) => Promise<IAuctionRes[]>;
-  getSaleBySeller: (id: string) => Promise<IAuctionRes[]>;
+  }: IFiltersParams) => Promise<IAnnounceRes[]>;
+  getMySales: (status?: string) => Promise<IAnnounceRes[]>;
+  getMyAuctions: (status?: string) => Promise<IAnnounceRes[]>;
+  getAnnounce: (id: string) => Promise<IAnnounceRes>;
+  getAuctionBySeller: (id: string) => Promise<IAnnounceRes[]>;
+  getSaleBySeller: (id: string) => Promise<IAnnounceRes[]>;
 }
 
 export const ListAnounceContext = createContext({} as IListContext);

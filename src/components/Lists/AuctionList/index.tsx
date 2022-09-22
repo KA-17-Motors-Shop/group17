@@ -1,13 +1,13 @@
 import { ContainerCardAuction, Container, TitleContainer } from "./styles";
-import { useListAnnounces } from "../../../Providers/Auction/listAll";
+import { useListAnnounces } from "../../../Providers/Announces/listAll";
 import { useCallback, useEffect, useState } from "react";
-import { IAuctionRes } from "../../../interfaces/auction";
+import { IAnnounceRes } from "../../../interfaces/auction";
 import AuctionCard from "../../Card/AuctionCard";
 import EmptyMessage from "../../EmptyMessage";
 import LoaderLocalComponent from "../../Loader/LoaderLocalComponent";
 
 const AuctionList: React.FC = () => {
-  const [announces, setAnnounces] = useState<IAuctionRes[]>([]);
+  const [announces, setAnnounces] = useState<IAnnounceRes[]>([]);
   const [loadding, setLoadding] = useState(false);
   const { getListAuction } = useListAnnounces();
 

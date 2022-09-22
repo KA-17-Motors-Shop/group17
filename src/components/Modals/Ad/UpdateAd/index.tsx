@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 import { useState } from "react";
-import { useAuctionRegister } from "../../../../Providers/Auction/register";
+import { useAnnounceRegister } from "../../../../Providers/Announces/register";
 
 import GeneralInput from "../../../Forms/Components/Inputs/GeneralInput";
 import {
@@ -20,7 +20,7 @@ import {
 
 import * as S from "./styles";
 
-import { IAuctionRes, IDataAuction } from "../../../../interfaces/auction";
+import { IAnnounceRes, IDataAnnounce } from "../../../../interfaces/auction";
 
 import { CloseModalBtn } from "../../../Button/CloseModalBtn";
 import TextArea from "../../../Forms/Components/TextArea";
@@ -28,7 +28,7 @@ import InputFile from "../../../Forms/Components/Inputs/InputFile";
 
 interface IProps {
   handleModal: () => void;
-  announce: IAuctionRes;
+  announce: IAnnounceRes;
 }
 
 const UpdateAd: React.FC<IProps> = ({ handleModal, announce }) => {
@@ -58,7 +58,7 @@ const UpdateAd: React.FC<IProps> = ({ handleModal, announce }) => {
   const [isActive, setIsActive] = useState(announce.isActive ? "yes" : "no");
   const [typeVehicle, setTypeVehicle] = useState(announce.typeVehicle || "car");
 
-  const handleRegister = async (data: IDataAuction) => {
+  const handleRegister = async (data: IDataAnnounce) => {
     console.log(data);
   };
 
