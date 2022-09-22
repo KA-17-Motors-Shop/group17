@@ -7,7 +7,7 @@ import { useUser } from "../../Providers/User";
 import { useCallback, useEffect, useState } from "react";
 import { IUser } from "../../interfaces/user";
 
-import UpdateProfile from "../../components/Modals/UpdateProfile";
+import UpdateProfile from "../../components/Modals/User/UpdateProfile";
 import CreateAd from "../../components/Modals/Ad/CreateAd";
 import Modal from "../../components/Modals";
 

@@ -1,20 +1,20 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { UpdateUserschema } from "../../../validations/user.validations";
+import { UpdateUserschema } from "../../../../validations/user.validations";
 
 import * as S from "./styles";
 
-import { ButtonNegative, ButtonPrimary } from "../../Button";
-import { CloseModalBtn } from "../../Button/CloseModalBtn";
-import GeneralInput from "../../Forms/Components/Inputs/GeneralInput";
-import TextArea from "../../Forms/Components/TextArea";
-import MaskInput from "../../Forms/Components/Inputs/MaskInput";
+import { ButtonNegative, ButtonPrimary } from "../../../Button";
+import { CloseModalBtn } from "../../../Button/CloseModalBtn";
+import GeneralInput from "../../../Forms/Components/Inputs/GeneralInput";
+import TextArea from "../../../Forms/Components/TextArea";
+import MaskInput from "../../../Forms/Components/Inputs/MaskInput";
 
-import { IUpdateUser, IUser } from "../../../interfaces/user";
-import { useLoad } from "../../../Providers/Loading";
-import { useUpdateUser } from "../../../Providers/User/updateUser";
+import { IUpdateUser, IUser } from "../../../../interfaces/user";
+import { useLoad } from "../../../../Providers/Loading";
+import { useUpdateUser } from "../../../../Providers/User/updateUser";
 import { useState } from "react";
-import Modal from "..";
+import Modal from "../..";
 import UpdatePassword from "./UpdatePassword";
 
 interface IProps {

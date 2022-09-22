@@ -2,16 +2,16 @@ import React from "react";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { UpdateUserPasswordschema } from "../../../../validations/user.validations";
+import { UpdateUserPasswordschema } from "../../../../../validations/user.validations";
 
-import { CloseModalBtn } from "../../../Button/CloseModalBtn";
-import InputPassword from "../../../Forms/Components/Inputs/InputPassword";
+import { CloseModalBtn } from "../../../../Button/CloseModalBtn";
+import InputPassword from "../../../../Forms/Components/Inputs/InputPassword";
 import { TopModal } from "../styles";
 import { BottomModal, Container, Form } from "./styles";
-import { useLoad } from "../../../../Providers/Loading";
-import { IUpdatePassword } from "../../../../interfaces/user";
-import { ButtonNegative, ButtonPrimary } from "../../../Button";
-import { useUpdatePassword } from "../../../../Providers/User/passwordUser";
+import { useLoad } from "../../../../../Providers/Loading";
+import { IUpdatePassword } from "../../../../../interfaces/user";
+import { ButtonNegative, ButtonPrimary } from "../../../../Button";
+import { useUpdatePassword } from "../../../../../Providers/User/passwordUser";
 
 interface IProps {
   handleModal: () => void;

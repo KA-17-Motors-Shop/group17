@@ -15,7 +15,7 @@ import InputPassword from "../Components/Inputs/InputPassword";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import Modal from "../../Modals";
-import RecoveryPassword from "../../Modals/RecoveryPassword";
+import RecoveryPassword from "../../Modals/User/RecoveryPassword";
 
 import { useUser } from "../../../Providers/User";
 import { useLoad } from "../../../Providers/Loading";

@@ -1,5 +1,5 @@
 import React from "react";
-import Modal from "..";
+import Modal from "../..";
 import { Container } from "./styles";
 
 interface IProps {
@@ -7,7 +7,7 @@ interface IProps {
   handle: () => void;
 }
 
-const BidsAuction: React.FC<IProps> = ({ handle, show }) => {
+const SendBidAuction: React.FC<IProps> = ({ handle, show }) => {
   return (
     <Modal show={show} close={handle} height={"15rem"}>
       <Container>Criar Form</Container>
@@ -15,4 +15,4 @@ const BidsAuction: React.FC<IProps> = ({ handle, show }) => {
   );
 };
 
-export default BidsAuction;
+export default SendBidAuction;

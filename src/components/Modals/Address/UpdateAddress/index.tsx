@@ -5,17 +5,17 @@ import { useForm } from "react-hook-form";
 // import { useState } from "react";
 // import { useAuctionRegister } from "../../../Providers/Auction/register";
 
-import GeneralInput from "../../Forms/Components/Inputs/GeneralInput";
+import GeneralInput from "../../../Forms/Components/Inputs/GeneralInput";
 
-import { ButtonNegative, ButtonPrimary } from "../../Button";
+import { ButtonNegative, ButtonPrimary } from "../../../Button";
 
 import * as S from "./styles";
 
-import { IDataAnnounce } from "../../../interfaces/auction";
+import { IDataAnnounce } from "../../../../interfaces/auction";
 
-import { CloseModalBtn } from "../../Button/CloseModalBtn";
+import { CloseModalBtn } from "../../../Button/CloseModalBtn";
 
-import MaskInput from "../../Forms/Components/Inputs/MaskInput";
+import MaskInput from "../../../Forms/Components/Inputs/MaskInput";
 
 interface IHandleModal {
   handleModal: () => void;
