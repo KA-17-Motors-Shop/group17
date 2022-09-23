@@ -8,6 +8,7 @@ import ProfileViewUser from "../pages/ProfileViewUser";
 import PageNotFound from "../pages/NotFound";
 import ProfileViewSeller from "../pages/ProfileViewSeller";
 import { useUser } from "../Providers/User";
+import MyPushase from "../pages/MyPorchase";
 
 const Router: React.FC = () => {
   const { token } = useUser();
@@ -21,6 +22,7 @@ const Router: React.FC = () => {
       <Route exact path={"/profile"}>
         {!!token ? <ProfileViewUser /> : <Redirect to="/" />}
       </Route>
+      <Route exact path={"/my_purshases"} component={MyPushase} />
       <Route exact path={"/seller"} component={ProfileViewSeller} />
       <Route exact path={"/:not_found"} component={PageNotFound} />
     </Switch>

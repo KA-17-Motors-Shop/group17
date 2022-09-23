@@ -27,11 +27,13 @@ export const TopModal = styled.div`
 
 export const InputsContainer = styled.div`
   width: 100%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 1.5rem;
   padding: 0.5rem;
+  overflow-x: auto;
 `;
 
 export const RowInputsContainer = styled.div`

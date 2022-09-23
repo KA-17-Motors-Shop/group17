@@ -1,5 +1,5 @@
-import { avatarLetters } from "../../utils/avatarLetters";
-import { ButtonPrimaryOutline } from "../Button";
+import { avatarLetters } from "../../../utils/avatarLetters";
+import { ButtonPrimaryOutline } from "../../Button";
 
 import {
   UserInfoBoxContainer,

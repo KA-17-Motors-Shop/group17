@@ -78,6 +78,7 @@ export const ImgContainer = styled.div`
     height: 100%;
     border-radius: 4px;
   }
+  border-radius: 4px;
 
   @media screen and (min-width: 1024px) {
     width: 50%;

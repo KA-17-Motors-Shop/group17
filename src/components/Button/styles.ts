@@ -36,6 +36,10 @@ export const Default = styled.div`
     border: 1.5px solid ${({ theme }) => theme.buttons.default.border};
     color: ${({ theme }) => theme.buttons.default.color};
 
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
     &:hover {
       filter: brightness(1);
       background-color: ${({ theme }) => theme.buttons.default.hover};
@@ -60,6 +64,11 @@ export const Negative = styled.div`
     border: 1.5px solid ${({ theme }) => theme.buttons.negative.border};
     color: ${({ theme }) => theme.buttons.negative.color};
 
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+
     &:hover {
       filter: brightness(0.8);
       background-color: ${({ theme }) => theme.buttons.negative.hover};
@@ -82,6 +91,11 @@ export const Disable = styled.div`
     background-color: ${({ theme }) => theme.buttons.disable.background};
     border: 1.5px solid ${({ theme }) => theme.buttons.disable.border};
     color: ${({ theme }) => theme.buttons.disable.color};
+
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
 
     &:hover {
       filter: brightness(1);
@@ -107,6 +121,11 @@ export const PrimaryOpacity = styled.div`
     border: 1.5px solid ${({ theme }) => theme.buttons.primaryOpacity.border};
     color: ${({ theme }) => theme.buttons.primaryOpacity.color};
 
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+
     &:hover {
       filter: brightness(1);
       background-color: ${({ theme }) => theme.buttons.primaryOpacity.hover};
@@ -130,6 +149,11 @@ export const Light = styled.div`
     border: 1.5px solid ${({ theme }) => theme.buttons.light.border};
     color: ${({ theme }) => theme.buttons.light.color};
 
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+
     &:hover {
       filter: brightness(1);
       background-color: ${({ theme }) => theme.buttons.light.hover};
@@ -148,6 +172,11 @@ export const OutlineLight = styled.div`
     background-color: ${({ theme }) => theme.buttons.outlineLight.hover};
     border: 1.5px solid ${({ theme }) => theme.buttons.outlineLight.border};
     color: ${({ theme }) => theme.buttons.outlineLight.color};
+
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
 
     &:hover {
       filter: brightness(1);
@@ -172,6 +201,11 @@ export const Outline1 = styled.div`
     border: 1.5px solid ${({ theme }) => theme.buttons.outline1.border};
     color: ${({ theme }) => theme.buttons.outline1.color};
 
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+
     &:hover {
       filter: brightness(1);
       background-color: ${({ theme }) => theme.buttons.outline1.hover};
@@ -193,6 +227,11 @@ export const Outline2 = styled.div`
     background-color: ${({ theme }) => theme.buttons.outline2.background};
     border: 1.5px solid ${({ theme }) => theme.buttons.outline2.border};
     color: ${({ theme }) => theme.buttons.outline2.color};
+
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
 
     &:hover {
       filter: brightness(1);
@@ -217,6 +256,11 @@ export const Link = styled.div`
     border: 1.5px solid ${({ theme }) => theme.buttons.link.border};
     color: ${({ theme }) => theme.buttons.link.color};
 
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+
     &:hover {
       filter: brightness(1);
       background-color: ${({ theme }) => theme.buttons.link.hover};
@@ -238,6 +282,11 @@ export const Alert = styled.div`
     background-color: ${({ theme }) => theme.buttons.alert.background};
     border: 1.5px solid ${({ theme }) => theme.buttons.alert.border};
     color: ${({ theme }) => theme.buttons.alert.color};
+
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
 
     &:hover {
       filter: brightness(1);
@@ -261,6 +310,11 @@ export const Success = styled.div`
     border: 1.5px solid ${({ theme }) => theme.buttons.success.border};
     color: ${({ theme }) => theme.buttons.success.color};
 
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+
     &:hover {
       filter: brightness(1);
       background-color: ${({ theme }) => theme.buttons.success.hover};
@@ -282,6 +336,11 @@ export const PrimaryDisable = styled.div`
     background-color: ${({ theme }) => theme.buttons.primaryDisable.background};
     border: 1.5px solid ${({ theme }) => theme.buttons.primaryDisable.border};
     color: ${({ theme }) => theme.buttons.primaryDisable.color};
+
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
 
     &:hover {
       filter: brightness(1);
@@ -305,6 +364,11 @@ export const PrimaryOutline = styled.div`
     background-color: ${({ theme }) => theme.buttons.primaryOutline.background};
     border: 1.5px solid ${({ theme }) => theme.buttons.primaryOutline.border};
     color: ${({ theme }) => theme.buttons.primaryOutline.color};
+
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
 
     &:hover {
       filter: brightness(1);

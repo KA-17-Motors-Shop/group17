@@ -21,7 +21,9 @@ const SubMenuUserDesk: React.FC<Iprops> = ({ userName, handleModal }) => {
       <Content sideOffset={21}>
         <Item onSelect={() => history.push("/profile")}>Meu Perfil</Item>
         <Item onSelect={handleModal}>Gerenciar Endereços</Item>
-        <Item>Minhas Compras</Item>
+        <Item onSelect={() => history.push("/my_purshases")}>
+          Minhas Compras
+        </Item>
         <Item onSelect={logOut}>Sair</Item>
       </Content>
     </LoggedMenu>

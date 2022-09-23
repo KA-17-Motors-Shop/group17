@@ -25,7 +25,9 @@ const SubMenuUser: React.FC<Iprops> = ({ userName, handleModal }) => {
           Meu Perfil
         </DropItem>
         <DropItem onSelect={handleModal}>Gerenciar Endereços</DropItem>
-        <DropItem>Minhas Compras</DropItem>
+        <DropItem onSelect={() => history.push("/my_purshases")}>
+          Minhas Compras
+        </DropItem>
         <DropItem onSelect={logOut}>Sair</DropItem>
         <DropdownMenu.Arrow />
       </SubMenuContainer>

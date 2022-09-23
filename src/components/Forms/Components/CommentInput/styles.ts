@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DescriptionBoxContainer } from "../../../DescriptionBox/styles";
+import { DescriptionBoxContainer } from "../../../Boxes/DescriptionBox/styles";
 
 export const Container = styled(DescriptionBoxContainer)`
   display: flex;

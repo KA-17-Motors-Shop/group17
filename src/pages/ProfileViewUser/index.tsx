@@ -1,4 +1,4 @@
-import UserInfoBox from "../../components/UserInfoBox";
+import UserInfoBox from "../../components/Boxes/UserInfoBox";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 
@@ -11,8 +11,8 @@ import UpdateProfile from "../../components/Modals/User/UpdateProfile";
 import CreateAd from "../../components/Modals/Ad/CreateAd";
 import Modal from "../../components/Modals";
 
-import MyAnnouncesList from "../../components/MyAnnouncesList";
-import MyBidsList from "../../components/MyBidsList";
+import MyAnnouncesList from "../../components/Lists/MyAnnouncesList";
+import MyBidsList from "../../components/Lists/MyBidsList";
 import LoaderLocalComponent from "../../components/Loader/LoaderLocalComponent";
 import { EmptyContainer } from "../AdDetails/styles";
 
@@ -20,6 +20,7 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
   const { token, getUser } = useUser();
 
   const [user, setUser] = useState<IUser>({});
+  const [loadding, setLoadding] = useState(false);
 
   const handleAuth = useCallback(async () => {
     const user = await getUser(token as string);
@@ -34,7 +35,6 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
 
   const [editProfileModal, setEditProfileModal] = useState<boolean>(false);
   const [createAdModal, setCreateAdModal] = useState<boolean>(false);
-  const [loadding, setLoadding] = useState(false);
 
   const handleModalProfile = () => {
     setEditProfileModal(!editProfileModal);
