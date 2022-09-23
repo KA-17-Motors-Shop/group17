@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useUser } from "../../Providers/User/login";
 import { ButtonDisable, ButtonPrimary } from "../Button";
-import BidsAuction from "../Modal/BidsAuction";
-import EditAnnounce from "../Modal/EditAnnounce";
+
+import Modal from "../Modals";
+import CreateAd from "../Modals/Ad/CreateAd";
+import UpdateAd from "../Modals/Ad/UpdateAd";
 
 import {
   VehicleInformationContainer,
@@ -43,12 +45,34 @@ const VehicleInformation: React.FC<IProps> = ({
 
   const [showBid, setShowBid] = useState(false);
 
+  const handleModalCreate = () => {
+    setShowBid(!showBid);
+  };
+
+  const handleModalUpdate = () => {
+    setShowEdit(!showEdit);
+  };
+
   return (
     <>
       {type === "auction" && (
-        <BidsAuction show={showBid} handle={() => setShowBid(false)} />
+        <Modal
+          show={showBid}
+          close={handleModalCreate}
+          height="36rem"
+          width="100%"
+        >
+          <CreateAd handleModal={handleModalCreate} />
+        </Modal>
       )}
-      <EditAnnounce show={showEdit} handle={() => setShowEdit(false)} />
+      <Modal
+        show={showEdit}
+        close={handleModalUpdate}
+        height="36rem"
+        width="100%"
+      >
+        <UpdateAd handleModal={handleModalUpdate} />
+      </Modal>
       <VehicleInformationContainer>
         <TitleContainer>
           {title[0].toUpperCase() + title.slice(1)}
