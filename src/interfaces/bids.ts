@@ -21,3 +21,7 @@ export interface IResBidUser {
     limitDate: string;
   };
 }
+
+export interface ISetBidUser {
+  value?: string | number;
+}

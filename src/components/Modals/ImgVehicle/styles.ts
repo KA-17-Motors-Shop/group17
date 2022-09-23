@@ -70,8 +70,8 @@ export const ImgContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: 70%;
+  height: 70%;
   max-width: 25rem;
   max-height: 25rem;
   background: transparent;
@@ -80,6 +80,7 @@ export const ImgContainer = styled.div`
     height: 100%;
     border-radius: 4px;
   }
+  border-radius: 4px;
 
   @media screen and (max-width: 1024px) {
     width: 100%;

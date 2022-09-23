@@ -1,11 +1,13 @@
 import React, { createContext, useContext } from "react";
-import { IResBids, IResBidUser } from "../../interfaces/bids";
+import { IResBids, IResBidUser, ISetBidUser } from "../../interfaces/bids";
 import { motorShopAPI } from "../../services/urls.api";
 import { useUser } from "../User";
+import { toast } from "react-toastify";
+import { useLoad } from "../Loading";
 
 interface IContext {
   getBidsAnnounce: (id: string) => Promise<IResBids[]>;
-  setBid: (id: string) => Promise<void>;
+  setBid: (id: string, value: ISetBidUser) => Promise<void>;
   getBidsUser: () => Promise<IResBidUser[]>;
 }
 
@@ -15,6 +17,8 @@ export const BidsProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const { token } = useUser();
+
+  const { hiddenLoad } = useLoad();
 
   const getBidsAnnounce = async (id: string) => {
     return await motorShopAPI
@@ -26,19 +30,27 @@ export const BidsProvider: React.FC<{ children: React.ReactNode }> = ({
       })
       .catch((err) => {
         console.log(err);
+        toast.warning(err.response.data.message);
       });
   };
-  const setBid = async (id: string) => {
-    return await motorShopAPI
-      .post(`bids/announcement/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then(() => {
-        return console.log("sucesso");
+  const setBid = async (id: string, value: ISetBidUser) => {
+    await motorShopAPI
+      .post(
+        `bids/announcement/${id}`,
+        { ...value },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        toast.success("Lance feito com sucesso!");
       })
       .catch((err) => {
         console.log(err);
+        toast.warning(err.response.data.message);
       });
+    hiddenLoad();
   };
 
   const getBidsUser = async () => {
@@ -55,7 +67,7 @@ export const BidsProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   return (
-    <BidsContext.Provider value={{ getBidsAnnounce, getBidsUser, setBid }}>
+    <BidsContext.Provider value={{ getBidsAnnounce, setBid, getBidsUser }}>
       {children}
     </BidsContext.Provider>
   );
