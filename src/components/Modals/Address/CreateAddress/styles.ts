@@ -1,48 +1,27 @@
 import styled from "styled-components";
 
-export const Centralize = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
 export const ContainerForm = styled.form`
+  width: 100%;
+  height: 100%;
   display: flex;
-  width: 520px;
-  height: 605px;
-
-  padding: 1rem;
-
   flex-direction: column;
   align-items: stretch;
-  justify-content: space-between;
+  justify-content: space-around;
+  gap: 1rem;
   background-color: ${(props) =>
     props.theme.backgroundColors.secondaryBackground};
   border-radius: 0.5rem;
-
-  > h1 {
-    color: ${({ theme }) => theme.textColors.subTitle};
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-  }
+  padding: 1rem;
 `;
 
 export const TopModal = styled.div`
   display: flex;
   justify-content: space-between;
 
-  /* margin-top: -1rem; */
   > h1 {
-    /* color: ${({ theme }) => theme.textColors.subTitle};
-    margin-top: 1rem; */
-  }
-
-  @media screen and (max-width: 920px) {
-    /* margin-top: -1.5rem;
-    > h1 {
-      margin-top: 2rem;
-    } */
+    color: ${({ theme }) => theme.textColors.primaryText};
+    font-weight: 600;
+    font-size: 1rem;
   }
 `;
 
@@ -51,13 +30,15 @@ export const InputsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 20px;
+  gap: 1.5rem;
+  padding: 0.5rem;
 `;
 
 export const RowInputsContainer = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 0.5rem;
 `;
 
 export const SpanText = styled.span`
@@ -75,9 +56,9 @@ export const SpanText = styled.span`
 export const BottoModal = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin-left: 5rem;
+  gap: 0.5rem;
+
   > div {
-    margin-left: 1rem;
+    width: 40%;
   }
-  /* margin-top: 2rem; */
 `;

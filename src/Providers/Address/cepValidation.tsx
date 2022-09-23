@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 import { viaCepAPI } from "../../services/urls.api";
 
-interface IAddress {
+export interface IAddress {
   cep?: string;
   logradouro?: string;
   complemento?: string;
@@ -17,8 +17,7 @@ interface IAddress {
 }
 
 interface IContext {
-  verifyZipCode: (zipCode: string) => Promise<void>;
-  address: IAddress;
+  verifyZipCode: (zipCode: string) => Promise<IAddress>;
 }
 
 export const ZipCodeContext = createContext({} as IContext);
@@ -26,22 +25,27 @@ export const ZipCodeContext = createContext({} as IContext);
 export const ZipCodeProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [address, setAddress] = useState<IAddress>({});
-
   const verifyZipCode = async (zipCode: string) => {
-    zipCode[zipCode.length - 1] !== "_" &&
-      (await viaCepAPI
+    if (zipCode[zipCode.length - 1] !== "_") {
+      return await viaCepAPI
         .get(`/ws/${zipCode}/json/`)
         .then((res) => {
-          res.data.uf ? setAddress(res.data) : toast.warning("CEP inválido");
+          if (res.data.uf) {
+            return res.data;
+          } else {
+            toast.warning("CEP inválido");
+          }
         })
         .catch((err) => {
+          toast.warning("CEP inválido");
           console.log(err.response.data);
-        }));
+        });
+    }
+    return {};
   };
 
   return (
-    <ZipCodeContext.Provider value={{ verifyZipCode, address }}>
+    <ZipCodeContext.Provider value={{ verifyZipCode }}>
       {children}
     </ZipCodeContext.Provider>
   );

@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 import { useState } from "react";
-import { useAuctionRegister } from "../../../../Providers/Auction/register";
+import { useAnnounceRegister } from "../../../../Providers/Announces/register";
 
 import GeneralInput from "../../../Forms/Components/Inputs/GeneralInput";
 import {
@@ -20,7 +20,7 @@ import {
 
 import * as S from "./styles";
 
-import { IDataAuction } from "../../../../interfaces/auction";
+import { IDataAnnounce } from "../../../../interfaces/auction";
 
 import { CloseModalBtn } from "../../../Button/CloseModalBtn";
 import TextArea from "../../../Forms/Components/TextArea";
@@ -80,18 +80,18 @@ const CreateAd = ({ handleModal }: IHandleModal) => {
     }
   };
 
-  const { registerAuction } = useAuctionRegister();
+  const { registerAnnounce } = useAnnounceRegister();
 
   const { showLoad } = useLoad();
 
-  const handleRegister = async (data: IDataAuction) => {
+  const handleRegister = async (data: IDataAnnounce) => {
     showLoad();
 
     const images = files.map((item) => {
       return item.file;
     });
 
-    await registerAuction(
+    await registerAnnounce(
       {
         ...data,
         type: typeSale,
@@ -175,7 +175,7 @@ const CreateAd = ({ handleModal }: IHandleModal) => {
                 Adicionar campo
               </ButtonPrimaryOpacity>
             ) : (
-              <ButtonDisable>Adicionar campo</ButtonDisable>
+              <ButtonDisable type="button">Adicionar campo</ButtonDisable>
             )}
           </S.BtnAddImg>
         </S.InputsContainer>

@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
-import { IAuctionRes, typeVehicle, type } from "../../../interfaces/auction";
-import { useListAnnounces } from "../../../Providers/Auction/listAll";
+import { IAnnounceRes, typeVehicle, type } from "../../../interfaces/auction";
+import { useListAnnounces } from "../../../Providers/Announces/listAll";
 import SaleCard from "../../Card/SaleCard";
 import EmptyMessage from "../../EmptyMessage";
 import LoaderLocalComponent from "../../Loader/LoaderLocalComponent";
 import { TitleContainer, CardContainer } from "./styles";
 
 const MotorcyclesList: React.FC = () => {
-  const [announce, setAnnounce] = useState<IAuctionRes[]>([]);
+  const [announce, setAnnounce] = useState<IAnnounceRes[]>([]);
   const [loadding, setLoadding] = useState(false);
 
   const { getListFilter } = useListAnnounces();

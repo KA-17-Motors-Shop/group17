@@ -8,7 +8,12 @@ import { ButtonOutline2, ButtonLink } from "../../Button";
 import { useHistory } from "react-router-dom";
 import { IUser } from "../../../interfaces/user";
 
-const NavBar: React.FC<{ user: IUser }> = ({ user }) => {
+interface IProps {
+  handleModal: () => void;
+  user: IUser;
+}
+
+const NavBar: React.FC<IProps> = ({ user, handleModal }) => {
   const history = useHistory();
 
   const handlePage = (path: string) => {
@@ -20,27 +25,21 @@ const NavBar: React.FC<{ user: IUser }> = ({ user }) => {
       <Nav>
         <ButtonLink
           onClick={() => {
-
             handlePage("/");
-
           }}
         >
           Carros
         </ButtonLink>
         <ButtonLink
           onClick={() => {
-
             handlePage("/");
-
           }}
         >
           Motos
         </ButtonLink>
         <ButtonLink
           onClick={() => {
-
             handlePage("/");
-
           }}
         >
           Leilão
@@ -48,7 +47,7 @@ const NavBar: React.FC<{ user: IUser }> = ({ user }) => {
       </Nav>
 
       {user.id ? (
-        <SubMenuUserDesk userName={user.name!} />
+        <SubMenuUserDesk handleModal={handleModal} userName={user.name!} />
       ) : (
         <NotLoggedContainer>
           <ButtonLink onClick={() => handlePage("/login")}>Login</ButtonLink>

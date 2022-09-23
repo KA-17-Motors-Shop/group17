@@ -5,17 +5,17 @@ import AuctionGroup from "../../components/MyAnnouncesList/AuctionGroup";
 import SalesGroup from "../../components/MyAnnouncesList/SalesGroup";
 import SellerInfoBox from "../../components/SellerInfoBox";
 import { useQuery } from "../../hooks/useQuery";
-import { IAuctionRes } from "../../interfaces/auction";
+import { IAnnounceRes } from "../../interfaces/auction";
 import { ISeller } from "../../interfaces/user";
-import { useListAnnounces } from "../../Providers/Auction/listAll";
+import { useListAnnounces } from "../../Providers/Announces/listAll";
 import { useUser } from "../../Providers/User";
 import { Main, ProfileViewSellerContainer, StoreSeller } from "./styles";
 
 const ProfileViewSeller: React.FC = () => {
   const query = useQuery();
 
-  const [auctions, setAuctions] = useState<IAuctionRes[]>([]);
-  const [sales, setSales] = useState<IAuctionRes[]>([]);
+  const [auctions, setAuctions] = useState<IAnnounceRes[]>([]);
+  const [sales, setSales] = useState<IAnnounceRes[]>([]);
   const [seller, setSeller] = useState<ISeller>({});
 
   const [loadding, setLoadding] = useState(false);

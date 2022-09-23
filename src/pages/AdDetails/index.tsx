@@ -23,8 +23,8 @@ import { Avatar } from "../../components/UserInfoBox/styles";
 
 import { useQuery } from "../../hooks/useQuery";
 import { useCallback, useEffect, useState } from "react";
-import { IAuctionRes } from "../../interfaces/auction";
-import { useListAnnounces } from "../../Providers/Auction/listAll";
+import { IAnnounceRes } from "../../interfaces/auction";
+import { useListAnnounces } from "../../Providers/Announces/listAll";
 import { useHistory } from "react-router-dom";
 
 import { avatarLetters } from "../../utils/avatarLetters";
@@ -39,7 +39,7 @@ const AdDetails: React.FC = (): JSX.Element => {
   const query = useQuery();
   const history = useHistory();
 
-  const [announce, setAnnounce] = useState<IAuctionRes>({});
+  const [announce, setAnnounce] = useState<IAnnounceRes>({});
   const [loadding, setLoadding] = useState(false);
 
   const { getAnnounce } = useListAnnounces();

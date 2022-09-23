@@ -1,4 +1,4 @@
-import { IAuctionRes } from "../../../interfaces/auction";
+import { IAnnounceRes } from "../../../interfaces/auction";
 import DefaultImg from "../../../assets/img/default.png";
 import {
   BaseboardContainer,
@@ -14,7 +14,7 @@ import {
 import Avatar from "../../Avatar";
 import { useHistory } from "react-router-dom";
 
-const SaleCard: React.FC<{ announce: IAuctionRes }> = ({
+const SaleCard: React.FC<{ announce: IAnnounceRes }> = ({
   announce,
 }): JSX.Element => {
   const history = useHistory();

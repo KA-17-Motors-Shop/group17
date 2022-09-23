@@ -2,16 +2,16 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-import GeneralInput from "../../Forms/Components/Inputs/GeneralInput";
-import { ButtonPrimary } from "../../Button";
+import GeneralInput from "../../../Forms/Components/Inputs/GeneralInput";
+import { ButtonPrimary } from "../../../Button";
 import { CodeButton, Form, TopModal } from "./styles";
 
-import { CloseModalBtn } from "../../Button/CloseModalBtn";
+import { CloseModalBtn } from "../../../Button/CloseModalBtn";
 import { useState } from "react";
-import Modal from "..";
+import Modal from "../..";
 import NewPassword from "./NewPassword";
-import { useUpdatePassword } from "../../../Providers/User/passwordUser";
-import { useLoad } from "../../../Providers/Loading";
+import { useUpdatePassword } from "../../../../Providers/User/passwordUser";
+import { useLoad } from "../../../../Providers/Loading";
 
 interface IProps {
   handleModal: () => void;

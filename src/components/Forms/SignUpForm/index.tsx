@@ -7,13 +7,13 @@ import GeneralInput from "../Components/Inputs/GeneralInput";
 import { Container, FooterForm, InputsContainer, SpanText } from "./styles";
 import InputPassword from "../Components/Inputs/InputPassword";
 import { SelectTypeAccount } from "../Components/SelectType";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import MaskInput from "../Components/Inputs/MaskInput";
 import { useRegister } from "../../../Providers/User/register";
 import { useHistory } from "react-router-dom";
 import { IUserRegister } from "../../../interfaces/user";
 import { useLoad } from "../../../Providers/Loading";
-import { useZipCode } from "../../../Providers/Address/cepValidation";
+import { IAddress, useZipCode } from "../../../Providers/Address/cepValidation";
 
 const FormSingUp: React.FC = () => {
   const {
@@ -25,10 +25,20 @@ const FormSingUp: React.FC = () => {
   });
 
   const [typeAccount, setTypeAccount] = useState("client");
+  const [zipCodeAddress, setZipCodeAddress] = useState<IAddress>({});
+
   const { registerUser } = useRegister();
-  const { address, verifyZipCode } = useZipCode();
+  const { verifyZipCode } = useZipCode();
   const history = useHistory();
   const { showLoad } = useLoad();
+
+  const autoComplete = useCallback(
+    async (value: string) => {
+      const verify = await verifyZipCode(value);
+      setZipCodeAddress(verify);
+    },
+    [verifyZipCode]
+  );
 
   const handleRegister = async (data: IUserRegister) => {
     delete data.confirmPassword;
@@ -96,7 +106,7 @@ const FormSingUp: React.FC = () => {
           placeholder="CEP..."
           mask="99999-999"
           onChange={(e) => {
-            verifyZipCode(e.target.value);
+            autoComplete(e.target.value);
           }}
         />
         <GeneralInput
@@ -105,7 +115,7 @@ const FormSingUp: React.FC = () => {
           name={"state"}
           error={errors.state?.message}
           placeholder="Estado..."
-          defaultValue={address.uf}
+          defaultValue={zipCodeAddress.uf}
         />
         <GeneralInput
           label="Cidade"
@@ -113,7 +123,7 @@ const FormSingUp: React.FC = () => {
           name={"city"}
           error={errors.city?.message}
           placeholder="Cidade..."
-          defaultValue={address.localidade}
+          defaultValue={zipCodeAddress.localidade}
         />
         <GeneralInput
           label="Rua"
@@ -121,7 +131,7 @@ const FormSingUp: React.FC = () => {
           name={"street"}
           error={errors.street?.message}
           placeholder="Rua..."
-          defaultValue={address.logradouro}
+          defaultValue={zipCodeAddress.logradouro}
         />
         <GeneralInput
           label="Número"
@@ -137,7 +147,7 @@ const FormSingUp: React.FC = () => {
           name={"complement"}
           error={errors.complement?.message}
           placeholder="Complemento..."
-          defaultValue={address.complemento}
+          defaultValue={zipCodeAddress.complemento}
         />
         <SpanText>Tipo de conta</SpanText>
         <SelectTypeAccount value={typeAccount} setValue={setTypeAccount} />

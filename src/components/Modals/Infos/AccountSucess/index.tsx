@@ -1,5 +1,5 @@
-import { ButtonPrimary } from "../../Button";
-import { CloseModalBtn } from "../../Button/CloseModalBtn";
+import { ButtonPrimary } from "../../../Button";
+import { CloseModalBtn } from "../../../Button/CloseModalBtn";
 import * as S from "./styles";
 
 interface IHandleModal {

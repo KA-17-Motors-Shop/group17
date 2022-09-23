@@ -1,6 +1,5 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import Dashboard from "../pages/DashBoard";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
@@ -18,7 +17,6 @@ const Router: React.FC = () => {
       <Route exact path={"/"} component={Home} />
       <Route exact path={"/login"} component={Login} />
       <Route exact path={"/register"} component={Register} />
-      <Route exact path={"/preview"} component={Dashboard} />
       <Route exact path={"/ad_details"} component={AdDetails} />
       <Route exact path={"/profile"}>
         {!!token ? <ProfileViewUser /> : <Redirect to="/" />}

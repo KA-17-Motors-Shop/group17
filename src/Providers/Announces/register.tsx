@@ -1,35 +1,32 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { motorShopAPI } from "../../services/urls.api";
 
-import { IRegisterAuction } from "../../interfaces/auction";
+import { IRegisterAnnounce } from "../../interfaces/auction";
 import { useLoad } from "../Loading";
 
 type IAuctionTypeContext = {
-  auction: IRegisterAuction;
-  registerAuction: (data: IRegisterAuction, images?: File[]) => Promise<void>;
+  registerAnnounce: (data: IRegisterAnnounce, images?: File[]) => Promise<void>;
 };
 
 const initialValue = {
   auction: {},
-  registerAuction: async () => {},
+  registerAnnounce: async () => {},
 };
 
-export const RegisterAuctionContext =
+export const RegisterAnnounceContext =
   createContext<IAuctionTypeContext>(initialValue);
 
-export const RegisterAuctionProvider: React.FC<{
+export const RegisterAnnounceProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
-  const [auction, setAuction] = useState(initialValue.auction);
-
   const history = useHistory();
 
   const { hiddenLoad } = useLoad();
 
-  const registerAuction = async (data: IRegisterAuction, images?: File[]) => {
+  const registerAnnounce = async (data: IRegisterAnnounce, images?: File[]) => {
     const token = localStorage.getItem("@token:Motor");
 
     const formData = new FormData();
@@ -47,7 +44,7 @@ export const RegisterAuctionProvider: React.FC<{
       })
       .then((res) => {
         console.log("Auction-->", res);
-        setAuction(res);
+
         toast.success("Leilão criado com sucesso!");
         history.push("/");
       })
@@ -59,10 +56,10 @@ export const RegisterAuctionProvider: React.FC<{
   };
 
   return (
-    <RegisterAuctionContext.Provider value={{ auction, registerAuction }}>
+    <RegisterAnnounceContext.Provider value={{ registerAnnounce }}>
       {children}
-    </RegisterAuctionContext.Provider>
+    </RegisterAnnounceContext.Provider>
   );
 };
 
-export const useAuctionRegister = () => useContext(RegisterAuctionContext);
+export const useAnnounceRegister = () => useContext(RegisterAnnounceContext);

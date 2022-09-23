@@ -1,4 +1,4 @@
-export interface IRegisterAuction {
+export interface IRegisterAnnounce {
   title?: string;
   description?: string;
   year?: string;
@@ -11,7 +11,7 @@ export interface IRegisterAuction {
   images?: File[];
 }
 
-export interface IDataAuction {
+export interface IDataAnnounce {
   title?: string;
   description?: string;
   year?: string;
@@ -19,7 +19,7 @@ export interface IDataAuction {
   price?: number;
 }
 
-export interface IAuctionRes {
+export interface IAnnounceRes {
   id?: string;
   title?: string;
   description?: string;

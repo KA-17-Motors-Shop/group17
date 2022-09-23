@@ -7,9 +7,10 @@ import { LoggedTrigger, SubMenuContainer } from "./styles";
 
 interface Iprops {
   userName: string;
+  handleModal: () => void;
 }
 
-const SubMenuUser: React.FC<Iprops> = ({ userName }) => {
+const SubMenuUser: React.FC<Iprops> = ({ userName, handleModal }) => {
   const { logOut } = useUser();
   const history = useHistory();
 
@@ -23,7 +24,7 @@ const SubMenuUser: React.FC<Iprops> = ({ userName }) => {
         <DropItem onSelect={() => history.push("/profile")}>
           Meu Perfil
         </DropItem>
-        <DropItem>Gerenciar Endereços</DropItem>
+        <DropItem onSelect={handleModal}>Gerenciar Endereços</DropItem>
         <DropItem>Minhas Compras</DropItem>
         <DropItem onSelect={logOut}>Sair</DropItem>
         <DropdownMenu.Arrow />

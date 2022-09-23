@@ -3,12 +3,14 @@ import { ZipCodeProvider } from "./Address/cepValidation";
 import { UserProvider } from "./User";
 import { RegisterProvider } from "./User/register";
 import { ActivateProvider } from "./User/activateUser";
-import { ListAnounceProvider } from "./Auction/listAll";
-import { RegisterAuctionProvider } from "./Auction/register";
+import { ListAnounceProvider } from "./Announces/listAll";
+import { RegisterAnnounceProvider } from "./Announces/register";
 import { BidsProvider } from "./Bids";
 import { CommentProvider } from "./Comments";
 import { UpdateUserProvider } from "./User/updateUser";
 import { PasswordUserProvider } from "./User/passwordUser";
+import { ListCreateAddressProvider } from "./Address/listCreateAddress";
+import { DeleteUpdateAddressProvider } from "./Address/deleteUpdateAddress";
 
 const Providers: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
@@ -17,15 +19,19 @@ const Providers: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <UpdateUserProvider>
           <PasswordUserProvider>
             <ActivateProvider>
-              <RegisterAuctionProvider>
+              <RegisterAnnounceProvider>
                 <ListAnounceProvider>
                   <BidsProvider>
-                    <CommentProvider>
-                      <ZipCodeProvider>{children}</ZipCodeProvider>
-                    </CommentProvider>
+                    <ListCreateAddressProvider>
+                      <DeleteUpdateAddressProvider>
+                        <CommentProvider>
+                          <ZipCodeProvider>{children}</ZipCodeProvider>
+                        </CommentProvider>
+                      </DeleteUpdateAddressProvider>
+                    </ListCreateAddressProvider>
                   </BidsProvider>
                 </ListAnounceProvider>
-              </RegisterAuctionProvider>
+              </RegisterAnnounceProvider>
             </ActivateProvider>
           </PasswordUserProvider>
         </UpdateUserProvider>

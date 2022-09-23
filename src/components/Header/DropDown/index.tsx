@@ -16,7 +16,12 @@ import SubMenuUser from "./SubMenu";
 import { useHistory } from "react-router-dom";
 import { IUser } from "../../../interfaces/user";
 
-const DropDownMenu: React.FC<{ user: IUser }> = ({ user }) => {
+interface IProps {
+  user: IUser;
+  handleModal: () => void;
+}
+
+const DropDownMenu: React.FC<IProps> = ({ user, handleModal }) => {
   const [drop, setDrop] = useState<boolean>(false);
 
   const history = useHistory();
@@ -36,9 +41,9 @@ const DropDownMenu: React.FC<{ user: IUser }> = ({ user }) => {
           <BurguerIcon open={drop} />
         </DropTrigger>
         <DropContent>
-          <DropItem onClick={() => handlePage("/preview")}>Carros</DropItem>
-          <DropItem onClick={() => handlePage("/preview")}>Motos</DropItem>
-          <DropItem onClick={() => handlePage("/preview")}>Leilão</DropItem>
+          <DropItem onClick={() => handlePage("/")}>Carros</DropItem>
+          <DropItem onClick={() => handlePage("/")}>Motos</DropItem>
+          <DropItem onClick={() => handlePage("/")}>Leilão</DropItem>
           <DropSeparator />
           {!user.id ? (
             <>
@@ -48,7 +53,7 @@ const DropDownMenu: React.FC<{ user: IUser }> = ({ user }) => {
               </DropItemButton>
             </>
           ) : (
-            <SubMenuUser userName={user.name!} />
+            <SubMenuUser handleModal={handleModal} userName={user.name!} />
           )}
           <DropSeparator />
           <DropItemSwitch>

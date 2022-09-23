@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { IAuctionRes } from "../../../interfaces/auction";
+import { IAnnounceRes } from "../../../interfaces/auction";
 import Avatar from "../../Avatar";
 import Stopwatch from "../../Stopwatch";
 import {
@@ -18,7 +18,7 @@ import {
   Description,
 } from "./styles";
 
-const AuctionCard: React.FC<{ announce: IAuctionRes }> = ({ announce }) => {
+const AuctionCard: React.FC<{ announce: IAnnounceRes }> = ({ announce }) => {
   const history = useHistory();
 
   const announcePage = () => {

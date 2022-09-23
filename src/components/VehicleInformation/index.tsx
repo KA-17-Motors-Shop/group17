@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { IAuctionRes } from "../../interfaces/auction";
+import { IAnnounceRes } from "../../interfaces/auction";
 import { useUser } from "../../Providers/User";
 import { ButtonDisable, ButtonPrimary } from "../Button";
 import Modal from "../Modals";
 import DeleteAd from "../Modals/Ad/DeleteAd";
 import UpdateAd from "../Modals/Ad/UpdateAd";
-import BidsAuction from "../Modals/BidsAuction";
+import SendBidAuction from "../Modals/Bids/SendBidAuction";
 
 import {
   VehicleInformationContainer,
@@ -18,7 +18,7 @@ import {
 } from "./styles";
 
 interface IProps {
-  announce: IAuctionRes;
+  announce: IAnnounceRes;
 }
 
 const VehicleInformation: React.FC<IProps> = ({ announce }): JSX.Element => {
@@ -34,7 +34,7 @@ const VehicleInformation: React.FC<IProps> = ({ announce }): JSX.Element => {
   return (
     <>
       {announce.type! === "auction" && (
-        <BidsAuction show={showBid} handle={() => setShowBid(false)} />
+        <SendBidAuction show={showBid} handle={() => setShowBid(false)} />
       )}
       <Modal show={showEdit} close={() => setShowEdit(false)}>
         <UpdateAd handleModal={() => setShowEdit(false)} announce={announce} />

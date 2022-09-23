@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { IAuctionRes } from "../../interfaces/auction";
-import { useListAnnounces } from "../../Providers/Auction/listAll";
+import { IAnnounceRes } from "../../interfaces/auction";
+import { useListAnnounces } from "../../Providers/Announces/listAll";
 import AuctionGroup from "./AuctionGroup";
 import SalesGroup from "./SalesGroup";
 import {
@@ -18,8 +18,8 @@ import * as Tabs from "@radix-ui/react-tabs";
 import MyBidsList from "../MyBidsList";
 
 const MyAnnouncesList: React.FC = () => {
-  const [auctions, setAuctions] = useState<IAuctionRes[]>([]);
-  const [sales, setSales] = useState<IAuctionRes[]>([]);
+  const [auctions, setAuctions] = useState<IAnnounceRes[]>([]);
+  const [sales, setSales] = useState<IAnnounceRes[]>([]);
 
   const { getMyAuctions, getMySales } = useListAnnounces();
 
