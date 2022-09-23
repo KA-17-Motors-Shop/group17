@@ -37,7 +37,7 @@ export interface IUpdateUser {
   description?: string;
 }
 
-export interface ISeller {
+export interface IAccount {
   id?: string;
   name?: string;
   description?: string;

@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-import { ISeller, IUser } from "../../interfaces/user";
+import { IAccount, IUser } from "../../interfaces/user";
 import { motorShopAPI } from "../../services/urls.api";
 import { useLoad } from "../Loading";
 
@@ -18,7 +18,7 @@ interface IContext {
   getUser: (token: string) => Promise<IUser>;
   logOut: () => void;
   isLogged: () => void;
-  getSeller: (id: string) => Promise<ISeller>;
+  getSeller: (id: string) => Promise<IAccount>;
 }
 
 export const UserContext = createContext({} as IContext);

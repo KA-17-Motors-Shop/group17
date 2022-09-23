@@ -6,7 +6,7 @@ import SalesGroup from "../../components/Lists/MyAnnouncesList/SalesGroup";
 import SellerInfoBox from "../../components/Boxes/SellerInfoBox";
 import { useQuery } from "../../hooks/useQuery";
 import { IAnnounceRes } from "../../interfaces/auction";
-import { ISeller } from "../../interfaces/user";
+import { IAccount } from "../../interfaces/user";
 import { useListAnnounces } from "../../Providers/Announces/listAll";
 import { useUser } from "../../Providers/User";
 import { Main, ProfileViewSellerContainer, StoreSeller } from "./styles";
@@ -16,7 +16,7 @@ const ProfileViewSeller: React.FC = () => {
 
   const [auctions, setAuctions] = useState<IAnnounceRes[]>([]);
   const [sales, setSales] = useState<IAnnounceRes[]>([]);
-  const [seller, setSeller] = useState<ISeller>({});
+  const [seller, setSeller] = useState<IAccount>({});
 
   const [loadding, setLoadding] = useState(false);
 

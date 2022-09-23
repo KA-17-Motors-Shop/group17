@@ -1,5 +1,5 @@
 import React from "react";
-import { ISeller } from "../../../interfaces/user";
+import { IAccount } from "../../../interfaces/user";
 import { avatarLetters } from "../../../utils/avatarLetters";
 
 import {
@@ -9,7 +9,7 @@ import {
   UserInfoBoxContainer,
 } from "./styles";
 
-const SellerInfoBox: React.FC<{ seller: ISeller }> = ({ seller }) => {
+const SellerInfoBox: React.FC<{ seller: IAccount }> = ({ seller }) => {
   return (
     <UserInfoBoxContainer>
       <TopDiv>

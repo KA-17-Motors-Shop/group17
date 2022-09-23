@@ -3,7 +3,7 @@ import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import LoaderLocalComponent from "../../components/Loader/LoaderLocalComponent";
 import SellerInfoBox from "../../components/Boxes/SellerInfoBox";
-import { ISeller } from "../../interfaces/user";
+import { IAccount } from "../../interfaces/user";
 import { useUser } from "../../Providers/User";
 import { EmptyContainer } from "../AdDetails/styles";
 
@@ -12,7 +12,7 @@ import * as S from "./styles";
 const MyPushase: React.FC = () => {
   const { token, getUser } = useUser();
 
-  const [account, setAccount] = useState<ISeller>({});
+  const [account, setAccount] = useState<IAccount>({});
   const [loadding, setLoadding] = useState(false);
 
   // listPurshases Provider
