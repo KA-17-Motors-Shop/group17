@@ -2,11 +2,10 @@ import { useState } from "react";
 import { Container, Icon, Time } from "./styles";
 
 interface IProps {
-  publishedDate: string;
   limitData: string;
 }
 
-const Stopwatch: React.FC<IProps> = ({ limitData, publishedDate }) => {
+const Stopwatch: React.FC<IProps> = ({ limitData }) => {
   const [time, setTime] = useState("00:00:00");
 
   const restTime = () => {
