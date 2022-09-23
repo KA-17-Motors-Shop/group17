@@ -1,10 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
+import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import LoaderLocalComponent from "../../components/Loader/LoaderLocalComponent";
-import SellerInfoBox from "../../components/SellerInfoBox";
+import SellerInfoBox from "../../components/Boxes/SellerInfoBox";
 import { ISeller } from "../../interfaces/user";
 import { useUser } from "../../Providers/User";
 import { EmptyContainer } from "../AdDetails/styles";
+
+import * as S from "./styles";
 
 const MyPushase: React.FC = () => {
   const { token, getUser } = useUser();
@@ -26,7 +29,7 @@ const MyPushase: React.FC = () => {
   }, [handleAccount]);
 
   return (
-    <>
+    <S.ContainerMyPorchase>
       <Header />
 
       {loadding ? (
@@ -34,16 +37,16 @@ const MyPushase: React.FC = () => {
           <LoaderLocalComponent />
         </EmptyContainer>
       ) : (
-        <>
-          <div>
-            <SellerInfoBox seller={account} />
-          </div>
+        <S.MainMyPorchase>
+          <SellerInfoBox seller={account} />
+
           <div>
             <p>Lista de compras e lances</p>
           </div>
-        </>
+        </S.MainMyPorchase>
       )}
-    </>
+      <Footer />
+    </S.ContainerMyPorchase>
   );
 };
 

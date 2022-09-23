@@ -1,5 +1,5 @@
-import VehicleInformation from "../../components/VehicleInformation";
-import DescriptionBox from "../../components/DescriptionBox";
+import VehicleInfoBox from "../../components/Boxes/VehicleInfoBox";
+import DescriptionBox from "../../components/Boxes/DescriptionBox";
 import { ButtonDefault } from "../../components/Button";
 import BigTopImage from "../../components/BigtopImage";
 import Header from "../../components/Header";
@@ -19,7 +19,7 @@ import {
   EmptyContainer,
 } from "./styles";
 
-import { Avatar } from "../../components/UserInfoBox/styles";
+import { Avatar } from "../../components/Boxes/UserInfoBox/styles";
 
 import { useQuery } from "../../hooks/useQuery";
 import { useCallback, useEffect, useState } from "react";
@@ -28,7 +28,7 @@ import { useListAnnounces } from "../../Providers/Announces/listAll";
 import { useHistory } from "react-router-dom";
 
 import { avatarLetters } from "../../utils/avatarLetters";
-import CommentBox from "../../components/CommentBox";
+import CommentBox from "../../components/Boxes/CommentBox";
 import GaleryImages from "../../components/GaleryImages";
 import CommentInput from "../../components/Forms/Components/CommentInput";
 import EmptyMessage from "../../components/EmptyMessage";
@@ -72,7 +72,7 @@ const AdDetails: React.FC = (): JSX.Element => {
             <TopContainer>
               <LeftContainer>
                 <BigTopImage image={announce.imagesUrl![0] || DefaultImg} />
-                <VehicleInformation announce={announce} />
+                <VehicleInfoBox announce={announce} />
                 <DescriptionBox description={announce.description as string} />
               </LeftContainer>
 

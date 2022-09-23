@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IResBidUser } from "../../../interfaces/bids";
+import { IResBidUser } from "../../../../interfaces/bids";
 
 import moment from "moment";
 import {

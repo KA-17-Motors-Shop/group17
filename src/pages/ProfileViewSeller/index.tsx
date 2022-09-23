@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
-import AuctionGroup from "../../components/MyAnnouncesList/AuctionGroup";
-import SalesGroup from "../../components/MyAnnouncesList/SalesGroup";
-import SellerInfoBox from "../../components/SellerInfoBox";
+import AuctionGroup from "../../components/Lists/MyAnnouncesList/AuctionGroup";
+import SalesGroup from "../../components/Lists/MyAnnouncesList/SalesGroup";
+import SellerInfoBox from "../../components/Boxes/SellerInfoBox";
 import { useQuery } from "../../hooks/useQuery";
 import { IAnnounceRes } from "../../interfaces/auction";
 import { ISeller } from "../../interfaces/user";

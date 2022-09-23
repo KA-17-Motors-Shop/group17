@@ -1,4 +1,4 @@
-import UserInfoBox from "../../components/UserInfoBox";
+import UserInfoBox from "../../components/Boxes/UserInfoBox";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 
@@ -11,8 +11,8 @@ import UpdateProfile from "../../components/Modals/User/UpdateProfile";
 import CreateAd from "../../components/Modals/Ad/CreateAd";
 import Modal from "../../components/Modals";
 
-import MyAnnouncesList from "../../components/MyAnnouncesList";
-import MyBidsList from "../../components/MyBidsList";
+import MyAnnouncesList from "../../components/Lists/MyAnnouncesList";
+import MyBidsList from "../../components/Lists/MyBidsList";
 import LoaderLocalComponent from "../../components/Loader/LoaderLocalComponent";
 import { EmptyContainer } from "../AdDetails/styles";
 

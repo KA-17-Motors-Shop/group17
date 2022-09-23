@@ -1,6 +1,6 @@
 import React from "react";
-import { ISeller } from "../../interfaces/user";
-import { avatarLetters } from "../../utils/avatarLetters";
+import { ISeller } from "../../../interfaces/user";
+import { avatarLetters } from "../../../utils/avatarLetters";
 
 import {
   Avatar,
