@@ -5,10 +5,11 @@ import { toast } from "react-toastify";
 import { motorShopAPI } from "../../services/urls.api";
 
 import { IRegisterAuction } from "../../interfaces/auction";
+import { useLoad } from "../Loading";
 
 type IAuctionTypeContext = {
   auction: IRegisterAuction;
-  registerAuction: (data: IRegisterAuction) => Promise<void>;
+  registerAuction: (data: IRegisterAuction, images?: File[]) => Promise<void>;
 };
 
 const initialValue = {
@@ -26,18 +27,24 @@ export const RegisterAuctionProvider: React.FC<{
 
   const history = useHistory();
 
-  const registerAuction = async (data: IRegisterAuction) => {
+  const { hiddenLoad } = useLoad();
+
+  const registerAuction = async (data: IRegisterAuction, images?: File[]) => {
     const token = localStorage.getItem("@token:Motor");
-    const isActive = true;
+
+    const formData = new FormData();
+    Object.entries(data).forEach((item) => formData.append(item[0], item[1]));
+    if (images) {
+      images.forEach((item) => formData.append("images", item));
+    }
 
     await motorShopAPI
-      .post(
-        "/announcement/",
-        { ...data, isActive: isActive },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
+      .post("/announcement/", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
         console.log("Auction-->", res);
         setAuction(res);
@@ -48,6 +55,7 @@ export const RegisterAuctionProvider: React.FC<{
         console.log(err);
         toast.warning(err.response.data.message);
       });
+    hiddenLoad();
   };
 
   return (

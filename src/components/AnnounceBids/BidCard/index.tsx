@@ -15,9 +15,7 @@ const BidCard: React.FC<{ bid: IResBids }> = ({ bid }) => {
           &sdot; {moment(datePublished).startOf("minutes").fromNow()}
         </DateSpan>
       </TopContainer>
-      <Price>
-        R$ {parseFloat(bid.value).toFixed(2).toString().replace(".", ",")}
-      </Price>
+      <Price>R$ {parseFloat(bid.value).toLocaleString("pt-BR")}</Price>
     </Card>
   );
 };

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { IUser } from "../../interfaces/user";
-import { useUser } from "../../Providers/User/login";
+import { useUser } from "../../Providers/User";
 import Logo from "../Logo";
 import DropDownMenu from "./DropDown";
 import NavBar from "./NavBar";

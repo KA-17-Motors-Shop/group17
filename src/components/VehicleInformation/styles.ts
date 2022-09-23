@@ -78,3 +78,8 @@ export const Price = styled.span`
   align-self: center;
   color: ${({ theme }) => theme.textColors.primaryText};
 `;
+
+export const SellerButonContainer = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`;

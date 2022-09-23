@@ -1,47 +1,38 @@
 import styled from "styled-components";
 
 export const Centralize = styled.div`
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
+  border-radius: 0.5rem;
+
+  background-color: ${(props) =>
+    props.theme.backgroundColors.secondaryBackground};
 `;
 
 export const ContainerForm = styled.form`
+  max-width: 100%;
+  max-height: 100%;
+  overflow-y: scroll;
+
   display: flex;
-  width: 520px;
-  height: 1036px;
-
   padding: 1rem;
-
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
-  background-color: ${(props) =>
-    props.theme.backgroundColors.secondaryBackground};
-  border-radius: 0.5rem;
-
-  > h1 {
-    color: ${({ theme }) => theme.textColors.subTitle};
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-  }
+  gap: 1rem;
 `;
 
 export const TopModal = styled.div`
   display: flex;
   justify-content: space-between;
-  /* margin-top: -1rem; */
-  > h1 {
-    /* color: ${({ theme }) => theme.textColors.subTitle};
-    margin-top: 1rem; */
-  }
 
-  @media screen and (max-width: 920px) {
-    /* margin-top: -1.5rem;
-    > h1 {
-      margin-top: 2rem;
-    } */
+  > h1 {
+    color: ${({ theme }) => theme.textColors.primaryText};
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.5rem;
   }
 `;
 
@@ -73,12 +64,16 @@ export const SpanText = styled.span`
 export const BtnAddImg = styled.div`
   display: flex;
   width: 100%;
-  justify-content: flex-start;
+  height: 3.5rem;
+  justify-content: center;
   align-items: flex-start;
+  padding: 0.5rem;
   > div {
+    width: 80%;
+    height: 100%;
     > button {
-      width: 315px;
-      height: 38px;
+      width: 100%;
+      height: 100%;
       font-weight: 600;
       font-size: 14px;
       line-height: 0px;
@@ -90,5 +85,9 @@ export const BtnAddImg = styled.div`
 export const BottoModal = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin-left: 7rem;
+  gap: 0.5rem;
+
+  > div {
+    width: 40%;
+  }
 `;

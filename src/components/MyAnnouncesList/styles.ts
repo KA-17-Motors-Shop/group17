@@ -33,16 +33,30 @@ export const TabsList = styled(Tabs.List)`
   gap: 1rem;
 `;
 
+export const TabsContent = styled(Tabs.Content)`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const Trigger = styled(Tabs.Trigger)`
   padding: 0.5rem;
-  background-color: ${({ theme }) => theme.buttons.outline2.background};
-  border: 1.5px solid ${({ theme }) => theme.buttons.outline2.border};
-  color: ${({ theme }) => theme.buttons.outline2.color};
+  border: 1px solid;
+  &[data-state="active"] {
+    background-color: ${({ theme }) => theme.buttons.primary.background};
+    color: ${({ theme }) => theme.buttons.primary.color};
+    border-color: ${({ theme }) => theme.buttons.primary.border};
+  }
 
+  &[data-state="inactive"] {
+    background-color: ${({ theme }) => theme.buttons.outline1.background};
+    color: ${({ theme }) => theme.buttons.outline1.color};
+    border-color: ${({ theme }) => theme.buttons.outline1.border};
+  }
   &:hover {
-    filter: brightness(1);
-    background-color: ${({ theme }) => theme.buttons.outline2.hover};
-    border: 1.5px solid ${({ theme }) => theme.buttons.outline2.hover};
+    filter: brightness(1.5);
+    border-color: transparent;
   }
 `;
 
@@ -79,5 +93,10 @@ export const ToggleItem = styled(ToggleGroup.Item)`
     background-color: ${({ theme }) => theme.buttons.outline1.background};
     color: ${({ theme }) => theme.buttons.outline1.color};
     border: ${({ theme }) => theme.buttons.outline1.border} 1px solid;
+  }
+
+  &:hover {
+    filter: brightness(1.5);
+    border-color: transparent;
   }
 `;

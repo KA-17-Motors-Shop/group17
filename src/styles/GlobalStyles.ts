@@ -26,6 +26,11 @@ export const GlobalStyle = createGlobalStyle`
         font-family: "Lexend", sans-serif;
     }
 
+    .Toastify__toast-theme--light {
+        background-color: ${({ theme }) =>
+          theme.backgroundColors.headerBackground};
+    }
+
 
     #root{
         width: 100vw;

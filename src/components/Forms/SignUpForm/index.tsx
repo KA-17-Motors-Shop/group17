@@ -1,6 +1,6 @@
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { RegisterUserschema } from "../../../validations/user.validations";
 
 import { ButtonOutline2, ButtonPrimary } from "../../Button";
 import GeneralInput from "../Components/Inputs/GeneralInput";
@@ -13,65 +13,20 @@ import { useRegister } from "../../../Providers/User/register";
 import { useHistory } from "react-router-dom";
 import { IUserRegister } from "../../../interfaces/user";
 import { useLoad } from "../../../Providers/Loading";
+import { useZipCode } from "../../../Providers/Address/cepValidation";
 
 const FormSingUp: React.FC = () => {
-  const schema = yup.object().shape({
-    name: yup
-      .string()
-      .required("Campo obrigatório")
-      .matches(/[a-zA-Z\u00C0-\u00FF ]+/i, "Deve conter apenas letras"),
-    email: yup.string().required("Campo obrigatório").email("Email inválido"),
-    cpf: yup
-      .string()
-      .required("Campo obrigatório")
-      .matches(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, "CPF inválido"),
-    phone: yup
-      .string()
-      .required("Campo obrigatório")
-      .matches(/(\(\d{2}\)\s)(\d{4,5}-\d{4})/g, "Telefone inválido"),
-    birhtDate: yup
-      .string()
-      .required("Campo obrigatório")
-      .test(
-        (dateString) =>
-          new Date(dateString!) <
-          new Date(
-            new Date().getFullYear() - 18,
-            new Date().getMonth(),
-            new Date().getDay()
-          )
-      ),
-    description: yup.string(),
-    zipCode: yup
-      .string()
-      .required("Campo obrigatório")
-      .matches(/^[0-9]{5}-[0-9]{3}$/, "CEP inválido"),
-    state: yup.string(),
-    city: yup.string(),
-    street: yup.string(),
-    number: yup
-      .number()
-      .typeError("Somente números")
-      .required("Campo obrigatório"),
-    complement: yup.string(),
-    password: yup.string().required("Campo obrigatório"),
-    confirmPassword: yup
-      .string()
-      .required("Confirmação obrigatória")
-      .oneOf([yup.ref("password"), null], "Senhas diferentes"),
-  });
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(RegisterUserschema),
   });
 
   const [typeAccount, setTypeAccount] = useState("client");
   const { registerUser } = useRegister();
-  // const { address, verifyZipCode } = useZipCode();
+  const { address, verifyZipCode } = useZipCode();
   const history = useHistory();
   const { showLoad } = useLoad();
 
@@ -140,9 +95,9 @@ const FormSingUp: React.FC = () => {
           error={errors.zipCode?.message}
           placeholder="CEP..."
           mask="99999-999"
-          // onChange={(e) => {
-          //   verifyZipCode(e.target.value);
-          // }}
+          onChange={(e) => {
+            verifyZipCode(e.target.value);
+          }}
         />
         <GeneralInput
           label="Estado"
@@ -150,7 +105,7 @@ const FormSingUp: React.FC = () => {
           name={"state"}
           error={errors.state?.message}
           placeholder="Estado..."
-          // defaultValue={address.uf}
+          defaultValue={address.uf}
         />
         <GeneralInput
           label="Cidade"
@@ -158,7 +113,7 @@ const FormSingUp: React.FC = () => {
           name={"city"}
           error={errors.city?.message}
           placeholder="Cidade..."
-          // defaultValue={address.localidade}
+          defaultValue={address.localidade}
         />
         <GeneralInput
           label="Rua"
@@ -166,7 +121,7 @@ const FormSingUp: React.FC = () => {
           name={"street"}
           error={errors.street?.message}
           placeholder="Rua..."
-          // defaultValue={address.logradouro}
+          defaultValue={address.logradouro}
         />
         <GeneralInput
           label="Número"
@@ -182,7 +137,7 @@ const FormSingUp: React.FC = () => {
           name={"complement"}
           error={errors.complement?.message}
           placeholder="Complemento..."
-          // defaultValue={address.complemento}
+          defaultValue={address.complemento}
         />
         <SpanText>Tipo de conta</SpanText>
         <SelectTypeAccount value={typeAccount} setValue={setTypeAccount} />

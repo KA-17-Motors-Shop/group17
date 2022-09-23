@@ -16,12 +16,14 @@ export const ImageGalleryContainer = styled.div`
   }
   > div {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
     height: 100%;
     gap: 8px;
+    background-color: transparent;
   }
 `;
 

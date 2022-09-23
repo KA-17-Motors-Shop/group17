@@ -2,7 +2,7 @@ import React, { createContext, useContext } from "react";
 import { IAuctionRes, IFiltersParams } from "../../interfaces/auction";
 
 import { motorShopAPI } from "../../services/urls.api";
-import { useUser } from "../User/login";
+import { useUser } from "../User";
 
 interface IListContext {
   getListAuction: () => Promise<IAuctionRes[]>;
@@ -21,7 +21,8 @@ interface IListContext {
   getMySales: (status?: string) => Promise<IAuctionRes[]>;
   getMyAuctions: (status?: string) => Promise<IAuctionRes[]>;
   getAnnounce: (id: string) => Promise<IAuctionRes>;
-  getAnnounceBySeller: (id: string) => Promise<IAuctionRes[]>;
+  getAuctionBySeller: (id: string) => Promise<IAuctionRes[]>;
+  getSaleBySeller: (id: string) => Promise<IAuctionRes[]>;
 }
 
 export const ListAnounceContext = createContext({} as IListContext);
@@ -92,11 +93,20 @@ export const ListAnounceProvider: React.FC<{
     return response;
   };
 
-  const getAnnounceBySeller = async (id: string) => {
+  const getAuctionBySeller = async (id: string) => {
     const response = await motorShopAPI
-      .get(`/announcement/seller/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
+      .get(`/announcement/seller/${id}?type=auction`)
+      .then((res) => {
+        return res.data;
       })
+      .catch((err) => console.log(err));
+
+    return response;
+  };
+
+  const getSaleBySeller = async (id: string) => {
+    const response = await motorShopAPI
+      .get(`/announcement/seller/${id}?type=sale`)
       .then((res) => {
         return res.data;
       })
@@ -140,7 +150,8 @@ export const ListAnounceProvider: React.FC<{
   return (
     <ListAnounceContext.Provider
       value={{
-        getAnnounceBySeller,
+        getSaleBySeller,
+        getAuctionBySeller,
         getListAuction,
         getListFilter,
         getListSales,

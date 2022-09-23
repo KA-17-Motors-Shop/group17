@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+import { ISeller, IUser } from "../../interfaces/user";
 import { motorShopAPI } from "../../services/urls.api";
 import { useLoad } from "../Loading";
 
@@ -14,14 +15,15 @@ interface IContext {
   userId?: string;
   loginUser: (data: ILogin) => Promise<void>;
   isSeller?: boolean;
-  getUser: (token: string) => Promise<void>;
+  getUser: (token: string) => Promise<IUser>;
   logOut: () => void;
   isLogged: () => void;
+  getSeller: (id: string) => Promise<ISeller>;
 }
 
-export const LoginContext = createContext({} as IContext);
+export const UserContext = createContext({} as IContext);
 
-export const LoginProvider: React.FC<{ children: React.ReactNode }> = ({
+export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const { hiddenLoad } = useLoad();
@@ -81,6 +83,15 @@ export const LoginProvider: React.FC<{ children: React.ReactNode }> = ({
     return {};
   };
 
+  const getSeller = async (id: string) => {
+    const response = await motorShopAPI
+      .get(`/users/seller/${id}`)
+      .then((res) => res.data)
+      .catch((err) => console.log(err));
+
+    return response;
+  };
+
   const isLogged = () => {
     if (token.length <= 0) {
       toast.warning("Você deve estar logado para continuar");
@@ -99,12 +110,21 @@ export const LoginProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   return (
-    <LoginContext.Provider
-      value={{ token, userId, loginUser, isSeller, getUser, logOut, isLogged }}
+    <UserContext.Provider
+      value={{
+        getSeller,
+        token,
+        userId,
+        loginUser,
+        isSeller,
+        getUser,
+        logOut,
+        isLogged,
+      }}
     >
       {children}
-    </LoginContext.Provider>
+    </UserContext.Provider>
   );
 };
 
-export const useUser = () => useContext(LoginContext);
+export const useUser = () => useContext(UserContext);

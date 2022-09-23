@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  width: 100%;
+  width: 80%;
   padding: 1rem;
 `;
 
@@ -22,4 +22,5 @@ export const ContainerGroup = styled.ul`
   flex-direction: column;
   width: 90%;
   min-width: 300px;
+  gap: 0.5rem; ;
 `;

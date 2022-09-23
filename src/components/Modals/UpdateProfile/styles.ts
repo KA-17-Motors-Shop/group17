@@ -1,48 +1,44 @@
 import styled from "styled-components";
 
 export const Centralize = styled.div`
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
+  border-radius: 0.5rem;
+
+  background-color: ${(props) =>
+    props.theme.backgroundColors.secondaryBackground};
+`;
+
+export const Space = styled.div`
+  width: 100%;
+  height: 1rem;
 `;
 
 export const ContainerForm = styled.form`
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+
   display: flex;
-  width: 520px;
-  height: 823px;
-
-  padding: 1rem;
-
+  padding: 1.5rem;
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
-  background-color: ${(props) =>
-    props.theme.backgroundColors.secondaryBackground};
-  border-radius: 0.5rem;
-
-  > h1 {
-    color: ${({ theme }) => theme.textColors.subTitle};
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-  }
+  gap: 0.5rem;
 `;
 
 export const TopModal = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 2rem;
-  /* margin-top: -1rem; */
-  > h1 {
-    /* color: ${({ theme }) => theme.textColors.subTitle};
-    margin-top: 1rem; */
-  }
 
-  @media screen and (max-width: 920px) {
-    /* margin-top: -1.5rem;
-    > h1 {
-      margin-top: 2rem;
-    } */
+  > h1 {
+    color: ${({ theme }) => theme.textColors.primaryText};
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.5rem;
   }
 `;
 
@@ -52,12 +48,41 @@ export const InputsContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   gap: 20px;
+  padding: 1rem 0;
 `;
 
 export const RowInputsContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 10px;
+`;
+
+export const UpdatePassword = styled.div`
+  padding-left: 1rem;
+
+  button {
+    background-color: transparent;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.7rem;
+
+    color: ${({ theme }) => theme.textColors.primaryText};
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background: ${({ theme }) => theme.textColors.primaryText};
+      transition: width 0.8s;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
 `;
 
 export const SpanText = styled.span`
@@ -74,6 +99,9 @@ export const SpanText = styled.span`
 export const BottoModal = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin-left: 2rem;
-  margin-top: 2rem;
+  gap: 0.5rem;
+
+  > div {
+    width: 40%;
+  }
 `;

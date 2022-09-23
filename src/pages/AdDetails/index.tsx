@@ -54,7 +54,7 @@ const AdDetails: React.FC = (): JSX.Element => {
     setLoadding(true);
     handleAnnounces();
   }, [handleAnnounces]);
-  console.log(announce);
+
   const handleSellerPage = () => {
     history.push(`/seller?seller_id=${announce.seller!.id}`);
   };
@@ -72,16 +72,7 @@ const AdDetails: React.FC = (): JSX.Element => {
             <TopContainer>
               <LeftContainer>
                 <BigTopImage image={announce.imagesUrl![0] || DefaultImg} />
-                <VehicleInformation
-                  km={announce.km as string}
-                  price={announce.price as string}
-                  title={announce.title as string}
-                  year={announce.year as string}
-                  id={announce.id as string}
-                  type={announce.type as string}
-                  sellerId={announce.seller?.id as string}
-                  status={announce.status as string}
-                />
+                <VehicleInformation announce={announce} />
                 <DescriptionBox description={announce.description as string} />
               </LeftContainer>
 

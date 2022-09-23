@@ -20,7 +20,7 @@ import {
 
 const AuctionCard: React.FC<{ announce: IAuctionRes }> = ({ announce }) => {
   const history = useHistory();
-  console.log(announce);
+
   const announcePage = () => {
     history.push(`/ad_details?id=${announce.id}`);
   };
@@ -53,10 +53,7 @@ const AuctionCard: React.FC<{ announce: IAuctionRes }> = ({ announce }) => {
 
             <Price>
               R$
-              {parseFloat(announce.price || "0")
-                .toFixed(2)
-                .toString()
-                .replace(".", ",")}
+              {parseFloat(announce.price!).toLocaleString("pt-BR")}
             </Price>
           </ContainerBottom>
         </ContainerInfo>

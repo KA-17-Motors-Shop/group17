@@ -1,25 +1,60 @@
+import { useState } from "react";
 import { CloseModalBtn } from "../../Button/CloseModalBtn";
-import { Centralize, ImgContainer, ModalContainer, TopModal } from "./styles";
+import {
+  ArrowLeft,
+  ArrowRight,
+  DotsContainer,
+  ImgContainer,
+  ModalContainer,
+  TopModal,
+} from "./styles";
 
-import MERCEDES from "../../../assets/img/vehicles/mercedes_teste.png";
+import { GoPrimitiveDot } from "react-icons/go";
 
 interface IHandleModal {
   handleModal: () => void;
+  images: string[];
+  selectImg: number;
 }
 
-const ImgVehicle = ({ handleModal }: IHandleModal) => {
+const ImgVehicle = ({ handleModal, images, selectImg }: IHandleModal) => {
+  const [index, setIndex] = useState(selectImg);
+
+  const next = () => {
+    if (images.length - 1 > index) {
+      setIndex(index + 1);
+    } else {
+      setIndex(0);
+    }
+  };
+  const prev = () => {
+    if (index > 0) {
+      setIndex(index - 1);
+    } else {
+      setIndex(images.length - 1);
+    }
+  };
+
   return (
-    <Centralize>
-      <ModalContainer>
-        <TopModal>
-          <h1>Imagem do veiculo</h1>
-          <CloseModalBtn onClick={handleModal} />
-        </TopModal>
-        <ImgContainer>
-          <img src={MERCEDES} alt="Carro tal" />
-        </ImgContainer>
-      </ModalContainer>
-    </Centralize>
+    <ModalContainer>
+      <TopModal>
+        <h1>Imagem do veiculo</h1>
+        <CloseModalBtn onClick={handleModal} />
+      </TopModal>
+      <ImgContainer>
+        <img src={images[index]} alt="imagem" />
+      </ImgContainer>
+      <DotsContainer>
+        <ArrowLeft onClick={prev} />
+        {images.map((_, i) => (
+          <GoPrimitiveDot
+            onClick={() => setIndex(i)}
+            className={index === i ? "active" : "disable"}
+          />
+        ))}
+        <ArrowRight onClick={next} />
+      </DotsContainer>
+    </ModalContainer>
   );
 };
 

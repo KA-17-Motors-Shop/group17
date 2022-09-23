@@ -1,6 +1,6 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useHistory } from "react-router-dom";
-import { useUser } from "../../../../Providers/User/login";
+import { useUser } from "../../../../Providers/User";
 import Avatar from "../../../Avatar";
 import { DropItem } from "../styles";
 import { LoggedTrigger, SubMenuContainer } from "./styles";

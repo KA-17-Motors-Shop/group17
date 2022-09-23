@@ -4,9 +4,15 @@ import * as S from "./styles";
 
 interface IHandleModal {
   handleModal: () => void;
+  id: string;
 }
 
-const DeleteAd = ({ handleModal }: IHandleModal) => {
+const DeleteAd = ({ handleModal, id }: IHandleModal) => {
+  const deleteAdConfirm = () => {
+    console.log("delete ->" + id);
+    handleModal();
+  };
+
   return (
     <S.Centralize>
       <S.ModalContainer>
@@ -24,7 +30,9 @@ const DeleteAd = ({ handleModal }: IHandleModal) => {
           <ButtonNegative type="button" onClick={handleModal}>
             Cancelar
           </ButtonNegative>
-          <ButtonAlert type="button">Sim, excluír anúcio</ButtonAlert>
+          <ButtonAlert onClick={deleteAdConfirm} type="button">
+            Sim, excluír anúcio
+          </ButtonAlert>
         </S.BottoModal>
       </S.ModalContainer>
     </S.Centralize>

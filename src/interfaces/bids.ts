@@ -9,3 +9,15 @@ export interface IResBids {
     name: string;
   };
 }
+
+export interface IResBidUser {
+  id: string;
+  value: string;
+  date: string;
+  topBid: boolean;
+  announcement: {
+    id: string;
+    title: string;
+    limitDate: string;
+  };
+}

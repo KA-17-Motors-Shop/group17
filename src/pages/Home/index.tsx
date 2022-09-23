@@ -7,7 +7,7 @@ import AuctionList from "../../components/Lists/AuctionList";
 import CarsList from "../../components/Lists/CarsList";
 import MotorcyclesList from "../../components/Lists/MotorcyclesList";
 import { IUser } from "../../interfaces/user";
-import { useUser } from "../../Providers/User/login";
+import { useUser } from "../../Providers/User";
 
 import { ContainerLists, Main, Page } from "./styles";
 

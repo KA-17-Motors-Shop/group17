@@ -18,7 +18,6 @@ const SaleCard: React.FC<{ announce: IAuctionRes }> = ({
   announce,
 }): JSX.Element => {
   const history = useHistory();
-  console.log(announce);
   const announcePage = () => {
     history.push(`/ad_details?id=${announce.id}`);
   };
@@ -33,7 +32,7 @@ const SaleCard: React.FC<{ announce: IAuctionRes }> = ({
       </Title>
       <Description>{announce.description}</Description>
       <AvatarContainer>
-        <Avatar userName={announce.seller?.name as string} />
+        <Avatar userName={announce.seller?.name!} />
       </AvatarContainer>
       <BaseboardContainer>
         <ParentTagContainer>
@@ -42,10 +41,7 @@ const SaleCard: React.FC<{ announce: IAuctionRes }> = ({
         </ParentTagContainer>
         <Price>
           R$
-          {parseFloat(announce.price as string)
-            .toFixed(2)
-            .toString()
-            .replace(".", ",")}
+          {parseFloat(announce.price!).toLocaleString("pt-BR")}
         </Price>
       </BaseboardContainer>
     </CardContainer>
