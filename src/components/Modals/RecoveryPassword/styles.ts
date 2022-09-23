@@ -16,16 +16,36 @@ export const Form = styled.form`
 export const TopModal = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: -1rem;
+
   > h1 {
     color: ${({ theme }) => theme.textColors.subTitle};
-    margin-top: 1rem;
   }
+`;
 
-  @media screen and (max-width: 920px) {
-    margin-top: -1.5rem;
-    > h1 {
-      margin-top: 2rem;
+export const CodeButton = styled.div`
+  padding-left: 1rem;
+
+  button {
+    background-color: transparent;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.7rem;
+
+    color: ${({ theme }) => theme.textColors.primaryText};
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background: ${({ theme }) => theme.textColors.primaryText};
+      transition: width 0.8s;
+    }
+
+    &:hover::after {
+      width: 100%;
     }
   }
 `;

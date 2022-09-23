@@ -81,3 +81,8 @@ export const UpdateUserPasswordschema = yup.object().shape({
   currentPassword: yup.string().required("Campo obrigatório"),
   newPassword: yup.string().required("Campo obrigatório"),
 });
+
+export const NewPasswordSchema = yup.object().shape({
+  accessToken: yup.string().required("Campo obrigatório"),
+  newPassword: yup.string().required("Campo obrigatório"),
+});

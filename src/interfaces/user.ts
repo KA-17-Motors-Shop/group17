@@ -56,5 +56,5 @@ export interface IUpdatePassword {
 
 export interface IRecoveryPassword {
   accessToken?: string;
-  newPassowod?: string;
+  newPassword?: string;
 }
