@@ -20,6 +20,7 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
   const { token, getUser } = useUser();
 
   const [user, setUser] = useState<IUser>({});
+  const [loadding, setLoadding] = useState(false);
 
   const handleAuth = useCallback(async () => {
     const user = await getUser(token as string);
@@ -34,7 +35,6 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
 
   const [editProfileModal, setEditProfileModal] = useState<boolean>(false);
   const [createAdModal, setCreateAdModal] = useState<boolean>(false);
-  const [loadding, setLoadding] = useState(false);
 
   const handleModalProfile = () => {
     setEditProfileModal(!editProfileModal);
