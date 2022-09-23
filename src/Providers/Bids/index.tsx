@@ -5,6 +5,7 @@ import { useUser } from "../User";
 
 interface IContext {
   getBidsAnnounce: (id: string) => Promise<IResBids[]>;
+  setBid: (id: string) => Promise<void>;
   getBidsUser: () => Promise<IResBidUser[]>;
 }
 
@@ -27,6 +28,19 @@ export const BidsProvider: React.FC<{ children: React.ReactNode }> = ({
         console.log(err);
       });
   };
+  const setBid = async (id: string) => {
+    return await motorShopAPI
+      .post(`bids/announcement/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(() => {
+        return console.log("sucesso");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const getBidsUser = async () => {
     return await motorShopAPI
       .get(`/bids/user`, {
@@ -41,7 +55,7 @@ export const BidsProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   return (
-    <BidsContext.Provider value={{ getBidsAnnounce, getBidsUser }}>
+    <BidsContext.Provider value={{ getBidsAnnounce, getBidsUser, setBid }}>
       {children}
     </BidsContext.Provider>
   );

@@ -2,7 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 import GeneralInput from "../../../Forms/Components/Inputs/GeneralInput";
-import { ButtonAlert, ButtonNegative, ButtonPrimary } from "../../../Button";
+import { ButtonAlert, ButtonPrimary } from "../../../Button";
 import { CloseModalBtn } from "../../../Button/CloseModalBtn";
 import MaskInput from "../../../Forms/Components/Inputs/MaskInput";
 import { UpdateAddressSchema } from "../../../../validations/address.validations";

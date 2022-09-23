@@ -10,7 +10,11 @@ interface IProps {
 const SendBidAuction: React.FC<IProps> = ({ handle, show }) => {
   return (
     <Modal show={show} close={handle} height={"15rem"}>
-      <Container>Criar Form</Container>
+      <Container>
+        <p>Novo lance</p>
+
+        <input type="number" name="value" />
+      </Container>
     </Modal>
   );
 };
