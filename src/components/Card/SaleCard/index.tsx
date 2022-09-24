@@ -32,7 +32,10 @@ const SaleCard: React.FC<{ announce: IAnnounceRes }> = ({
       </Title>
       <Description>{announce.description}</Description>
       <AvatarContainer>
-        <Avatar userName={announce.seller?.name!} />
+        <Avatar
+          userName={announce.seller?.name!}
+          color={announce.seller?.avatarColor!}
+        />
       </AvatarContainer>
       <BaseboardContainer>
         <ParentTagContainer>

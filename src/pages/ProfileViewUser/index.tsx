@@ -17,7 +17,7 @@ import LoaderLocalComponent from "../../components/Loader/LoaderLocalComponent";
 import { EmptyContainer } from "../AdDetails/styles";
 
 const ProfileViewUser: React.FC = (): JSX.Element => {
-  const { token, getUser } = useUser();
+  const { token, getUser, avatarColor } = useUser();
 
   const [user, setUser] = useState<IUser>({});
   const [loadding, setLoadding] = useState(false);
@@ -66,6 +66,7 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
               typeUser={user.isSeller as boolean}
               openProfileModal={handleModalProfile}
               openAnounceModal={handleModalCreateAd}
+              color={avatarColor!}
             />
             {user.isSeller ? <MyAnnouncesList /> : <MyBidsList />}
           </ProfileMain>

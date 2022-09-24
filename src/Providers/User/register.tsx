@@ -30,10 +30,17 @@ export const RegisterProvider: React.FC<{ children: React.ReactNode }> = ({
         history.push("/login");
       })
       .catch((err) => {
-        console.log(err.response.data);
-        console.log(err.response.status);
-        console.log(err.response.headers);
-        toast.warning(err.response.data.message);
+        if (err.response.data.message) {
+          toast.warning(err.response.data.message);
+        }
+        if (err.response.data.errors.body) {
+          const errorsArr = err.response.data.errors.body;
+          errorsArr.forEach(
+            (error: { message: string; propertyPath: string }) => {
+              toast.warning(error.message);
+            }
+          );
+        }
       });
     hiddenLoad();
   };

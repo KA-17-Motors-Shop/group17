@@ -8,6 +8,7 @@ export interface IUser {
   description?: string;
   isSeller?: boolean;
   isActivate?: boolean;
+  avatarColor?: string;
 }
 
 export interface IUserRegister {

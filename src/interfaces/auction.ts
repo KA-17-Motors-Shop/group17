@@ -31,7 +31,7 @@ export interface IAnnounceRes {
   isActive?: boolean;
   limitDate?: string;
   publishedData?: string;
-  seller?: { name: string; id: string };
+  seller?: { name: string; id: string; avatarColor: string };
   status?: string;
   imagesUrl?: string[];
 }

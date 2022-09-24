@@ -79,7 +79,7 @@ const AdDetails: React.FC = (): JSX.Element => {
               <RightContainer>
                 <GaleryImages images={announce.imagesUrl as string[]} />
                 <SellerBoxInfo>
-                  <Avatar>
+                  <Avatar background={announce.seller!.avatarColor}>
                     {avatarLetters(announce.seller!.name).toUpperCase()}
                   </Avatar>
                   <Title>{announce.seller!.name}</Title>

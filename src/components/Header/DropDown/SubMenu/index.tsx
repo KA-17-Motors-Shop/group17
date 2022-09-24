@@ -11,13 +11,13 @@ interface Iprops {
 }
 
 const SubMenuUser: React.FC<Iprops> = ({ userName, handleModal }) => {
-  const { logOut } = useUser();
+  const { logOut, avatarColor } = useUser();
   const history = useHistory();
 
   return (
     <DropdownMenu.Root>
       <LoggedTrigger>
-        <Avatar userName={userName} />
+        <Avatar userName={userName} color={avatarColor!} />
       </LoggedTrigger>
 
       <SubMenuContainer>

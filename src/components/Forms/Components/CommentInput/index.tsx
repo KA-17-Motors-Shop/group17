@@ -24,7 +24,7 @@ const CommentInput: React.FC = (): JSX.Element => {
   const [comment, setComment] = useState("");
   const [user, setUser] = useState<IUser>({});
 
-  const { token, getUser } = useUser();
+  const { token, getUser, avatarColor } = useUser();
 
   const handleAuth = useCallback(async () => {
     const user = await getUser(token as string);
@@ -43,7 +43,7 @@ const CommentInput: React.FC = (): JSX.Element => {
     <Container>
       {user.id && (
         <AvatarContainer>
-          <Avatar userName={user.name as string} />
+          <Avatar userName={user.name as string} color={avatarColor!} />
         </AvatarContainer>
       )}
       <textarea

@@ -13,6 +13,7 @@ interface ILogin {
 interface IContext {
   token?: string;
   userId?: string;
+  avatarColor?: string;
   loginUser: (data: ILogin) => Promise<void>;
   isSeller?: boolean;
   getUser: (token: string) => Promise<IUser>;
@@ -30,6 +31,9 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const history = useHistory();
 
+  const [avatarColor, setAvatarColor] = useState(
+    localStorage.getItem("@avatarColor:Motor") || ""
+  );
   const [token, setToken] = useState(
     localStorage.getItem("@token:Motor") || ""
   );
@@ -73,6 +77,8 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
         })
         .then((res) => {
           setIsSeller(res.data.isSeller);
+          setAvatarColor(res.data.avatarColor);
+          localStorage.setItem("@avatarColor:Motor", res.data.avatarColor);
           localStorage.setItem("@seller:Motor", res.data.isSeller);
           return res.data;
         })
@@ -120,6 +126,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
         getUser,
         logOut,
         isLogged,
+        avatarColor,
       }}
     >
       {children}

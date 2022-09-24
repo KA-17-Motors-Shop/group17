@@ -38,6 +38,7 @@ const CommentBox: React.FC<{ announceId: string }> = ({ announceId }) => {
               key={item.id}
               userName={item.user.name}
               comment={item.comment}
+              color={item.user.avatarColor}
             />
           ))}
         </CommentsGroup>
