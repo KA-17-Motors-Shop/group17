@@ -1,23 +1,41 @@
+import { IResComment } from "../../interfaces/comments";
+import { useUser } from "../../Providers/User";
 import Avatar from "../Avatar";
-import { Comment, SingleCommetContainer } from "./styles";
+import {
+  ActionButtons,
+  AvatarContainer,
+  Comment,
+  SingleCommetContainer,
+  TopContainer,
+} from "./styles";
+
+import { MdModeEditOutline } from "react-icons/md";
+import { IoMdTrash } from "react-icons/io";
 
 interface IProps {
-  userName: string;
-  comment: string;
-  color: string;
+  comment: IResComment;
 }
 
-const SingleComment: React.FC<IProps> = ({
-  userName,
-  comment,
-  color,
-}): JSX.Element => {
+const SingleComment: React.FC<IProps> = ({ comment }): JSX.Element => {
+  const { userId } = useUser();
+
   return (
     <SingleCommetContainer>
-      <div>
-        <Avatar userName={userName} color={color} />
-      </div>
-      <Comment>{comment}</Comment>
+      <TopContainer>
+        <AvatarContainer>
+          <Avatar
+            userName={comment.user.name}
+            color={comment.user.avatarColor}
+          />
+        </AvatarContainer>
+        {userId === comment.user.id && (
+          <ActionButtons>
+            <MdModeEditOutline />
+            <IoMdTrash />
+          </ActionButtons>
+        )}
+      </TopContainer>
+      <Comment>{comment.comment}</Comment>
     </SingleCommetContainer>
   );
 };

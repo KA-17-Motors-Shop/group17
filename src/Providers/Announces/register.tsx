@@ -43,14 +43,21 @@ export const RegisterAnnounceProvider: React.FC<{
         },
       })
       .then((res) => {
-        console.log("Auction-->", res);
-
         toast.success("Leilão criado com sucesso!");
         history.push("/");
       })
       .catch((err) => {
-        console.log(err);
-        toast.warning(err.response.data.message);
+        if (err.response.data.message) {
+          toast.warning(err.response.data.message);
+        }
+        if (err.response.data.errors.body) {
+          const errorsArr = err.response.data.errors.body;
+          errorsArr.forEach(
+            (error: { message: string; propertyPath: string }) => {
+              toast.warning(error.message);
+            }
+          );
+        }
       });
     hiddenLoad();
   };

@@ -24,8 +24,6 @@ const CommentBox: React.FC<{ announceId: string }> = ({ announceId }) => {
     handleAnnounces();
   }, [handleAnnounces]);
 
-  console.log(comments);
-
   return (
     <CommentBoxContainer>
       <Title>Comentários</Title>
@@ -34,12 +32,7 @@ const CommentBox: React.FC<{ announceId: string }> = ({ announceId }) => {
       ) : comments?.length ? (
         <CommentsGroup>
           {comments.map((item) => (
-            <SingleComment
-              key={item.id}
-              userName={item.user.name}
-              comment={item.comment}
-              color={item.user.avatarColor}
-            />
+            <SingleComment key={item.id} comment={item} />
           ))}
         </CommentsGroup>
       ) : (

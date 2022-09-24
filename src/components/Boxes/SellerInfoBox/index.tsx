@@ -13,7 +13,9 @@ const SellerInfoBox: React.FC<{ seller: IAccount }> = ({ seller }) => {
   return (
     <UserInfoBoxContainer>
       <TopDiv>
-        <Avatar>{avatarLetters(seller.name).toUpperCase()}</Avatar>
+        <Avatar background={seller.avatarColor!}>
+          {avatarLetters(seller.name).toUpperCase()}
+        </Avatar>
         <NameContainerWithTag>
           <h2>{seller.name}</h2>
           <span>{seller.isSeller ? "Anunciante" : "Comprador"}</span>

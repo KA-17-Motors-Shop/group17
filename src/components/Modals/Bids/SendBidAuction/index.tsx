@@ -35,7 +35,6 @@ const SendBidAuction: React.FC<IProps> = ({ handle, show }) => {
 
   const handleBid = async (data: ISetBidUser) => {
     const id = query.get("id");
-    console.log(id);
     const value = { ...data };
     showLoad();
     await setBid(id!, value);
