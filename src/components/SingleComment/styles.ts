@@ -54,3 +54,32 @@ export const ActionButtons = styled.div`
     }
   }
 `;
+
+export const EditCommentContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  svg {
+    color: ${({ theme }) => theme.textColors.primaryText};
+
+    &:hover {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+  }
+`;
+
+export const InputComment = styled.input`
+  width: 100%;
+  border: transparent;
+  border-radius: 0.4rem;
+  padding: 0.5rem;
+  font-family: "Lexend";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  color: ${({ theme }) => theme.textColors.primaryText};
+  background-color: ${({ theme }) => theme.backgroundColors.generalBackground};
+`;

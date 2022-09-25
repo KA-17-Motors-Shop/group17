@@ -22,12 +22,16 @@ const REACTIONS: Array<string> = [
   "Top demais",
 ];
 
-const CommentInput: React.FC<{ id: string }> = ({ id }): JSX.Element => {
+interface IProps {
+  id: string;
+  update: () => Promise<void>;
+}
+
+const CommentInput: React.FC<IProps> = ({ id, update }): JSX.Element => {
   const [comment, setComment] = useState("");
   const [user, setUser] = useState<IUser>({});
 
   const { token, getUser, avatarColor } = useUser();
-  const { showLoad } = useLoad();
   const { createComment } = useComments();
 
   const handleAuth = useCallback(async () => {
@@ -40,8 +44,8 @@ const CommentInput: React.FC<{ id: string }> = ({ id }): JSX.Element => {
   }, [handleAuth]);
 
   const handleComment = async () => {
-    showLoad();
     await createComment(id, comment);
+    await update();
   };
 
   return (

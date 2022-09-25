@@ -5,19 +5,39 @@ import {
   ActionButtons,
   AvatarContainer,
   Comment,
+  EditCommentContainer,
+  InputComment,
   SingleCommetContainer,
   TopContainer,
 } from "./styles";
 
-import { MdModeEditOutline } from "react-icons/md";
+import { MdModeEditOutline, MdSend } from "react-icons/md";
 import { IoMdTrash } from "react-icons/io";
+import { useState } from "react";
+import { useComments } from "../../Providers/Comments";
+import { useLoad } from "../../Providers/Loading";
 
 interface IProps {
   comment: IResComment;
+  update: () => Promise<void>;
 }
 
-const SingleComment: React.FC<IProps> = ({ comment }): JSX.Element => {
+const SingleComment: React.FC<IProps> = ({ comment, update }): JSX.Element => {
   const { userId } = useUser();
+  const { editComment, deleteComment } = useComments();
+
+  const [edit, setEdit] = useState(false);
+  const [commentValue, setCommentValue] = useState(comment.comment);
+
+  const handleEditComment = async () => {
+    setEdit(false);
+    await editComment(comment.id, commentValue);
+    await update();
+  };
+  const handleDeleteComment = async () => {
+    await deleteComment(comment.id);
+    await update();
+  };
 
   return (
     <SingleCommetContainer>
@@ -30,12 +50,22 @@ const SingleComment: React.FC<IProps> = ({ comment }): JSX.Element => {
         </AvatarContainer>
         {userId === comment.user.id && (
           <ActionButtons>
-            <MdModeEditOutline />
-            <IoMdTrash />
+            <MdModeEditOutline onClick={() => setEdit(!edit)} />
+            <IoMdTrash onClick={handleDeleteComment} />
           </ActionButtons>
         )}
       </TopContainer>
-      <Comment>{comment.comment}</Comment>
+      {edit ? (
+        <EditCommentContainer>
+          <InputComment
+            value={commentValue}
+            onChange={(e) => setCommentValue(e.target.value)}
+          />
+          <MdSend onClick={handleEditComment} />
+        </EditCommentContainer>
+      ) : (
+        <Comment>{commentValue}</Comment>
+      )}
     </SingleCommetContainer>
   );
 };

@@ -7,6 +7,8 @@ import { useUser } from "../User";
 interface IContext {
   getCommentsAnnounce: (id: string) => Promise<IResComment[]>;
   createComment: (id: string, comment: string) => Promise<void>;
+  editComment: (id: string, comment: string) => Promise<void>;
+  deleteComment: (id: string) => Promise<void>;
 }
 
 export const CommentContext = createContext({} as IContext);
@@ -43,9 +45,39 @@ export const CommentProvider: React.FC<{ children: React.ReactNode }> = ({
         console.log(err);
       });
   };
+  const editComment = async (id: string, comment: string) => {
+    await motorShopAPI
+      .patch(
+        `/comment/${id}`,
+        { comment },
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    hiddenLoad();
+  };
 
+  const deleteComment = async (id: string) => {
+    await motorShopAPI
+      .delete(`/comment/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    hiddenLoad();
+  };
   return (
-    <CommentContext.Provider value={{ getCommentsAnnounce, createComment }}>
+    <CommentContext.Provider
+      value={{ getCommentsAnnounce, createComment, deleteComment, editComment }}
+    >
       {children}
     </CommentContext.Provider>
   );
