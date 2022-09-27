@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { IResComment } from "../../../interfaces/comments";
 import { useComments } from "../../../Providers/Comments";
-import EmptyMessage from "../../EmptyMessage";
+import EmptyMessage from "../../../constants/EmptyMessage";
 import CommentInput from "../../Forms/Components/CommentInput";
-import LoaderLocalComponent from "../../Loader/LoaderLocalComponent";
-import SingleComment from "../../SingleComment";
+import LoaderLocalComponent from "../../../containers/Loader/LoaderLocalComponent";
+import SingleComment from "../../../constants/SingleComment";
 import { CommentBoxContainer, CommentsGroup, Empty, Title } from "./styles";
 
 const CommentBox: React.FC<{ announceId: string }> = ({ announceId }) => {

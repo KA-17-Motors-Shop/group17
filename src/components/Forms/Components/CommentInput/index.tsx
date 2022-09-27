@@ -4,13 +4,12 @@ import {
   ContainerMultipleReactions,
   ReactionTagButton,
 } from "./styles";
-import { ButtonDisable, ButtonPrimary } from "../../../Button";
+import { ButtonDisable, ButtonPrimary } from "../../../Buttons";
 
 import Avatar from "../../../Avatar";
 import { useCallback, useEffect, useState } from "react";
 import { useUser } from "../../../../Providers/User";
 import { IUser } from "../../../../interfaces/user";
-import { useLoad } from "../../../../Providers/Loading";
 import { useComments } from "../../../../Providers/Comments";
 
 const REACTIONS: Array<string> = [

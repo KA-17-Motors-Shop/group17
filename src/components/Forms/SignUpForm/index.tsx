@@ -2,7 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { RegisterUserschema } from "../../../validations/user.validations";
 
-import { ButtonOutline2, ButtonPrimary } from "../../Button";
+import { ButtonOutline2, ButtonPrimary } from "../../Buttons";
 import GeneralInput from "../Components/Inputs/GeneralInput";
 import { Container, FooterForm, InputsContainer, SpanText } from "./styles";
 import InputPassword from "../Components/Inputs/InputPassword";

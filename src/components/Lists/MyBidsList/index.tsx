@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { IResBidUser } from "../../../interfaces/bids";
 import { useBids } from "../../../Providers/Bids";
-import EmptyMessage from "../../EmptyMessage";
-import LoaderLocalComponent from "../../Loader/LoaderLocalComponent";
+import EmptyMessage from "../../../constants/EmptyMessage";
+import LoaderLocalComponent from "../../../containers/Loader/LoaderLocalComponent";
 import BidCardUser from "./BidCardUser";
 import { Container, ContainerGroup, Title } from "./styles";
 

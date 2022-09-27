@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import LoaderLocalComponent from "../../components/Loader/LoaderLocalComponent";
+import Footer from "../../containers/Footer";
+import Header from "../../containers/Header/Index";
+import LoaderLocalComponent from "../../containers/Loader/LoaderLocalComponent";
 import SellerInfoBox from "../../components/Boxes/SellerInfoBox";
 import { IAccount } from "../../interfaces/user";
 import { useUser } from "../../Providers/User";
