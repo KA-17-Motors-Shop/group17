@@ -3,11 +3,16 @@ import { useHistory } from "react-router-dom";
 import {
   ContainerBanner,
   ContainerButtons,
+  ContainerButtonsBottom,
+  ContainerButtonsTop,
   ContainerMain,
   ContainerTitle,
 } from "./styles";
 
 import { ButtonOutlineLight } from "../../Button";
+import Modal from "../../Modals";
+import Filters from "../../Modals/Filters";
+import { useState } from "react";
 
 const BannerHome: React.FC = () => {
   const history = useHistory();
@@ -15,35 +20,49 @@ const BannerHome: React.FC = () => {
     history.push(path);
   };
 
+  const [modalFilters, setModalFilters] = useState(false);
+
   return (
-    <ContainerMain id="main">
-      <ContainerBanner>
-        <ContainerTitle>
-          <h1>Velocidade e experiência em um lugar feito para você</h1>
-          <p>Um ambiente feito para você explorar o seu melhor</p>
-        </ContainerTitle>
-        <ContainerButtons>
-          <ButtonOutlineLight
-            type="button"
-            onClick={() => handlePage("/preview")}
-          >
-            Leilão
-          </ButtonOutlineLight>
-          <ButtonOutlineLight
-            type="button"
-            onClick={() => handlePage("/preview")}
-          >
-            Carros
-          </ButtonOutlineLight>
-          <ButtonOutlineLight
-            type="button"
-            onClick={() => handlePage("/preview")}
-          >
-            Motos
-          </ButtonOutlineLight>
-        </ContainerButtons>
-      </ContainerBanner>
-    </ContainerMain>
+    <>
+      <Modal show={modalFilters} close={() => setModalFilters(false)}>
+        <Filters handleClose={() => setModalFilters(false)} />
+      </Modal>
+      <ContainerMain id="main">
+        <ContainerBanner>
+          <ContainerTitle>
+            <h1>Velocidade e experiência em um lugar feito para você</h1>
+            <p>Um ambiente feito para você explorar o seu melhor</p>
+          </ContainerTitle>
+          <ContainerButtons>
+            <ContainerButtonsTop>
+              <ButtonOutlineLight
+                type="button"
+                onClick={() => handlePage("/preview")}
+              >
+                Leilão
+              </ButtonOutlineLight>
+              <ButtonOutlineLight
+                type="button"
+                onClick={() => handlePage("/preview")}
+              >
+                Carros
+              </ButtonOutlineLight>
+              <ButtonOutlineLight
+                type="button"
+                onClick={() => handlePage("/preview")}
+              >
+                Motos
+              </ButtonOutlineLight>
+            </ContainerButtonsTop>
+            <ContainerButtonsBottom>
+              <ButtonOutlineLight onClick={() => setModalFilters(true)}>
+                Filtrar
+              </ButtonOutlineLight>
+            </ContainerButtonsBottom>
+          </ContainerButtons>
+        </ContainerBanner>
+      </ContainerMain>
+    </>
   );
 };
 
