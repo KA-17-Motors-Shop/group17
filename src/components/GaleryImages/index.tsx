@@ -19,8 +19,8 @@ const GaleryImages: React.FC<{ images: string[] }> = ({ images }) => {
       <Modal
         close={() => setShowModal(false)}
         show={showModal}
-        height="50%"
-        width="50%"
+        height="80%"
+        width="90%"
       >
         <ImgVehicle
           selectImg={selectImg}

@@ -11,9 +11,9 @@ export const ModalContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
+  border-radius: 0.4rem;
   background-color: ${(props) =>
     props.theme.backgroundColors.secondaryBackground};
-  border-radius: 0.5rem;
 `;
 
 export const TopModal = styled.div`
@@ -70,10 +70,8 @@ export const ImgContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70%;
-  height: 70%;
-  max-width: 25rem;
-  max-height: 25rem;
+  width: 95%;
+
   background: transparent;
   > img {
     width: 100%;
@@ -82,8 +80,7 @@ export const ImgContainer = styled.div`
   }
   border-radius: 4px;
 
-  @media screen and (max-width: 1024px) {
-    width: 100%;
-    height: 50%;
+  @media screen and (min-width: 1024px) {
+    width: 50%;
   }
 `;

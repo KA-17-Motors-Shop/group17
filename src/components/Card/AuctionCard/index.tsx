@@ -31,10 +31,7 @@ const AuctionCard: React.FC<{ announce: IAnnounceRes }> = ({ announce }) => {
         <ContainerInfo>
           <ContainerTitle>
             {announce.isActive && (
-              <Stopwatch
-                publishedDate={announce.publishedData as string}
-                limitData={announce.limitDate as string}
-              />
+              <Stopwatch limitData={announce.limitDate as string} />
             )}
             <Title>
               {announce.title![0].toUpperCase() + announce.title?.slice(1)}
