@@ -43,6 +43,7 @@ export interface IAccount {
   name?: string;
   description?: string;
   isSeller?: boolean;
+  avatarColor?: string;
 }
 
 export interface ILogin {

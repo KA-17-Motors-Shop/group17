@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { IResComment } from "../../../interfaces/comments";
 import { useComments } from "../../../Providers/Comments";
 import EmptyMessage from "../../EmptyMessage";
+import CommentInput from "../../Forms/Components/CommentInput";
 import LoaderLocalComponent from "../../Loader/LoaderLocalComponent";
 import SingleComment from "../../SingleComment";
 import { CommentBoxContainer, CommentsGroup, Empty, Title } from "./styles";
@@ -24,30 +25,30 @@ const CommentBox: React.FC<{ announceId: string }> = ({ announceId }) => {
     handleAnnounces();
   }, [handleAnnounces]);
 
-  console.log(comments);
-
   return (
-    <CommentBoxContainer>
-      <Title>Comentários</Title>
-      {loadding ? (
-        <LoaderLocalComponent />
-      ) : comments?.length ? (
-        <CommentsGroup>
-          {comments.map((item) => (
-            <SingleComment
-              key={item.id}
-              userName={item.user.name}
-              comment={item.comment}
-              color={item.user.avatarColor}
-            />
-          ))}
-        </CommentsGroup>
-      ) : (
-        <Empty>
-          <EmptyMessage message="Nenhum comentário encontrado" />
-        </Empty>
-      )}
-    </CommentBoxContainer>
+    <>
+      <CommentBoxContainer>
+        <Title>Comentários</Title>
+        {loadding ? (
+          <LoaderLocalComponent />
+        ) : comments?.length ? (
+          <CommentsGroup>
+            {comments.map((item) => (
+              <SingleComment
+                key={item.id}
+                comment={item}
+                update={handleAnnounces}
+              />
+            ))}
+          </CommentsGroup>
+        ) : (
+          <Empty>
+            <EmptyMessage message="Nenhum comentário encontrado" />
+          </Empty>
+        )}
+      </CommentBoxContainer>
+      <CommentInput id={announceId} update={handleAnnounces} />
+    </>
   );
 };
 
