@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { IAnnounceRes } from "../../interfaces/auction";
-import { useListAnnounces } from "../../Providers/Announces/listAll";
+import { IAnnounceRes } from "../../../interfaces/auction";
+import { useListAnnounces } from "../../../Providers/Announces/listAll";
 import AuctionGroup from "./AuctionGroup";
 import SalesGroup from "./SalesGroup";
 import {

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { UserInfoBoxContainer } from "../../components/UserInfoBox/styles";
+import { UserInfoBoxContainer } from "../../components/Boxes/UserInfoBox/styles";
 
 export const Page = styled.div`
   background-image: linear-gradient(

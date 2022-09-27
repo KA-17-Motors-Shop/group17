@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-import { ISeller, IUser } from "../../interfaces/user";
+import { IAccount, IUser } from "../../interfaces/user";
 import { motorShopAPI } from "../../services/urls.api";
 import { useLoad } from "../Loading";
 
@@ -13,12 +13,13 @@ interface ILogin {
 interface IContext {
   token?: string;
   userId?: string;
+  avatarColor?: string;
   loginUser: (data: ILogin) => Promise<void>;
   isSeller?: boolean;
   getUser: (token: string) => Promise<IUser>;
   logOut: () => void;
   isLogged: () => void;
-  getSeller: (id: string) => Promise<ISeller>;
+  getSeller: (id: string) => Promise<IAccount>;
 }
 
 export const UserContext = createContext({} as IContext);
@@ -30,6 +31,9 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const history = useHistory();
 
+  const [avatarColor, setAvatarColor] = useState(
+    localStorage.getItem("@avatarColor:Motor") || ""
+  );
   const [token, setToken] = useState(
     localStorage.getItem("@token:Motor") || ""
   );
@@ -73,6 +77,8 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
         })
         .then((res) => {
           setIsSeller(res.data.isSeller);
+          setAvatarColor(res.data.avatarColor);
+          localStorage.setItem("@avatarColor:Motor", res.data.avatarColor);
           localStorage.setItem("@seller:Motor", res.data.isSeller);
           return res.data;
         })
@@ -120,6 +126,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
         getUser,
         logOut,
         isLogged,
+        avatarColor,
       }}
     >
       {children}

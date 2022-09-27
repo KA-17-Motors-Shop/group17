@@ -7,6 +7,7 @@ export interface IResBids {
   user: {
     id: string;
     name: string;
+    avatarColor: string;
   };
 }
 

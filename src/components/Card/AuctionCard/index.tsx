@@ -39,7 +39,10 @@ const AuctionCard: React.FC<{ announce: IAnnounceRes }> = ({ announce }) => {
             <Description>{announce.description}</Description>
           </ContainerTitle>
           <ContainerAvatar>
-            <Avatar userName={announce.seller!.name} />
+            <Avatar
+              userName={announce.seller!.name}
+              color={announce.seller?.avatarColor!}
+            />
           </ContainerAvatar>
 
           <ContainerBottom>

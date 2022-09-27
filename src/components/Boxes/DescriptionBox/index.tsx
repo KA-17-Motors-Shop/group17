@@ -1,5 +1,5 @@
 import { DescriptionBoxContainer, ParagraphContainer } from "./styles";
-import { TitleContainer } from "../VehicleInformation/styles";
+import { TitleContainer } from "../VehicleInfoBox/styles";
 
 const DescriptionBox: React.FC<{ description: string }> = ({
   description,

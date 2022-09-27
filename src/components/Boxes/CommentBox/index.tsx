@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { IResComment } from "../../interfaces/comments";
-import { useComments } from "../../Providers/Comments";
-import EmptyMessage from "../EmptyMessage";
-import LoaderLocalComponent from "../Loader/LoaderLocalComponent";
-import SingleComment from "../SingleComment";
+import { IResComment } from "../../../interfaces/comments";
+import { useComments } from "../../../Providers/Comments";
+import EmptyMessage from "../../EmptyMessage";
+import LoaderLocalComponent from "../../Loader/LoaderLocalComponent";
+import SingleComment from "../../SingleComment";
 import { CommentBoxContainer, CommentsGroup, Empty, Title } from "./styles";
 
 const CommentBox: React.FC<{ announceId: string }> = ({ announceId }) => {
@@ -38,6 +38,7 @@ const CommentBox: React.FC<{ announceId: string }> = ({ announceId }) => {
               key={item.id}
               userName={item.user.name}
               comment={item.comment}
+              color={item.user.avatarColor}
             />
           ))}
         </CommentsGroup>

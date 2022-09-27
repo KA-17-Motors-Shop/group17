@@ -1,8 +1,8 @@
 import React from "react";
-import { IAnnounceRes } from "../../../interfaces/auction";
-import AuctionCard from "../../Card/AuctionCard";
-import LoaderLocalComponent from "../../Loader/LoaderLocalComponent";
-import EmptyMessage from "../../EmptyMessage";
+import { IAnnounceRes } from "../../../../interfaces/auction";
+import AuctionCard from "../../../Card/AuctionCard";
+import LoaderLocalComponent from "../../../Loader/LoaderLocalComponent";
+import EmptyMessage from "../../../EmptyMessage";
 import { Container, ContainerGroup, Title } from "./styles";
 
 const AuctionGroup: React.FC<{

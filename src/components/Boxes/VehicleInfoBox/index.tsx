@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { IAnnounceRes } from "../../interfaces/auction";
-import { useUser } from "../../Providers/User";
-import { ButtonDisable, ButtonPrimary } from "../Button";
-import Modal from "../Modals";
-import DeleteAd from "../Modals/Ad/DeleteAd";
-import UpdateAd from "../Modals/Ad/UpdateAd";
-import SendBidAuction from "../Modals/Bids/SendBidAuction";
+import { IAnnounceRes } from "../../../interfaces/auction";
+import { useUser } from "../../../Providers/User";
+import { ButtonDisable, ButtonPrimary } from "../../Button";
+import Modal from "../../Modals";
+import DeleteAd from "../../Modals/Ad/DeleteAd";
+import UpdateAd from "../../Modals/Ad/UpdateAd";
+import SendBidAuction from "../../Modals/Bids/SendBidAuction";
 
 import {
   VehicleInformationContainer,

@@ -11,13 +11,13 @@ interface Iprops {
 }
 
 const SubMenuUser: React.FC<Iprops> = ({ userName, handleModal }) => {
-  const { logOut } = useUser();
+  const { logOut, avatarColor } = useUser();
   const history = useHistory();
 
   return (
     <DropdownMenu.Root>
       <LoggedTrigger>
-        <Avatar userName={userName} />
+        <Avatar userName={userName} color={avatarColor!} />
       </LoggedTrigger>
 
       <SubMenuContainer>
@@ -25,7 +25,9 @@ const SubMenuUser: React.FC<Iprops> = ({ userName, handleModal }) => {
           Meu Perfil
         </DropItem>
         <DropItem onSelect={handleModal}>Gerenciar Endereços</DropItem>
-        <DropItem>Minhas Compras</DropItem>
+        <DropItem onSelect={() => history.push("/my_purshases")}>
+          Minhas Compras
+        </DropItem>
         <DropItem onSelect={logOut}>Sair</DropItem>
         <DropdownMenu.Arrow />
       </SubMenuContainer>

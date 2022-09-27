@@ -10,7 +10,7 @@ const BidCard: React.FC<{ bid: IResBids }> = ({ bid }) => {
   return (
     <Card>
       <TopContainer>
-        <Avatar userName={bid.user.name} />
+        <Avatar userName={bid.user.name} color={bid.user.avatarColor} />
         <DateSpan>
           &sdot; {moment(datePublished).startOf("minutes").fromNow()}
         </DateSpan>
