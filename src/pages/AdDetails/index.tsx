@@ -1,9 +1,9 @@
 import VehicleInfoBox from "../../components/Boxes/VehicleInfoBox";
 import DescriptionBox from "../../components/Boxes/DescriptionBox";
-import { ButtonDefault } from "../../components/Button";
-import BigTopImage from "../../components/BigtopImage";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import { ButtonDefault } from "../../components/Buttons";
+import BigTopImage from "../../constants/BigtopImage";
+import Header from "../../containers/Header/Index";
+import Footer from "../../containers/Footer";
 
 import DefaultImg from "../../assets/img/default.png";
 
@@ -29,11 +29,10 @@ import { useHistory } from "react-router-dom";
 
 import { avatarLetters } from "../../utils/avatarLetters";
 import CommentBox from "../../components/Boxes/CommentBox";
-import GaleryImages from "../../components/GaleryImages";
-import CommentInput from "../../components/Forms/Components/CommentInput";
-import EmptyMessage from "../../components/EmptyMessage";
-import AnnounceBids from "../../components/AnnounceBids";
-import LoaderLocalComponent from "../../components/Loader/LoaderLocalComponent";
+import GaleryImages from "../../constants/GaleryImages";
+import EmptyMessage from "../../constants/EmptyMessage";
+import AnnounceBids from "../../components/Lists/AnnounceBids";
+import LoaderLocalComponent from "../../containers/Loader/LoaderLocalComponent";
 
 const AdDetails: React.FC = (): JSX.Element => {
   const query = useQuery();
@@ -79,7 +78,7 @@ const AdDetails: React.FC = (): JSX.Element => {
               <RightContainer>
                 <GaleryImages images={announce.imagesUrl as string[]} />
                 <SellerBoxInfo>
-                  <Avatar>
+                  <Avatar background={announce.seller!.avatarColor}>
                     {avatarLetters(announce.seller!.name).toUpperCase()}
                   </Avatar>
                   <Title>{announce.seller!.name}</Title>
@@ -92,7 +91,6 @@ const AdDetails: React.FC = (): JSX.Element => {
             <BottomContainer>
               <RightContainer>
                 <CommentBox announceId={announce.id} />
-                <CommentInput />
               </RightContainer>
               <LeftContainer>
                 {announce.type === "auction" && (

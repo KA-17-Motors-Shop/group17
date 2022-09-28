@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import Footer from "../../containers/Footer";
+import Header from "../../containers/Header/Index";
 import AuctionGroup from "../../components/Lists/MyAnnouncesList/AuctionGroup";
 import SalesGroup from "../../components/Lists/MyAnnouncesList/SalesGroup";
 import SellerInfoBox from "../../components/Boxes/SellerInfoBox";

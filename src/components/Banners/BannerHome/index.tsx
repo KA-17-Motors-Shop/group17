@@ -7,7 +7,7 @@ import {
   ContainerTitle,
 } from "./styles";
 
-import { ButtonOutlineLight } from "../../Button";
+import { ButtonOutlineLight } from "../../Buttons";
 
 const BannerHome: React.FC = () => {
   const history = useHistory();

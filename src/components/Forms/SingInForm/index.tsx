@@ -2,7 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Loginschema } from "../../../validations/user.validations";
 
-import { ButtonOutline2, ButtonPrimary } from "../../Button";
+import { ButtonOutline2, ButtonPrimary } from "../../Buttons";
 import GeneralInput from "../Components/Inputs/GeneralInput";
 import {
   Container,
@@ -14,8 +14,8 @@ import {
 import InputPassword from "../Components/Inputs/InputPassword";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import Modal from "../../Modals";
-import RecoveryPassword from "../../Modals/User/RecoveryPassword";
+import Modal from "../../../containers/Modals";
+import RecoveryPassword from "../../../containers/Modals/User/RecoveryPassword";
 
 import { useUser } from "../../../Providers/User";
 import { useLoad } from "../../../Providers/Loading";

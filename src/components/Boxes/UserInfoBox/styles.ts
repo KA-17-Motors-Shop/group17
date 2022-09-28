@@ -28,9 +28,9 @@ export const UserInfoBoxContainer = styled.div`
     width: 80%;
   }
 `;
-export const Avatar = styled.div`
+export const Avatar = styled.div<{ background: string }>`
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.brand.brand2};
+  background-color: ${({ background }) => background};
   width: 4rem;
   height: 4rem;
   display: flex;

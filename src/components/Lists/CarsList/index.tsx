@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import { IAnnounceRes, type } from "../../../interfaces/auction";
 import { useListAnnounces } from "../../../Providers/Announces/listAll";
-import { TitleContainer, CardContainer } from "./styles";
+import * as S from "./styles";
 import { typeVehicle } from "../../../interfaces/auction";
-import SaleCard from "../../Card/SaleCard";
-import EmptyMessage from "../../EmptyMessage";
-import LoaderLocalComponent from "../../Loader/LoaderLocalComponent";
+import SaleCard from "../../Cards/SaleCard";
+import EmptyMessage from "../../../constants/EmptyMessage";
+import LoaderLocalComponent from "../../../containers/Loader/LoaderLocalComponent";
 
 const CarsList: React.FC = () => {
   const [announce, setAnnounce] = useState<IAnnounceRes[]>([]);
@@ -30,8 +30,8 @@ const CarsList: React.FC = () => {
 
   return (
     <>
-      <TitleContainer>Carros</TitleContainer>
-      <CardContainer>
+      <S.TitleContainer>Carros</S.TitleContainer>
+      <S.CardContainer>
         {loadding ? (
           <LoaderLocalComponent />
         ) : announce.length ? (
@@ -39,7 +39,7 @@ const CarsList: React.FC = () => {
         ) : (
           <EmptyMessage message="Nenhum carro anúnciado" />
         )}
-      </CardContainer>
+      </S.CardContainer>
     </>
   );
 };

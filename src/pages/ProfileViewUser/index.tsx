@@ -1,23 +1,23 @@
 import UserInfoBox from "../../components/Boxes/UserInfoBox";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import Footer from "../../containers/Footer";
+import Header from "../../containers/Header/Index";
 
 import { ProfileViewUserContainer, ProfileMain } from "./styles";
 import { useUser } from "../../Providers/User";
 import { useCallback, useEffect, useState } from "react";
 import { IUser } from "../../interfaces/user";
 
-import UpdateProfile from "../../components/Modals/User/UpdateProfile";
-import CreateAd from "../../components/Modals/Ad/CreateAd";
-import Modal from "../../components/Modals";
+import UpdateProfile from "../../containers/Modals/User/UpdateProfile";
+import CreateAd from "../../containers/Modals/Ad/CreateAd";
+import Modal from "../../containers/Modals";
 
 import MyAnnouncesList from "../../components/Lists/MyAnnouncesList";
 import MyBidsList from "../../components/Lists/MyBidsList";
-import LoaderLocalComponent from "../../components/Loader/LoaderLocalComponent";
+import LoaderLocalComponent from "../../containers/Loader/LoaderLocalComponent";
 import { EmptyContainer } from "../AdDetails/styles";
 
 const ProfileViewUser: React.FC = (): JSX.Element => {
-  const { token, getUser } = useUser();
+  const { token, getUser, avatarColor } = useUser();
 
   const [user, setUser] = useState<IUser>({});
   const [loadding, setLoadding] = useState(false);
@@ -66,6 +66,7 @@ const ProfileViewUser: React.FC = (): JSX.Element => {
               typeUser={user.isSeller as boolean}
               openProfileModal={handleModalProfile}
               openAnounceModal={handleModalCreateAd}
+              color={avatarColor!}
             />
             {user.isSeller ? <MyAnnouncesList /> : <MyBidsList />}
           </ProfileMain>

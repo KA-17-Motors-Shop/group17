@@ -24,7 +24,7 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 5rem;
   padding: 6rem 0;
 `;
 
@@ -33,4 +33,5 @@ export const StoreSeller = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  gap: 2rem;
 `;

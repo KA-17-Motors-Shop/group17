@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import ActivateUserSpan from "../../components/ActivateUser";
+import ActivateUserSpan from "../../containers/Modals/ActivateUser";
 import BannerHome from "../../components/Banners/BannerHome";
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
+import Footer from "../../containers/Footer";
+import Header from "../../containers/Header/Index";
 import AuctionList from "../../components/Lists/AuctionList";
 import CarsList from "../../components/Lists/CarsList";
 import MotorcyclesList from "../../components/Lists/MotorcyclesList";

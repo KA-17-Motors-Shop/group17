@@ -4,12 +4,13 @@ import {
   ContainerMultipleReactions,
   ReactionTagButton,
 } from "./styles";
-import { ButtonDisable, ButtonPrimary } from "../../../Button";
+import { ButtonDisable, ButtonPrimary } from "../../../Buttons";
 
 import Avatar from "../../../Avatar";
 import { useCallback, useEffect, useState } from "react";
 import { useUser } from "../../../../Providers/User";
 import { IUser } from "../../../../interfaces/user";
+import { useComments } from "../../../../Providers/Comments";
 
 const REACTIONS: Array<string> = [
   "Gostei muito!",
@@ -20,11 +21,17 @@ const REACTIONS: Array<string> = [
   "Top demais",
 ];
 
-const CommentInput: React.FC = (): JSX.Element => {
+interface IProps {
+  id: string;
+  update: () => Promise<void>;
+}
+
+const CommentInput: React.FC<IProps> = ({ id, update }): JSX.Element => {
   const [comment, setComment] = useState("");
   const [user, setUser] = useState<IUser>({});
 
-  const { token, getUser } = useUser();
+  const { token, getUser, avatarColor } = useUser();
+  const { createComment } = useComments();
 
   const handleAuth = useCallback(async () => {
     const user = await getUser(token as string);
@@ -35,15 +42,16 @@ const CommentInput: React.FC = (): JSX.Element => {
     handleAuth();
   }, [handleAuth]);
 
-  const handleComment = () => {
-    console.log("Comentário --> " + comment);
+  const handleComment = async () => {
+    await createComment(id, comment);
+    await update();
   };
 
   return (
     <Container>
       {user.id && (
         <AvatarContainer>
-          <Avatar userName={user.name as string} />
+          <Avatar userName={user.name as string} color={avatarColor!} />
         </AvatarContainer>
       )}
       <textarea

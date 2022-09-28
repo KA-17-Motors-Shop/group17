@@ -1,10 +1,10 @@
-import { ContainerCardAuction, Container, TitleContainer } from "./styles";
+import * as S from "./styles";
 import { useListAnnounces } from "../../../Providers/Announces/listAll";
 import { useCallback, useEffect, useState } from "react";
 import { IAnnounceRes } from "../../../interfaces/auction";
-import AuctionCard from "../../Card/AuctionCard";
-import EmptyMessage from "../../EmptyMessage";
-import LoaderLocalComponent from "../../Loader/LoaderLocalComponent";
+import AuctionCard from "../../Cards/AuctionCard";
+import EmptyMessage from "../../../constants/EmptyMessage";
+import LoaderLocalComponent from "../../../containers/Loader/LoaderLocalComponent";
 
 const AuctionList: React.FC = () => {
   const [announces, setAnnounces] = useState<IAnnounceRes[]>([]);
@@ -23,9 +23,9 @@ const AuctionList: React.FC = () => {
   }, [handleAnnounces]);
 
   return (
-    <Container>
-      <TitleContainer>Leilão</TitleContainer>
-      <ContainerCardAuction>
+    <S.Container>
+      <S.TitleContainer>Leilão</S.TitleContainer>
+      <S.ContainerCardAuction>
         {loadding ? (
           <LoaderLocalComponent />
         ) : announces.length ? (
@@ -33,8 +33,8 @@ const AuctionList: React.FC = () => {
         ) : (
           <EmptyMessage message="Nenhum leilão ativo no momento" />
         )}
-      </ContainerCardAuction>
-    </Container>
+      </S.ContainerCardAuction>
+    </S.Container>
   );
 };
 

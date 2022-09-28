@@ -3,6 +3,7 @@ export interface IResComment {
   user: {
     id: string;
     name: string;
+    avatarColor: string;
   };
   comment: string;
   id: string;

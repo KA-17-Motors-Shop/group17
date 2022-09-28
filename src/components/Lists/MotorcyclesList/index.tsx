@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import { IAnnounceRes, typeVehicle, type } from "../../../interfaces/auction";
 import { useListAnnounces } from "../../../Providers/Announces/listAll";
-import SaleCard from "../../Card/SaleCard";
-import EmptyMessage from "../../EmptyMessage";
-import LoaderLocalComponent from "../../Loader/LoaderLocalComponent";
-import { TitleContainer, CardContainer } from "./styles";
+import SaleCard from "../../Cards/SaleCard";
+import EmptyMessage from "../../../constants/EmptyMessage";
+import LoaderLocalComponent from "../../../containers/Loader/LoaderLocalComponent";
+import * as S from "./styles";
 
 const MotorcyclesList: React.FC = () => {
   const [announce, setAnnounce] = useState<IAnnounceRes[]>([]);
@@ -29,8 +29,8 @@ const MotorcyclesList: React.FC = () => {
 
   return (
     <>
-      <TitleContainer>Motos</TitleContainer>
-      <CardContainer>
+      <S.TitleContainer>Motos</S.TitleContainer>
+      <S.CardContainer>
         {loadding ? (
           <LoaderLocalComponent />
         ) : announce.length ? (
@@ -38,7 +38,7 @@ const MotorcyclesList: React.FC = () => {
         ) : (
           <EmptyMessage message="Nenhuma moto anúnciada" />
         )}
-      </CardContainer>
+      </S.CardContainer>
     </>
   );
 };

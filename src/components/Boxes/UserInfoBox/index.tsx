@@ -1,5 +1,5 @@
 import { avatarLetters } from "../../../utils/avatarLetters";
-import { ButtonPrimaryOutline } from "../../Button";
+import { ButtonPrimaryOutline } from "../../Buttons";
 
 import {
   UserInfoBoxContainer,
@@ -13,6 +13,7 @@ interface IProps {
   userName: string;
   description: string;
   typeUser: boolean;
+  color: string;
   openProfileModal: () => void;
   openAnounceModal: () => void;
 }
@@ -23,11 +24,14 @@ const UserInfoBox: React.FC<IProps> = ({
   typeUser,
   openAnounceModal,
   openProfileModal,
+  color,
 }): JSX.Element => {
   return (
     <UserInfoBoxContainer>
       <TopDiv>
-        <Avatar>{avatarLetters(userName).toUpperCase()}</Avatar>
+        <Avatar background={color}>
+          {avatarLetters(userName).toUpperCase()}
+        </Avatar>
         <NameContainerWithTag>
           <h2>{userName}</h2>
           <span>{typeUser ? "Anunciante" : "Comprador"}</span>
