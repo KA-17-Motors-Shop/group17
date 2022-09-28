@@ -30,7 +30,7 @@ const AuctionCard: React.FC<{ announce: IAnnounceRes }> = ({ announce }) => {
       <ContainerAuction image={announce.imagesUrl!}>
         <ContainerInfo>
           <ContainerTitle>
-            {announce.isActive && (
+            {announce.isActive && announce.type === "auction" && (
               <Stopwatch limitData={announce.limitDate as string} />
             )}
             <Title>

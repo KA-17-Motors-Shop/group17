@@ -13,12 +13,10 @@ import { ButtonOutlineLight } from "../../Button";
 import Modal from "../../Modals";
 import Filters from "../../Modals/Filters";
 import { useState } from "react";
+import { useFilters } from "../../../Providers/Filters";
 
 const BannerHome: React.FC = () => {
-  const history = useHistory();
-  const handlePage = (path: string) => {
-    history.push(path);
-  };
+  const { filterBy } = useFilters();
 
   const [modalFilters, setModalFilters] = useState(false);
 
@@ -37,19 +35,19 @@ const BannerHome: React.FC = () => {
             <ContainerButtonsTop>
               <ButtonOutlineLight
                 type="button"
-                onClick={() => handlePage("/preview")}
+                onClick={() => filterBy({ type: "auction" })}
               >
                 Leilão
               </ButtonOutlineLight>
               <ButtonOutlineLight
                 type="button"
-                onClick={() => handlePage("/preview")}
+                onClick={() => filterBy({ typeVehicle: "car" })}
               >
                 Carros
               </ButtonOutlineLight>
               <ButtonOutlineLight
                 type="button"
-                onClick={() => handlePage("/preview")}
+                onClick={() => filterBy({ typeVehicle: "motocycle" })}
               >
                 Motos
               </ButtonOutlineLight>

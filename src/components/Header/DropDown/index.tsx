@@ -15,6 +15,8 @@ import BurguerIcon from "../BurguerIcon";
 import SubMenuUser from "./SubMenu";
 import { useHistory } from "react-router-dom";
 import { IUser } from "../../../interfaces/user";
+import { IFiltersParams } from "../../../interfaces/auction";
+import { useFilters } from "../../../Providers/Filters";
 
 interface IProps {
   user: IUser;
@@ -25,9 +27,11 @@ const DropDownMenu: React.FC<IProps> = ({ user, handleModal }) => {
   const [drop, setDrop] = useState<boolean>(false);
 
   const history = useHistory();
+  const { filterBy } = useFilters();
 
-  const handlePage = (path: string) => {
-    history.push(path);
+  const handlePage = (data: IFiltersParams) => {
+    history.push("/");
+    filterBy(data);
   };
 
   const handleMenu = () => {
@@ -41,14 +45,20 @@ const DropDownMenu: React.FC<IProps> = ({ user, handleModal }) => {
           <BurguerIcon open={drop} />
         </DropTrigger>
         <DropContent>
-          <DropItem onClick={() => handlePage("/")}>Carros</DropItem>
-          <DropItem onClick={() => handlePage("/")}>Motos</DropItem>
-          <DropItem onClick={() => handlePage("/")}>Leilão</DropItem>
+          <DropItem onClick={() => handlePage({ typeVehicle: "car" })}>
+            Carros
+          </DropItem>
+          <DropItem onClick={() => handlePage({ typeVehicle: "motocycle" })}>
+            Motos
+          </DropItem>
+          <DropItem onClick={() => handlePage({ type: "auction" })}>
+            Leilão
+          </DropItem>
           <DropSeparator />
           {!user.id ? (
             <>
-              <DropItem onClick={() => handlePage("/login")}>Login</DropItem>
-              <DropItemButton onClick={() => handlePage("/register")}>
+              <DropItem onClick={() => history.push("/login")}>Login</DropItem>
+              <DropItemButton onClick={() => history.push("/register")}>
                 Cadastrar
               </DropItemButton>
             </>

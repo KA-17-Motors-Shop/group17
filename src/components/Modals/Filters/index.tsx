@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useFilters } from "../../../Providers/Filters";
 import { ButtonOutline1, ButtonPrimary } from "../../Button";
 import { CloseModalBtn } from "../../Button/CloseModalBtn";
 import { SelectTypeSale } from "../../Forms/Components/SelectType";
@@ -16,6 +17,19 @@ const Filters: React.FC<IProps> = ({ handleClose }) => {
   const [minYear, setMinYear] = useState(1960);
   const [maxYear, setMaxYear] = useState(new Date().getFullYear());
   const [typeSale, setTypeSale] = useState("sale");
+
+  const { setFilters, clearFilters } = useFilters();
+
+  const handleFilters = () => {
+    setFilters({
+      gtPrice: minValue,
+      ltPrice: maxValue,
+      gtrYear: minYear,
+      ltYear: maxYear,
+      type: typeSale,
+    });
+    handleClose();
+  };
 
   return (
     <Container>
@@ -89,8 +103,15 @@ const Filters: React.FC<IProps> = ({ handleClose }) => {
         <SelectTypeSale setValue={setTypeSale} value={typeSale} />
       </Main>
       <Bottom>
-        <ButtonOutline1>Limpar Filtros</ButtonOutline1>
-        <ButtonPrimary>Buscar</ButtonPrimary>
+        <ButtonOutline1
+          onClick={() => {
+            clearFilters();
+            handleClose();
+          }}
+        >
+          Limpar Filtros
+        </ButtonOutline1>
+        <ButtonPrimary onClick={handleFilters}>Buscar</ButtonPrimary>
       </Bottom>
     </Container>
   );

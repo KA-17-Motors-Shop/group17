@@ -7,6 +7,8 @@ import { ButtonOutline2, ButtonLink } from "../../Button";
 
 import { useHistory } from "react-router-dom";
 import { IUser } from "../../../interfaces/user";
+import { useFilters } from "../../../Providers/Filters";
+import { IFiltersParams } from "../../../interfaces/auction";
 
 interface IProps {
   handleModal: () => void;
@@ -15,9 +17,11 @@ interface IProps {
 
 const NavBar: React.FC<IProps> = ({ user, handleModal }) => {
   const history = useHistory();
+  const { filterBy } = useFilters();
 
-  const handlePage = (path: string) => {
-    history.push(path);
+  const handlePage = (data: IFiltersParams) => {
+    history.push("/");
+    filterBy(data);
   };
 
   return (
@@ -25,21 +29,21 @@ const NavBar: React.FC<IProps> = ({ user, handleModal }) => {
       <Nav>
         <ButtonLink
           onClick={() => {
-            handlePage("/");
+            handlePage({ typeVehicle: "car" });
           }}
         >
           Carros
         </ButtonLink>
         <ButtonLink
           onClick={() => {
-            handlePage("/");
+            handlePage({ typeVehicle: "motocycle" });
           }}
         >
           Motos
         </ButtonLink>
         <ButtonLink
           onClick={() => {
-            handlePage("/");
+            handlePage({ type: "auction" });
           }}
         >
           Leilão
@@ -50,8 +54,8 @@ const NavBar: React.FC<IProps> = ({ user, handleModal }) => {
         <SubMenuUserDesk handleModal={handleModal} userName={user.name!} />
       ) : (
         <NotLoggedContainer>
-          <ButtonLink onClick={() => handlePage("/login")}>Login</ButtonLink>
-          <ButtonOutline2 onClick={() => handlePage("/register")}>
+          <ButtonLink onClick={() => history.push("/login")}>Login</ButtonLink>
+          <ButtonOutline2 onClick={() => history.push("/register")}>
             Cadastrar
           </ButtonOutline2>
         </NotLoggedContainer>
