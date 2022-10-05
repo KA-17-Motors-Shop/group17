@@ -16,14 +16,21 @@ import {
   Price,
   SellerButonContainer,
 } from "./styles";
+import { usePurchases } from "../../../Providers/Purchases";
+import { useLoad } from "../../../Providers/Loading";
 
 interface IProps {
   announce: IAnnounceRes;
 }
 
 const VehicleInformation: React.FC<IProps> = ({ announce }): JSX.Element => {
-  const buy = () => {
-    console.log(`COMPRAR ${announce.id!}`);
+  const { setBuy } = usePurchases();
+  const { showLoad } = useLoad();
+
+  const buy = async () => {
+    const value = { value: announce.price! };
+    showLoad();
+    await setBuy(announce.id!, value);
   };
 
   const { userId } = useUser();

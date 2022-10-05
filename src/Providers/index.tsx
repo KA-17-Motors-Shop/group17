@@ -11,6 +11,7 @@ import { UpdateUserProvider } from "./User/updateUser";
 import { PasswordUserProvider } from "./User/passwordUser";
 import { ListCreateAddressProvider } from "./Address/listCreateAddress";
 import { DeleteUpdateAddressProvider } from "./Address/deleteUpdateAddress";
+import { PurchasesProvider } from "./Purchases";
 
 const Providers: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
@@ -22,13 +23,15 @@ const Providers: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <RegisterAnnounceProvider>
                 <ListAnounceProvider>
                   <BidsProvider>
-                    <ListCreateAddressProvider>
-                      <DeleteUpdateAddressProvider>
-                        <CommentProvider>
-                          <ZipCodeProvider>{children}</ZipCodeProvider>
-                        </CommentProvider>
-                      </DeleteUpdateAddressProvider>
-                    </ListCreateAddressProvider>
+                    <PurchasesProvider>
+                      <ListCreateAddressProvider>
+                        <DeleteUpdateAddressProvider>
+                          <CommentProvider>
+                            <ZipCodeProvider>{children}</ZipCodeProvider>
+                          </CommentProvider>
+                        </DeleteUpdateAddressProvider>
+                      </ListCreateAddressProvider>
+                    </PurchasesProvider>
                   </BidsProvider>
                 </ListAnounceProvider>
               </RegisterAnnounceProvider>
