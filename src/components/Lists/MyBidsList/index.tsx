@@ -23,8 +23,6 @@ const MyBidsList: React.FC = () => {
     handleBids();
   }, [handleBids]);
 
-  console.log(bids);
-
   return (
     <Container>
       <Title>Meus lances</Title>

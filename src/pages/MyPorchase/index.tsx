@@ -8,14 +8,13 @@ import { useUser } from "../../Providers/User";
 import { EmptyContainer } from "../AdDetails/styles";
 
 import * as S from "./styles";
+import MyListPurchases from "../../components/Lists/MyListPurchases";
 
 const MyPushase: React.FC = () => {
   const { token, getUser } = useUser();
 
   const [account, setAccount] = useState<IAccount>({});
   const [loadding, setLoadding] = useState(false);
-
-  // listPurshases Provider
 
   const handleAccount = useCallback(async () => {
     const accountGet = await getUser(token as string);
@@ -40,9 +39,7 @@ const MyPushase: React.FC = () => {
         <S.MainMyPorchase>
           <SellerInfoBox seller={account} />
 
-          <div>
-            <p>Lista de compras e lances</p>
-          </div>
+          <MyListPurchases />
         </S.MainMyPorchase>
       )}
       <Footer />
