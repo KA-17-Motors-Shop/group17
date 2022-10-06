@@ -5,14 +5,17 @@ import Footer from "../../containers/Footer";
 import Header from "../../containers/Header/Index";
 import AuctionList from "../../components/Lists/AuctionList";
 import CarsList from "../../components/Lists/CarsList";
+import FilterLists from "../../components/Lists/FilterLists";
 import MotorcyclesList from "../../components/Lists/MotorcyclesList";
 import { IUser } from "../../interfaces/user";
+import { useFilters } from "../../Providers/Filters";
 import { useUser } from "../../Providers/User";
 
 import { ContainerLists, Main, Page } from "./styles";
 
 const Home: React.FC = () => {
   const { token, getUser } = useUser();
+  const { filtersActive } = useFilters();
 
   const [user, setUser] = useState<IUser>({});
 
@@ -32,9 +35,15 @@ const Home: React.FC = () => {
         {user.id && !user.isActivate && <ActivateUserSpan />}
         <BannerHome />
         <ContainerLists>
-          <AuctionList />
-          <CarsList />
-          <MotorcyclesList />
+          {filtersActive ? (
+            <FilterLists />
+          ) : (
+            <>
+              <AuctionList />
+              <CarsList />
+              <MotorcyclesList />
+            </>
+          )}
         </ContainerLists>
       </Main>
       <Footer />

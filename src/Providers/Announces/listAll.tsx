@@ -136,7 +136,6 @@ export const ListAnounceProvider: React.FC<{
       typeVehicle ? `typeVehicle=${typeVehicle}&` : ``
     }
     `;
-
     const response = await motorShopAPI
       .get(`/announcement/?${filter}`)
       .then((res) => {

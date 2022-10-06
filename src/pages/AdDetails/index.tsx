@@ -33,6 +33,7 @@ import GaleryImages from "../../constants/GaleryImages";
 import EmptyMessage from "../../constants/EmptyMessage";
 import AnnounceBids from "../../components/Lists/AnnounceBids";
 import LoaderLocalComponent from "../../containers/Loader/LoaderLocalComponent";
+import WinnerCard from "../../components/WinnerCard";
 
 const AdDetails: React.FC = (): JSX.Element => {
   const query = useQuery();
@@ -57,7 +58,7 @@ const AdDetails: React.FC = (): JSX.Element => {
   const handleSellerPage = () => {
     history.push(`/seller?seller_id=${announce.seller!.id}`);
   };
-
+  console.log(announce);
   return (
     <Page>
       <Header />
@@ -93,8 +94,12 @@ const AdDetails: React.FC = (): JSX.Element => {
                 <CommentBox announceId={announce.id} />
               </RightContainer>
               <LeftContainer>
-                {announce.type === "auction" && (
-                  <AnnounceBids id={announce.id} />
+                {announce.status !== "completed" ? (
+                  announce.type === "auction" && (
+                    <AnnounceBids id={announce.id} />
+                  )
+                ) : (
+                  <WinnerCard announceId={announce.id} />
                 )}
               </LeftContainer>
             </BottomContainer>

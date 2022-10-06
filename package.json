@@ -5,6 +5,7 @@
   "dependencies": {
     "@hookform/resolvers": "^2.9.7",
     "@radix-ui/react-dropdown-menu": "^1.0.0",
+    "@radix-ui/react-slider": "^1.0.0",
     "@radix-ui/react-tabs": "^1.0.0",
     "@radix-ui/react-toggle-group": "^1.0.0",
     "@testing-library/jest-dom": "^5.16.4",

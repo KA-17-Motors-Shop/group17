@@ -41,8 +41,8 @@ export interface IFiltersParams {
   gtDataLimit?: string;
   ltPrice?: number;
   gtPrice?: number;
-  type?: type;
-  typeVehicle?: typeVehicle;
+  type?: type | string;
+  typeVehicle?: typeVehicle | string;
   ltYear?: number;
   gtrYear?: number;
   title?: string;
