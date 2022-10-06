@@ -3,6 +3,7 @@ import EmptyMessage from "../../../constants/EmptyMessage";
 import LoaderLocalComponent from "../../../containers/Loader/LoaderLocalComponent";
 import { IResPurchases } from "../../../interfaces/purchases";
 import { usePurchases } from "../../../Providers/Purchases";
+import CardPurchase from "./CardPurchase";
 import { ContainerGroup, ContainerList, Title } from "./styles";
 
 const MyListPurchases: React.FC = () => {
@@ -14,6 +15,7 @@ const MyListPurchases: React.FC = () => {
   const handlePurchases = useCallback(async () => {
     const myPurchases = await getMyPurchases();
     setPurchases(myPurchases!);
+
     setLoadding(false);
   }, [getMyPurchases]);
 
@@ -29,7 +31,9 @@ const MyListPurchases: React.FC = () => {
         {loadding ? (
           <LoaderLocalComponent />
         ) : purchases.length ? (
-          purchases.map((item) => <div key={item.id}></div>)
+          purchases.map((item) => (
+            <CardPurchase key={item.id} purchase={item} />
+          ))
         ) : (
           <EmptyMessage message="Nenhuma compra registrada" />
         )}
