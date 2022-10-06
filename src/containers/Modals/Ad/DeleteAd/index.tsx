@@ -1,5 +1,6 @@
 import { ButtonAlert, ButtonNegative } from "../../../../components/Buttons";
 import { CloseModalBtn } from "../../../../components/Buttons/CloseModalBtn";
+import { useDeleteAd } from "../../../../Providers/Announces/delete";
 import * as S from "./styles";
 
 interface IHandleModal {
@@ -8,8 +9,10 @@ interface IHandleModal {
 }
 
 const DeleteAd = ({ handleModal, id }: IHandleModal) => {
-  const deleteAdConfirm = () => {
-    console.log("delete ->" + id);
+  const { setDeleteAd } = useDeleteAd();
+
+  const deleteAdConfirm = async () => {
+    await setDeleteAd(id);
     handleModal();
   };
 
@@ -22,8 +25,8 @@ const DeleteAd = ({ handleModal, id }: IHandleModal) => {
         </S.TopModal>
         <h1>Tem certeza que deseja remover este anúncio?</h1>
         <h2>
-          Essa ação não pode ser desfeita. Isso excluirá permanentemente sua
-          conta e removerá seus dados de nossos servidores.
+          Essa ação não pode ser desfeita. Isso excluirá permanentemente seu
+          anúncio e removerá seus dados de nossos servidores.
         </h2>
 
         <S.BottoModal>
