@@ -71,11 +71,12 @@ export const ImgContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 95%;
+  height: 80%;
 
   background: transparent;
   > img {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
     border-radius: 4px;
   }
   border-radius: 4px;
