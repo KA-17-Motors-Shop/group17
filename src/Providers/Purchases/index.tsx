@@ -4,6 +4,7 @@ import { motorShopAPI } from "../../services/urls.api";
 import { useUser } from "../User";
 import { toast } from "react-toastify";
 import { useLoad } from "../Loading";
+import { useHistory } from "react-router-dom";
 
 interface IContext {
   getMyPurchases: () => Promise<IResPurchases[]>;
@@ -18,6 +19,7 @@ export const PurchasesProvider: React.FC<{ children: React.ReactNode }> = ({
   const { token } = useUser();
 
   const { hiddenLoad } = useLoad();
+  const history = useHistory();
 
   const getMyPurchases = async () => {
     return await motorShopAPI
@@ -45,6 +47,7 @@ export const PurchasesProvider: React.FC<{ children: React.ReactNode }> = ({
       .then((res) => {
         console.log(res);
         toast.success("Compra feita com sucesso!");
+        history.push("/");
       })
       .catch((err) => {
         console.log(err);

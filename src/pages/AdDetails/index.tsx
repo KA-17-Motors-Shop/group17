@@ -96,10 +96,16 @@ const AdDetails: React.FC = (): JSX.Element => {
               <LeftContainer>
                 {announce.status !== "completed" ? (
                   announce.type === "auction" && (
-                    <AnnounceBids id={announce.id} />
+                    <AnnounceBids
+                      id={announce.id}
+                      status={announce.isActive!}
+                    />
                   )
                 ) : (
-                  <WinnerCard announceId={announce.id} />
+                  <WinnerCard
+                    announceId={announce.id}
+                    status={announce.isActive!}
+                  />
                 )}
               </LeftContainer>
             </BottomContainer>

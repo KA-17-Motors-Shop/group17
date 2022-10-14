@@ -26,7 +26,6 @@ export const DeleteAdProvider: React.FC<{ children: React.ReactNode }> = ({
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        // console.log(res);
         toast.success("Anuncio deletado com sucesso!");
         history.push("/profile");
       })

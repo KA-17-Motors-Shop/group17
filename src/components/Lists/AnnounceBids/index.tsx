@@ -6,16 +6,21 @@ import LoaderLocalComponent from "../../../containers/Loader/LoaderLocalComponen
 import BidCard from "./BidCard";
 import { BidsGroup, Container, Empty, Title } from "./styles";
 
-const AnnounceBids: React.FC<{ id: string }> = ({ id }) => {
+const AnnounceBids: React.FC<{ id: string; status: boolean }> = ({
+  id,
+  status,
+}) => {
   const [bids, setBids] = useState<IResBids[]>([]);
   const [loadding, setLoadding] = useState(false);
   const { getBidsAnnounce } = useBids();
 
   const handleBids = useCallback(async () => {
-    const get = await getBidsAnnounce(id);
-    setBids(get);
+    if (status) {
+      const get = await getBidsAnnounce(id);
+      setBids(get);
+    }
     setLoadding(false);
-  }, [getBidsAnnounce, id]);
+  }, [getBidsAnnounce, id, status]);
 
   useEffect(() => {
     setLoadding(true);

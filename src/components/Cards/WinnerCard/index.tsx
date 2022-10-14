@@ -7,17 +7,20 @@ import moment from "moment";
 
 interface IProps {
   announceId: string;
+  status: boolean;
 }
 
-const WinnerCard: React.FC<IProps> = ({ announceId }) => {
+const WinnerCard: React.FC<IProps> = ({ announceId, status }) => {
   const [winner, setWinner] = useState<IPurshaceAnnounceRes>({});
   const { getWinnerAnnounce } = useBids();
   const datePurshase = new Date(winner.date!);
 
   const handleWinner = useCallback(async () => {
-    const getWinner = await getWinnerAnnounce(announceId);
-    setWinner(getWinner);
-  }, [announceId, getWinnerAnnounce]);
+    if (status) {
+      const getWinner = await getWinnerAnnounce(announceId);
+      setWinner(getWinner);
+    }
+  }, [announceId, getWinnerAnnounce, status]);
 
   useEffect(() => {
     handleWinner();

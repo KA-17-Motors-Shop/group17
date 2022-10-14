@@ -78,7 +78,7 @@ const UpdateAd: React.FC<IProps> = ({ handleModal, announce }) => {
     }
   };
 
-  const { updateAnnounce } = useAnnounceUpdate();
+  const { updateAnnounce, changeStatus } = useAnnounceUpdate();
   const { showLoad } = useLoad();
 
   const handleUpdate = async (data: IDataAnnounce) => {
@@ -110,6 +110,14 @@ const UpdateAd: React.FC<IProps> = ({ handleModal, announce }) => {
     }
   };
 
+  const changeStatusConfirm = () => {
+    if (announce.id) {
+      showLoad();
+      changeStatus(announce.id, announce.isActive!);
+      // handleModal();
+    }
+  };
+
   return (
     <S.Centralize>
       <S.ContainerForm onSubmit={handleSubmit(handleUpdate)}>
@@ -121,9 +129,6 @@ const UpdateAd: React.FC<IProps> = ({ handleModal, announce }) => {
         <S.InputsContainer>
           <S.SpanText>Tipo de anuncio</S.SpanText>
           <SelectTypeSale value={typeSale} setValue={setTypeSale} />
-
-          <S.SpanText>Publicação</S.SpanText>
-          <SelectTypePublished value={isActive} setValue={setIsActive} />
 
           <S.SpanText>Informações do veiculo</S.SpanText>
           <GeneralInput
@@ -192,6 +197,9 @@ const UpdateAd: React.FC<IProps> = ({ handleModal, announce }) => {
             )}
           </S.BtnAddImg>
         </S.InputsContainer>
+        <B.ButtonPrimaryDisable type="button" onClick={changeStatusConfirm}>
+          {announce.isActive ? "Desativar anúncio" : "Ativar anúncio"}
+        </B.ButtonPrimaryDisable>
         <S.BottoModal>
           <B.ButtonNegative type="button" onClick={deleteAdConfirm}>
             Excluir anúncio

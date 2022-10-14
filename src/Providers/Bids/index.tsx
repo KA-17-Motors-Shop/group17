@@ -31,7 +31,6 @@ export const BidsProvider: React.FC<{ children: React.ReactNode }> = ({
         return res.data;
       })
       .catch((err) => {
-        console.log(err);
         toast.warning(err.response.data.message);
       });
   };
