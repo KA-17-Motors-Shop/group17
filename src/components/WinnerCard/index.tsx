@@ -22,7 +22,6 @@ const WinnerCard: React.FC<IProps> = ({ announceId }) => {
   useEffect(() => {
     handleWinner();
   }, [handleWinner]);
-  console.log(winner);
 
   return (
     <Card>

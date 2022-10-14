@@ -32,7 +32,6 @@ export const BidsProvider: React.FC<{ children: React.ReactNode }> = ({
       })
       .catch((err) => {
         console.log(err);
-        toast.warning(err.response.data.message);
       });
   };
   const setBid = async (id: string, value: ISetBidUser) => {

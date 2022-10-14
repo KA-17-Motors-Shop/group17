@@ -3,7 +3,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 import { useState } from "react";
-import { useAnnounceRegister } from "../../../../Providers/Announces/register";
 
 import GeneralInput from "../../../Forms/Components/Inputs/GeneralInput";
 import {
@@ -13,7 +12,6 @@ import {
   ButtonPrimaryOpacity,
 } from "../../../Button";
 import {
-  SelectTypePublished,
   SelectTypeSale,
   SelectTypeVehicle,
 } from "../../../Forms/Components/SelectType";
@@ -25,6 +23,8 @@ import { IAnnounceRes, IDataAnnounce } from "../../../../interfaces/auction";
 import { CloseModalBtn } from "../../../Button/CloseModalBtn";
 import TextArea from "../../../Forms/Components/TextArea";
 import InputFile from "../../../Forms/Components/Inputs/InputFile";
+import { useAnnounceUpdateDelete } from "../../../../Providers/Announces/updateDelete";
+import { useLoad } from "../../../../Providers/Loading";
 
 interface IProps {
   handleModal: () => void;
@@ -33,17 +33,11 @@ interface IProps {
 
 const UpdateAd: React.FC<IProps> = ({ handleModal, announce }) => {
   const schema = yup.object().shape({
-    title: yup.string().required("Campo obrigatório"),
-    description: yup.string().required("Campo obrigatório"),
-    year: yup
-      .string()
-      .required("Campo obrigatório")
-      .test(
-        (dateString) =>
-          new Date(dateString!) < new Date(new Date().getFullYear())
-      ),
-    km: yup.number().typeError("Somente números").required("Campo obrigatório"),
-    price: yup.string().required("Campo obrigatório"),
+    title: yup.string(),
+    description: yup.string(),
+    year: yup.number().typeError("Somente números"),
+    km: yup.number().typeError("Somente números"),
+    price: yup.string(),
   });
 
   const {
@@ -53,18 +47,51 @@ const UpdateAd: React.FC<IProps> = ({ handleModal, announce }) => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
   const [typeSale, setTypeSale] = useState(announce.type || "sale");
-  const [isActive, setIsActive] = useState(announce.isActive ? "yes" : "no");
   const [typeVehicle, setTypeVehicle] = useState(announce.typeVehicle || "car");
 
-  const handleRegister = async (data: IDataAnnounce) => {
-    console.log(data);
+  const { updateAnnounce } = useAnnounceUpdateDelete();
+  const { showLoad } = useLoad();
+
+  const [numberFiles, setNumbersFiles] = useState(1);
+  const [files, setFiles] = useState<{ id: number; file: File }[]>([]);
+
+  const handleUpdate = async (data: IDataAnnounce) => {
+    const images = files.map((item) => {
+      return item.file;
+    });
+    showLoad();
+    await updateAnnounce(
+      announce.id!,
+      {
+        ...data,
+        type: typeSale,
+        typeVehicle: typeVehicle,
+      },
+      images
+    );
+  };
+  const addInputFile = () => {
+    setNumbersFiles(numberFiles + 1);
+  };
+
+  const addFile = (index: number, file: File) => {
+    const filesArr = files.find((item) => item.id === index);
+
+    if (filesArr) {
+      const data = [
+        ...files.filter((item) => item.id !== index),
+        { id: index, file },
+      ];
+      setFiles(data);
+    } else {
+      setFiles([...files, { id: index, file }]);
+    }
   };
 
   return (
     <S.Centralize>
-      <S.ContainerForm onSubmit={handleSubmit(handleRegister)}>
+      <S.ContainerForm onSubmit={handleSubmit(handleUpdate)}>
         <S.TopModal>
           <h1>Editar Anúncio</h1>
           <CloseModalBtn onClick={handleModal} />
@@ -73,10 +100,7 @@ const UpdateAd: React.FC<IProps> = ({ handleModal, announce }) => {
         <S.InputsContainer>
           <S.SpanText>Tipo de anuncio</S.SpanText>
           <SelectTypeSale value={typeSale} setValue={setTypeSale} />
-
           <S.SpanText>Publicação</S.SpanText>
-          <SelectTypePublished value={isActive} setValue={setIsActive} />
-
           <S.SpanText>Informações do veiculo</S.SpanText>
           <GeneralInput
             label="Título"
@@ -84,6 +108,7 @@ const UpdateAd: React.FC<IProps> = ({ handleModal, announce }) => {
             name={"title"}
             error={errors.title?.message}
             placeholder="Digitar título"
+            defaultValue={announce.title}
           />
           <S.RowInputsContainer>
             <GeneralInput
@@ -92,6 +117,7 @@ const UpdateAd: React.FC<IProps> = ({ handleModal, announce }) => {
               name={"year"}
               error={errors.year?.message}
               placeholder="Digitar ano"
+              defaultValue={announce.year}
             />
             <GeneralInput
               label="Quilometragem"
@@ -99,6 +125,7 @@ const UpdateAd: React.FC<IProps> = ({ handleModal, announce }) => {
               name={"km"}
               error={errors.km?.message}
               placeholder="0"
+              defaultValue={announce.km}
             />
             <GeneralInput
               label="Preço"
@@ -106,6 +133,7 @@ const UpdateAd: React.FC<IProps> = ({ handleModal, announce }) => {
               name={"price"}
               error={errors.price?.message}
               placeholder="Digitar preço"
+              defaultValue={announce.price}
             />
           </S.RowInputsContainer>
 
@@ -115,10 +143,30 @@ const UpdateAd: React.FC<IProps> = ({ handleModal, announce }) => {
             name={"description"}
             error={errors.description?.message}
             placeholder="Digitar descrição"
+            defaultValue={announce.description}
           />
 
           <S.SpanText>Tipo do veiculo</S.SpanText>
           <SelectTypeVehicle value={typeVehicle} setValue={setTypeVehicle} />
+          <div>
+            {Array.from({ length: numberFiles }).map((_, index) => (
+              <InputFile
+                key={index}
+                name="images"
+                id={index.toString()}
+                saveFile={addFile}
+              />
+            ))}
+          </div>
+          <S.BtnAddImg>
+            {numberFiles < 5 ? (
+              <ButtonPrimaryOpacity type="button" onClick={addInputFile}>
+                Adicionar campo
+              </ButtonPrimaryOpacity>
+            ) : (
+              <ButtonDisable type="button">Adicionar campo</ButtonDisable>
+            )}
+          </S.BtnAddImg>
         </S.InputsContainer>
         <S.BottoModal>
           <ButtonNegative type="button" onClick={handleModal}>

@@ -8,42 +8,47 @@ import { IRegisterAnnounce } from "../../interfaces/auction";
 import { useLoad } from "../Loading";
 
 type IAuctionTypeContext = {
-  registerAnnounce: (data: IRegisterAnnounce, images?: File[]) => Promise<void>;
+  updateAnnounce: (
+    id: string,
+    data: IRegisterAnnounce,
+    images?: File[]
+  ) => Promise<void>;
 };
 
-const initialValue = {
-  auction: {},
-  registerAnnounce: async () => {},
-};
+export const UpdateDeleteAnnounceContext = createContext(
+  {} as IAuctionTypeContext
+);
 
-export const RegisterAnnounceContext =
-  createContext<IAuctionTypeContext>(initialValue);
-
-export const RegisterAnnounceProvider: React.FC<{
+export const UpdateDeleteAnnounceProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
   const history = useHistory();
 
   const { hiddenLoad } = useLoad();
 
-  const registerAnnounce = async (data: IRegisterAnnounce, images?: File[]) => {
+  const updateAnnounce = async (
+    id: string,
+    data: IRegisterAnnounce,
+    images?: File[]
+  ) => {
     const token = localStorage.getItem("@token:Motor");
 
     const formData = new FormData();
     Object.entries(data).forEach((item) => formData.append(item[0], item[1]));
-    if (images) {
+    if (images?.length) {
       images.forEach((item) => formData.append("images", item));
     }
 
     await motorShopAPI
-      .post("/announcement/", formData, {
+      .patch(`/announcement/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {
-        toast.success("Anúncio criado com sucesso!");
+        console.log("Auction-->", res);
+        toast.success("Leilão criado com sucesso!");
         history.push("/");
       })
       .catch((err) => {
@@ -54,10 +59,11 @@ export const RegisterAnnounceProvider: React.FC<{
   };
 
   return (
-    <RegisterAnnounceContext.Provider value={{ registerAnnounce }}>
+    <UpdateDeleteAnnounceContext.Provider value={{ updateAnnounce }}>
       {children}
-    </RegisterAnnounceContext.Provider>
+    </UpdateDeleteAnnounceContext.Provider>
   );
 };
 
-export const useAnnounceRegister = () => useContext(RegisterAnnounceContext);
+export const useAnnounceUpdateDelete = () =>
+  useContext(UpdateDeleteAnnounceContext);
